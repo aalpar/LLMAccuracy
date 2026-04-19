@@ -57,7 +57,6 @@ def test_end_turn_completion():
     assert result["truncated"] is False
 
 
-@pytest.mark.skip(reason="max_rounds param added in Task 2")
 def test_max_rounds_completion():
     """Model keeps calling tools past max_rounds — harness cuts it off."""
     client = MagicMock()
@@ -74,7 +73,6 @@ def test_max_rounds_completion():
     assert result["rounds"] == 3
 
 
-@pytest.mark.skip(reason="max_rounds param added in Task 2")
 def test_budget_exhausted_completion():
     """Cumulative output_tokens exceeds total_budget before conversation ends."""
     client = MagicMock()

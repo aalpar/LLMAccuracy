@@ -386,7 +386,16 @@ def run_control(client, model, problem, max_tokens=1024):
     }
 
 
-def run_treatment(client, model, problem, mcp_session, tools, total_budget=5000, per_round_cap=5000):
+def run_treatment(
+    client,
+    model,
+    problem,
+    mcp_session,
+    tools,
+    total_budget=5000,
+    per_round_cap=5000,
+    max_rounds=30,
+):
     """Run the treatment condition (with Wile MCP tools).
 
     `total_budget` caps cumulative output_tokens across rounds. When the
@@ -403,7 +412,6 @@ def run_treatment(client, model, problem, mcp_session, tools, total_budget=5000,
     tool_calls = 0
     tool_trace = []
     rounds = 0
-    max_rounds = 10
     last_stop_reason = None
     budget_hit = False
 
@@ -671,7 +679,17 @@ def run_control_session(client, model, problems, delay, total_budget=5000):
     return results
 
 
-def run_treatment_session(client, model, problems, mcp_session, tools, delay, total_budget=5000, per_round_cap=5000):
+def run_treatment_session(
+    client,
+    model,
+    problems,
+    mcp_session,
+    tools,
+    delay,
+    total_budget=5000,
+    per_round_cap=5000,
+    max_rounds=30,
+):
     """Run all problems in a single treatment conversation."""
     cached_system = [
         {
@@ -703,7 +721,7 @@ def run_treatment_session(client, model, problems, mcp_session, tools, delay, to
         rounds_hit = False
 
         t0 = time.perf_counter()
-        for round_i in range(10):
+        for round_i in range(max_rounds):
             remaining = total_budget - total_output_tokens
             if remaining <= 0:
                 budget_hit = True
@@ -833,6 +851,17 @@ def main():
         ),
     )
     parser.add_argument(
+        "--max-rounds",
+        type=int,
+        default=30,
+        help=(
+            "Maximum number of tool-calling rounds in treatment per problem. "
+            "Default 30 (up from previous hard-coded 10). Round cap is a "
+            "common failure mode for lattice-problem reasoning; raising it "
+            "lets the model iterate helper functions to convergence."
+        ),
+    )
+    parser.add_argument(
         "--session",
         action="store_true",
         help=(
@@ -934,6 +963,7 @@ def main():
             treat_results = run_treatment_session(
                 client, args.model, problems, mcp_session, tools, args.delay,
                 total_budget=args.total_budget,
+                max_rounds=args.max_rounds,
             )
             for r, treat in zip(results, treat_results):
                 r["treatment"] = treat
@@ -963,6 +993,7 @@ def main():
                 treat = run_treatment(
                     client, args.model, problem, mcp_session, tools,
                     total_budget=args.total_budget,
+                    max_rounds=args.max_rounds,
                 )
                 result["treatment"] = treat
                 result["treatment_correct"] = answers_match(
