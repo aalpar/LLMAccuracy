@@ -217,18 +217,21 @@ def _trop_tree(vals, depth):
     )
 
 
+TROPICAL_PRESETS = {
+    # Calibrated against Claude Opus 4.7 with 5000-token control budget.
+    # See algebra_difficulty_calibration.json for measurement data.
+    "easy":   (64,  5),   # 100% success, median ~700 tokens
+    "medium": (128, 6),   # 80% success, median ~3800 tokens
+    "hard":   (256, 7),   # 0% success — budget-bound (Claude's real capability
+                          # may extend further given more tokens; the benchmark
+                          # measures "can Claude do this in 5000 tokens")
+}
+
+
 def gen_tropical(difficulty: str, n: int) -> List[Problem]:
-    params = {
-        "easy":       (16, 2),
-        "medium":     (24, 3),
-        "hard":       (32, 3),
-        "extra-hard": (40, 4),
-        "super-hard": (48, 4),
-        "ultra-hard": (64, 5),
-    }
     problems = []
     for i in range(n):
-        n_vals, depth = params[difficulty]
+        n_vals, depth = TROPICAL_PRESETS[difficulty]
         vals = [random.randint(1, 100) for _ in range(n_vals)]
 
         scheme_inner, nl_expr = _trop_tree(vals, depth)
@@ -361,25 +364,33 @@ def gen_rational(difficulty: str, n: int) -> List[Problem]:
 # rather than pattern-matching on the element list.
 
 
+FIXPOINT_PRESETS = {
+    "easy":       (12, 15, 8),
+    "medium":     (16, 20, 10),
+    "hard":       (20, 25, 12),
+    "extra-hard": (25, 30, 15),
+    "super-hard": (30, 40, 20),
+    "ultra-hard": (40, 50, 25),
+}
+
+
 def gen_fixpoint(difficulty: str, n: int) -> List[Problem]:
-    params = {
-        "easy":       (12, 15, 8),
-        "medium":     (16, 20, 10),
-        "hard":       (20, 25, 12),
-        "extra-hard": (25, 30, 15),
-        "super-hard": (30, 40, 20),
-        "ultra-hard": (40, 50, 25),
-    }
     problems = []
     for i in range(n):
-        lo, hi, n_dist = params[difficulty]
+        lo, hi, n_dist = FIXPOINT_PRESETS[difficulty]
         steps = random.randint(lo, hi)
 
+        # Universe is at least 99 elements (matching historical generation)
+        # but expands if the chain + distractors would exceed that. Keeps
+        # existing presets' behavior byte-identical while letting harder
+        # probes draw from a larger pool.
+        universe_size = max(100, steps + n_dist + 10)
+
         # Distinct values for the chain
-        chain = random.sample(range(1, 100), steps)
+        chain = random.sample(range(1, universe_size), steps)
 
         # Distractors: extra lattice elements not in the chain
-        available = [x for x in range(1, 100) if x not in chain]
+        available = [x for x in range(1, universe_size) if x not in chain]
         n_distractors = min(n_dist, len(available))
         distractors = random.sample(available, n_distractors)
         all_elements = sorted(set(chain + distractors))
@@ -564,20 +575,20 @@ def _gen_pset_expr(universe, ops_left):
     return sch, nl
 
 
+POWERSET_PRESETS = {
+    # Calibrated. (n_elems_in_universe, ops_lo, ops_hi).
+    "easy":   (16, 20, 24),   # 100% success, median ~900 tokens
+    "medium": (16, 50, 70),   # 80% success, median ~2900 tokens
+    "hard":   (16, 80, 120),  # 20% success, mostly budget-bound
+}
+
+
 def gen_powerset_lattice(difficulty: str, n: int) -> List[Problem]:
     ELEMS = list("abcdefghijklmnop")
-    params = {
-        "easy":       (8, 6, 7),
-        "medium":     (10, 8, 9),
-        "hard":       (12, 10, 12),
-        "extra-hard": (14, 13, 15),
-        "super-hard": (16, 16, 18),
-        "ultra-hard": (16, 20, 24),
-    }
     problems = []
 
     for i in range(n):
-        n_elems, ops_lo, ops_hi = params[difficulty]
+        n_elems, ops_lo, ops_hi = POWERSET_PRESETS[difficulty]
         universe = ELEMS[:n_elems]
         n_ops = random.randint(ops_lo, ops_hi)
 
@@ -636,19 +647,20 @@ FOLD_PREAMBLE = (
 )
 
 
+MONOID_FOLD_PRESETS = {
+    # Calibrated. (n_seqs, seq_len, mods). All tiers use the same large-prime
+    # mods — difficulty comes from sequence count and length, not modulus size
+    # (per user framing: algebra benchmarks test structure, not arithmetic).
+    "easy":   (16, 20, [99991, 100003, 100019, 100043]),  # 100%, ~300 tok
+    "medium": (30, 50, [99991, 100003, 100019, 100043]),  # 40%,  ~4300 tok
+    "hard":   (50, 80, [99991, 100003, 100019, 100043]),  # 0%, budget-bound
+}
+
+
 def gen_monoid_fold(difficulty: str, n: int) -> List[Problem]:
-    # Parameters: (n_seqs, seq_len, mods)
-    params = {
-        "easy":       (4, 5, [97, 101, 103, 107, 109]),
-        "medium":     (6, 8, [997, 1009, 1013, 1019, 1021]),
-        "hard":       (8, 10, [4999, 5003, 5009, 5011, 5021]),
-        "extra-hard": (10, 12, [9973, 10007, 10009, 10037]),
-        "super-hard": (12, 15, [49999, 50021, 50023, 50033]),
-        "ultra-hard": (16, 20, [99991, 100003, 100019, 100043]),
-    }
     problems = []
     for i in range(n):
-        n_seqs, seq_len, mods = params[difficulty]
+        n_seqs, seq_len, mods = MONOID_FOLD_PRESETS[difficulty]
         mod = random.choice(mods)
         seqs = [
             [random.randint(1, 100) for _ in range(seq_len)]
@@ -701,27 +713,30 @@ def gen_monoid_fold(difficulty: str, n: int) -> List[Problem]:
 # ── Main ─────────────────────────────────────────────────────────
 
 GENERATORS = {
-    "modular_arithmetic": gen_modular,
+    # Three calibrated structural categories. Each tests Claude's ability to
+    # process algebraic structures (not arithmetic) at Claude Opus 4.7's
+    # capability edge, measured against a 5000-token budget.
+    #
+    # Dropped from the algebra benchmark (2026-04-18):
+    #   - fixpoint: problem shape allows Claude to read the answer from the
+    #     chain-of-equations without iterating. Not a fixpoint test.
+    #   - modular_arithmetic, monoid_power, rational_field: difficulty came
+    #     from large-number arithmetic, duplicating what arithmetic-accuracy
+    #     benchmark (decimal division) already measures. The corresponding
+    #     gen_* functions are preserved in this file for reuse if needed,
+    #     but are not part of the default benchmark dispatch.
     "tropical_semiring": gen_tropical,
-    "rational_field": gen_rational,
-    "fixpoint": gen_fixpoint,
-    "monoid_power": gen_monoid_power,
-    "powerset_lattice": gen_powerset_lattice,
-    "monoid_fold": gen_monoid_fold,
+    "powerset_lattice":  gen_powerset_lattice,
+    "monoid_fold":       gen_monoid_fold,
 }
 
-# Per-category, per-difficulty problem counts.
-# 10 per cell for easy/medium/hard, 5 for extra-hard/super-hard/ultra-hard.
-# Fixpoint uses 5 across the board. Override with --count.
-DIFFICULTIES = ["easy", "medium", "hard", "extra-hard", "super-hard", "ultra-hard"]
+# Three-tier calibrated structure. Prior six-tier structure is retained in
+# each preset dict's comment block for historical reference only.
+DIFFICULTIES = ["easy", "medium", "hard"]
 DEFAULT_COUNTS = {
-    "modular_arithmetic": {"easy": 10, "medium": 10, "hard": 10, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
-    "tropical_semiring": {"easy": 10, "medium": 10, "hard": 10, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
-    "rational_field": {"easy": 10, "medium": 10, "hard": 10, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
-    "fixpoint": {"easy": 5, "medium": 5, "hard": 5, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
-    "monoid_power": {"easy": 10, "medium": 10, "hard": 10, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
-    "powerset_lattice": {"easy": 10, "medium": 10, "hard": 10, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
-    "monoid_fold": {"easy": 10, "medium": 10, "hard": 10, "extra-hard": 5, "super-hard": 5, "ultra-hard": 5},
+    "tropical_semiring": {"easy": 10, "medium": 10, "hard": 10},
+    "powerset_lattice":  {"easy": 10, "medium": 10, "hard": 10},
+    "monoid_fold":       {"easy": 10, "medium": 10, "hard": 10},
 }
 
 
