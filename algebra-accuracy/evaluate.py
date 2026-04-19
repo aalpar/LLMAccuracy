@@ -14,9 +14,11 @@ Usage:
 """
 
 import argparse
+import asyncio
 import json
 import os
 import platform
+import queue as _queue
 import re
 import subprocess
 import sys
@@ -520,6 +522,10 @@ def print_summary(results, condition):
     )
 
     for r in results:
+        # Parallel workers may emit {"id": ..., "error": ...} skeletons
+        # for problems that crashed; skip them in the summary.
+        if "category" not in r or "difficulty" not in r:
+            continue
         cat, diff = r["category"], r["difficulty"]
         if "control_correct" in r:
             stats[cat][diff]["control"][0] += int(r["control_correct"])
@@ -805,6 +811,99 @@ def run_treatment_session(
     return results
 
 
+# ── Parallel Scheduler ───────────────────────────────────────────
+#
+# The main independent-problem loop is embarrassingly parallel: each
+# problem is evaluated in isolation. We dispatch N worker coroutines
+# that pull problems from a shared queue. For treatment mode, each
+# worker holds its own WileMCPSession subprocess — Wile sessions are
+# stateful across rounds (reset() is called between problems, not
+# within a parallel fan-out).
+#
+# Results are written back at the problem's input index so the final
+# list preserves input order regardless of worker completion order.
+
+
+async def run_parallel_benchmark(problems, runner, workers=4):
+    """Run `runner(problem)` across problems with `workers` concurrency.
+
+    `runner` is a synchronous function `problem -> result_dict`. It is
+    invoked via `asyncio.to_thread` so worker coroutines can await API
+    calls concurrently without blocking the event loop on MCP stdio.
+
+    Returns results in original input order.
+    """
+    if not problems:
+        return []
+    workers = max(1, min(workers, len(problems)))
+
+    queue: asyncio.Queue = asyncio.Queue()
+    for idx, p in enumerate(problems):
+        queue.put_nowait((idx, p))
+
+    results = [None] * len(problems)
+
+    async def worker():
+        while True:
+            try:
+                idx, problem = queue.get_nowait()
+            except asyncio.QueueEmpty:
+                return
+            try:
+                result = await asyncio.to_thread(runner, problem)
+                results[idx] = result
+            finally:
+                queue.task_done()
+
+    await asyncio.gather(*(worker() for _ in range(workers)))
+    return results
+
+
+def _run_one_problem(problem, client, model, mcp_session, tools,
+                     condition, total_budget, max_rounds, delay):
+    """Evaluate one problem in the requested condition(s).
+
+    Used by the parallel scheduler. Each worker holds its own
+    mcp_session so reset()-between-problems does not contend with
+    other workers.
+    """
+    result = {
+        "id": problem["id"],
+        "category": problem["category"],
+        "difficulty": problem["difficulty"],
+        "ground_truth": problem["answer"],
+        "answer_type": problem.get("answer_type", "integer"),
+        "precision": problem.get("precision"),
+    }
+
+    if condition in ("control", "both"):
+        ctrl = run_control(client, model, problem, max_tokens=total_budget)
+        result["control"] = ctrl
+        result["control_correct"] = answers_match(
+            ctrl["extracted_answer"], problem["answer"],
+            problem.get("answer_type", "integer"),
+            precision=problem.get("precision"),
+        )
+        time.sleep(delay)
+
+    if condition in ("treatment", "both"):
+        mcp_session.reset()
+        treat = run_treatment(
+            client, model, problem, mcp_session, tools,
+            total_budget=total_budget,
+            max_rounds=max_rounds,
+        )
+        result["treatment"] = treat
+        result["treatment_correct"] = answers_match(
+            treat["extracted_answer"], problem["answer"],
+            problem.get("answer_type", "integer"),
+            precision=problem.get("precision"),
+        )
+        time.sleep(delay)
+
+    return result
+
+
 # ── Main ─────────────────────────────────────────────────────────
 
 
@@ -868,6 +967,17 @@ def main():
             "Run all problems in a single conversation per condition. "
             "Prior exchanges remain in context, so errors can compound. "
             "Token cost is O(N²) in session length."
+        ),
+    )
+    parser.add_argument(
+        "--workers",
+        type=int,
+        default=4,
+        help=(
+            "Number of parallel worker coroutines for the independent "
+            "(non-session) evaluation mode. Each worker owns one Wile "
+            "MCP subprocess. Default 4. Set to 1 to reproduce serial "
+            "behavior."
         ),
     )
     parser.add_argument(
@@ -974,43 +1084,88 @@ def main():
             print("", file=sys.stderr)
 
     else:
-        for j, (problem, result) in enumerate(zip(problems, results)):
-            label = f"[{j + 1}/{len(problems)}] {problem['id']}"
-            print(f"\r  {label}...", end="", flush=True, file=sys.stderr)
+        # Parallel independent-problem mode. Each worker owns one
+        # WileMCPSession (Wile's Scheme state is stateful and reset()
+        # is called between problems). Results are written at each
+        # problem's input index so output order matches input order.
+        worker_count = max(1, min(args.workers, len(problems)))
 
-            if args.condition in ("control", "both"):
-                ctrl = run_control(client, args.model, problem, max_tokens=args.total_budget)
-                result["control"] = ctrl
-                result["control_correct"] = answers_match(
-                    ctrl["extracted_answer"], problem["answer"],
-                    problem.get("answer_type", "integer"),
-                    precision=problem.get("precision"),
-                )
-                time.sleep(args.delay)
+        # The initial mcp_session was used to discover `tools`; we
+        # now build a fresh per-worker pool and release the initial
+        # one so we don't leak a subprocess.
+        if mcp_session is not None:
+            mcp_session.close()
+            mcp_session = None
 
-            if args.condition in ("treatment", "both"):
-                mcp_session.reset()
-                treat = run_treatment(
-                    client, args.model, problem, mcp_session, tools,
-                    total_budget=args.total_budget,
-                    max_rounds=args.max_rounds,
-                )
-                result["treatment"] = treat
-                result["treatment_correct"] = answers_match(
-                    treat["extracted_answer"], problem["answer"],
-                    problem.get("answer_type", "integer"),
-                    precision=problem.get("precision"),
-                )
-                time.sleep(args.delay)
+        if args.condition in ("treatment", "both"):
+            wile_binary = detect_wile(args.wile)
+            worker_sessions = [
+                WileMCPSession(wile_binary) for _ in range(worker_count)
+            ]
+        else:
+            worker_sessions = [None] * worker_count
 
+        work_q: _queue.SimpleQueue = _queue.SimpleQueue()
+        for idx, p in enumerate(problems):
+            work_q.put((idx, p))
+
+        results_list: list = [None] * len(problems)
+        completed = 0
+
+        def pop_work():
+            try:
+                return work_q.get_nowait()
+            except _queue.Empty:
+                return None
+
+        async def worker_task(session):
+            nonlocal completed
+            while True:
+                item = await asyncio.to_thread(pop_work)
+                if item is None:
+                    return
+                idx, problem = item
+                try:
+                    r = await asyncio.to_thread(
+                        _run_one_problem, problem, client, args.model,
+                        session, tools, args.condition,
+                        args.total_budget, args.max_rounds, args.delay,
+                    )
+                    results_list[idx] = r
+                except Exception as e:
+                    results_list[idx] = {"id": problem["id"], "error": str(e)}
+                completed += 1
+                print(
+                    f"\r  [{completed}/{len(problems)}]",
+                    end="", flush=True, file=sys.stderr,
+                )
+
+        async def run_all():
+            await asyncio.gather(*(worker_task(s) for s in worker_sessions))
+
+        asyncio.run(run_all())
         print("", file=sys.stderr)
 
-    if mcp_session:
+        # Close worker MCP subprocesses
+        for session in worker_sessions:
+            if session is not None:
+                session.close()
+
+        # Overwrite the `results` skeleton with worker output so the
+        # downstream re-score and write-out loops operate on the real
+        # per-problem dicts.
+        results = results_list
+
+    if mcp_session is not None:
         mcp_session.close()
 
     # Re-score with current matching logic so stored correctness stays
     # consistent even if normalize_answer / answers_match evolve.
     for r in results:
+        # Parallel workers may emit {"id": ..., "error": ...} for
+        # problems that crashed; those have no ground_truth to compare.
+        if "ground_truth" not in r:
+            continue
         at = r.get("answer_type", "integer")
         gt = r["ground_truth"]
         prec = r.get("precision")
