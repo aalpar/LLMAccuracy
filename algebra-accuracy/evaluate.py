@@ -22,6 +22,7 @@ import subprocess
 import sys
 import time
 from collections import defaultdict
+from decimal import ROUND_HALF_EVEN, Decimal, InvalidOperation, getcontext
 from fractions import Fraction
 from pathlib import Path
 
@@ -33,6 +34,17 @@ except ImportError:
 
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+
+# Import the LCD machinery from the sibling grade.py so the pass criterion
+# has a single source of truth. Adding this file's directory to sys.path
+# lets `from grade import ...` work regardless of cwd.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from grade import is_pass, leading_correct_digits  # noqa: E402
+
+# IEEE-754 §4.3.1 roundTiesToEven — matches arithmetic_generate.py and grade.py.
+# Set once at module load; every Decimal operation in this module inherits it.
+getcontext().prec = 200
+getcontext().rounding = ROUND_HALF_EVEN
 
 
 # ── System Prompts ───────────────────────────────────────────────
@@ -225,15 +237,17 @@ def normalize_answer(answer_str, answer_type="integer"):
     For set types, extracts element names and returns a frozenset so that
     ordering differences don't matter. Handles both Scheme list format
     '(a b c)' and set notation '{a, b, c}'.
+
+    For decimal type, returns a Decimal value. Tolerates digit separators
+    (commas, underscores) and scientific notation; rejects values with
+    stray non-numeric text.
     """
     if answer_str is None:
         return None
     s = answer_str.strip()
 
     if answer_type == "set":
-        # Strip set notation {}, Scheme parens (), or bare list
         s_clean = s.strip("{}()")
-        # Remove commas, split on whitespace
         elements = s_clean.replace(",", " ").split()
         return frozenset(elements)
 
@@ -244,6 +258,12 @@ def normalize_answer(answer_str, answer_type="integer"):
         except ValueError:
             pass
         return None
+
+    if answer_type == "decimal":
+        try:
+            return Decimal(s.replace(",", "").replace("_", ""))
+        except InvalidOperation:
+            return None
 
     try:
         return Fraction(s)
@@ -256,8 +276,14 @@ def normalize_answer(answer_str, answer_type="integer"):
     return s
 
 
-def answers_match(llm_answer, ground_truth, answer_type="integer"):
-    """Compare LLM answer against ground truth."""
+def answers_match(llm_answer, ground_truth, answer_type="integer", precision=None):
+    """Compare LLM answer against ground truth.
+
+    For answer_type == "decimal", returns True iff the LLM answer agrees with
+    ground truth to `precision` leading significant digits under the pass
+    criterion defined in grade.is_pass (IEEE-754 roundTiesToEven). If
+    precision is None, it is inferred from the ground-truth digit count.
+    """
     norm_llm = normalize_answer(llm_answer, answer_type)
     norm_gt = normalize_answer(ground_truth, answer_type)
 
@@ -270,6 +296,16 @@ def answers_match(llm_answer, ground_truth, answer_type="integer"):
     if answer_type in ("polynomial", "permutation"):
         return norm_llm == norm_gt
 
+    if answer_type == "decimal":
+        if not isinstance(norm_llm, Decimal) or not isinstance(norm_gt, Decimal):
+            return False
+        lcd = leading_correct_digits(norm_llm, norm_gt)
+        if precision is None:
+            # Infer from the ground-truth significand length.
+            gt_digits = str(ground_truth).lstrip("-+").replace(".", "").lstrip("0")
+            precision = max(len(gt_digits), 1)
+        return is_pass(lcd, precision)
+
     # Numeric comparison via Fraction handles equivalent representations
     if isinstance(norm_llm, (int, Fraction)) and isinstance(
         norm_gt, (int, Fraction)
@@ -279,31 +315,84 @@ def answers_match(llm_answer, ground_truth, answer_type="integer"):
     return str(norm_llm) == str(norm_gt)
 
 
+# ── Completion Status ────────────────────────────────────────────
+#
+# The Anthropic API's `stop_reason` alone doesn't capture why a tool-using
+# run ended. `stop_reason == "tool_use"` means the model wanted another
+# tool call — but whether the harness allowed it depends on our budget
+# and round caps. We enumerate four terminal states:
+#
+#   end_turn            — model produced final answer cleanly
+#   max_tokens          — final API call hit the per-call token cap
+#   budget_exhausted    — cumulative output_tokens reached total_budget
+#   max_rounds          — treatment loop hit max_rounds with tool_use pending
+
+COMPLETION_STATES = ("end_turn", "max_tokens", "budget_exhausted", "max_rounds")
+
+
+def classify_completion(stop_reason: str, budget_hit: bool, rounds_hit: bool) -> str:
+    """Classify the terminal state of an evaluation run.
+
+    Precedence when multiple apply:
+      budget_exhausted > max_rounds > max_tokens > end_turn
+
+    Budget exhaustion is the hardest cap — it's checked before the loop
+    re-enters — so if it fires alongside rounds_hit, budget wins. max_tokens
+    is per-call and only matters if nothing more global fired.
+    """
+    if budget_hit:
+        return "budget_exhausted"
+    if rounds_hit:
+        return "max_rounds"
+    if stop_reason == "max_tokens":
+        return "max_tokens"
+    return "end_turn"
+
+
 # ── Evaluation Loop ─────────────────────────────────────────────
 
 
-def run_control(client, model, problem):
-    """Run the control condition (no tools)."""
+def run_control(client, model, problem, max_tokens=1024):
+    """Run the control condition (no tools).
+
+    `max_tokens` is the single-call budget. When calibration or the main
+    harness sets this to the shared total_budget, control gets the same
+    rope treatment spends across rounds.
+    """
     t0 = time.perf_counter()
     response = client.messages.create(
         model=model,
-        max_tokens=1024,
+        max_tokens=max_tokens,
         system=CONTROL_SYSTEM_PROMPT,
         messages=[{"role": "user", "content": problem["natural_language"]}],
     )
     elapsed = time.perf_counter() - t0
     text = "".join(b.text for b in response.content if hasattr(b, "text"))
+    completion = classify_completion(
+        stop_reason=response.stop_reason,
+        budget_hit=False,
+        rounds_hit=False,
+    )
     return {
         "raw_response": text,
         "extracted_answer": extract_answer(text),
         "input_tokens": response.usage.input_tokens,
         "output_tokens": response.usage.output_tokens,
+        "stop_reason": response.stop_reason,
+        "completion": completion,
+        "truncated": completion != "end_turn",
+        "total_budget": max_tokens,
         "elapsed_s": round(elapsed, 3),
     }
 
 
-def run_treatment(client, model, problem, mcp_session, tools):
-    """Run the treatment condition (with Wile MCP tools)."""
+def run_treatment(client, model, problem, mcp_session, tools, total_budget=5000, per_round_cap=5000):
+    """Run the treatment condition (with Wile MCP tools).
+
+    `total_budget` caps cumulative output_tokens across rounds. When the
+    budget is exhausted, the loop breaks — so treatment and control share
+    the same token envelope, making success rates directly comparable.
+    """
     messages = [{"role": "user", "content": problem["natural_language"]}]
 
     full_text = ""
@@ -315,6 +404,8 @@ def run_treatment(client, model, problem, mcp_session, tools):
     tool_trace = []
     rounds = 0
     max_rounds = 10
+    last_stop_reason = None
+    budget_hit = False
 
     cached_system = [
         {
@@ -324,11 +415,20 @@ def run_treatment(client, model, problem, mcp_session, tools):
         }
     ]
 
+    rounds_hit = False
     t0 = time.perf_counter()
-    for _ in range(max_rounds):
+    for round_i in range(max_rounds):
+        # Shrink the per-round cap as we approach the total budget so the
+        # final round can't overshoot. max_tokens must be >= 1 per the API.
+        remaining = total_budget - total_output_tokens
+        if remaining <= 0:
+            budget_hit = True
+            break
+        this_cap = max(1, min(per_round_cap, remaining))
+
         response = client.messages.create(
             model=model,
-            max_tokens=1024,
+            max_tokens=this_cap,
             system=cached_system,
             messages=messages,
             tools=tools,
@@ -338,6 +438,7 @@ def run_treatment(client, model, problem, mcp_session, tools):
         total_output_tokens += response.usage.output_tokens
         total_cache_creation_tokens += getattr(response.usage, "cache_creation_input_tokens", 0)
         total_cache_read_tokens += getattr(response.usage, "cache_read_input_tokens", 0)
+        last_stop_reason = response.stop_reason
 
         tool_uses = []
         for block in response.content:
@@ -371,8 +472,18 @@ def run_treatment(client, model, problem, mcp_session, tools):
 
         if response.stop_reason == "end_turn":
             break
+    else:
+        # for-else: executed only if the loop didn't break. We exhausted
+        # max_rounds iterations with the model still wanting tool use.
+        if last_stop_reason == "tool_use":
+            rounds_hit = True
 
     elapsed = time.perf_counter() - t0
+    completion = classify_completion(
+        stop_reason=last_stop_reason,
+        budget_hit=budget_hit,
+        rounds_hit=rounds_hit,
+    )
     return {
         "raw_response": full_text,
         "extracted_answer": extract_answer(full_text),
@@ -380,6 +491,10 @@ def run_treatment(client, model, problem, mcp_session, tools):
         "output_tokens": total_output_tokens,
         "cache_creation_tokens": total_cache_creation_tokens,
         "cache_read_tokens": total_cache_read_tokens,
+        "stop_reason": last_stop_reason,
+        "completion": completion,
+        "truncated": completion != "end_turn",
+        "total_budget": total_budget,
         "elapsed_s": round(elapsed, 3),
         "rounds": rounds,
         "tool_calls": tool_calls,
@@ -511,7 +626,7 @@ def print_summary(results, condition):
 # the accumulation directly.
 
 
-def run_control_session(client, model, problems, delay):
+def run_control_session(client, model, problems, delay, total_budget=5000):
     """Run all problems in a single control conversation."""
     messages = []
     results = []
@@ -526,7 +641,7 @@ def run_control_session(client, model, problems, delay):
         t0 = time.perf_counter()
         response = client.messages.create(
             model=model,
-            max_tokens=1024,
+            max_tokens=total_budget,
             system=CONTROL_SYSTEM_PROMPT,
             messages=messages,
         )
@@ -535,11 +650,20 @@ def run_control_session(client, model, problems, delay):
         text = "".join(b.text for b in response.content if hasattr(b, "text"))
         messages.append({"role": "assistant", "content": text})
 
+        completion = classify_completion(
+            stop_reason=response.stop_reason,
+            budget_hit=False,
+            rounds_hit=False,
+        )
         results.append({
             "raw_response": text,
             "extracted_answer": extract_answer(text),
             "input_tokens": response.usage.input_tokens,
             "output_tokens": response.usage.output_tokens,
+            "stop_reason": response.stop_reason,
+            "completion": completion,
+            "truncated": completion != "end_turn",
+            "total_budget": total_budget,
             "elapsed_s": round(elapsed, 3),
         })
         time.sleep(delay)
@@ -547,7 +671,7 @@ def run_control_session(client, model, problems, delay):
     return results
 
 
-def run_treatment_session(client, model, problems, mcp_session, tools, delay):
+def run_treatment_session(client, model, problems, mcp_session, tools, delay, total_budget=5000, per_round_cap=5000):
     """Run all problems in a single treatment conversation."""
     cached_system = [
         {
@@ -574,12 +698,20 @@ def run_treatment_session(client, model, problems, mcp_session, tools, delay):
         tool_calls = 0
         tool_trace = []
         rounds = 0
+        last_stop_reason = None
+        budget_hit = False
+        rounds_hit = False
 
         t0 = time.perf_counter()
-        for _ in range(10):
+        for round_i in range(10):
+            remaining = total_budget - total_output_tokens
+            if remaining <= 0:
+                budget_hit = True
+                break
+            this_cap = max(1, min(per_round_cap, remaining))
             response = client.messages.create(
                 model=model,
-                max_tokens=1024,
+                max_tokens=this_cap,
                 system=cached_system,
                 messages=messages,
                 tools=tools,
@@ -589,6 +721,7 @@ def run_treatment_session(client, model, problems, mcp_session, tools, delay):
             total_output_tokens += response.usage.output_tokens
             total_cache_creation_tokens += getattr(response.usage, "cache_creation_input_tokens", 0)
             total_cache_read_tokens += getattr(response.usage, "cache_read_input_tokens", 0)
+            last_stop_reason = response.stop_reason
 
             tool_uses = []
             for block in response.content:
@@ -621,8 +754,18 @@ def run_treatment_session(client, model, problems, mcp_session, tools, delay):
 
             if response.stop_reason == "end_turn":
                 break
+        else:
+            # for-else: executed only if the loop didn't break. We exhausted
+            # the round cap with the model still wanting tool use.
+            if last_stop_reason == "tool_use":
+                rounds_hit = True
 
         elapsed = time.perf_counter() - t0
+        completion = classify_completion(
+            stop_reason=last_stop_reason,
+            budget_hit=budget_hit,
+            rounds_hit=rounds_hit,
+        )
         results.append({
             "raw_response": full_text,
             "extracted_answer": extract_answer(full_text),
@@ -630,6 +773,10 @@ def run_treatment_session(client, model, problems, mcp_session, tools, delay):
             "output_tokens": total_output_tokens,
             "cache_creation_tokens": total_cache_creation_tokens,
             "cache_read_tokens": total_cache_read_tokens,
+            "stop_reason": last_stop_reason,
+            "completion": completion,
+            "truncated": completion != "end_turn",
+            "total_budget": total_budget,
             "elapsed_s": round(elapsed, 3),
             "rounds": rounds,
             "tool_calls": tool_calls,
@@ -675,6 +822,17 @@ def main():
         help="Seconds between API calls (rate limiting)",
     )
     parser.add_argument(
+        "--total-budget",
+        type=int,
+        default=5000,
+        help=(
+            "Shared output-token budget for both control and treatment arms. "
+            "Control uses this as max_tokens in a single call; treatment caps "
+            "cumulative output across rounds. Default 5000 matches the "
+            "calibrate_budget.py envelope (2x treatment p95)."
+        ),
+    )
+    parser.add_argument(
         "--session",
         action="store_true",
         help=(
@@ -696,13 +854,14 @@ def main():
         for r in results:
             at = r.get("answer_type", "integer")
             gt = r["ground_truth"]
+            prec = r.get("precision")
             if "control" in r:
                 r["control_correct"] = answers_match(
-                    r["control"]["extracted_answer"], gt, at
+                    r["control"]["extracted_answer"], gt, at, precision=prec
                 )
             if "treatment" in r:
                 r["treatment_correct"] = answers_match(
-                    r["treatment"]["extracted_answer"], gt, at
+                    r["treatment"]["extracted_answer"], gt, at, precision=prec
                 )
         with open(args.rescore, "w") as f:
             json.dump(results, f, indent=2)
@@ -743,7 +902,8 @@ def main():
         file=sys.stderr,
     )
 
-    # Build skeleton result list keyed by problem id
+    # Build skeleton result list keyed by problem id.
+    # `precision` is carried through for decimal problems; None for others.
     results = [
         {
             "id": p["id"],
@@ -751,23 +911,36 @@ def main():
             "difficulty": p["difficulty"],
             "ground_truth": p["answer"],
             "answer_type": p.get("answer_type", "integer"),
+            "precision": p.get("precision"),
         }
         for p in problems
     ]
 
     if args.session:
         if args.condition in ("control", "both"):
-            ctrl_results = run_control_session(client, args.model, problems, args.delay)
+            ctrl_results = run_control_session(
+                client, args.model, problems, args.delay,
+                total_budget=args.total_budget,
+            )
             for r, ctrl in zip(results, ctrl_results):
                 r["control"] = ctrl
-                r["control_correct"] = answers_match(ctrl["extracted_answer"], r["ground_truth"], r["answer_type"])
+                r["control_correct"] = answers_match(
+                    ctrl["extracted_answer"], r["ground_truth"],
+                    r["answer_type"], precision=r.get("precision"),
+                )
             print("", file=sys.stderr)
 
         if args.condition in ("treatment", "both"):
-            treat_results = run_treatment_session(client, args.model, problems, mcp_session, tools, args.delay)
+            treat_results = run_treatment_session(
+                client, args.model, problems, mcp_session, tools, args.delay,
+                total_budget=args.total_budget,
+            )
             for r, treat in zip(results, treat_results):
                 r["treatment"] = treat
-                r["treatment_correct"] = answers_match(treat["extracted_answer"], r["ground_truth"], r["answer_type"])
+                r["treatment_correct"] = answers_match(
+                    treat["extracted_answer"], r["ground_truth"],
+                    r["answer_type"], precision=r.get("precision"),
+                )
             print("", file=sys.stderr)
 
     else:
@@ -776,21 +949,26 @@ def main():
             print(f"\r  {label}...", end="", flush=True, file=sys.stderr)
 
             if args.condition in ("control", "both"):
-                ctrl = run_control(client, args.model, problem)
+                ctrl = run_control(client, args.model, problem, max_tokens=args.total_budget)
                 result["control"] = ctrl
                 result["control_correct"] = answers_match(
                     ctrl["extracted_answer"], problem["answer"],
                     problem.get("answer_type", "integer"),
+                    precision=problem.get("precision"),
                 )
                 time.sleep(args.delay)
 
             if args.condition in ("treatment", "both"):
                 mcp_session.reset()
-                treat = run_treatment(client, args.model, problem, mcp_session, tools)
+                treat = run_treatment(
+                    client, args.model, problem, mcp_session, tools,
+                    total_budget=args.total_budget,
+                )
                 result["treatment"] = treat
                 result["treatment_correct"] = answers_match(
                     treat["extracted_answer"], problem["answer"],
                     problem.get("answer_type", "integer"),
+                    precision=problem.get("precision"),
                 )
                 time.sleep(args.delay)
 
@@ -804,13 +982,14 @@ def main():
     for r in results:
         at = r.get("answer_type", "integer")
         gt = r["ground_truth"]
+        prec = r.get("precision")
         if "control" in r:
             r["control_correct"] = answers_match(
-                r["control"]["extracted_answer"], gt, at
+                r["control"]["extracted_answer"], gt, at, precision=prec
             )
         if "treatment" in r:
             r["treatment_correct"] = answers_match(
-                r["treatment"]["extracted_answer"], gt, at
+                r["treatment"]["extracted_answer"], gt, at, precision=prec
             )
 
     # Write results
