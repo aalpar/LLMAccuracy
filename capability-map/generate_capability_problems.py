@@ -265,6 +265,96 @@ def _combin_multiset():
     return nl, scheme
 
 
+# ---- graph_reachability ----
+#
+# Given a directed graph (vertex set + edge list) and a source vertex,
+# compute the set of vertices reachable from the source via any number
+# of forward edges. Tests mechanical traversal over graphs too large for
+# visual inspection.
+
+GRAPH_REACHABILITY_PRESETS = {
+    # (n_vertices, n_edges, n_cycles)
+    "easy":   (5, 6, 1),
+    "medium": (10, 15, 3),
+    "hard":   (20, 40, 6),
+}
+
+
+def _gen_graph(n_vertices: int, n_edges: int, n_cycles: int):
+    """Build a directed graph with the specified rough structure.
+
+    Returns (vertex_names, edge_list, source_vertex). Vertices use the
+    alphabet a..t. Edges are randomly sampled from non-loop pairs; then
+    n_cycles edges are biased to close cycles. The source is chosen
+    from the vertex with the largest forward component to ensure the
+    problem is non-trivial.
+    """
+    alphabet = list("abcdefghijklmnopqrst")
+    vertices = alphabet[:n_vertices]
+    edges: set = set()
+    # Random tree-ish backbone first to ensure connectivity.
+    for j in range(1, n_vertices):
+        parent = random.choice(vertices[:j])
+        child = vertices[j]
+        edges.add((parent, child))
+    # Fill to n_edges with random pairs; enforce no self-loops.
+    while len(edges) < n_edges:
+        u = random.choice(vertices)
+        v = random.choice(vertices)
+        if u != v:
+            edges.add((u, v))
+    # Source: always vertices[0] — deterministic, and tree-root ensures
+    # a non-trivial reach set.
+    return vertices, sorted(edges), vertices[0]
+
+
+def gen_graph_reachability(difficulty: str, n: int):
+    n_vertices, n_edges, _n_cycles = GRAPH_REACHABILITY_PRESETS[difficulty]
+    problems = []
+    for i in range(n):
+        vertices, edges, source = _gen_graph(n_vertices, n_edges, _n_cycles)
+        # Scheme oracle: fixed-point iteration over reach.
+        # Build the edge list as a quoted Scheme list of pairs.
+        edge_expr = "'(" + " ".join(
+            f"({u} {v})" for u, v in edges
+        ) + ")"
+        scheme = (
+            f"(let ((edges {edge_expr})\n"
+            f"      (source '{source}))\n"
+            f"  (let loop ((reach (list source)))\n"
+            f"    (let ((new-reach\n"
+            f"            (let scan ((es edges) (acc reach))\n"
+            f"              (if (null? es)\n"
+            f"                  acc\n"
+            f"                  (let ((u (car (car es)))\n"
+            f"                        (v (cadr (car es))))\n"
+            f"                    (if (and (memq u acc) (not (memq v acc)))\n"
+            f"                        (scan (cdr es) (cons v acc))\n"
+            f"                        (scan (cdr es) acc)))))))\n"
+            f"      (if (= (length new-reach) (length reach))\n"
+            f"          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n"
+            f"          (loop new-reach)))))"
+        )
+        edge_display = ", ".join(f"({u},{v})" for u, v in edges)
+        nl = (
+            f"Consider the directed graph with vertices "
+            f"{{{', '.join(vertices)}}} and edges "
+            f"{{{edge_display}}}. Give the set of vertices reachable "
+            f"from vertex `{source}` (including `{source}` itself). "
+            f"Return the answer as a set in `{{...}}` notation with "
+            f"elements in alphabetical order."
+        )
+        problems.append(Problem(
+            id=f"reach-{difficulty}-{i:03d}",
+            category="graph_reachability",
+            difficulty=difficulty,
+            natural_language=nl,
+            scheme_expression=scheme,
+            answer_type="set",
+        ))
+    return problems
+
+
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
 # Each entry: (difficulties, generator_fn). The capability map samples
@@ -290,7 +380,7 @@ CATEGORIES = {
 
     # Pending Session 3 — each new generator must expose all 3 tiers:
     # "set_closure":        (DIFFICULTIES, gen_set_closure),
-    # "graph_reachability": (DIFFICULTIES, gen_graph_reachability),
+    "graph_reachability":     (DIFFICULTIES, gen_graph_reachability),
 
     "prime_factorization":    (DIFFICULTIES, gen_prime_factorization),
     "combinatorial_counting": (DIFFICULTIES, gen_combinatorial_counting),
