@@ -540,223 +540,475 @@
     "answer_type": "integer"
   },
   {
+    "id": "closure-easy-000",
+    "category": "set_closure",
+    "difficulty": "easy",
+    "natural_language": "Starting from the set `{5, 8}` in Z/11Z, compute the smallest superset that is closed under the operation (a + b) mod 11. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 5 8))\n      (ops (list (lambda (a b) (modulo (+ a b) 11)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-easy-001",
+    "category": "set_closure",
+    "difficulty": "easy",
+    "natural_language": "Starting from the set `{5, 7}` in Z/11Z, compute the smallest superset that is closed under the operation (a + b) mod 11. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 5 7))\n      (ops (list (lambda (a b) (modulo (+ a b) 11)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-easy-002",
+    "category": "set_closure",
+    "difficulty": "easy",
+    "natural_language": "Starting from the set `{2, 10}` in Z/11Z, compute the smallest superset that is closed under the operation (a + b) mod 11. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 10 2))\n      (ops (list (lambda (a b) (modulo (+ a b) 11)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-easy-003",
+    "category": "set_closure",
+    "difficulty": "easy",
+    "natural_language": "Starting from the set `{2, 7}` in Z/11Z, compute the smallest superset that is closed under the operation (a + b) mod 11. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 7 2))\n      (ops (list (lambda (a b) (modulo (+ a b) 11)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-easy-004",
+    "category": "set_closure",
+    "difficulty": "easy",
+    "natural_language": "Starting from the set `{3, 8}` in Z/11Z, compute the smallest superset that is closed under the operation (a + b) mod 11. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 8 3))\n      (ops (list (lambda (a b) (modulo (+ a b) 11)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-medium-000",
+    "category": "set_closure",
+    "difficulty": "medium",
+    "natural_language": "Starting from the set `{0, 4, 8}` in Z/13Z, compute the smallest superset that is closed under the operations (a + b) mod 13 and (a \u00d7 b) mod 13. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 4 8 0))\n      (ops (list (lambda (a b) (modulo (+ a b) 13)) (lambda (a b) (modulo (* a b) 13)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-medium-001",
+    "category": "set_closure",
+    "difficulty": "medium",
+    "natural_language": "Starting from the set `{4, 7, 9}` in Z/13Z, compute the smallest superset that is closed under the operations (a + b) mod 13 and (a \u00d7 b) mod 13. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 9 4 7))\n      (ops (list (lambda (a b) (modulo (+ a b) 13)) (lambda (a b) (modulo (* a b) 13)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-medium-002",
+    "category": "set_closure",
+    "difficulty": "medium",
+    "natural_language": "Starting from the set `{3, 6, 12}` in Z/13Z, compute the smallest superset that is closed under the operations (a + b) mod 13 and (a \u00d7 b) mod 13. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 6 3 12))\n      (ops (list (lambda (a b) (modulo (+ a b) 13)) (lambda (a b) (modulo (* a b) 13)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-medium-003",
+    "category": "set_closure",
+    "difficulty": "medium",
+    "natural_language": "Starting from the set `{4, 5, 10}` in Z/13Z, compute the smallest superset that is closed under the operations (a + b) mod 13 and (a \u00d7 b) mod 13. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 4 5 10))\n      (ops (list (lambda (a b) (modulo (+ a b) 13)) (lambda (a b) (modulo (* a b) 13)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-medium-004",
+    "category": "set_closure",
+    "difficulty": "medium",
+    "natural_language": "Starting from the set `{2, 4, 8}` in Z/13Z, compute the smallest superset that is closed under the operations (a + b) mod 13 and (a \u00d7 b) mod 13. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 8 2 4))\n      (ops (list (lambda (a b) (modulo (+ a b) 13)) (lambda (a b) (modulo (* a b) 13)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-hard-000",
+    "category": "set_closure",
+    "difficulty": "hard",
+    "natural_language": "Starting from the set `{6, 9, 15}` in Z/17Z, compute the smallest superset that is closed under the operations (a + b) mod 17 and (a \u00d7 b) mod 17 and (a + b + 3) mod 17. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 6 15 9))\n      (ops (list (lambda (a b) (modulo (+ a b) 17)) (lambda (a b) (modulo (* a b) 17)) (lambda (a b) (modulo (+ a b 3) 17)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-hard-001",
+    "category": "set_closure",
+    "difficulty": "hard",
+    "natural_language": "Starting from the set `{1, 9, 13}` in Z/17Z, compute the smallest superset that is closed under the operations (a + b) mod 17 and (a \u00d7 b) mod 17 and (a + b + 3) mod 17. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 9 1 13))\n      (ops (list (lambda (a b) (modulo (+ a b) 17)) (lambda (a b) (modulo (* a b) 17)) (lambda (a b) (modulo (+ a b 3) 17)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-hard-002",
+    "category": "set_closure",
+    "difficulty": "hard",
+    "natural_language": "Starting from the set `{7, 13, 16}` in Z/17Z, compute the smallest superset that is closed under the operations (a + b) mod 17 and (a \u00d7 b) mod 17 and (a + b + 3) mod 17. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 13 16 7))\n      (ops (list (lambda (a b) (modulo (+ a b) 17)) (lambda (a b) (modulo (* a b) 17)) (lambda (a b) (modulo (+ a b 3) 17)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-hard-003",
+    "category": "set_closure",
+    "difficulty": "hard",
+    "natural_language": "Starting from the set `{7, 9, 16}` in Z/17Z, compute the smallest superset that is closed under the operations (a + b) mod 17 and (a \u00d7 b) mod 17 and (a + b + 3) mod 17. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 16 9 7))\n      (ops (list (lambda (a b) (modulo (+ a b) 17)) (lambda (a b) (modulo (* a b) 17)) (lambda (a b) (modulo (+ a b 3) 17)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16)",
+    "answer_type": "set"
+  },
+  {
+    "id": "closure-hard-004",
+    "category": "set_closure",
+    "difficulty": "hard",
+    "natural_language": "Starting from the set `{1, 5, 11}` in Z/17Z, compute the smallest superset that is closed under the operations (a + b) mod 17 and (a \u00d7 b) mod 17 and (a + b + 3) mod 17. (That is: keep adding `op(a, b)` for every pair `a, b` already in the set, until no new elements appear.) Return the closure as a sorted list of integers in `(...)` notation.",
+    "scheme_expression": "(let ((start (list 11 1 5))\n      (ops (list (lambda (a b) (modulo (+ a b) 17)) (lambda (a b) (modulo (* a b) 17)) (lambda (a b) (modulo (+ a b 3) 17)))))\n  (let loop ((acc start))\n    (let* ((new-values\n             (apply append\n               (map (lambda (op)\n                      (apply append\n                        (map (lambda (a)\n                               (map (lambda (b) (op a b)) acc))\n                             acc)))\n                    ops)))\n           (novel-dedup (let scan ((xs new-values) (seen '()))\n                          (cond\n                            ((null? xs) (reverse seen))\n                            ((member (car xs) acc) (scan (cdr xs) seen))\n                            ((member (car xs) seen) (scan (cdr xs) seen))\n                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n      (if (null? novel-dedup)\n          (sort < acc)\n          (loop (append acc novel-dedup))))))",
+    "answer": "(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-easy-000",
+    "category": "graph_reachability",
+    "difficulty": "easy",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e} and edges {(a,b), (a,c), (b,d), (b,e), (c,a), (c,b)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (b d) (b e) (c a) (c b)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-easy-001",
+    "category": "graph_reachability",
+    "difficulty": "easy",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e} and edges {(a,b), (a,c), (b,e), (c,d), (d,a), (d,b)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (b e) (c d) (d a) (d b)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-easy-002",
+    "category": "graph_reachability",
+    "difficulty": "easy",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e} and edges {(a,b), (a,c), (a,d), (b,e), (c,d), (d,e)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (a d) (b e) (c d) (d e)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-easy-003",
+    "category": "graph_reachability",
+    "difficulty": "easy",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e} and edges {(a,b), (a,c), (a,d), (b,e), (c,a), (d,a)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (a d) (b e) (c a) (d a)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-easy-004",
+    "category": "graph_reachability",
+    "difficulty": "easy",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e} and edges {(a,b), (b,c), (b,d), (c,e), (d,b), (d,e)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (b c) (b d) (c e) (d b) (d e)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-medium-000",
+    "category": "graph_reachability",
+    "difficulty": "medium",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j} and edges {(a,b), (a,f), (a,g), (a,i), (a,j), (b,c), (b,d), (b,i), (c,d), (c,e), (c,i), (d,a), (e,g), (f,h), (j,d)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a f) (a g) (a i) (a j) (b c) (b d) (b i) (c d) (c e) (c i) (d a) (e g) (f h) (j d)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-medium-001",
+    "category": "graph_reachability",
+    "difficulty": "medium",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j} and edges {(a,b), (b,c), (b,g), (b,i), (c,d), (c,f), (c,g), (d,e), (d,h), (e,i), (e,j), (f,c), (f,d), (g,d), (g,j)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (b c) (b g) (b i) (c d) (c f) (c g) (d e) (d h) (e i) (e j) (f c) (f d) (g d) (g j)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-medium-002",
+    "category": "graph_reachability",
+    "difficulty": "medium",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j} and edges {(a,b), (a,c), (a,h), (a,i), (b,f), (b,h), (c,d), (c,e), (c,f), (c,g), (e,d), (f,d), (f,g), (f,j), (h,b)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (a h) (a i) (b f) (b h) (c d) (c e) (c f) (c g) (e d) (f d) (f g) (f j) (h b)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-medium-003",
+    "category": "graph_reachability",
+    "difficulty": "medium",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j} and edges {(a,b), (a,c), (a,e), (a,f), (b,d), (b,e), (b,i), (c,f), (e,g), (e,h), (f,g), (g,j), (h,a), (h,j), (i,f)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (a e) (a f) (b d) (b e) (b i) (c f) (e g) (e h) (f g) (g j) (h a) (h j) (i f)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-medium-004",
+    "category": "graph_reachability",
+    "difficulty": "medium",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j} and edges {(a,b), (a,e), (b,c), (b,d), (b,e), (b,f), (b,j), (c,e), (e,i), (e,j), (f,g), (f,i), (g,h), (h,g), (j,h)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a e) (b c) (b d) (b e) (b f) (b j) (c e) (e i) (e j) (f g) (f i) (g h) (h g) (j h)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-hard-000",
+    "category": "graph_reachability",
+    "difficulty": "hard",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t} and edges {(a,b), (a,f), (a,l), (b,c), (b,e), (b,q), (c,d), (c,h), (d,g), (d,i), (e,a), (e,f), (f,d), (f,j), (f,p), (g,f), (g,j), (g,o), (g,s), (h,e), (h,n), (h,p), (i,k), (j,m), (j,o), (j,p), (j,q), (l,r), (m,k), (n,a), (n,g), (n,r), (o,q), (p,c), (p,f), (p,t), (q,n), (q,s), (r,h), (r,s)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a f) (a l) (b c) (b e) (b q) (c d) (c h) (d g) (d i) (e a) (e f) (f d) (f j) (f p) (g f) (g j) (g o) (g s) (h e) (h n) (h p) (i k) (j m) (j o) (j p) (j q) (l r) (m k) (n a) (n g) (n r) (o q) (p c) (p f) (p t) (q n) (q s) (r h) (r s)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j k l m n o p q r s t)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-hard-001",
+    "category": "graph_reachability",
+    "difficulty": "hard",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t} and edges {(a,b), (a,h), (a,j), (a,o), (a,s), (b,a), (b,c), (b,m), (c,d), (c,e), (c,g), (c,k), (c,p), (d,g), (d,l), (d,p), (d,s), (e,a), (e,f), (e,i), (e,j), (e,o), (e,p), (f,h), (f,r), (g,k), (g,n), (g,r), (h,a), (h,n), (h,q), (j,d), (k,f), (k,r), (l,d), (o,n), (p,s), (q,i), (q,t), (s,f)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a h) (a j) (a o) (a s) (b a) (b c) (b m) (c d) (c e) (c g) (c k) (c p) (d g) (d l) (d p) (d s) (e a) (e f) (e i) (e j) (e o) (e p) (f h) (f r) (g k) (g n) (g r) (h a) (h n) (h q) (j d) (k f) (k r) (l d) (o n) (p s) (q i) (q t) (s f)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j k l m n o p q r s t)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-hard-002",
+    "category": "graph_reachability",
+    "difficulty": "hard",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t} and edges {(a,b), (a,c), (a,t), (b,d), (b,n), (b,r), (b,t), (c,f), (c,l), (d,e), (d,r), (e,c), (e,d), (e,g), (e,i), (e,k), (f,h), (f,o), (f,t), (g,e), (g,h), (h,j), (h,m), (h,s), (i,g), (i,k), (i,p), (j,k), (j,r), (k,m), (k,n), (k,r), (l,d), (m,o), (n,q), (o,b), (p,h), (r,d), (r,j), (t,p)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (a t) (b d) (b n) (b r) (b t) (c f) (c l) (d e) (d r) (e c) (e d) (e g) (e i) (e k) (f h) (f o) (f t) (g e) (g h) (h j) (h m) (h s) (i g) (i k) (i p) (j k) (j r) (k m) (k n) (k r) (l d) (m o) (n q) (o b) (p h) (r d) (r j) (t p)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j k l m n o p q r s t)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-hard-003",
+    "category": "graph_reachability",
+    "difficulty": "hard",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t} and edges {(a,b), (a,c), (a,g), (a,i), (a,n), (a,o), (b,d), (b,e), (b,h), (b,k), (b,p), (c,k), (c,t), (d,m), (d,n), (e,f), (e,k), (e,r), (e,s), (g,h), (h,j), (h,l), (i,j), (i,o), (k,f), (k,l), (k,m), (l,d), (l,m), (m,s), (n,c), (n,e), (n,h), (o,c), (o,t), (p,e), (p,q), (q,g), (s,p), (s,q)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a c) (a g) (a i) (a n) (a o) (b d) (b e) (b h) (b k) (b p) (c k) (c t) (d m) (d n) (e f) (e k) (e r) (e s) (g h) (h j) (h l) (i j) (i o) (k f) (k l) (k m) (l d) (l m) (m s) (n c) (n e) (n h) (o c) (o t) (p e) (p q) (q g) (s p) (s q)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j k l m n o p q r s t)",
+    "answer_type": "set"
+  },
+  {
+    "id": "reach-hard-004",
+    "category": "graph_reachability",
+    "difficulty": "hard",
+    "natural_language": "Consider the directed graph with vertices {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t} and edges {(a,b), (a,e), (a,l), (b,c), (b,m), (b,q), (c,d), (c,i), (c,q), (d,f), (d,h), (e,g), (e,i), (e,j), (f,c), (f,h), (f,k), (f,n), (f,s), (g,f), (g,l), (g,o), (h,i), (h,j), (h,m), (i,h), (i,p), (i,r), (j,m), (k,g), (k,t), (l,e), (l,n), (l,s), (n,c), (n,o), (p,a), (q,j), (s,i), (t,a)}. Give the set of vertices reachable from vertex `a` (including `a` itself). Return the answer as a set in `{...}` notation with elements in alphabetical order.",
+    "scheme_expression": "(let ((edges '((a b) (a e) (a l) (b c) (b m) (b q) (c d) (c i) (c q) (d f) (d h) (e g) (e i) (e j) (f c) (f h) (f k) (f n) (f s) (g f) (g l) (g o) (h i) (h j) (h m) (i h) (i p) (i r) (j m) (k g) (k t) (l e) (l n) (l s) (n c) (n o) (p a) (q j) (s i) (t a)))\n      (source 'a))\n  (let loop ((reach (list source)))\n    (let ((new-reach\n            (let scan ((es edges) (acc reach))\n              (if (null? es)\n                  acc\n                  (let ((u (car (car es)))\n                        (v (cadr (car es))))\n                    (if (and (memq u acc) (not (memq v acc)))\n                        (scan (cdr es) (cons v acc))\n                        (scan (cdr es) acc)))))))\n      (if (= (length new-reach) (length reach))\n          (sort (lambda (a b) (string<? (symbol->string a) (symbol->string b))) reach)\n          (loop new-reach)))))",
+    "answer": "(a b c d e f g h i j k l m n o p q r s t)",
+    "answer_type": "set"
+  },
+  {
     "id": "factor-easy-000",
     "category": "prime_factorization",
     "difficulty": "easy",
-    "natural_language": "Factor 461 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 461) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(461)",
+    "natural_language": "Factor 245 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 245) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(5 7 7)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-easy-001",
     "category": "prime_factorization",
     "difficulty": "easy",
-    "natural_language": "Factor 784 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 784) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 2 2 2 7 7)",
+    "natural_language": "Factor 252 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 252) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 3 3 7)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-easy-002",
     "category": "prime_factorization",
     "difficulty": "easy",
-    "natural_language": "Factor 771 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 771) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(3 257)",
+    "natural_language": "Factor 226 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 226) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 113)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-easy-003",
     "category": "prime_factorization",
     "difficulty": "easy",
-    "natural_language": "Factor 664 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 664) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 2 2 83)",
+    "natural_language": "Factor 257 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 257) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(257)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-easy-004",
     "category": "prime_factorization",
     "difficulty": "easy",
-    "natural_language": "Factor 444 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 444) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 2 3 37)",
+    "natural_language": "Factor 205 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 205) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(5 41)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-medium-000",
     "category": "prime_factorization",
     "difficulty": "medium",
-    "natural_language": "Factor 68132 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 68132) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 2 17033)",
+    "natural_language": "Factor 21785 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 21785) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(5 4357)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-medium-001",
     "category": "prime_factorization",
     "difficulty": "medium",
-    "natural_language": "Factor 92053 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 92053) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(13 73 97)",
+    "natural_language": "Factor 21881 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 21881) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(21881)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-medium-002",
     "category": "prime_factorization",
     "difficulty": "medium",
-    "natural_language": "Factor 33230 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 33230) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 5 3323)",
+    "natural_language": "Factor 63896 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 63896) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 2 7 7 163)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-medium-003",
     "category": "prime_factorization",
     "difficulty": "medium",
-    "natural_language": "Factor 73432 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 73432) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 2 2 67 137)",
+    "natural_language": "Factor 29520 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 29520) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 2 2 3 3 5 41)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-medium-004",
     "category": "prime_factorization",
     "difficulty": "medium",
-    "natural_language": "Factor 27561 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 27561) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(3 9187)",
+    "natural_language": "Factor 12153 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 12153) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(3 4051)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-hard-000",
     "category": "prime_factorization",
     "difficulty": "hard",
-    "natural_language": "Factor 9397321 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 9397321) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(47 179 1117)",
+    "natural_language": "Factor 8751282 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 8751282) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 3 1458547)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-hard-001",
     "category": "prime_factorization",
     "difficulty": "hard",
-    "natural_language": "Factor 5078703 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 5078703) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(3 7 7 34549)",
+    "natural_language": "Factor 8421338 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 8421338) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 1381 3049)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-hard-002",
     "category": "prime_factorization",
     "difficulty": "hard",
-    "natural_language": "Factor 5391850 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 5391850) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 5 5 107837)",
+    "natural_language": "Factor 7487023 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 7487023) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(397 18859)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-hard-003",
     "category": "prime_factorization",
     "difficulty": "hard",
-    "natural_language": "Factor 9931361 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 9931361) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(11 197 4583)",
+    "natural_language": "Factor 2512554 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 2512554) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 3 11 38069)",
     "answer_type": "polynomial"
   },
   {
     "id": "factor-hard-004",
     "category": "prime_factorization",
     "difficulty": "hard",
-    "natural_language": "Factor 1860490 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
-    "scheme_expression": "(let loop ((n 1860490) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
-    "answer": "(2 5 186049)",
+    "natural_language": "Factor 7560697 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 7560697) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(7560697)",
     "answer_type": "polynomial"
   },
   {
     "id": "combin-easy-000",
     "category": "combinatorial_counting",
     "difficulty": "easy",
-    "natural_language": "How many distinct subsets of size 9 can be chosen from a set of 11 elements? Give a non-negative integer.",
-    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 11 9))",
-    "answer": "55",
+    "natural_language": "How many distinct subsets of size 8 can be chosen from a set of 12 elements? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 12 8))",
+    "answer": "495",
     "answer_type": "integer"
   },
   {
     "id": "combin-easy-001",
     "category": "combinatorial_counting",
     "difficulty": "easy",
-    "natural_language": "How many distinct subsets of size 5 can be chosen from a set of 7 elements? Give a non-negative integer.",
-    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 7 5))",
-    "answer": "21",
+    "natural_language": "How many distinct subsets of size 5 can be chosen from a set of 12 elements? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 12 5))",
+    "answer": "792",
     "answer_type": "integer"
   },
   {
     "id": "combin-easy-002",
     "category": "combinatorial_counting",
     "difficulty": "easy",
-    "natural_language": "How many distinct subsets of size 6 can be chosen from a set of 8 elements? Give a non-negative integer.",
-    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 8 6))",
-    "answer": "28",
+    "natural_language": "How many distinct subsets of size 7 can be chosen from a set of 10 elements? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 10 7))",
+    "answer": "120",
     "answer_type": "integer"
   },
   {
     "id": "combin-easy-003",
     "category": "combinatorial_counting",
     "difficulty": "easy",
-    "natural_language": "How many distinct ways can 6 distinct books be arranged in a row on a shelf? Give a positive integer.",
-    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (fact 6))",
-    "answer": "720",
+    "natural_language": "How many distinct ways can 4 distinct books be arranged in a row on a shelf? Give a positive integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (fact 4))",
+    "answer": "24",
     "answer_type": "integer"
   },
   {
     "id": "combin-easy-004",
     "category": "combinatorial_counting",
     "difficulty": "easy",
-    "natural_language": "How many distinct ways can 8 distinct books be arranged in a row on a shelf? Give a positive integer.",
-    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (fact 8))",
-    "answer": "40320",
+    "natural_language": "How many distinct ways can 4 distinct books be arranged in a row on a shelf? Give a positive integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (fact 4))",
+    "answer": "24",
     "answer_type": "integer"
   },
   {
     "id": "combin-medium-000",
     "category": "combinatorial_counting",
     "difficulty": "medium",
-    "natural_language": "How many derangements of 7 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
-    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 7))",
-    "answer": "1854",
+    "natural_language": "How many derangements of 8 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 8))",
+    "answer": "14833",
     "answer_type": "integer"
   },
   {
     "id": "combin-medium-001",
     "category": "combinatorial_counting",
     "difficulty": "medium",
-    "natural_language": "How many distinct arrangements of 8 distinct people in a row are there such that person A sits next to person B? Give a positive integer.",
-    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (* 2 (fact 7)))",
-    "answer": "10080",
+    "natural_language": "How many distinct arrangements of 6 distinct people in a row are there such that person A sits next to person B? Give a positive integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (* 2 (fact 5)))",
+    "answer": "240",
     "answer_type": "integer"
   },
   {
     "id": "combin-medium-002",
-    "category": "combinatorial_counting",
-    "difficulty": "medium",
-    "natural_language": "How many derangements of 8 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
-    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 8))",
-    "answer": "14833",
-    "answer_type": "integer"
-  },
-  {
-    "id": "combin-medium-003",
-    "category": "combinatorial_counting",
-    "difficulty": "medium",
-    "natural_language": "How many derangements of 8 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
-    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 8))",
-    "answer": "14833",
-    "answer_type": "integer"
-  },
-  {
-    "id": "combin-medium-004",
     "category": "combinatorial_counting",
     "difficulty": "medium",
     "natural_language": "How many derangements of 5 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
@@ -765,16 +1017,25 @@
     "answer_type": "integer"
   },
   {
-    "id": "combin-hard-000",
+    "id": "combin-medium-003",
     "category": "combinatorial_counting",
-    "difficulty": "hard",
-    "natural_language": "How many distinct arrangements of the multiset `AAABBC` are there such that no two adjacent letters are equal? Give a non-negative integer.",
-    "scheme_expression": "20",
-    "answer": "20",
+    "difficulty": "medium",
+    "natural_language": "How many derangements of 5 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 5))",
+    "answer": "44",
     "answer_type": "integer"
   },
   {
-    "id": "combin-hard-001",
+    "id": "combin-medium-004",
+    "category": "combinatorial_counting",
+    "difficulty": "medium",
+    "natural_language": "How many derangements of 6 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 6))",
+    "answer": "265",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-hard-000",
     "category": "combinatorial_counting",
     "difficulty": "hard",
     "natural_language": "How many permutations of the 8 items `(1, 2, ..., 8)` are there such that none of the first 3 items `(1, 2, ..., 3)` occupies its original position (position 1, 2, ..., 3 respectively), while the remaining 5 items may be anywhere? Give a non-negative integer.",
@@ -783,12 +1044,21 @@
     "answer_type": "integer"
   },
   {
+    "id": "combin-hard-001",
+    "category": "combinatorial_counting",
+    "difficulty": "hard",
+    "natural_language": "How many permutations of the 8 items `(1, 2, ..., 8)` are there such that none of the first 4 items `(1, 2, ..., 4)` occupies its original position (position 1, 2, ..., 4 respectively), while the remaining 4 items may be anywhere? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (let loop ((k 0) (acc 0))\n  (if (> k 4) acc\n      (loop (+ k 1)\n            (+ acc (* (if (even? k) 1 -1)\n                      (binom 4 k)\n                      (fact (- 8 k))))))))",
+    "answer": "24024",
+    "answer_type": "integer"
+  },
+  {
     "id": "combin-hard-002",
     "category": "combinatorial_counting",
     "difficulty": "hard",
-    "natural_language": "How many distinct arrangements of the multiset `AABB` are there such that no two adjacent letters are equal? Give a non-negative integer.",
-    "scheme_expression": "6",
-    "answer": "6",
+    "natural_language": "How many permutations of the 8 items `(1, 2, ..., 8)` are there such that none of the first 4 items `(1, 2, ..., 4)` occupies its original position (position 1, 2, ..., 4 respectively), while the remaining 4 items may be anywhere? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (let loop ((k 0) (acc 0))\n  (if (> k 4) acc\n      (loop (+ k 1)\n            (+ acc (* (if (even? k) 1 -1)\n                      (binom 4 k)\n                      (fact (- 8 k))))))))",
+    "answer": "24024",
     "answer_type": "integer"
   },
   {
@@ -804,9 +1074,549 @@
     "id": "combin-hard-004",
     "category": "combinatorial_counting",
     "difficulty": "hard",
-    "natural_language": "How many distinct arrangements of the multiset `AABB` are there such that no two adjacent letters are equal? Give a non-negative integer.",
+    "natural_language": "How many permutations of the 7 items `(1, 2, ..., 7)` are there such that none of the first 4 items `(1, 2, ..., 4)` occupies its original position (position 1, 2, ..., 4 respectively), while the remaining 3 items may be anywhere? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (let loop ((k 0) (acc 0))\n  (if (> k 4) acc\n      (loop (+ k 1)\n            (+ acc (* (if (even? k) 1 -1)\n                      (binom 4 k)\n                      (fact (- 7 k))))))))",
+    "answer": "2790",
+    "answer_type": "integer"
+  },
+  {
+    "id": "regex-easy-000",
+    "category": "regex_matching",
+    "difficulty": "easy",
+    "natural_language": "Does the regex pattern `ab*c` match the string `abbbc` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-easy-001",
+    "category": "regex_matching",
+    "difficulty": "easy",
+    "natural_language": "Does the regex pattern `a(b|c)d` match the string `abd` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-easy-002",
+    "category": "regex_matching",
+    "difficulty": "easy",
+    "natural_language": "Does the regex pattern `x|y` match the string `z` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-easy-003",
+    "category": "regex_matching",
+    "difficulty": "easy",
+    "natural_language": "Does the regex pattern `a(b|c)d` match the string `aed` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-easy-004",
+    "category": "regex_matching",
+    "difficulty": "easy",
+    "natural_language": "Does the regex pattern `a(b|c)d` match the string `abd` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-medium-000",
+    "category": "regex_matching",
+    "difficulty": "medium",
+    "natural_language": "Does the regex pattern `^a[bc]+d$` match the string `aXd` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-medium-001",
+    "category": "regex_matching",
+    "difficulty": "medium",
+    "natural_language": "Does the regex pattern `^[A-Z][a-z]+$` match the string `hello` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-medium-002",
+    "category": "regex_matching",
+    "difficulty": "medium",
+    "natural_language": "Does the regex pattern `^(ab|cd)*$` match the string `abcdab` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-medium-003",
+    "category": "regex_matching",
+    "difficulty": "medium",
+    "natural_language": "Does the regex pattern `^[A-Z][a-z]+$` match the string `Hello` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-medium-004",
+    "category": "regex_matching",
+    "difficulty": "medium",
+    "natural_language": "Does the regex pattern `^a[bc]+d$` match the string `aXd` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-hard-000",
+    "category": "regex_matching",
+    "difficulty": "hard",
+    "natural_language": "Does the regex pattern `^(a+)b\\1$` match the string `aabaaa` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-hard-001",
+    "category": "regex_matching",
+    "difficulty": "hard",
+    "natural_language": "Does the regex pattern `^(?=.*a)(?=.*b)\\w+$` match the string `abcdef` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-hard-002",
+    "category": "regex_matching",
+    "difficulty": "hard",
+    "natural_language": "Does the regex pattern `^(\\d)(?!\\1)` match the string `12` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-hard-003",
+    "category": "regex_matching",
+    "difficulty": "hard",
+    "natural_language": "Does the regex pattern `^(?=.*a)(?=.*b)\\w+$` match the string `acdef` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'no",
+    "answer": "no",
+    "answer_type": "string"
+  },
+  {
+    "id": "regex-hard-004",
+    "category": "regex_matching",
+    "difficulty": "hard",
+    "natural_language": "Does the regex pattern `^(a+)b\\1$` match the string `aabaa` (using Python regex semantics \u2014 `re.search`)? Answer `yes` or `no`.",
+    "scheme_expression": "'yes",
+    "answer": "yes",
+    "answer_type": "string"
+  },
+  {
+    "id": "linrec-easy-000",
+    "category": "linear_recurrence",
+    "difficulty": "easy",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 3 a_{n-2}` with initial conditions `a_0 = 3, a_1 = 5`. Compute `a_11`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 3))\n      (indices '(0 1))\n      (N 11))\n  (let loop ((seq (list 3 5)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "354293",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-easy-001",
+    "category": "linear_recurrence",
+    "difficulty": "easy",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 2 a_{n-2}` with initial conditions `a_0 = 3, a_1 = 5`. Compute `a_18`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 2))\n      (indices '(0 1))\n      (N 18))\n  (let loop ((seq (list 3 5)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "149385216",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-easy-002",
+    "category": "linear_recurrence",
+    "difficulty": "easy",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 3 a_{n-1} + 2 a_{n-2}` with initial conditions `a_0 = 4, a_1 = 3`. Compute `a_15`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 3 2))\n      (indices '(0 1))\n      (N 15))\n  (let loop ((seq (list 4 3)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "239448513",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-easy-003",
+    "category": "linear_recurrence",
+    "difficulty": "easy",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 3 a_{n-1} + 3 a_{n-2}` with initial conditions `a_0 = 1, a_1 = 4`. Compute `a_10`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 3 3))\n      (indices '(0 1))\n      (N 10))\n  (let loop ((seq (list 1 4)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "641520",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-easy-004",
+    "category": "linear_recurrence",
+    "difficulty": "easy",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = a_{n-1} + a_{n-2}` with initial conditions `a_0 = 4, a_1 = 3`. Compute `a_15`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 1 1))\n      (indices '(0 1))\n      (N 15))\n  (let loop ((seq (list 4 3)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "3338",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-medium-000",
+    "category": "linear_recurrence",
+    "difficulty": "medium",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 2 a_{n-2}` with initial conditions `a_0 = 5, a_1 = 5`. Compute `a_35`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 2))\n      (indices '(0 1))\n      (N 35))\n  (let loop ((seq (list 5 5)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "4732024828067840",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-medium-001",
+    "category": "linear_recurrence",
+    "difficulty": "medium",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 3 a_{n-2}` with initial conditions `a_0 = 2, a_1 = 3`. Compute `a_47`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 3))\n      (indices '(0 1))\n      (N 47))\n  (let loop ((seq (list 2 3)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "33236017948696879109733",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-medium-002",
+    "category": "linear_recurrence",
+    "difficulty": "medium",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 3 a_{n-2}` with initial conditions `a_0 = 3, a_1 = 4`. Compute `a_39`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 3))\n      (indices '(0 1))\n      (N 39))\n  (let loop ((seq (list 3 4)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "7091971517783208466",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-medium-003",
+    "category": "linear_recurrence",
+    "difficulty": "medium",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = a_{n-1} + 2 a_{n-2}` with initial conditions `a_0 = 2, a_1 = 5`. Compute `a_47`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 1 2))\n      (indices '(0 1))\n      (N 47))\n  (let loop ((seq (list 2 5)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "328387472829099",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-medium-004",
+    "category": "linear_recurrence",
+    "difficulty": "medium",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 3 a_{n-1} + 3 a_{n-2}` with initial conditions `a_0 = 5, a_1 = 3`. Compute `a_49`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 3 3))\n      (indices '(0 1))\n      (N 49))\n  (let loop ((seq (list 5 3)) (idx 2))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "34819980979958940175139339523",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-hard-000",
+    "category": "linear_recurrence",
+    "difficulty": "hard",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 2 a_{n-2} + 3 a_{n-3}` with initial conditions `a_0 = 5, a_1 = 2, a_2 = 5`. Compute `a_81`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 2 3))\n      (indices '(0 1 2))\n      (N 81))\n  (let loop ((seq (list 5 2 5)) (idx 3))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "409316758378188710721461197494599901053",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-hard-001",
+    "category": "linear_recurrence",
+    "difficulty": "hard",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 3 a_{n-1} + 3 a_{n-2} + a_{n-3}` with initial conditions `a_0 = 5, a_1 = 5, a_2 = 4`. Compute `a_106`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 3 3 1))\n      (indices '(0 1 2))\n      (N 106))\n  (let loop ((seq (list 5 5 4)) (idx 3))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "55362491830207021968300815299654902551886882803474703842693264",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-hard-002",
+    "category": "linear_recurrence",
+    "difficulty": "hard",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = a_{n-1} + a_{n-2} + 2 a_{n-3}` with initial conditions `a_0 = 3, a_1 = 4, a_2 = 4`. Compute `a_113`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 1 1 2))\n      (indices '(0 1 2))\n      (N 113))\n  (let loop ((seq (list 3 4 4)) (idx 3))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "16318647269680886832524417034691728",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-hard-003",
+    "category": "linear_recurrence",
+    "difficulty": "hard",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 3 a_{n-1} + 2 a_{n-2} + a_{n-3}` with initial conditions `a_0 = 5, a_1 = 5, a_2 = 1`. Compute `a_115`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 3 2 1))\n      (indices '(0 1 2))\n      (N 115))\n  (let loop ((seq (list 5 5 1)) (idx 3))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "7914209396548476076003846636875559308142297584730801065809509650",
+    "answer_type": "integer"
+  },
+  {
+    "id": "linrec-hard-004",
+    "category": "linear_recurrence",
+    "difficulty": "hard",
+    "natural_language": "Let the sequence `a_0, a_1, a_2, ...` be defined by the linear recurrence `a_n = 2 a_{n-1} + 3 a_{n-2} + 2 a_{n-3}` with initial conditions `a_0 = 3, a_1 = 1, a_2 = 2`. Compute `a_91`. Give a non-negative integer.",
+    "scheme_expression": "(let ((coefs (list 2 3 2))\n      (indices '(0 1 2))\n      (N 91))\n  (let loop ((seq (list 3 1 2)) (idx 3))\n    (if (> idx N)\n        (list-ref seq N)\n        (let ((next (apply +\n                      (map (lambda (c k)\n                             (* c (list-ref seq (- idx 1 k))))\n                           coefs\n                           indices))))\n          (loop (append seq (list next)) (+ idx 1))))))",
+    "answer": "855235605401745325839558629450267613995796949",
+    "answer_type": "integer"
+  },
+  {
+    "id": "sat-easy-000",
+    "category": "boolean_satisfiability",
+    "difficulty": "easy",
+    "natural_language": "Consider the Boolean formula `(\u00acx_1 \u2228 x_3) \u2227 (x_2 \u2228 \u00acx_1) \u2227 (\u00acx_2 \u2228 x_1) \u2227 (\u00acx_1 \u2228 x_2)` over variables `x_1, x_2, ..., x_3`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F)",
+    "answer": "(x1=F x2=F x3=F)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-easy-001",
+    "category": "boolean_satisfiability",
+    "difficulty": "easy",
+    "natural_language": "Consider the Boolean formula `(x_2 \u2228 \u00acx_1) \u2227 (\u00acx_2 \u2228 \u00acx_1) \u2227 (x_1 \u2228 x_3) \u2227 (\u00acx_2 \u2228 \u00acx_1)` over variables `x_1, x_2, ..., x_3`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=T)",
+    "answer": "(x1=F x2=F x3=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-easy-002",
+    "category": "boolean_satisfiability",
+    "difficulty": "easy",
+    "natural_language": "Consider the Boolean formula `(\u00acx_1 \u2228 \u00acx_2) \u2227 (\u00acx_2 \u2228 x_3) \u2227 (x_1 \u2228 \u00acx_3) \u2227 (\u00acx_1 \u2228 x_2)` over variables `x_1, x_2, ..., x_3`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F)",
+    "answer": "(x1=F x2=F x3=F)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-easy-003",
+    "category": "boolean_satisfiability",
+    "difficulty": "easy",
+    "natural_language": "Consider the Boolean formula `(\u00acx_2 \u2228 x_1) \u2227 (\u00acx_2 \u2228 \u00acx_1) \u2227 (x_1 \u2228 x_2) \u2227 (\u00acx_3 \u2228 x_2)` over variables `x_1, x_2, ..., x_3`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=T x2=F x3=F)",
+    "answer": "(x1=T x2=F x3=F)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-easy-004",
+    "category": "boolean_satisfiability",
+    "difficulty": "easy",
+    "natural_language": "Consider the Boolean formula `(\u00acx_2 \u2228 x_1) \u2227 (x_1 \u2228 \u00acx_2) \u2227 (x_2 \u2228 x_3) \u2227 (x_3 \u2228 x_1)` over variables `x_1, x_2, ..., x_3`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=T)",
+    "answer": "(x1=F x2=F x3=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-medium-000",
+    "category": "boolean_satisfiability",
+    "difficulty": "medium",
+    "natural_language": "Consider the Boolean formula `(\u00acx_3 \u2228 \u00acx_5 \u2228 \u00acx_4) \u2227 (\u00acx_2 \u2228 x_1 \u2228 x_5) \u2227 (x_1 \u2228 \u00acx_3 \u2228 x_4) \u2227 (\u00acx_3 \u2228 x_2 \u2228 x_4) \u2227 (x_3 \u2228 \u00acx_5 \u2228 x_2) \u2227 (\u00acx_4 \u2228 \u00acx_3 \u2228 \u00acx_2) \u2227 (\u00acx_1 \u2228 \u00acx_2 \u2228 \u00acx_4) \u2227 (x_5 \u2228 \u00acx_3 \u2228 \u00acx_4) \u2227 (x_1 \u2228 \u00acx_5 \u2228 x_2) \u2227 (x_1 \u2228 \u00acx_5 \u2228 \u00acx_2)` over variables `x_1, x_2, ..., x_5`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=F)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=F)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-medium-001",
+    "category": "boolean_satisfiability",
+    "difficulty": "medium",
+    "natural_language": "Consider the Boolean formula `(x_5 \u2228 x_1 \u2228 x_2) \u2227 (\u00acx_1 \u2228 \u00acx_2 \u2228 \u00acx_5) \u2227 (\u00acx_3 \u2228 \u00acx_1 \u2228 x_2) \u2227 (\u00acx_4 \u2228 \u00acx_5 \u2228 x_1) \u2227 (x_5 \u2228 \u00acx_2 \u2228 x_4) \u2227 (\u00acx_3 \u2228 x_4 \u2228 x_1) \u2227 (\u00acx_3 \u2228 x_4 \u2228 x_5) \u2227 (\u00acx_4 \u2228 x_2 \u2228 x_3) \u2227 (\u00acx_2 \u2228 \u00acx_4 \u2228 x_5) \u2227 (\u00acx_2 \u2228 \u00acx_4 \u2228 x_3)` over variables `x_1, x_2, ..., x_5`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=T)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-medium-002",
+    "category": "boolean_satisfiability",
+    "difficulty": "medium",
+    "natural_language": "Consider the Boolean formula `(\u00acx_4 \u2228 x_1 \u2228 x_3) \u2227 (x_5 \u2228 x_2 \u2228 x_4) \u2227 (x_1 \u2228 x_3 \u2228 x_4) \u2227 (x_4 \u2228 \u00acx_1 \u2228 \u00acx_2) \u2227 (\u00acx_1 \u2228 x_2 \u2228 x_3) \u2227 (x_5 \u2228 \u00acx_2 \u2228 \u00acx_3) \u2227 (\u00acx_2 \u2228 \u00acx_1 \u2228 \u00acx_3) \u2227 (x_3 \u2228 \u00acx_5 \u2228 x_1) \u2227 (x_3 \u2228 \u00acx_1 \u2228 \u00acx_5) \u2227 (\u00acx_4 \u2228 \u00acx_3 \u2228 x_1)` over variables `x_1, x_2, ..., x_5`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=T x4=F x5=T)",
+    "answer": "(x1=F x2=F x3=T x4=F x5=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-medium-003",
+    "category": "boolean_satisfiability",
+    "difficulty": "medium",
+    "natural_language": "Consider the Boolean formula `(\u00acx_4 \u2228 x_1 \u2228 \u00acx_2) \u2227 (x_5 \u2228 x_2 \u2228 x_1) \u2227 (x_4 \u2228 \u00acx_3 \u2228 x_5) \u2227 (\u00acx_2 \u2228 \u00acx_5 \u2228 \u00acx_1) \u2227 (\u00acx_1 \u2228 x_3 \u2228 x_5) \u2227 (\u00acx_3 \u2228 x_4 \u2228 x_1) \u2227 (x_2 \u2228 x_1 \u2228 \u00acx_5) \u2227 (\u00acx_2 \u2228 x_5 \u2228 x_4) \u2227 (\u00acx_4 \u2228 \u00acx_3 \u2228 x_5) \u2227 (\u00acx_5 \u2228 \u00acx_3 \u2228 \u00acx_4)` over variables `x_1, x_2, ..., x_5`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=T x3=F x4=F x5=T)",
+    "answer": "(x1=F x2=T x3=F x4=F x5=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-medium-004",
+    "category": "boolean_satisfiability",
+    "difficulty": "medium",
+    "natural_language": "Consider the Boolean formula `(\u00acx_4 \u2228 x_3 \u2228 x_5) \u2227 (x_3 \u2228 \u00acx_4 \u2228 x_2) \u2227 (\u00acx_2 \u2228 x_1 \u2228 x_4) \u2227 (x_5 \u2228 \u00acx_2 \u2228 \u00acx_1) \u2227 (\u00acx_4 \u2228 \u00acx_3 \u2228 \u00acx_5) \u2227 (\u00acx_1 \u2228 x_4 \u2228 \u00acx_5) \u2227 (x_4 \u2228 \u00acx_2 \u2228 x_5) \u2227 (x_4 \u2228 x_3 \u2228 \u00acx_1) \u2227 (\u00acx_1 \u2228 x_2 \u2228 \u00acx_5) \u2227 (\u00acx_3 \u2228 x_4 \u2228 x_1)` over variables `x_1, x_2, ..., x_5`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=F)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=F)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-hard-000",
+    "category": "boolean_satisfiability",
+    "difficulty": "hard",
+    "natural_language": "Consider the Boolean formula `(x_1 \u2228 x_8 \u2228 \u00acx_2) \u2227 (\u00acx_3 \u2228 \u00acx_4 \u2228 \u00acx_2) \u2227 (\u00acx_6 \u2228 \u00acx_7 \u2228 \u00acx_8) \u2227 (x_1 \u2228 \u00acx_4 \u2228 \u00acx_8) \u2227 (\u00acx_7 \u2228 x_4 \u2228 \u00acx_2) \u2227 (\u00acx_2 \u2228 x_4 \u2228 x_6) \u2227 (x_6 \u2228 x_8 \u2228 x_4) \u2227 (\u00acx_1 \u2228 \u00acx_4 \u2228 \u00acx_5) \u2227 (x_5 \u2228 x_7 \u2228 \u00acx_1) \u2227 (\u00acx_7 \u2228 \u00acx_4 \u2228 \u00acx_1) \u2227 (\u00acx_1 \u2228 x_3 \u2228 \u00acx_8) \u2227 (\u00acx_3 \u2228 x_1 \u2228 x_7) \u2227 (\u00acx_7 \u2228 x_5 \u2228 x_6) \u2227 (x_1 \u2228 \u00acx_5 \u2228 x_2) \u2227 (\u00acx_2 \u2228 x_5 \u2228 \u00acx_8) \u2227 (x_2 \u2228 x_8 \u2228 \u00acx_5) \u2227 (\u00acx_7 \u2228 \u00acx_3 \u2228 x_2) \u2227 (x_2 \u2228 \u00acx_4 \u2228 x_6)` over variables `x_1, x_2, ..., x_8`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=F x6=F x7=F x8=T)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=F x6=F x7=F x8=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-hard-001",
+    "category": "boolean_satisfiability",
+    "difficulty": "hard",
+    "natural_language": "Consider the Boolean formula `(\u00acx_3 \u2228 x_5 \u2228 x_8) \u2227 (x_8 \u2228 \u00acx_6 \u2228 \u00acx_3) \u2227 (x_8 \u2228 \u00acx_3 \u2228 \u00acx_1) \u2227 (\u00acx_1 \u2228 x_3 \u2228 \u00acx_4) \u2227 (x_6 \u2228 x_5 \u2228 x_7) \u2227 (\u00acx_5 \u2228 \u00acx_4 \u2228 x_6) \u2227 (x_7 \u2228 x_3 \u2228 x_1) \u2227 (\u00acx_7 \u2228 x_5 \u2228 \u00acx_2) \u2227 (x_5 \u2228 x_7 \u2228 x_1) \u2227 (\u00acx_2 \u2228 x_5 \u2228 x_8) \u2227 (\u00acx_7 \u2228 x_8 \u2228 x_2) \u2227 (\u00acx_5 \u2228 \u00acx_7 \u2228 x_2) \u2227 (\u00acx_3 \u2228 \u00acx_6 \u2228 x_4) \u2227 (x_1 \u2228 x_3 \u2228 \u00acx_5) \u2227 (\u00acx_3 \u2228 x_5 \u2228 x_8) \u2227 (\u00acx_1 \u2228 \u00acx_8 \u2228 \u00acx_6) \u2227 (\u00acx_2 \u2228 x_6 \u2228 \u00acx_1) \u2227 (\u00acx_8 \u2228 x_5 \u2228 x_6)` over variables `x_1, x_2, ..., x_8`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=F x6=T x7=T x8=T)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=F x6=T x7=T x8=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-hard-002",
+    "category": "boolean_satisfiability",
+    "difficulty": "hard",
+    "natural_language": "Consider the Boolean formula `(x_7 \u2228 \u00acx_5 \u2228 \u00acx_1) \u2227 (\u00acx_4 \u2228 x_2 \u2228 x_3) \u2227 (\u00acx_3 \u2228 \u00acx_8 \u2228 \u00acx_4) \u2227 (x_2 \u2228 x_8 \u2228 x_4) \u2227 (\u00acx_2 \u2228 x_3 \u2228 \u00acx_6) \u2227 (\u00acx_1 \u2228 \u00acx_3 \u2228 x_5) \u2227 (x_5 \u2228 \u00acx_4 \u2228 \u00acx_2) \u2227 (x_2 \u2228 \u00acx_3 \u2228 \u00acx_4) \u2227 (x_5 \u2228 \u00acx_3 \u2228 x_4) \u2227 (\u00acx_2 \u2228 x_8 \u2228 \u00acx_1) \u2227 (\u00acx_3 \u2228 x_7 \u2228 \u00acx_4) \u2227 (\u00acx_4 \u2228 \u00acx_8 \u2228 \u00acx_7) \u2227 (x_5 \u2228 \u00acx_3 \u2228 \u00acx_1) \u2227 (\u00acx_6 \u2228 x_3 \u2228 \u00acx_7) \u2227 (\u00acx_2 \u2228 x_1 \u2228 x_7) \u2227 (x_3 \u2228 x_7 \u2228 x_5) \u2227 (x_1 \u2228 x_4 \u2228 x_6) \u2227 (x_2 \u2228 x_1 \u2228 x_8)` over variables `x_1, x_2, ..., x_8`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=T x6=T x7=F x8=T)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=T x6=T x7=F x8=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-hard-003",
+    "category": "boolean_satisfiability",
+    "difficulty": "hard",
+    "natural_language": "Consider the Boolean formula `(\u00acx_5 \u2228 \u00acx_7 \u2228 x_6) \u2227 (\u00acx_5 \u2228 x_1 \u2228 \u00acx_6) \u2227 (\u00acx_4 \u2228 x_5 \u2228 x_7) \u2227 (x_3 \u2228 x_7 \u2228 \u00acx_8) \u2227 (\u00acx_5 \u2228 \u00acx_8 \u2228 x_7) \u2227 (x_4 \u2228 x_6 \u2228 \u00acx_5) \u2227 (\u00acx_2 \u2228 \u00acx_5 \u2228 \u00acx_6) \u2227 (\u00acx_7 \u2228 \u00acx_5 \u2228 \u00acx_6) \u2227 (x_5 \u2228 x_3 \u2228 \u00acx_2) \u2227 (\u00acx_7 \u2228 \u00acx_8 \u2228 x_4) \u2227 (x_2 \u2228 \u00acx_4 \u2228 \u00acx_7) \u2227 (\u00acx_8 \u2228 x_5 \u2228 x_4) \u2227 (\u00acx_4 \u2228 \u00acx_5 \u2228 x_2) \u2227 (\u00acx_5 \u2228 \u00acx_4 \u2228 x_2) \u2227 (\u00acx_6 \u2228 \u00acx_7 \u2228 x_2) \u2227 (x_3 \u2228 \u00acx_8 \u2228 \u00acx_6) \u2227 (x_1 \u2228 x_7 \u2228 x_6) \u2227 (\u00acx_6 \u2228 \u00acx_5 \u2228 \u00acx_8)` over variables `x_1, x_2, ..., x_8`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=F x4=F x5=F x6=F x7=T x8=F)",
+    "answer": "(x1=F x2=F x3=F x4=F x5=F x6=F x7=T x8=F)",
+    "answer_type": "string"
+  },
+  {
+    "id": "sat-hard-004",
+    "category": "boolean_satisfiability",
+    "difficulty": "hard",
+    "natural_language": "Consider the Boolean formula `(x_7 \u2228 x_1 \u2228 x_5) \u2227 (x_6 \u2228 x_8 \u2228 x_5) \u2227 (x_7 \u2228 x_2 \u2228 \u00acx_1) \u2227 (x_1 \u2228 x_8 \u2228 x_4) \u2227 (x_2 \u2228 x_6 \u2228 x_5) \u2227 (x_5 \u2228 x_4 \u2228 \u00acx_7) \u2227 (\u00acx_8 \u2228 \u00acx_4 \u2228 \u00acx_7) \u2227 (\u00acx_7 \u2228 \u00acx_1 \u2228 \u00acx_3) \u2227 (x_8 \u2228 \u00acx_2 \u2228 x_4) \u2227 (\u00acx_5 \u2228 x_3 \u2228 \u00acx_6) \u2227 (\u00acx_6 \u2228 x_7 \u2228 \u00acx_8) \u2227 (x_3 \u2228 x_6 \u2228 \u00acx_5) \u2227 (\u00acx_4 \u2228 \u00acx_6 \u2228 \u00acx_7) \u2227 (\u00acx_4 \u2228 x_1 \u2228 x_5) \u2227 (\u00acx_4 \u2228 \u00acx_7 \u2228 x_5) \u2227 (\u00acx_1 \u2228 x_2 \u2228 \u00acx_3) \u2227 (\u00acx_4 \u2228 x_8 \u2228 \u00acx_7) \u2227 (\u00acx_7 \u2228 \u00acx_4 \u2228 \u00acx_2)` over variables `x_1, x_2, ..., x_8`. Is the formula satisfiable? If yes, give a satisfying assignment in the form `(x1=T x2=F x3=T ...)` with variables in order. If no, answer `UNSAT`.",
+    "scheme_expression": "'(x1=F x2=F x3=T x4=F x5=T x6=F x7=F x8=T)",
+    "answer": "(x1=F x2=F x3=T x4=F x5=T x6=F x7=F x8=T)",
+    "answer_type": "string"
+  },
+  {
+    "id": "group-easy-000",
+    "category": "group_theory",
+    "difficulty": "easy",
+    "natural_language": "In the symmetric group S_4, consider the permutation \u03c3 given by \u03c3 = (1 4 3 2) (expressed as disjoint cycles on `{1, 2, ..., 4}`). Compute the order of \u03c3 \u2014 the smallest positive integer `k` such that \u03c3^k is the identity. Give a positive integer.",
+    "scheme_expression": "4",
+    "answer": "4",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-easy-001",
+    "category": "group_theory",
+    "difficulty": "easy",
+    "natural_language": "In the symmetric group S_4, consider the permutation \u03c3 given by \u03c3 = (identity) (expressed as disjoint cycles on `{1, 2, ..., 4}`). Compute the order of \u03c3 \u2014 the smallest positive integer `k` such that \u03c3^k is the identity. Give a positive integer.",
+    "scheme_expression": "1",
+    "answer": "1",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-easy-002",
+    "category": "group_theory",
+    "difficulty": "easy",
+    "natural_language": "In the symmetric group S_4, consider the permutation \u03c3 given by \u03c3 = (2 3) (expressed as disjoint cycles on `{1, 2, ..., 4}`). Compute the order of \u03c3 \u2014 the smallest positive integer `k` such that \u03c3^k is the identity. Give a positive integer.",
+    "scheme_expression": "2",
+    "answer": "2",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-easy-003",
+    "category": "group_theory",
+    "difficulty": "easy",
+    "natural_language": "In the symmetric group S_4, consider the permutation \u03c3 given by \u03c3 = (1 3)(2 4) (expressed as disjoint cycles on `{1, 2, ..., 4}`). Compute the order of \u03c3 \u2014 the smallest positive integer `k` such that \u03c3^k is the identity. Give a positive integer.",
+    "scheme_expression": "2",
+    "answer": "2",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-easy-004",
+    "category": "group_theory",
+    "difficulty": "easy",
+    "natural_language": "In the symmetric group S_4, consider the permutation \u03c3 given by \u03c3 = (1 2 4) (expressed as disjoint cycles on `{1, 2, ..., 4}`). Compute the order of \u03c3 \u2014 the smallest positive integer `k` such that \u03c3^k is the identity. Give a positive integer.",
+    "scheme_expression": "3",
+    "answer": "3",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-medium-000",
+    "category": "group_theory",
+    "difficulty": "medium",
+    "natural_language": "In S_5, let \u03b1 = (1 4 3 5) and \u03b2 = (2 3 4 5). Compute the order of the composition \u03b1\u2218\u03b2 (i.e., apply \u03b2 first, then \u03b1). Give a positive integer.",
+    "scheme_expression": "2",
+    "answer": "2",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-medium-001",
+    "category": "group_theory",
+    "difficulty": "medium",
+    "natural_language": "In S_5, let \u03b1 = (2 3 4) and \u03b2 = (2 3). Compute the order of the composition \u03b1\u2218\u03b2 (i.e., apply \u03b2 first, then \u03b1). Give a positive integer.",
+    "scheme_expression": "2",
+    "answer": "2",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-medium-002",
+    "category": "group_theory",
+    "difficulty": "medium",
+    "natural_language": "In S_5, let \u03b1 = (1 4 2) and \u03b2 = (2 3). Compute the order of the composition \u03b1\u2218\u03b2 (i.e., apply \u03b2 first, then \u03b1). Give a positive integer.",
+    "scheme_expression": "4",
+    "answer": "4",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-medium-003",
+    "category": "group_theory",
+    "difficulty": "medium",
+    "natural_language": "In S_5, let \u03b1 = (1 4 5) and \u03b2 = (1 3)(2 4 5). Compute the order of the composition \u03b1\u2218\u03b2 (i.e., apply \u03b2 first, then \u03b1). Give a positive integer.",
     "scheme_expression": "6",
     "answer": "6",
     "answer_type": "integer"
+  },
+  {
+    "id": "group-medium-004",
+    "category": "group_theory",
+    "difficulty": "medium",
+    "natural_language": "In S_5, let \u03b1 = (1 4)(3 5) and \u03b2 = (1 3 4 5). Compute the order of the composition \u03b1\u2218\u03b2 (i.e., apply \u03b2 first, then \u03b1). Give a positive integer.",
+    "scheme_expression": "4",
+    "answer": "4",
+    "answer_type": "integer"
+  },
+  {
+    "id": "group-hard-000",
+    "category": "group_theory",
+    "difficulty": "hard",
+    "natural_language": "In S_6, let \u03b1 = (1 2 5 3) and \u03b2 = (1 3 5 2 4 6). Compute the commutator [\u03b1, \u03b2] = \u03b1 \u2218 \u03b2 \u2218 \u03b1\u207b\u00b9 \u2218 \u03b2\u207b\u00b9 (applying right to left: apply \u03b2\u207b\u00b9 first, then \u03b1\u207b\u00b9, then \u03b2, then \u03b1). Give the result as a permutation in one-line notation: `(\u03c3(1) \u03c3(2) ... \u03c3(6))` \u2014 the image of each input position listed in order. Example format: `(1 2 3 4 5 6)`.",
+    "scheme_expression": "'(2 4 3 1 5 6)",
+    "answer": "(2 4 3 1 5 6)",
+    "answer_type": "permutation"
+  },
+  {
+    "id": "group-hard-001",
+    "category": "group_theory",
+    "difficulty": "hard",
+    "natural_language": "In S_6, let \u03b1 = (1 2)(3 6 5 4) and \u03b2 = (1 4 6 3 5). Compute the commutator [\u03b1, \u03b2] = \u03b1 \u2218 \u03b2 \u2218 \u03b1\u207b\u00b9 \u2218 \u03b2\u207b\u00b9 (applying right to left: apply \u03b2\u207b\u00b9 first, then \u03b1\u207b\u00b9, then \u03b2, then \u03b1). Give the result as a permutation in one-line notation: `(\u03c3(1) \u03c3(2) ... \u03c3(6))` \u2014 the image of each input position listed in order. Example format: `(1 2 3 4 5 6)`.",
+    "scheme_expression": "'(6 3 4 1 5 2)",
+    "answer": "(6 3 4 1 5 2)",
+    "answer_type": "permutation"
+  },
+  {
+    "id": "group-hard-002",
+    "category": "group_theory",
+    "difficulty": "hard",
+    "natural_language": "In S_6, let \u03b1 = (1 2)(4 6) and \u03b2 = (1 5 2)(3 4). Compute the commutator [\u03b1, \u03b2] = \u03b1 \u2218 \u03b2 \u2218 \u03b1\u207b\u00b9 \u2218 \u03b2\u207b\u00b9 (applying right to left: apply \u03b2\u207b\u00b9 first, then \u03b1\u207b\u00b9, then \u03b2, then \u03b1). Give the result as a permutation in one-line notation: `(\u03c3(1) \u03c3(2) ... \u03c3(6))` \u2014 the image of each input position listed in order. Example format: `(1 2 3 4 5 6)`.",
+    "scheme_expression": "'(5 1 4 6 2 3)",
+    "answer": "(5 1 4 6 2 3)",
+    "answer_type": "permutation"
+  },
+  {
+    "id": "group-hard-003",
+    "category": "group_theory",
+    "difficulty": "hard",
+    "natural_language": "In S_6, let \u03b1 = (1 4 6 5 3 2) and \u03b2 = (1 5)(2 4 3). Compute the commutator [\u03b1, \u03b2] = \u03b1 \u2218 \u03b2 \u2218 \u03b1\u207b\u00b9 \u2218 \u03b2\u207b\u00b9 (applying right to left: apply \u03b2\u207b\u00b9 first, then \u03b1\u207b\u00b9, then \u03b2, then \u03b1). Give the result as a permutation in one-line notation: `(\u03c3(1) \u03c3(2) ... \u03c3(6))` \u2014 the image of each input position listed in order. Example format: `(1 2 3 4 5 6)`.",
+    "scheme_expression": "'(5 4 3 1 6 2)",
+    "answer": "(5 4 3 1 6 2)",
+    "answer_type": "permutation"
+  },
+  {
+    "id": "group-hard-004",
+    "category": "group_theory",
+    "difficulty": "hard",
+    "natural_language": "In S_6, let \u03b1 = (1 4 3 2 6 5) and \u03b2 = (1 5 4 3)(2 6). Compute the commutator [\u03b1, \u03b2] = \u03b1 \u2218 \u03b2 \u2218 \u03b1\u207b\u00b9 \u2218 \u03b2\u207b\u00b9 (applying right to left: apply \u03b2\u207b\u00b9 first, then \u03b1\u207b\u00b9, then \u03b2, then \u03b1). Give the result as a permutation in one-line notation: `(\u03c3(1) \u03c3(2) ... \u03c3(6))` \u2014 the image of each input position listed in order. Example format: `(1 2 3 4 5 6)`.",
+    "scheme_expression": "'(2 5 1 6 3 4)",
+    "answer": "(2 5 1 6 3 4)",
+    "answer_type": "permutation"
   }
 ]
