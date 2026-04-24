@@ -17,6 +17,7 @@ Usage:
 """
 
 import argparse
+import itertools
 import json
 import random
 import re
@@ -602,6 +603,115 @@ def gen_linear_recurrence(difficulty: str, n: int):
     return problems
 
 
+# ---- boolean_satisfiability ----
+#
+# Small CNF instances. Each clause is a disjunction of literals; the
+# formula is their conjunction. Variables named x1, x2, .... Ground
+# truth is computed in Python at generation time by brute-force
+# enumeration over all 2^n assignments; the scheme_expression is a
+# quoted Scheme list of symbols (or the symbol UNSAT) that Wile echoes
+# back via (write ...) in the canonical `(x1=T x2=F ...)` form.
+#
+# Same bypass-Wile-compute pattern as gen_regex_matching: SAT isn't a
+# Wile primitive, and solving it in Scheme buys us nothing the LLM
+# treatment arm could use.
+#
+# Output format (satisfiable): "(x1=T x2=F x3=T ...)"
+# Output format (unsatisfiable): "UNSAT"
+
+SAT_PRESETS = {
+    # (n_vars, n_clauses, clause_size)
+    "easy":   (3, 4, 2),
+    "medium": (5, 10, 3),
+    "hard":   (8, 18, 3),
+}
+
+
+def _sat_first_assignment(clauses, n_vars: int):
+    """Brute-force: return the first satisfying assignment or None.
+
+    clauses: list of lists of (var_index, is_positive) pairs (var_index
+    is 1-indexed). Returns list[bool] of length n_vars, or None if
+    UNSAT.
+    """
+    for bits in itertools.product([False, True], repeat=n_vars):
+        def satisfies(cl):
+            return any(bits[idx - 1] == pos for idx, pos in cl)
+        if all(satisfies(cl) for cl in clauses):
+            return list(bits)
+    return None
+
+
+def _format_sat_answer(assignment, n_vars: int) -> str:
+    if assignment is None:
+        return "UNSAT"
+    parts = [
+        f"x{i + 1}=" + ("T" if assignment[i] else "F")
+        for i in range(n_vars)
+    ]
+    return "(" + " ".join(parts) + ")"
+
+
+def _gen_sat_clause(n_vars: int, clause_size: int):
+    """Pick clause_size distinct variables, with random sign."""
+    idxs = random.sample(range(1, n_vars + 1), clause_size)
+    return [(idx, random.choice([True, False])) for idx in idxs]
+
+
+def _sat_scheme_literal(answer: str) -> str:
+    """Convert a SAT answer string to a Scheme expression that, when
+    passed through (write ...), outputs the same bare text.
+
+    'UNSAT'           -> "'UNSAT"            (quoted symbol)
+    '(x1=T x2=F ...)' -> "'(x1=T x2=F ...)"  (quoted list of symbols)
+    """
+    if answer == "UNSAT":
+        return "'UNSAT"
+    inner = answer.strip("()").strip()
+    return f"'({inner})"
+
+
+def gen_boolean_satisfiability(difficulty: str, n: int):
+    n_vars, n_clauses, clause_size = SAT_PRESETS[difficulty]
+    problems = []
+    for i in range(n):
+        clauses = [
+            _gen_sat_clause(n_vars, clause_size) for _ in range(n_clauses)
+        ]
+
+        # Ground truth from Python brute-force enumeration.
+        assignment = _sat_first_assignment(clauses, n_vars)
+        answer = _format_sat_answer(assignment, n_vars)
+        scheme = _sat_scheme_literal(answer)
+
+        # Natural-language formula.
+        nl_clauses = []
+        for cl in clauses:
+            lits = [
+                f"x_{idx}" if pos else f"\u00acx_{idx}"
+                for idx, pos in cl
+            ]
+            nl_clauses.append("(" + " \u2228 ".join(lits) + ")")
+        formula_nl = " \u2227 ".join(nl_clauses)
+
+        nl = (
+            f"Consider the Boolean formula `{formula_nl}` over variables "
+            f"`x_1, x_2, ..., x_{n_vars}`. Is the formula satisfiable? "
+            f"If yes, give a satisfying assignment in the form "
+            f"`(x1=T x2=F x3=T ...)` with variables in order. "
+            f"If no, answer `UNSAT`."
+        )
+        problems.append(Problem(
+            id=f"sat-{difficulty}-{i:03d}",
+            category="boolean_satisfiability",
+            difficulty=difficulty,
+            natural_language=nl,
+            scheme_expression=scheme,
+            answer_type="string",
+        ))
+    return problems
+
+
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
 # Each entry: (difficulties, generator_fn). The capability map samples
@@ -635,8 +745,9 @@ CATEGORIES = {
     "regex_matching":         (DIFFICULTIES, gen_regex_matching),
     "linear_recurrence":      (DIFFICULTIES, gen_linear_recurrence),
 
+    "boolean_satisfiability": (DIFFICULTIES, gen_boolean_satisfiability),
+
     # Stubbed — Wile primitive incoming:
-    # "boolean_satisfiability": (DIFFICULTIES, gen_boolean_satisfiability),
     # "group_theory":           (DIFFICULTIES, gen_group_theory),
 }
 
