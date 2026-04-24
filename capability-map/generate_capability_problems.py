@@ -355,6 +355,93 @@ def gen_graph_reachability(difficulty: str, n: int):
     return problems
 
 
+# ---- set_closure ----
+#
+# Given a starting set S and one or more generating operations f_i on
+# elements of Z/nZ, compute the smallest superset of S closed under all
+# f_i. Tests iteration-to-convergence — LLMs often stop too early
+# because they don't verify that no new elements were added.
+
+SET_CLOSURE_PRESETS = {
+    # (modulus, |S|, operations) where each operation is a string
+    # "(OP a b)" with named ring op — we pick from "+" and "*" and "+3".
+    "easy":   (11, 2, ["+"]),
+    "medium": (13, 3, ["+", "*"]),
+    "hard":   (17, 3, ["+", "*", "+3"]),
+}
+
+
+def gen_set_closure(difficulty: str, n: int):
+    mod, start_size, op_names = SET_CLOSURE_PRESETS[difficulty]
+    problems = []
+    for i in range(n):
+        elements = list(range(mod))
+        start = random.sample(elements, start_size)
+        # Build Scheme ops: each op is a lambda (a b) -> integer.
+        op_schemes = []
+        op_nls = []
+        for op in op_names:
+            if op == "+":
+                op_schemes.append(f"(lambda (a b) (modulo (+ a b) {mod}))")
+                op_nls.append(f"(a + b) mod {mod}")
+            elif op == "*":
+                op_schemes.append(f"(lambda (a b) (modulo (* a b) {mod}))")
+                op_nls.append(f"(a \u00d7 b) mod {mod}")
+            elif op == "+3":
+                op_schemes.append(f"(lambda (a b) (modulo (+ a b 3) {mod}))")
+                op_nls.append(f"(a + b + 3) mod {mod}")
+            else:
+                raise ValueError(f"unknown op {op}")
+
+        start_sch = "(list " + " ".join(str(x) for x in start) + ")"
+        ops_sch = "(list " + " ".join(op_schemes) + ")"
+
+        # No `filter` primitive in Wile, so we fuse filter+dedup into one
+        # recursive scan: keep values not in acc and not already kept.
+        scheme = (
+            f"(let ((start {start_sch})\n"
+            f"      (ops {ops_sch}))\n"
+            f"  (let loop ((acc start))\n"
+            f"    (let* ((new-values\n"
+            f"             (apply append\n"
+            f"               (map (lambda (op)\n"
+            f"                      (apply append\n"
+            f"                        (map (lambda (a)\n"
+            f"                               (map (lambda (b) (op a b)) acc))\n"
+            f"                             acc)))\n"
+            f"                    ops)))\n"
+            f"           (novel-dedup (let scan ((xs new-values) (seen '()))\n"
+            f"                          (cond\n"
+            f"                            ((null? xs) (reverse seen))\n"
+            f"                            ((member (car xs) acc) (scan (cdr xs) seen))\n"
+            f"                            ((member (car xs) seen) (scan (cdr xs) seen))\n"
+            f"                            (else (scan (cdr xs) (cons (car xs) seen)))))))\n"
+            f"      (if (null? novel-dedup)\n"
+            f"          (sort < acc)\n"
+            f"          (loop (append acc novel-dedup))))))"
+        )
+
+        ops_str = " and ".join(op_nls)
+        nl = (
+            f"Starting from the set `{{{', '.join(str(x) for x in sorted(start))}}}` "
+            f"in Z/{mod}Z, compute the smallest superset that is closed "
+            f"under the operation{'s' if len(op_nls) > 1 else ''} "
+            f"{ops_str}. (That is: keep adding `op(a, b)` for every pair "
+            f"`a, b` already in the set, until no new elements appear.) "
+            f"Return the closure as a sorted list of integers in `(...)` "
+            f"notation."
+        )
+        problems.append(Problem(
+            id=f"closure-{difficulty}-{i:03d}",
+            category="set_closure",
+            difficulty=difficulty,
+            natural_language=nl,
+            scheme_expression=scheme,
+            answer_type="set",
+        ))
+    return problems
+
+
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
 # Each entry: (difficulties, generator_fn). The capability map samples
@@ -379,7 +466,7 @@ CATEGORIES = {
     "monoid_fold":        (DIFFICULTIES, gen_monoid_fold),
 
     # Pending Session 3 — each new generator must expose all 3 tiers:
-    # "set_closure":        (DIFFICULTIES, gen_set_closure),
+    "set_closure":            (DIFFICULTIES, gen_set_closure),
     "graph_reachability":     (DIFFICULTIES, gen_graph_reachability),
 
     "prime_factorization":    (DIFFICULTIES, gen_prime_factorization),
