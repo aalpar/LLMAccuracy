@@ -124,46 +124,55 @@ Each category specifies: description, sample problem, answer type, Wile readines
 
 ## Measurement design
 
-### Sample size
+### Sample size and difficulty sweep
 
-**n = 5 per cell.** Per-cell accuracy has resolution to roughly 20-percentage-point buckets (0/5, 1/5, 2/5, 3/5, 4/5, 5/5). That's enough to classify into the 6 categories of the map. If a cell is ambiguous after n=5, bump to n=15 for that cell specifically in a follow-up pass.
+**n = 5 per (category, difficulty) cell.** Per-cell accuracy has resolution to roughly 20-percentage-point buckets (0/5, 1/5, 2/5, 3/5, 4/5, 5/5). That's enough to detect curve shape and locate crossovers; it's *not* enough for statistical significance. A cell that looks ambiguous after n=5 gets bumped to n=15 in a follow-up pass.
 
-### Classifier
+**Three difficulty levels per category: easy, medium, hard.** Every category exposes the same three tiers so the map has a uniform difficulty axis. The capability map lives or dies on the curve shape, not on a single-point classification — a category is interesting because *of what changes as difficulty increases*, not because it lands in one bucket at one difficulty.
 
-Each cell gets `(ctrl_rate, treat_rate, delta)`. Classification rules applied in order:
+Total problem count per full map run: 12 categories × 3 difficulties × 5 samples = 180 problems. Per-session pilots stay much smaller (e.g., 4 categories × 3 × 5 = 60 in Session 2).
 
-1. `LLM-OWNED` if `ctrl_rate ≥ 0.80`
-2. `WILE-ESSENTIAL` if `ctrl_rate < 0.30` AND `treat_rate ≥ 0.70`
-3. `WILE-ASSISTED` if `0.30 ≤ ctrl_rate ≤ 0.70` AND `delta ≥ 0.20`
-4. `TOOL-INTERFERED` if `delta ≤ -0.20`
-5. `CAPABILITY-GAP` if `ctrl_rate < 0.50` AND `treat_rate < 0.50`
-6. `OVERKILL` — fallthrough: LLM does okay on its own, tool adds little
+### Per-category classification — curve-based
+
+Each category produces a pair of curves: ctrl-accuracy vs difficulty, and treat-accuracy vs difficulty. The classifier reads the curves, not a single point:
+
+| Classification | Curve shape | Meaning |
+|---------------|-------------|---------|
+| **LLM-OWNS-THROUGHOUT** | ctrl holds ≥ 70% across all 3 difficulties; treat matches or trails slightly | No crossover within tested range. LLM can handle this category at our hardest tier without help. |
+| **CROSSOVER-FOUND** | ctrl drops below 50% at some difficulty, treat stays ≥ 20pp higher at that difficulty | The Wile-helps boundary. Names the specific difficulty where the regime changes. |
+| **TOOL-ASSISTED-THROUGHOUT** | treat ≥ ctrl by 20pp at *every* difficulty (even easy) | Unusual — tools help even on trivially easy problems in this category. Investigate. |
+| **CAPABILITY-GAP** | Both arms collapse to < 30% together by hard (or earlier) | Neither regime solves this at our hardest tier. Needs new tool primitives or easier problem shapes. |
+| **TOOL-INTERFERES** | treat < ctrl by 20pp at every measured difficulty | Tools actively hurt. Investigate — usually means LLM is using the tool wrongly or the problem doesn't suit tool-based decomposition. |
+| **AMBIGUOUS** | Fallthrough — curve doesn't match any clean pattern | Most common when n=5 is insufficient at some difficulty. Flag for n=15 re-run of specific cells. |
+
+A single **boundary number** per category supplements the classification — the difficulty at which the crossover (if any) occurs. For `CROSSOVER-FOUND`, it's the highest difficulty where ctrl ≥ treat or where both are within 10pp; for others, the value is null.
 
 ### Analyzer output
 
-A single markdown table per run, one row per category, plus a territory summary:
+Per category, report the curve shape plus classification:
 
 ```
-Category              n   Ctrl   Treat     Δ  Classification
-────────────────────────────────────────────────────────────
-modular_arithmetic    5    60%    100%  +40%  WILE-ASSISTED
-powerset_lattice      5    80%    100%  +20%  LLM-OWNED (tool helps)
-combinatorial_count.  5   100%    100%   +0%  LLM-OWNED
-graph_reachability    5    40%    100%  +60%  WILE-ESSENTIAL
-linear_recurrence     —      —      —     —  STUBBED (Wile pending)
+Category                   easy      medium     hard   Classification          Crossover
+─────────────────────────────────────────────────────────────────────────────────────────
+modular_arithmetic       100/100   100/100   80/100   CROSSOVER-FOUND (assist)   hard
+tropical_semiring        100/100    80/100   60/ 40   TOOL-INTERFERES            —
+powerset_lattice         100/100    80/ 80   20/ 60   CROSSOVER-FOUND (essential)  medium-hard
+combinatorial_counting   100/100   100/100  100/100   LLM-OWNS-THROUGHOUT        —
+graph_reachability        60/100    40/100   20/ 80   TOOL-ASSISTED-THROUGHOUT   easy
+linear_recurrence           —         —        —      STUBBED (Wile pending)     —
 ...
 
 Territory summary:
-  LLM-OWNED       : 3 cells  — combinatorial_counting, regex_matching, ...
-  WILE-ESSENTIAL  : 2 cells  — graph_reachability, ...
-  WILE-ASSISTED   : 4 cells  — modular_arithmetic, ...
-  OVERKILL        : 0 cells
-  TOOL-INTERFERED : 1 cell   — ...
-  CAPABILITY-GAP  : 0 cells
-  STUBBED         : 3 cells  — linear_recurrence, boolean_satisfiability, group_theory
+  LLM-OWNS-THROUGHOUT          : 2 categories — combinatorial_counting, regex_matching
+  CROSSOVER-FOUND              : 3 categories — modular_arithmetic (hard), powerset_lattice (medium-hard), ...
+  TOOL-ASSISTED-THROUGHOUT     : 1 category   — graph_reachability
+  TOOL-INTERFERES              : 1 category   — tropical_semiring
+  CAPABILITY-GAP               : 0
+  AMBIGUOUS                    : 2 categories — (need n=15 at specific cells)
+  STUBBED                      : 3 categories — linear_recurrence, boolean_satisfiability, group_theory
 ```
 
-This table IS the map.
+Each row shows control-accuracy/treatment-accuracy at each difficulty (`60/100` = 60% ctrl, 100% treat). The `Crossover` column names the difficulty bucket where the regime change was detected. This table, *not* a single-label classification, IS the capability map.
 
 ## Architecture
 
@@ -189,11 +198,13 @@ Per-category generators within `generate_capability_problems.py` import function
 
 New generators (categories 5–12) are defined locally in `generate_capability_problems.py`. This keeps the algebra-accuracy generator focused on algebra; capability-map-specific generators stay in the capability-map project.
 
-### Difficulty per category
+### Difficulty sweep per category
 
-The capability map uses a single "medium" difficulty per category — calibrated to make ctrl accuracy interestingly non-trivial. For reused generators, this means passing `difficulty="medium"` to `gen_modular`, `gen_tropical`, etc. For new generators, parameters are chosen inline to target similar-feeling difficulty (not too easy, not impossibly hard).
+The capability map uses a three-tier difficulty sweep (easy, medium, hard) per category — the same three tiers for every category so the map has a uniform x-axis. For reused generators (`gen_modular`, `gen_tropical`, `gen_powerset_lattice`, `gen_monoid_fold`), these tiers already exist as `difficulty` parameters. For new generators (Sessions 3-4), each must define its own easy/medium/hard presets as part of its implementation.
 
-"Interesting" difficulty is a judgment call at generation time. If n=5 on any cell gives all-100% or all-0% and feels uninformative, we bump difficulty on a follow-up iteration. This is expected for a pilot map.
+The shared `DIFFICULTIES` constant at the top of `generate_capability_problems.py` encodes this as a contract: any new category that doesn't expose three tiers fails the design review.
+
+If the pilot shows that some categories' "hard" is still LLM-owned (both curves near 100% at hard), we extend *those specific categories* to include "extra-hard" in a follow-up. The default three-tier sweep is the starting line, not a ceiling.
 
 ## Incremental delivery plan
 

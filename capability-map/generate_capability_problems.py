@@ -43,32 +43,40 @@ from generate import (  # noqa: E402
 
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
-# Each entry: (difficulty, generator_fn). The difficulty is a judgment
-# call per category — "medium" for the 4 reused generators in Session 2.
-# Session 3+ generators land here with their own chosen difficulty.
+# Each entry: (difficulties, generator_fn). The capability map samples
+# across a sequence of difficulty levels per category to locate the
+# crossover point where LLM-alone starts failing and Wile starts
+# helping. A single-difficulty snapshot would hide that curve.
+#
+# All categories use the same 3-tier sweep (easy, medium, hard) for a
+# uniform map axis. Generators that already expose more tiers (e.g.,
+# gen_modular has up to ultra-hard) can be extended later if the map
+# shows a category's crossover is above "hard".
 #
 # Stubbed categories (linear_recurrence, boolean_satisfiability,
 # group_theory) live as comments until Wile ships their primitives.
 
-CATEGORIES = {
-    "modular_arithmetic": ("medium", gen_modular),
-    "tropical_semiring":  ("medium", gen_tropical),
-    "powerset_lattice":   ("medium", gen_powerset_lattice),
-    "monoid_fold":        ("medium", gen_monoid_fold),
+DIFFICULTIES = ["easy", "medium", "hard"]
 
-    # Pending Session 3:
-    # "set_closure":        ("medium", gen_set_closure),
-    # "graph_reachability": ("medium", gen_graph_reachability),
+CATEGORIES = {
+    "modular_arithmetic": (DIFFICULTIES, gen_modular),
+    "tropical_semiring":  (DIFFICULTIES, gen_tropical),
+    "powerset_lattice":   (DIFFICULTIES, gen_powerset_lattice),
+    "monoid_fold":        (DIFFICULTIES, gen_monoid_fold),
+
+    # Pending Session 3 — each new generator must expose all 3 tiers:
+    # "set_closure":        (DIFFICULTIES, gen_set_closure),
+    # "graph_reachability": (DIFFICULTIES, gen_graph_reachability),
 
     # Pending Session 4:
-    # "prime_factorization":    ("medium", gen_prime_factorization),
-    # "combinatorial_counting": ("medium", gen_combinatorial_counting),
-    # "regex_matching":         ("medium", gen_regex_matching),
+    # "prime_factorization":    (DIFFICULTIES, gen_prime_factorization),
+    # "combinatorial_counting": (DIFFICULTIES, gen_combinatorial_counting),
+    # "regex_matching":         (DIFFICULTIES, gen_regex_matching),
 
     # Stubbed — Wile primitive incoming:
-    # "linear_recurrence":      ("medium", gen_linear_recurrence),
-    # "boolean_satisfiability": ("medium", gen_boolean_satisfiability),
-    # "group_theory":           ("medium", gen_group_theory),
+    # "linear_recurrence":      (DIFFICULTIES, gen_linear_recurrence),
+    # "boolean_satisfiability": (DIFFICULTIES, gen_boolean_satisfiability),
+    # "group_theory":           (DIFFICULTIES, gen_group_theory),
 }
 
 
@@ -110,12 +118,18 @@ def main() -> None:
 
     cats = args.categories or list(CATEGORIES.keys())
     problems = []
+    cell_count = 0
     for cat in cats:
-        difficulty, gen_fn = CATEGORIES[cat]
-        problems.extend(gen_fn(difficulty, args.count))
+        difficulties, gen_fn = CATEGORIES[cat]
+        for difficulty in difficulties:
+            problems.extend(gen_fn(difficulty, args.count))
+            cell_count += 1
 
-    print(f"Generated {len(problems)} problems across {len(cats)} categories",
-          file=sys.stderr)
+    print(
+        f"Generated {len(problems)} problems across {cell_count} cells "
+        f"({len(cats)} categories × {len(DIFFICULTIES)} difficulties)",
+        file=sys.stderr,
+    )
 
     # Compute ground-truth answers via Wile (batched one process invocation).
     script = build_scheme_script(problems)
