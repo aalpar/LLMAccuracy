@@ -1,0 +1,430 @@
+{
+  "model": "claude-opus-4-7",
+  "budget": 15000,
+  "samples_per_point": 5,
+  "seed": 42,
+  "points": [
+    {
+      "label": "E",
+      "config": {
+        "min_digits": 6,
+        "max_digits": 8,
+        "precision": 10
+      },
+      "n": 5,
+      "n_correct": 5,
+      "success_rate": 1.0,
+      "output_tokens": {
+        "median": 1421,
+        "max": 1780
+      },
+      "stop_reasons": {
+        "end_turn": 5
+      },
+      "samples": [
+        {
+          "id": "div-0000",
+          "dividend_digits": 8,
+          "divisor_digits": 6,
+          "output_tokens": 1780,
+          "stop_reason": "end_turn",
+          "extracted_answer": "15.22027366",
+          "correct": true,
+          "elapsed_s": 16.596
+        },
+        {
+          "id": "div-0001",
+          "dividend_digits": 7,
+          "divisor_digits": 6,
+          "output_tokens": 902,
+          "stop_reason": "end_turn",
+          "extracted_answer": "19.26327969",
+          "correct": true,
+          "elapsed_s": 9.618
+        },
+        {
+          "id": "div-0002",
+          "dividend_digits": 8,
+          "divisor_digits": 6,
+          "output_tokens": 1764,
+          "stop_reason": "end_turn",
+          "extracted_answer": "435.2240101",
+          "correct": true,
+          "elapsed_s": 16.969
+        },
+        {
+          "id": "div-0003",
+          "dividend_digits": 8,
+          "divisor_digits": 7,
+          "output_tokens": 838,
+          "stop_reason": "end_turn",
+          "extracted_answer": "9.511077968",
+          "correct": true,
+          "elapsed_s": 9.346
+        },
+        {
+          "id": "div-0004",
+          "dividend_digits": 6,
+          "divisor_digits": 6,
+          "output_tokens": 1421,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.5460555038",
+          "correct": true,
+          "elapsed_s": 14.029
+        }
+      ]
+    },
+    {
+      "label": "F",
+      "config": {
+        "min_digits": 10,
+        "max_digits": 12,
+        "precision": 13
+      },
+      "n": 5,
+      "n_correct": 5,
+      "success_rate": 1.0,
+      "output_tokens": {
+        "median": 5152,
+        "max": 9332
+      },
+      "stop_reasons": {
+        "end_turn": 5
+      },
+      "samples": [
+        {
+          "id": "div-0000",
+          "dividend_digits": 12,
+          "divisor_digits": 10,
+          "output_tokens": 2946,
+          "stop_reason": "end_turn",
+          "extracted_answer": "113.1972973335",
+          "correct": true,
+          "elapsed_s": 24.885
+        },
+        {
+          "id": "div-0001",
+          "dividend_digits": 11,
+          "divisor_digits": 12,
+          "output_tokens": 6966,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.01390010755785",
+          "correct": true,
+          "elapsed_s": 70.757
+        },
+        {
+          "id": "div-0002",
+          "dividend_digits": 10,
+          "divisor_digits": 12,
+          "output_tokens": 9332,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.02646132166177",
+          "correct": true,
+          "elapsed_s": 91.957
+        },
+        {
+          "id": "div-0003",
+          "dividend_digits": 10,
+          "divisor_digits": 11,
+          "output_tokens": 5152,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.05869432430096",
+          "correct": true,
+          "elapsed_s": 47.306
+        },
+        {
+          "id": "div-0004",
+          "dividend_digits": 11,
+          "divisor_digits": 11,
+          "output_tokens": 1188,
+          "stop_reason": "end_turn",
+          "extracted_answer": "2.643502609887",
+          "correct": true,
+          "elapsed_s": 12.931
+        }
+      ]
+    },
+    {
+      "label": "G",
+      "config": {
+        "min_digits": 13,
+        "max_digits": 15,
+        "precision": 15
+      },
+      "n": 5,
+      "n_correct": 4,
+      "success_rate": 0.8,
+      "output_tokens": {
+        "median": 5860,
+        "max": 10698
+      },
+      "stop_reasons": {
+        "end_turn": 5
+      },
+      "samples": [
+        {
+          "id": "div-0000",
+          "dividend_digits": 15,
+          "divisor_digits": 14,
+          "output_tokens": 5860,
+          "stop_reason": "end_turn",
+          "extracted_answer": "11.4048449300117",
+          "correct": true,
+          "elapsed_s": 53.057
+        },
+        {
+          "id": "div-0001",
+          "dividend_digits": 15,
+          "divisor_digits": 14,
+          "output_tokens": 2594,
+          "stop_reason": "end_turn",
+          "extracted_answer": "13.2643813701056",
+          "correct": false,
+          "elapsed_s": 25.657
+        },
+        {
+          "id": "div-0002",
+          "dividend_digits": 15,
+          "divisor_digits": 13,
+          "output_tokens": 3250,
+          "stop_reason": "end_turn",
+          "extracted_answer": "23.2075770202349",
+          "correct": true,
+          "elapsed_s": 31.151
+        },
+        {
+          "id": "div-0003",
+          "dividend_digits": 14,
+          "divisor_digits": 14,
+          "output_tokens": 6885,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.548163817845366",
+          "correct": true,
+          "elapsed_s": 66.333
+        },
+        {
+          "id": "div-0004",
+          "dividend_digits": 13,
+          "divisor_digits": 15,
+          "output_tokens": 10698,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.00276948641707004",
+          "correct": true,
+          "elapsed_s": 105.065
+        }
+      ]
+    },
+    {
+      "label": "H",
+      "config": {
+        "min_digits": 15,
+        "max_digits": 18,
+        "precision": 18
+      },
+      "n": 5,
+      "n_correct": 4,
+      "success_rate": 0.8,
+      "output_tokens": {
+        "median": 4083,
+        "max": 7829
+      },
+      "stop_reasons": {
+        "end_turn": 5
+      },
+      "samples": [
+        {
+          "id": "div-0000",
+          "dividend_digits": 16,
+          "divisor_digits": 16,
+          "output_tokens": 4083,
+          "stop_reason": "end_turn",
+          "extracted_answer": "1.50479599810947230",
+          "correct": true,
+          "elapsed_s": 40.377
+        },
+        {
+          "id": "div-0001",
+          "dividend_digits": 16,
+          "divisor_digits": 17,
+          "output_tokens": 7829,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.438521207375382280",
+          "correct": true,
+          "elapsed_s": 84.958
+        },
+        {
+          "id": "div-0002",
+          "dividend_digits": 16,
+          "divisor_digits": 15,
+          "output_tokens": 3612,
+          "stop_reason": "end_turn",
+          "extracted_answer": "9.56872325766005081",
+          "correct": true,
+          "elapsed_s": 32.869
+        },
+        {
+          "id": "div-0003",
+          "dividend_digits": 15,
+          "divisor_digits": 16,
+          "output_tokens": 5786,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.0658048891442376075",
+          "correct": true,
+          "elapsed_s": 52.409
+        },
+        {
+          "id": "div-0004",
+          "dividend_digits": 18,
+          "divisor_digits": 18,
+          "output_tokens": 3631,
+          "stop_reason": "end_turn",
+          "extracted_answer": "1.55165719051595550",
+          "correct": false,
+          "elapsed_s": 35.573
+        }
+      ]
+    },
+    {
+      "label": "I",
+      "config": {
+        "min_digits": 18,
+        "max_digits": 22,
+        "precision": 22
+      },
+      "n": 5,
+      "n_correct": 3,
+      "success_rate": 0.6,
+      "output_tokens": {
+        "median": 5537,
+        "max": 15000
+      },
+      "stop_reasons": {
+        "end_turn": 4,
+        "max_tokens": 1
+      },
+      "samples": [
+        {
+          "id": "div-0000",
+          "dividend_digits": 19,
+          "divisor_digits": 19,
+          "output_tokens": 3608,
+          "stop_reason": "end_turn",
+          "extracted_answer": "1.804572305437428430443",
+          "correct": true,
+          "elapsed_s": 35.715
+        },
+        {
+          "id": "div-0001",
+          "dividend_digits": 22,
+          "divisor_digits": 21,
+          "output_tokens": 5537,
+          "stop_reason": "end_turn",
+          "extracted_answer": "6.890260148426927238860",
+          "correct": false,
+          "elapsed_s": 57.446
+        },
+        {
+          "id": "div-0002",
+          "dividend_digits": 21,
+          "divisor_digits": 18,
+          "output_tokens": 15000,
+          "stop_reason": "max_tokens",
+          "extracted_answer": null,
+          "correct": false,
+          "elapsed_s": 133.549
+        },
+        {
+          "id": "div-0003",
+          "dividend_digits": 22,
+          "divisor_digits": 18,
+          "output_tokens": 9958,
+          "stop_reason": "end_turn",
+          "extracted_answer": "10370.60598185856076570",
+          "correct": true,
+          "elapsed_s": 89.995
+        },
+        {
+          "id": "div-0004",
+          "dividend_digits": 22,
+          "divisor_digits": 20,
+          "output_tokens": 5242,
+          "stop_reason": "end_turn",
+          "extracted_answer": "186.4461126141727654293",
+          "correct": true,
+          "elapsed_s": 47.199
+        }
+      ]
+    },
+    {
+      "label": "J",
+      "config": {
+        "min_digits": 22,
+        "max_digits": 30,
+        "precision": 28
+      },
+      "n": 5,
+      "n_correct": 1,
+      "success_rate": 0.2,
+      "output_tokens": {
+        "median": 11114,
+        "max": 15000
+      },
+      "stop_reasons": {
+        "end_turn": 3,
+        "max_tokens": 2
+      },
+      "samples": [
+        {
+          "id": "div-0000",
+          "dividend_digits": 28,
+          "divisor_digits": 24,
+          "output_tokens": 9326,
+          "stop_reason": "end_turn",
+          "extracted_answer": "11525.21516343306272476528083",
+          "correct": false,
+          "elapsed_s": 90.111
+        },
+        {
+          "id": "div-0001",
+          "dividend_digits": 24,
+          "divisor_digits": 30,
+          "output_tokens": 15000,
+          "stop_reason": "max_tokens",
+          "extracted_answer": null,
+          "correct": false,
+          "elapsed_s": 153.852
+        },
+        {
+          "id": "div-0002",
+          "dividend_digits": 27,
+          "divisor_digits": 29,
+          "output_tokens": 9673,
+          "stop_reason": "end_turn",
+          "extracted_answer": "0.02959917935710220666726476781",
+          "correct": true,
+          "elapsed_s": 98.768
+        },
+        {
+          "id": "div-0003",
+          "dividend_digits": 29,
+          "divisor_digits": 23,
+          "output_tokens": 11114,
+          "stop_reason": "end_turn",
+          "extracted_answer": "1781705.172427868664119297341",
+          "correct": false,
+          "elapsed_s": 102.757
+        },
+        {
+          "id": "div-0004",
+          "dividend_digits": 26,
+          "divisor_digits": 30,
+          "output_tokens": 15000,
+          "stop_reason": "max_tokens",
+          "extracted_answer": null,
+          "correct": false,
+          "elapsed_s": 156.612
+        }
+      ]
+    }
+  ]
+}

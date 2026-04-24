@@ -1,0 +1,802 @@
+[
+  {
+    "id": "div-0000",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "1409806224851904685396868351032493.49825027140758451341147316570585260154893090718986195995629949778349679",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide a large number by another and get 100 significant digits.\n\nDividend D = 90139993882433226709267102229813247423363302126043473061870894978609711948438225\nDivisor  V = 63937860603433017392431851204030560817196590771\n\nLet me count digits.\nD: let me count: \"90139993882433226709267102229813247423363302126043473061870894978609711948438225\"\nGroups of 10:\n9013999388 2433226709 2671022298 1324742336 3302126043 4730618708 9497860971 1948438225\nThat's 8 groups of 10 = 80 digits.\n\nV: \"63937860603433017392431851204030560817196590771\"\nGroups: 6393786060 3433017392 4318512040 3056081719 6590771\nThat's 4*10 + 7 = 47 digits.\n\nSo D/V has about 80-47 = 33 digits before decimal, then we need 100 sig digits total, so 67 digits after... wait, the quotient's leading digit position.\n\nActually D has 80 digits, V has 47 digits. Quotient has roughly 80-47 = 33 or 34 digits integer part.\n\nLet me compute D/V.\n\nFirst estimate: D \u2248 9.014e79, V \u2248 6.394e46. So D/V \u2248 1.4097e33. So 34 digits integer part.\n\nWe need 100 sig digits, so 100-34 = 66 digits after decimal point (if integer part has 34 digits).\n\nLet me do this carefully. I'll compute Q = floor(D * 10^k / V) for some k, then format.\n\nLet me compute step by step using long division. Actually, let me set up: we want Q with 100 sig digits. Compute D * 10^(100-34) / V, well need to know integer part length first.\n\nLet me approximate: D/V.\nD = 9.0139993882433226709267102229813247423363302126043473061870894978609711948438225e79\nV = 6.3937860603433017392431851204030560817196590771e46\n\nD/V \u2248 9.0139993882... / 6.3937860603... \u00d7 10^33\n\n9.0139993882.../6.3937860603... \u2248 let me compute.\n6.3937860603 \u00d7 1.4 = 8.9513004844\n6.3937860603 \u00d7 1.41 = 9.0152383450\nSo ratio \u2248 1.4098...\n\nMore precisely:\n9.01399938824... - 8.95130048442 = 0.06269890382 (at 1.4)\n0.06269890382 / 6.39378606 \u2248 0.009806...\nSo ratio \u2248 1.409806...\n\nSo Q \u2248 1.409806... \u00d7 10^33, meaning 34-digit integer part starting with \"1409806...\".\n\nWe need 100 sig digits. Let me compute D * 10^66 / V (so we get 34 + 66 = 100 digits integer quotient), then insert decimal point after 34 digits.\n\nActually, let me compute floor((D * 10^67) / V) and we'd need the 101st digit for rounding... Let me think.\n\nWe want 100 sig digits. The quotient has integer part with some number of digits N. We want to produce N digits integer + (100-N",
+      "extracted_answer": null,
+      "input_tokens": 273,
+      "output_tokens": 1024,
+      "elapsed_s": 13.712
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0001",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "1473756270443518845392333.75130342013848899060383312981989463724702480554612790488559415025121074726872844",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N = 1357704167624016369453555505080780616749748055831005181464142727790 by D = 921254209297052060198054047023182894942454, giving 100 significant digits.\n\nLet me count digits. N has... let me count: 1357704167624016369453555505080780616749748055831005181464142727790\nBreak into groups of 10:\n1357704167 6240163694 5355550508 0780616749 7480558310 0518146414 2727790\nThat's 6*10 + 7 = 67 digits.\n\nD: 921254209297052060198054047023182894942454\nGroups: 9212542092 9705206019 8054047023 1828949424 54\nThat's 4*10 + 2 = 42 digits.\n\nSo N/D has about 67-42 = 25 or 26 digits before decimal point.\n\nLet me compute more carefully. N \u2248 1.357704...e66, D \u2248 9.21254...e41. Ratio \u2248 1.4738...e24. So 25 digits before decimal point. We need 100 sig digits total, so 75 digits after decimal.\n\nLet me do long division. Let me compute Q = N/D to 100 sig digits.\n\nActually let me try: compute N * 10^k / D for appropriate k, then interpret.\n\nWe need quotient with 100 sig digits. If integer part has 25 digits, we need 75 after decimal. Compute floor(N * 10^75 / D), then place decimal.\n\nLet me do this step by step. Actually, let me try to estimate first.\n\nN/D \u2248 1357704167624016369453555505080780616749748055831005181464142727790 / 921254209297052060198054047023182894942454\n\nLet me compute 1/D more precisely, or just do long division directly.\n\nLet me denote N and D. I'll compute the quotient digit by digit.\n\nActually, let me try a different approach. Let's compute N * 10^75 then divide by D.\n\nN has 67 digits, multiplied by 10^75 gives 142 digit number (N followed by 75 zeros).\nD has 42 digits. Quotient has 142-42+1 = 101 digits (or 100).\n\nActually N starts with 1.35... and D starts with 9.21..., so N*10^75/D starts with about 1.47...e24 * 10^75 = 1.47e99, i.e., 100 digits. Good.\n\nI need to do this long division. This is going to be tedious but doable.\n\nLet me set up. Let me write out N with 75 trailing zeros:\nN_ext = 1357704167624016369453555505080780616749748055831005181464142727790 followed by 75 zeros.\n\nLet me denote D = 921254209297052060198054047023182894942454.\n\nStandard long division: we need to find Q such that Q*D \u2264 N_ext < (Q+1)*D.\n\nGiven the massive size, I'll need to work through this carefully. Let me try to compute 1/D first at high precision, then multiply by N.\n\n1/D where D = 9.21254209297052060198054047023182894942454 \u00d7 10^41.\n\nLet me compute 1/9.21254209297052060198054047023182894942454.\n\nLet d = 9.21254209297052060198054047023",
+      "extracted_answer": null,
+      "input_tokens": 267,
+      "output_tokens": 1024,
+      "elapsed_s": 12.895
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0002",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "66783967627522238.1741628343213678462916561408484885296480123499538073130423083010656357537704656117608527",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N = 633946781601609791700096916755526464236971331034288304907 by D = 9492499534279765652161094786589099463561.\n\nLet me count digits.\nN: let me count: 633946781601609791700096916755526464236971331034288304907\nGroups: 633,946,781,601,609,791,700,096,916,755,526,464,236,971,331,034,288,304,907\nLet me count digits by splitting:\n633946781 (9) 601609791 (9) 700096916 (9) 755526464 (9) 236971331 (9) 034288304 (9) 907 (3). Total = 9*6+3 = 57 digits.\n\nD: 9492499534279765652161094786589099463561\n9492499534 (10) 2797656521 (10) 6109478658 (10) 9099463561 (10) = 40 digits.\n\nSo quotient has about 57-40 = 17 digits before decimal, then we need 100 significant digits total, so ~83 digits after decimal point.\n\nLet me compute N/D.\n\nLet me denote D \u2248 9.492499534279765652161094786589099463561 \u00d7 10^39\nN \u2248 6.33946781601609791700096916755526464236971331034288304907 \u00d7 10^56\n\nQ \u2248 N/D \u2248 6.679... \u00d7 10^16\n\nLet me compute more precisely. I'll do long division.\n\nActually, let me try a different approach. Compute Q = floor(N * 10^k / D) for large enough k to get 100 sig digits.\n\nWe need 100 sig digits, and integer part has 17 digits (I think), so we need 83 digits after decimal. Plus one extra for rounding.\n\nLet me compute N * 10^84 / D.\n\nThis is a lot. Let me try to be systematic.\n\nFirst, determine integer part of Q.\n\nN / D: \nD \u2248 9.4925 \u00d7 10^39\nN \u2248 6.3395 \u00d7 10^56\nN/D \u2248 0.66784 \u00d7 10^17 = 6.6784 \u00d7 10^16\n\nSo integer part has 17 digits starting with 6.6784...\n\nLet me compute Q1 = floor(N/D).\n\nEstimate: 6.33946781601609791700096916755526464236971331034288304907 / 9.492499534279765652161094786589099463561 \u00d7 10^16\n\n= 0.66784... \u00d7 10^17\n\nLet me compute 6.33946781601609791700096916755526464236971331034288304907 / 9.492499534279765652161094786589099463561 more precisely.\n\nLet a = 6.33946781601609791700096916755526464236971331034288304907\nLet b = 9.492499534279765652161094786589099463561\na/b = ?\n\na/b \u2248 0.667841...\n\n6.33946781601609791700... / 9.492499534279765652...\n\n9.492499534 \u00d7 0.6 = 5.6954997205\n9.492499534 \u00d7 0.66 = 6.265049692\n9.492499534 \u00d7 0.667 = 6.331497189\n9.492499534 \u00d7 0.6678 = 6.339091293\n9.492499534 \u00d7 0.66784 = 6.339471092\n9.492499534 \u00d7 0.667841 = 6.339480584\na",
+      "extracted_answer": null,
+      "input_tokens": 263,
+      "output_tokens": 1024,
+      "elapsed_s": 11.885
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0003",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "1402669058175106.80807287578909640591777436852939998917472485053092907113791460663763933816775052819328495",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N/D to 100 significant figures.\n\nN = 8760656789998255404849052515850169139681878482913296717328657\nD = 6245704743352647608681299158671655931731223462\n\nLet me count digits.\nN: let me count: 8760656789998255404849052515850169139681878482913296717328657\nSplit: 8,760,656,789,998,255,404,849,052,515,850,169,139,681,878,482,913,296,717,328,657\nCount digits: I'll count in groups of 10.\n\"8760656789\" (10) \"9982554048\" (20) \"4905251585\" (30) \"0169139681\" (40) \"8784829132\" (50) \"9671732865\" (60) \"7\" (61)\nSo N has 61 digits.\n\nD: 6245704743352647608681299158671655931731223462\n\"6245704743\" (10) \"3526476086\" (20) \"8129915867\" (30) \"1655931731\" (40) \"223462\" (46)\nSo D has 46 digits.\n\nN/D has about 61-46 = 15 digits before the decimal point (roughly). Let me compute the leading digit: N/D \u2248 8.76e60 / 6.25e45 \u2248 1.4e15. So 16 digits before decimal.\n\nActually, first digit of N is 8, first of D is 6, so quotient starts ~1.4. With 61-46=15 digit difference, quotient \u2248 1.4 \u00d7 10^15, which has 16 digits before decimal.\n\nWe need 100 sig figs, so 100-16 = 84 digits after decimal.\n\nLet me compute N/D. I need to do long division. This is going to be painful but let me try.\n\nActually, let me think of a better approach. Compute N * 10^k / D for appropriate k, then place decimal.\n\nWe need 100 sig figs of quotient. Quotient Q \u2248 1.4e15. So Q has form d1.d2d3...d100 \u00d7 10^15.\n\nCompute floor(N * 10^84 / D), this gives a 100-digit integer (approximately), which represents Q \u00d7 10^84 essentially... wait.\n\nQ \u2248 1.4e15. Q \u00d7 10^84 \u2248 1.4e99, a 100-digit integer. So floor(N * 10^84 / D) is our 100-digit answer, then we place decimal after first digit... no wait, we need Q to 100 sig figs meaning Q rounded to 100 sig figs.\n\nLet me define M = N * 10^84. Then M/D gives Q * 10^84. We want to round Q to 100 sig figs. Since Q has 16 digits before decimal, 100 sig figs means 84 digits after decimal. So we want round(Q * 10^84) / 10^84, i.e., round(M/D).\n\nM/D = floor(M/D) + (M mod D)/D. To round to nearest integer with banker's rounding on ties.\n\nSo compute floor(M/D), remainder r = M mod D. If 2r > D, round up. If 2r < D, round down. If 2r = D (tie), round to even.\n\nLet me compute M = N * 10^84. Then M/D.\n\nActually this requires big integer arithmetic. Let me try to",
+      "extracted_answer": null,
+      "input_tokens": 267,
+      "output_tokens": 1024,
+      "elapsed_s": 13.216
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0004",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "1292454843731000855642529754.55592962485366845008314863824479505865979626178925879193225654562523815054098",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 81085475497661597152153760677122812521853200538562053730822786337501748556 / 62737569433054753322362780335378623295248617338 to 100 significant digits.\n\nLet me denote N = 81085475497661597152153760677122812521853200538562053730822786337501748556\nD = 62737569433054753322362780335378623295248617338\n\nFirst, find the magnitude. N has 74 digits, D has 47 digits. So N/D has about 74-47 = 27 digits before decimal (could be 27 or 28).\n\nLet me estimate: N \u2248 8.1085e73, D \u2248 6.2738e46. Quotient \u2248 1.2924e27. So 28 digits before decimal? Wait, 1.29e27 means 28 digits (1 followed by 27 more). Actually 1.29e27 has its first digit in the 10^27 place, so 28 digits total before decimal.\n\nWe need 100 sig digits, so 100 - 28 = 72 digits after decimal.\n\nLet me do long division. To get 100 sig digits, compute floor(N * 10^72 / D) and then place the decimal.\n\nActually, let me compute N * 10^k / D where k is chosen to give us enough digits.\n\nQ = N/D. To get 100 sig digits, I want to compute floor(N * 10^72 / D), then this is a 100-digit integer Q', and the answer is Q'[0..27].Q'[28..99].\n\nWait, I need to be more careful. Let me find how many digits Q has before decimal point.\n\nN/D: log10(N/D) = log10(N) - log10(D).\nlog10(N) \u2248 73 + log10(8.1085) \u2248 73 + 0.9089 = 73.9089\nlog10(D) \u2248 46 + log10(6.2738) \u2248 46 + 0.7976 = 46.7976\nDifference \u2248 27.1113\n\nSo Q \u2248 10^27.11, meaning Q starts in 10^27 place, so 28 digits before decimal.\n\nFor 100 sig digits, need 72 digits after decimal.\n\nCompute M = N * 10^72, then Q_int = floor(M/D), R = M mod D. \nThen the 100-digit result is Q_int, and we need to round using the next digit (from R*10/D).\n\nActually, Q_int should have exactly 100 digits (if my estimate is right). Let's verify: Q_int \u2248 1.29e27 * 10^72 = 1.29e99, so 100 digits. Good.\n\nThen round the 100th digit based on the 101st digit. The 101st digit is floor(R*10/D).\n\nThis is a huge computation. Let me try to do it systematically.\n\nLet me first compute N/D approximately, then refine.\n\nActually, let me approach this by doing the long division step by step, but that's 100 steps of extracting digits. Let me try to be clever.\n\nLet me compute it in chunks. I'll compute N / D to get integer quotient and remainder, then multiply remainder by powers of 10.\n\nN = 81085475497661597152153760677122812521853200538562053730822786337501748556\nD = 62",
+      "extracted_answer": null,
+      "input_tokens": 271,
+      "output_tokens": 1024,
+      "elapsed_s": 13.168
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0005",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "73910174.2980405837945146825465403541982679562896185042730542050556792880840775223784725676561988610195809",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 5549802210767156024038504513392474919404439264378673 / 75088474130608099473730818370628470711076665 to 100 significant digits.\n\nLet me denote N = 5549802210767156024038504513392474919404439264378673\nD = 75088474130608099473730818370628470711076665\n\nFirst, figure out magnitude. N has 52 digits, D has 44 digits. So N/D has about 8-9 digit integer part.\n\nLet me estimate: N/D \u2248 5.5498e51 / 7.5088e43 \u2248 7.3911e7. So integer part is about 73,911,xxx (8 digits).\n\nWe need 100 significant digits, so we need integer part (8 digits) + 92 decimal digits, then round.\n\nLet me do this carefully. Compute N * 10^92 / D, then that gives us 100 digits.\n\nActually, let me compute N/D with high precision. Let Q = floor(N * 10^92 / D), then we need to check rounding based on the remainder and potentially the next digit.\n\nWait, we need 100 significant digits with proper rounding. So compute N * 10^k / D where k is chosen so result has ~101 digits, then round.\n\nSince N/D has 8 integer digits, to get 100 sig figs we need 92 decimal places. For proper rounding (ties-to-even), compute with one extra digit: compute floor(N * 10^93 / D), this gives 101 digits. Then round the last digit.\n\nActually let me think again. We want 100 sig digits. Let A = N * 10^92 / D (exact rational). We want to round A to nearest integer with ties-to-even. That integer has 100 digits (representing the 100 sig figs).\n\nA = q + r/D where q = floor(N*10^92/D), r = N*10^92 mod D, 0 \u2264 r < D.\n- If r/D < 1/2: round down to q\n- If r/D > 1/2: round up to q+1\n- If r/D = 1/2: round to even\n\nSo I need to compute q and determine which case.\n\nThis is a huge computation. Let me try to do long division manually... that's impractical for 100 digits. Let me think of a smarter approach.\n\nActually, I'll just have to do this carefully with arithmetic. Let me set up the problem.\n\nLet me write out numbers:\nN = 5549802210767156024038504513392474919404439264378673 (52 digits)\nD = 75088474130608099473730818370628470711076665 (44 digits)\n\nN/D integer part: need to find first.\n\nLet me try Newton's method / reciprocal approach mentally, or just estimate.\n\nActually let me compute 1/D first to high precision, then multiply by N.\n\nHmm, this is really tough. Let me try a different approach - compute step by step using long division but in chunks.\n\nLet me try to express this as: I'll compute N/D by doing long division, extracting digits in groups.\n\nLet me estimate more precisely. \nD = 7.5088474130608099473730818370628470711076665 \u00d7 10^43\nN = 5.549802210767156024038504513392474919404439264378673 \u00d7 10^51\n\nN/D \u2248 5.549802210767156",
+      "extracted_answer": null,
+      "input_tokens": 263,
+      "output_tokens": 1024,
+      "elapsed_s": 12.915
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0006",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.0000000000000993478518768470470567023051204684458094636553368250512075952460663497169689961797437914750296841127263256",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 97254308139855086098370827270416609335491245049171 / 978927136345261432080242409391518251497962888696006321960188632 to 100 significant digits.\n\nLet me denote N = 97254308139855086098370827270416609335491245049171 (50 digits)\nD = 978927136345261432080242409391518251497962888696006321960188632 (63 digits)\n\nN/D \u2248 10^50 / 10^63 \u2248 10^-13. Actually let me count more carefully.\n\nN has 50 digits, so N ~ 9.7254... \u00d7 10^49\nD has 63 digits, so D ~ 9.78927... \u00d7 10^62\n\nN/D ~ 9.7254/9.7893 \u00d7 10^-13 ~ 0.99347 \u00d7 10^-13 ~ 9.9347 \u00d7 10^-14\n\nSo the first significant digit starts around 10^-14 position. We need 100 significant digits.\n\nTo get 100 sig digits, I need to compute N * 10^k / D where k is chosen such that result has about 100 digits.\n\nSpecifically, N/D \u2248 9.93... \u00d7 10^-14. Multiplying by 10^113 gives ~10^100, so the integer part N*10^113 / D would have 100 digits.\n\nLet me compute N * 10^113 divided by D.\n\nActually, let's set up: we want q = floor(N * 10^113 / D) and then examine the next digit for rounding.\n\nTo be safe, compute N * 10^114 / D to get 101 digits, then round.\n\nThis requires long division. This is extremely tedious by hand but let me attempt it.\n\nLet me estimate: N/D = ?\n\nN = 9.7254308139855086098370827270416609335491245049171 \u00d7 10^49\nD = 9.78927136345261432080242409391518251497962888696006321960188632 \u00d7 10^62\n\nRatio = N/D \u00d7 10^(49-62) = (N_mantissa / D_mantissa) \u00d7 10^-13\n\nLet a = 9.7254308139855086098370827270416609335491245049171\nLet b = 9.78927136345261432080242409391518251497962888696006321960188632\n\na/b = ?\n\nI need to compute a/b to 100 digits. This is still hard.\n\nLet me try a different approach. Let me compute 1/D first, or use the formula.\n\nActually, let's just compute this carefully using long division.\n\nLet me set up: we want to compute 10^113 * N / D.\n\n10^113 * N = 97254308139855086098370827270416609335491245049171 followed by 113 zeros.\n\nTotal digits: 50 + 113 = 163 digits.\n\nWe divide this 163-digit number by D (63 digits). Result has about 163 - 63 + 1 = 101 digits. Good.\n\nThis is a massive computation. Let me try to do it more cleverly.\n\nLet me use Newton's method or compute 1/b with high precision.\n\nActually, let me just think about this more carefully. Computing to 100 sig digits by hand division is not feasible accurately. Let me try to set up a systematic approach.\n\nAlternative: use the fact that N/D = N * (1/D), compute 1/D with enough precision.\n\nLet me try",
+      "extracted_answer": null,
+      "input_tokens": 268,
+      "output_tokens": 1024,
+      "elapsed_s": 12.239
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0007",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "100602.986968221515135483220402997927444239104244119527424911347852620458746551055674918436263337959475767",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide 8846375423310598049567933836951222042140335406304374642 by 87933526527447860881148791505701636652774724428228 to 100 significant digits.\n\nLet me count digits.\nDividend: 8846375423310598049567933836951222042140335406304374642\nLet me count: 8846375423 3105980495 6793383695 1222042140 3354063043 74642\n10+10+10+10+10+5 = 55 digits.\n\nDivisor: 87933526527447860881148791505701636652774724428228\n8793352652 7447860881 1487915057 0163665277 4724428228\n10+10+10+10+10 = 50 digits.\n\nSo quotient is approximately 10^(55-50) = 10^5 magnitude, about 100000.\n\nActually dividend / divisor \u2248 8.85e54 / 8.79e49 \u2248 1.006e5. So integer part has 6 digits.\n\nFor 100 significant digits, I need integer part (6 digits) + 94 decimal digits.\n\nLet me do this carefully. Let me compute N/D where:\nN = 8846375423310598049567933836951222042140335406304374642\nD = 87933526527447860881148791505701636652774724428228\n\nFirst, find integer quotient q1 = N // D.\n\nLet me estimate: N \u2248 8.846375423310598e54, D \u2248 8.7933526527447861e49.\nq \u2248 1.006029... \u00d7 10^5 = 100602.9...\n\nLet me try q = 100603:\nD \u00d7 100603 = ?\n\nActually, let me approach this by long division more systematically.\n\nLet me compute D \u00d7 100000 = 8793352652744786088114879150570163665277472442822800000\nWait, that's 50+5 = 55 digits.\n\nN = 8846375423310598049567933836951222042140335406304374642\n\nD \u00d7 100000 = 8793352652744786088114879150570163665277472442822800000\n\nN - D\u00d7100000 = ?\n  8846375423310598049567933836951222042140335406304374642\n- 8793352652744786088114879150570163665277472442822800000\n= ?\n\nLet me subtract:\n8846375423310598049567933836951222042140335406304374642\n8793352652744786088114879150570163665277472442822800000\n\nDifference:\nPosition by position from right. Let me align (both 55 digits).\n\n8846375423310598049567933836951222042140335406304374642\n8793352652744786088114879150570163665277472442822800000\n\nSubtract:\n8846375423310598049567933836951222042140335406304374642\n-8793352652744786088114879150570163665277472442822800000\n\nTop - bottom:\nLet me do it in chunks.\nTop:    88463754 23310598 04956793 38369512 22042140 33540630 4374642\nBot:    87933526 52744786 08811487 91505701 63665277 47244282 2800000\n\nHmm let me try differently. Group into 10-digit chunks from right.\n\nTop (55 digits): \n8846375423 310598 0495679338 3695122204 2140335406 3043 74642\nLet me redo. 55 digits split from right into groups of 10:\nlast 10: 6304374642\nnext 10: 2",
+      "extracted_answer": null,
+      "input_tokens": 266,
+      "output_tokens": 1024,
+      "elapsed_s": 13.221
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0008",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.00000000000564703818535995061171198601477007564558380080183062575694154585276567541111483384910566847965864747821296",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 5473119056286847168463801509743892906485675 / 969201708335532075152086984596268776682800159941896862 to 100 significant digits.\n\nLet me denote N = 5473119056286847168463801509743892906485675 (43 digits)\nD = 969201708335532075152086984596268776682800159941896862 (54 digits)\n\nResult is approximately N/D \u2248 5.6x10^(-12).\n\nLet me compute more precisely. N/D.\n\nFirst, let's find the magnitude. N has 43 digits, D has 54 digits, so N/D ~ 10^(-11) range.\n\nN \u2248 5.473119 \u00d7 10^42\nD \u2248 9.692017 \u00d7 10^53\nN/D \u2248 0.56470... \u00d7 10^(-11) = 5.6470... \u00d7 10^(-12)\n\nSo the first significant digit is around 5-6. Let me compute.\n\n5.473119056286847168463801509743892906485675 / 9.69201708335532075152086984596268776682800159941896862\n\nLet me compute this. 5.473119.../9.692017... \n\nLet me use long division approach or compute 5473119056286847168463801509743892906485675 * 10^100 / D, then format.\n\nActually, let me try to compute this step by step.\n\nLet me scale: compute N * 10^111 / D, which gives a ~100-111 digit integer, then place decimal.\n\nActually, N/D \u2248 5.65 \u00d7 10^(-12), so for 100 significant digits we need digits starting at 10^(-12) position through 10^(-111).\n\nLet q = N/D. We want q rounded to 100 sig figs.\n\nCompute Q = floor(N * 10^111 / D + 0.5) approximately... actually we need to compute N * 10^x / D where x is chosen so we get 100-101 digits.\n\nN has 43 digits. N/D has ~10^-12 magnitude. 10^12 * N has 55 digits, divided by D (54 digits) gives ~1-10. To get 100 sig digits, multiply by 10^99 more. So compute floor(N * 10^111 / D).\n\nThis is a big computation. Let me try to do it step-by-step.\n\nActually let me think about this more carefully. I'll use a different approach: compute the decimal expansion digit by digit.\n\nLet me set up: we want q = N/D. \nq \u2248 5.6... \u00d7 10^(-12)\n\nSo q = 0.000000000005... with the 12th decimal being 5.\n\nLet's compute N \u00d7 10^12 / D to get the first several digits times 10^0.\n\nN \u00d7 10^12 = 5473119056286847168463801509743892906485675000000000000000\n\nDivide by D = 969201708335532075152086984596268776682800159941896862.\n\n5473119056286847168463801509743892906485675000000000000000 / 969201708335532075152086984596268776682800159941896862\n\nApproximate quotient: ~ 5.6 * 10^(55-54) = 56... wait let me recount.\n\nN \u00d7 10^12 has 43+12 = 55 digits.\nD has 54 digits.\nQuotient has about 1-2 digits. Specifically ~5.6.",
+      "extracted_answer": null,
+      "input_tokens": 263,
+      "output_tokens": 1023,
+      "elapsed_s": 12.565
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0009",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "13148484.6030874862491557333739702568345284202388345353426937306517124699946697923965684377388216579446762",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N/D to 100 significant digits.\n\nN = 838456149636457340701299803758019810366428916399946475426837\nD = 63768272538386186048133431395447231525789609099475843\n\nLet me count digits.\nN: let me count: \"838456149636457340701299803758019810366428916399946475426837\"\nCount: 838456149636457340701299803758019810366428916399946475426837\nBreak into groups of 10:\n8384561496 3645734070 1299803758 0198103664 2891639994 6475426837\nThat's 6 groups of 10 = 60 digits.\n\nD: \"63768272538386186048133431395447231525789609099475843\"\n6376827253 8386186048 1334313954 4723152578 9609099475 843\nThat's 5 groups of 10 + 3 = 53 digits.\n\nSo N/D has about 60-53 = 7 or 8 digits before decimal point.\n\nLet me estimate: N/D \u2248 8.38e59 / 6.38e52 \u2248 1.314e7.\n\nSo the integer part has 8 digits. We need 100 significant digits, so we need 92 digits after the decimal point.\n\nLet me compute N/D more precisely.\n\nActually let me do this carefully. I'll compute the quotient with 100+ significant digits.\n\nQ = N/D. To get 100 sig digits, I'll compute floor(N * 10^92 / D) then place the decimal.\n\nWait, if Q has 8 digits before decimal, then 100 sig digits means 92 digits after decimal. So Q * 10^92 has 100 digits total.\n\nCompute N * 10^92 / D.\n\nActually, let me think again. N has 60 digits, D has 53 digits. N/D has either 7 or 8 digits integer part.\n\nN \u2248 8.384e59, D \u2248 6.377e52. Ratio \u2248 1.3147e7. So 8 integer digits.\n\nLet me compute more carefully. I'll do long division approach.\n\nLet Q = N/D. Compute Q * D = N. \n\nLet me first compute N/D to get initial digits.\n\nN/D: \nN = 8.38456149636457340701299803758019810366428916399946475426837 \u00d7 10^59\nD = 6.3768272538386186048133431395447231525789609099475843 \u00d7 10^52\n\nRatio of mantissas: 8.38456.../6.37682... \n\nLet me do 8.38456149636457340701299803758019810366428916399946475426837 / 6.3768272538386186048133431395447231525789609099475843\n\nActually this is very tedious. Let me try a different approach - compute step by step using long division.\n\nLet me denote:\nN = 838456149636457340701299803758019810366428916399946475426837\nD =  63768272538386186048133431395447231525789609099475843\n\nFirst, align. N has 60 digits, D has 53. \n\nWe want Q = N/D with 100 sig figs. Let's compute M = N * 10^(100 - 60 + 53 - 1) / D... hmm let me think.\n\nActually simpler: compute floor(N * 10^k / D) for some k such that result has 100 digits.\n\nIf Q \u2248 1.3e",
+      "extracted_answer": null,
+      "input_tokens": 268,
+      "output_tokens": 1024,
+      "elapsed_s": 12.751
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0010",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "1839696779885777446.70215208462922197688572896568490112452820291105334389569142624836521344460327158511555",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 34800383818676791138406036561701481865412751851840379846905865419706092550 / 18916369370846790929899525060353805779899906875076951524 to 100 significant digits.\n\nLet me count digits:\nDividend: 34800383818676791138406036561701481865412751851840379846905865419706092550\nLet me count: \n3480038381 8676791138 4060365617 0148186541 2751851840 3798469058 6541970609 2550\nThat's 10+10+10+10+10+10+10+4 = 74 digits.\n\nDivisor: 18916369370846790929899525060353805779899906875076951524\n1891636937 0846790929 8995250603 5380577989 9906875076 951524\n10+10+10+10+10+6 = 56 digits.\n\nSo quotient has about 74-56 = 18 digits before decimal, then we need 100 sig digits total, so 82 digits after the leading 18 digits? Wait, 100 sig digits means 100 digits total.\n\nLet me estimate: N/D \u2248 3.48e73 / 1.89e55 \u2248 1.84e18.\n\nSo integer part has 19 digits. Then we need 81 more digits after decimal.\n\nLet me compute more carefully. I'll do long division.\n\nActually, let me denote N = 34800383818676791138406036561701481865412751851840379846905865419706092550\nD = 18916369370846790929899525060353805779899906875076951524\n\nCompute N/D.\n\nFirst, find integer quotient Q and remainder R such that N = Q*D + R.\n\nLet me estimate: D \u2248 1.8916369370846790929899525060353805779899906875076951524 \u00d7 10^55\nN \u2248 3.4800383818676791138406036561701481865412751851840379846905865419706092550 \u00d7 10^73\n\nN/D \u2248 3.4800383818676791138406036561701481865412751851840379846905865419706092550 / 1.8916369370846790929899525060353805779899906875076951524 \u00d7 10^18\n\nLet me compute the leading digits first.\n3.4800383818676791138 / 1.8916369370846790930 \n\n1.8916369370846790930 \u00d7 1 = 1.8916369370846790930\nRemainder: 3.4800383818676791138 - 1.8916369370846790930 = 1.5884014447830000208\n\n\u00d7 10 = 15.884014447830000208\n/ 1.8916369370846790930\n1.8916369370846790930 \u00d7 8 = 15.133095496677432744\nRemainder: 15.884014447830000208 - 15.133095496677432744 = 0.750918951152567464\n\nSo first two digits: 1.8...\n\nThis is getting tedious. Let me think of a better approach.\n\nActually, I need to do this division precisely. Let me structure it.\n\nThe quotient Q = N/D as a real number. I need 100 significant digits.\n\nMultiply N by 10^k where k is chosen so N*10^k has enough digits for the quotient.\n\nSpecifically, I want to compute floor(N * 10^k / D) where k is such that the result has exactly 100 digits. \n\nN has 74 digits, D has 56 digits. Q \u2248 N/D has",
+      "extracted_answer": null,
+      "input_tokens": 274,
+      "output_tokens": 1024,
+      "elapsed_s": 11.72
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0011",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.000191443568067847198659613505531794644925381052879257564070738432096393237178768305482220731184873200427165",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 8587885748243218708369891694028047802997727 / 44858575479536037618263273156228050068761128168 to 100 significant digits.\n\nLet me denote N = 8587885748243218708369891694028047802997727\nD = 44858575479536037618263273156228050068761128168\n\nN has 43 digits, D has 47 digits. So N/D \u2248 1.9... \u00d7 10^-4.\n\nActually, let me check: N \u2248 8.588 \u00d7 10^42, D \u2248 4.486 \u00d7 10^46, so N/D \u2248 1.914 \u00d7 10^-4.\n\nI need 100 significant digits. So I need to compute N * 10^103 / D roughly (to get 100 sig digits starting from the first nonzero).\n\nLet me think. The first significant digit is at 10^-4 position. To get 100 sig digits, I need digits from 10^-4 to 10^-103. So I need N * 10^103 / D as an integer with proper rounding.\n\nActually let me compute N/D more carefully. Let q = floor(N * 10^K / D) for some K, then figure out where decimal point goes.\n\nLet me compute N * 10^103 and divide by D. The result will be an integer with 100 digits (since N/D \u2248 1.9e-4, N/D \u00d7 10^103 \u2248 1.9 \u00d7 10^99, which has 100 digits).\n\nThis is a huge computation. Let me do long division.\n\nLet me first normalize. Compute N/D digit by digit.\n\nN = 8587885748243218708369891694028047802997727\nD = 44858575479536037618263273156228050068761128168\n\nSince N < D, quotient starts with 0.\n\nLet me compute 10*N / D digit by digit. But 10N still < D. Keep multiplying.\n\nN: 43 digits\nD: 47 digits\n10^4 * N has 47 digits. 10^4 * N = 85878857482432187083698916940280478029977270000\n\nCompare to D = 44858575479536037618263273156228050068761128168\n\n85878857482432187083698916940280478029977270000 / 44858575479536037618263273156228050068761128168\n\nFirst digit: 1 (since 1*D < 10^4*N < 2*D?)\n2*D = 89717150959072075236526546312456100137522256336\n10^4 * N = 85878857482432187083698916940280478029977270000\n\n85.87... < 89.71... so quotient first digit is 1.\n\nRemainder1 = 10^4*N - D = 85878857482432187083698916940280478029977270000 - 44858575479536037618263273156228050068761128168\n\nLet me subtract:\n  85878857482432187083698916940280478029977270000\n- 44858575479536037618263273156228050068761128168\n= 41020282002896149465435643784052427961216141832\n\nSo after 10^4*N, first quotient digit is 1, remainder 41020282002896149465435643784052427961216141832.\n\nWait, I think I should approach differently. Let me set up: we want digits d_1 d_2 ... d_100 such that N/D \u2248 0.000d_1 d_2 ... d_100\n\nActually the first three digits after decimal are 0s",
+      "extracted_answer": null,
+      "input_tokens": 261,
+      "output_tokens": 1024,
+      "elapsed_s": 13.679
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0012",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "1816659025.00872732038257027880257610906850143553100802056490171350982446115722544733725945210031747501146",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide a 78-digit number by a 66-digit number, getting approximately 10^12 result, need 100 sig digits.\n\nLet me denote:\nN = 757731883100918815084118666641938230975261055296560547742023894201448084539817\nD = 417101873642621863726281358665899267068144620567473165256193671366258\n\nN has 78 digits, D has 66 digits, so N/D has about 78-66 = 12 or 13 digits before decimal.\n\nLet me estimate: N \u2248 7.577 \u00d7 10^77, D \u2248 4.171 \u00d7 10^65, so N/D \u2248 1.816 \u00d7 10^12.\n\nSo the integer part has 13 digits. We need 100 sig digits total, so 87 digits after decimal point.\n\nLet me compute this carefully. I'll do long division.\n\nActually, let me think differently. I need Q = N/D to 100 sig digits. Since the answer is about 1.8 \u00d7 10^12, I need the result as a number with 13 digits before decimal and 87 after.\n\nEquivalently, compute floor(N \u00d7 10^87 / D) and then round.\n\nLet me compute Q_int = floor(N * 10^100 / D), which gives 100+ digits integer, then place decimal.\n\nWait, N/D \u2248 1.816 \u00d7 10^12. Multiply by 10^87 gives ~1.816 \u00d7 10^99, which is 100-digit integer. Then we'd need to round.\n\nLet me compute M = N * 10^87, then divide by D.\n\nActually, let me just do long division digit by digit. I'll compute N/D to enough precision.\n\nLet me first get a good estimate. \nN = 757731883100918815084118666641938230975261055296560547742023894201448084539817\nD = 417101873642621863726281358665899267068144620567473165256193671366258\n\nLet me compute D \u00d7 1 = D\nD \u00d7 2 = 834203747285243727452562717331798534136289241134946330512387342732516\n\nCompare to first part of N. N starts with 7577... D starts with 4171... \n7577/4171 \u2248 1.817\n\nLet me try to compute this step by step. This is going to be extremely tedious but let me try.\n\nActually, let me try a different approach. Let me compute reciprocal of D to high precision using Newton's method, but mentally... that's hard too.\n\nLet me just do the division. Set up:\nN / D. \n\nStep 1: How many times does D go into the leading part of N?\nD = 4.17101873642621863726281358665899267068144620567473165256193671366258 \u00d7 10^65\nN = 7.57731883100918815084118666641938230975261055296560547742023894201448084539817 \u00d7 10^77\n\nN/D = (7.57731883100918815084118666641938230975261055296560547742023894201448084539817 / 4.17101873642621863726281358665899267068144620567473165256193671366258) \u00d7 10^12\n\nLet me compute 7.57731883100918815.../4.17101873642621863...\n\nLet a = 7.57731883100918815084118666641938230975261055296560547742023894201448084539817\nLet b = 4.17101873642621863726281358665899267068144620567473165256193671366258",
+      "extracted_answer": null,
+      "input_tokens": 279,
+      "output_tokens": 1024,
+      "elapsed_s": 13.035
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0013",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "63062343348915840107152844.4184193186374441058576241913083254969262466317778041001478090463913156166126235",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N by D to 100 significant digits.\n\nN = 451439322610738017934448551581784234687283303238865314062394060657282582\nD = 7158619528503440970139660970203755999293110653\n\nLet me count digits.\nN: let me count: \"451439322610738017934448551581784234687283303238865314062394060657282582\"\nCount: 451 439 322 610 738 017 934 448 551 581 784 234 687 283 303 238 865 314 062 394 060 657 282 582\nThat's 24 groups of 3 = 72 digits.\n\nD: \"7158619528503440970139660970203755999293110653\"\nCount: 7 158 619 528 503 440 970 139 660 970 203 755 999 293 110 653\nThat's 1 + 15*3 = 46 digits.\n\nSo N/D has roughly 72-46 = 26 digits before decimal (26 or 27).\n\nQuotient magnitude: N \u2248 4.514e71, D \u2248 7.159e45, so N/D \u2248 6.306e25. So 26 digits before decimal point, and we need 74 digits after decimal to get 100 sig figs.\n\nI need to perform long division. Let me be methodical.\n\nActually, let me compute this via high precision. I'll compute Q = floor(N * 10^k / D) for suitable k, then format.\n\nWe want 100 significant digits. Q \u2248 6.3e25. So we need 100 digits total. Compute floor(N * 10^74 / D), which gives us a 100-digit integer.\n\nLet M = N * 10^74. Then Q = floor(M/D), R = M - Q*D. Check if R/D >= 0.5 for rounding.\n\nBut computing N*10^74 by hand and dividing is tedious. Let me think of a better approach.\n\nAlternative: do long division step by step, generating one digit at a time for 100 digits.\n\nActually let me try. I'll compute digit by digit.\n\nLet me set up: I'll track remainder R. Start with R=0, process digits of N one at a time (there are 72), then append zeros.\n\nAt each step, R = R*10 + next_digit, then quotient digit = floor(R/D), R = R mod D.\n\nFor the first 45 digits of N, R*10 + digit < D (since D has 46 digits), so quotient digits are 0. Actually we need R to grow to at least D's size.\n\nAfter processing 46 digits of N (which forms a 46-digit number, possibly smaller than D), we start getting nonzero quotient digits.\n\nFirst 46 digits of N: \"4514393226107380179344485515817842346872833032\"\nCompare with D = \"7158619528503440970139660970203755999293110653\"\n\n4514... < 7158..., so first quotient digit (at position for 46 digits processed) is 0.\n\nAfter 47 digits: take first 47 digits of N = \"45143932261073801793444855158178423468728330323\"\nThis is a 47-digit number. Divide by D (46 digits):\n45143932261073801793444855158178423468728330323 / 7158619528503440970139660970203755999293110653\n\nEstimate: 45143.../7158... \u2248 6.306. So quotient digit is 6.",
+      "extracted_answer": null,
+      "input_tokens": 270,
+      "output_tokens": 1023,
+      "elapsed_s": 14.53
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0014",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "754584957779172691601292232987334.056988955185380600233777633927194442279784068870445981579787432727637754",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 1978317584654275774650972485512375081277107166248237168252403221228572130 / 2621729421265809576472902670808084459776 to 100 significant digits.\n\nLet me denote N = 1978317584654275774650972485512375081277107166248237168252403221228572130\nD = 2621729421265809576472902670808084459776\n\nFirst, find the magnitude. N has 73 digits, D has 40 digits. So N/D has about 33-34 digits before decimal.\n\nLet me estimate: N \u2248 1.978 \u00d7 10^72, D \u2248 2.622 \u00d7 10^39, so N/D \u2248 0.7545 \u00d7 10^33 \u2248 7.545 \u00d7 10^32.\n\nSo the integer part has 33 digits. We need 100 significant digits, so we need 67 digits after decimal point (100 - 33 = 67).\n\nLet me compute N/D carefully. I'll compute N * 10^67 / D to get 100 digits as an integer.\n\nActually, let me just do long division.\n\nLet me first compute Q = floor(N/D) and remainder.\n\nD = 2621729421265809576472902670808084459776\nN = 1978317584654275774650972485512375081277107166248237168252403221228572130\n\nLet me try to estimate Q. \nN \u2248 1.978317584654275774650972485512375081 \u00d7 10^72\nD \u2248 2.621729421265809576472902670808084459776 \u00d7 10^39\nN/D \u2248 0.754581... \u00d7 10^33\n\nLet me compute more precisely: 1.978317584654275774650972485512375081 / 2.621729421265809576472902670808084459776\n\nLet me compute step by step. \n\nActually, let me do this more systematically. I'll compute N/D by performing long division step by step, but that will be very tedious for 100 digits.\n\nLet me think of another approach. Compute 10^100 * N / D approximately... no wait. We need 100 sig digits of N/D.\n\nN/D has form X.xxx... \u00d7 10^32, with 33 digits before decimal if we write normally.\nActually N/D \u2248 7.546 \u00d7 10^32, so integer part has 33 digits.\n\nTo get 100 sig digits, we compute A = floor(N * 10^67 / D), which will have 100 digits (or check whether it rounds up).\n\nThen the answer is A written with decimal point after 33rd digit.\n\nActually we need to also check the 101st digit for rounding.\n\nLet me compute M = N * 10^68 / D, then take floor, get 101 digits, then round.\n\nLet me think of using continued computation. N * 10^68 is a 141-digit number. Divide by D (40 digits) gives 101 or 102 digit result.\n\nThis is going to be really hard without a calculator. Let me try to be systematic.\n\nActually, let me try computing reciprocal of D first. \n\n1/D where D = 2621729421265809576472902670808084459776\n\nHmm, let me note that 2621729421265809576472902670808084459776 might have a nice form. Let me check: \n2^something? 2^131 = 2722258935367507707706996859454145691648. Too big.\n2^130 = 1361129467683753",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 13.219
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0015",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.000000000000000000000197989413615880871020544089788965179448303805650034457971410509801795854069025173976051260581427448640785",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 871196095899463688996735621506086359015560096972 / 4400215546825501752155333144463891262355712753904635261124634530965646 to 100 significant digits.\n\nLet me denote N = 871196095899463688996735621506086359015560096972 (48 digits)\nD = 4400215546825501752155333144463891262355712753904635261124634530965646 (70 digits)\n\nN/D \u2248 10^(48-70) * (N/D normalized) = very small number.\n\nLet me compute. N has 48 digits, D has 70 digits. So N/D \u2248 10^-22 roughly.\n\nMore precisely: N \u2248 8.71196... \u00d7 10^47\nD \u2248 4.40021... \u00d7 10^69\nN/D \u2248 1.98... \u00d7 10^-22\n\nTo get 100 significant digits, I need to compute N * 10^121 / D (approximately, giving 100 sig digits starting after the leading zeros).\n\nActually, let me just compute N/D to 100 significant figures. The result starts with \"1.98...\" \u00d7 10^-22, so in decimal form: 0.0000000000000000000000198...\n\nFor 100 significant digits, I compute floor(N * 10^121 / D) and then round.\n\nLet me set k such that 10^(k-1) \u2264 N/D * 10^? Hmm, let me think again.\n\nN/D \u2248 1.98 \u00d7 10^-22. The first significant digit is at position 22 after the decimal. To get 100 sig digits, I need precision to 10^-(22+99) = 10^-121.\n\nSo compute Q = floor(N * 10^121 / D), this gives a 100-digit integer (starting with 198...), then place decimal point.\n\nLet me compute N * 10^121 / D.\n\nN * 10^121 = 871196095899463688996735621506086359015560096972 * 10^121\n\nThis is a 48+121 = 169 digit number.\n\nI need to divide by D (70 digits) to get approximately 169-70 = 99 or 100 digit quotient.\n\nThis is tedious but let me try. Let me be careful.\n\nActually, let me think about this differently. Let me compute N/D using long division in a smart way.\n\nLet me compute q \u2248 N/D first to good precision, then refine.\n\nN = 8.71196095899463688996735621506086359015560096972 \u00d7 10^47\nD = 4.400215546825501752155333144463891262355712753904635261124634530965646 \u00d7 10^69\n\nq = N/D = (8.71196095899463688996735621506086359015560096972 / 4.400215546825501752155333144463891262355712753904635261124634530965646) \u00d7 10^-22\n\nLet a = 8.71196095899463688996735621506086359015560096972\nLet b = 4.400215546825501752155333144463891262355712753904635261124634530965646\n\na/b \u2248 ?\n\nLet me compute 2*b = 8.800431093651003504310666288927782524711425507809270522249269061931292\n\na - ? Hmm, a \u2248 8.712, b \u2248 4.400, a/b \u2248 1.98.\n\n1.98 * b = 1.98 * 4.400215546825501752155333144463891262355",
+      "extracted_answer": null,
+      "input_tokens": 270,
+      "output_tokens": 1024,
+      "elapsed_s": 12.401
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0016",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "3187290036.77822967213886434885804236879582320143397386829095308367328426479524598098771109646297124891454",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide 190223802935361090473295427877571751115546325493492406 by 59681987123971543454858379884459059054048828 to 100 significant digits.\n\nLet me denote N = 190223802935361090473295427877571751115546325493492406\nD = 59681987123971543454858379884459059054048828\n\nCount digits: N has... let me count: 190223802935361090473295427877571751115546325493492406\n1-9-0-2-2-3-8-0-2-9-3-5-3-6-1-0-9-0-4-7-3-2-9-5-4-2-7-8-7-7-5-7-1-7-5-1-1-1-5-5-4-6-3-2-5-4-9-3-4-9-2-4-0-6\nThat's 54 digits.\n\nD: 59681987123971543454858379884459059054048828\n5-9-6-8-1-9-8-7-1-2-3-9-7-1-5-4-3-4-5-4-8-5-8-3-7-9-8-8-4-4-5-9-0-5-9-0-5-4-0-4-8-8-2-8\n44 digits.\n\nSo N/D is about 10^(54-44) = 10^10 range. Specifically, first digits: 190.../596... \u2248 0.3187... \u00d7 10^10, so about 3.187 \u00d7 10^9.\n\nActually let's check: 190223802935361090473295427877571751115546325493492406 / 59681987123971543454858379884459059054048828\n\nLeading: 1.90223... \u00d7 10^53 / 5.9681987... \u00d7 10^43 = 0.31873... \u00d7 10^10 = 3.1873... \u00d7 10^9.\n\nSo the integer part has 10 digits. We need 100 sig digits, so we need 90 digits after the decimal point.\n\nLet me compute this carefully. I'll do long division.\n\nActually, let me multiply N by 10^90 and divide by D to get 100 digits, then round.\n\nQ = floor(N * 10^k / D) for appropriate k, then round.\n\nNeed 100 sig figs. Integer part is 10 digits, so we need 90 decimal digits.\n\nLet me compute Q = N * 10^90 / D, giving integer with 100 digits.\n\nThis is complex. Let me try a different approach - estimate Q and refine.\n\nActually, let me think. I'll try to compute step by step.\n\nLet's denote D = 59681987123971543454858379884459059054048828.\n\nFirst, find integer part: floor(N/D).\n\nN/D \u2248 3.187 \u00d7 10^9. Let me estimate more precisely.\n\nN \u2248 1.90223802935361 \u00d7 10^53\nD \u2248 5.96819871239715 \u00d7 10^43\nN/D \u2248 0.318726... \u00d7 10^10 = 3.18726... \u00d7 10^9\n\nLet me compute 3187261234 * D and see.\n\nActually this is getting tedious. Let me try to be systematic.\n\nLet me estimate N/D with more precision using the top digits.\n\nN_top = 1902238029353610904732954278775717511155463254934924.06 \u00d7 10^2 (using more)\nD_top = 59681987123971543454858379884459059054048828\n\nUse ratio 1902",
+      "extracted_answer": null,
+      "input_tokens": 263,
+      "output_tokens": 1024,
+      "elapsed_s": 12.295
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0017",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "2203120853895317594.49416380833198960261266609456775571940136897739887887214145045404430986790451199776667",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N/D to 100 significant digits.\n\nN = 62209991382876576660135138587064688076034020303582398271548796152003635\nD = 28237212349419536643200182787163522998389939738317096\n\nLet me count digits.\nN digits: let me count: \"62209991382876576660135138587064688076034020303582398271548796152003635\"\nBreak into 10s:\n6220999138 2876576660 1351385870 6468807603 4020303582 3982715487 9615200363 5\nThat's 7*10 + 1 = 71 digits.\n\nD: \"28237212349419536643200182787163522998389939738317096\"\n2823721234 9419536643 2001827871 6352299838 9939738317 096\n5*10 + 3 = 53 digits.\n\nSo N/D has about 71 - 53 = 18 digits before decimal point (roughly).\n\nMore precisely, compute leading. N \u2248 6.2209991... \u00d7 10^70, D \u2248 2.8237212... \u00d7 10^52. Ratio \u2248 2.2031... \u00d7 10^18.\n\nSo the integer part has 19 digits. We need 100 sig digits total, so 81 digits after the decimal.\n\nLet me compute the quotient. This is a big computation. Let me be systematic.\n\nActually, let me compute N * 10^81 / D to get an integer with 100 digits (approximately), then place decimal.\n\nWe want 100 significant digits, integer part is 19 digits, so we need 81 fractional digits. We need to compute floor(N * 10^81 / D) with proper rounding at 100th digit.\n\nActually, to get 100 sig digits with correct rounding, compute N * 10^81 / D with enough precision, then round.\n\nLet me just do long division carefully. I'll compute q = N / D iteratively.\n\nActually, let me try to compute this more cleverly. Let me estimate then refine.\n\nN = 62209991382876576660135138587064688076034020303582398271548796152003635\nD = 28237212349419536643200182787163522998389939738317096\n\nStep 1: Find integer quotient Q0 = floor(N/D). Since N has 71 digits and D has 53 digits, Q0 has 18 or 19 digits.\n\nLet me estimate: N/D \u2248 62209991382876576660135138587064688076034020303582398271548796152003635 / 28237212349419536643200182787163522998389939738317096\n\nLet's compute D * 2 = 56474424698839073286400365574327045996779879476634192\nN - 2*D*10^18 = ?\n\nHmm, this is getting complex. Let me try another approach.\n\nLet me compute how many digits the quotient has. \nlog10(N) \u2248 70 + log10(6.2209991) \u2248 70.7940\nlog10(D) \u2248 52 + log10(2.8237212) \u2248 52.4507\nlog10(N/D) \u2248 18.3433\nSo quotient \u2248 10^18.3433 \u2248 2.2035 \u00d7 10^18. Integer part has 19 digits.\n\nLet me do this step by step. I'll compute successive digits.\n\nLet me align: multiply D by powers of 10 to match N's magn",
+      "extracted_answer": null,
+      "input_tokens": 272,
+      "output_tokens": 1024,
+      "elapsed_s": 13.319
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0018",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.655346955352251892260618728292408990442660200157361158886680303010618904088490118071742288089855896221484",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 5693958219000938960379813311511456514370115578 / 8688463679426741501322892066124828868560743859 to 100 significant digits.\n\nLet me denote N = 5693958219000938960379813311511456514370115578\nD = 8688463679426741501322892066124828868560743859\n\nN/D < 1, so first significant digit is after the decimal point.\n\nLet me compute. N/D \u2248 0.655...\n\nLet me do this carefully. I need 100 significant digits, so I need N*10^100 / D roughly, with rounding.\n\nSince result < 1, first sig digit is tenths place. So I need digits starting at 10^-1. To get 100 sig digits, compute floor(N * 10^100 / D) or round.\n\nActually, let me compute N*10^100 / D and then place decimal.\n\nLet me estimate: N/D \u2248 5693958219/8688463679 \u2248 0.6553...\n\nMore precisely: 5693958219000938960379813311511456514370115578 / 8688463679426741501322892066124828868560743859\n\nLet me compute 0.6553 * D:\n0.6553 * 8688463679426741501322892066124828868560743859\n= 5693629... hmm let me just do long division approach.\n\nActually, let me try to compute this step by step with high precision.\n\nLet me write q = N/D. I'll compute successive digits.\n\nMultiply N by 10: 56939582190009389603798133115114565143701155780\nDivide by D = 8688463679426741501322892066124828868560743859\n\n56939582190009389603798133115114565143701155780 / 8688463679426741501322892066124828868560743859\n\nEstimate quotient digit: 56939.../8688... \u2248 6.55, so digit = 6.\n6 * D = 52130782076560449007937352396748973211364463154\nSubtract: 56939582190009389603798133115114565143701155780 - 52130782076560449007937352396748973211364463154 = 4808800113448940595860780718365591932336692626\n\nSo first digit is 6. Remainder r1 = 4808800113448940595860780718365591932336692626.\n\nNext: r1 * 10 = 48088001134489405958607807183655919323366926260\n/ D \u2248 48088.../8688... \u2248 5.535, so digit = 5.\n5 * D = 43442318397133707506614460330624144342803719295\nSubtract: 48088001134489405958607807183655919323366926260 - 43442318397133707506614460330624144342803719295 = 4645682737355698451993346853031774980563206965\n\nDigit 2: 5. r2 = 4645682737355698451993346853031774980563206965\n\nr2 * 10 = 46456827373556984519933468530317749805632069650\n/ D \u2248 5.347, digit = 5\n5 * D = 43442318397133707506614460330624144342803719295\nSubtract: 46456827373556984519933468530317749805632069650 - 43442318397133707506614460330624144342803719295 = 3014508976423277013319008199693605462828350355\n\nDigit 3: 5. r3 = 3014508976423277013319008199693605462828350355\n\nr3 *",
+      "extracted_answer": null,
+      "input_tokens": 262,
+      "output_tokens": 1024,
+      "elapsed_s": 13.578
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0019",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "1734.92781062526301620190540192239990706563426339619236501042500754414475867103769851994237894330446985919",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 7123300610546064805250874779335240214545763879 / 4105819600631594958281901685663286783661693 to 100 significant digits.\n\nLet me denote N = 7123300610546064805250874779335240214545763879 (46 digits)\nD = 4105819600631594958281901685663286783661693 (43 digits)\n\nQuotient \u2248 N/D, roughly 10^3 order. Let me estimate: N/D \u2248 7.1233e45 / 4.10582e42 \u2248 1734.7...\n\nActually 7123.3.../4105.8... \u2248 1.7349... so quotient \u2248 1734.9...\n\nI need 100 sig digits. Integer part has 4 digits, so I need 96 digits after decimal point.\n\nLet me compute N*10^96 / D and get integer part, then place decimal.\n\nActually, compute N/D with 100 sig figs means result = 1734.xxx with 96 digits after decimal.\n\nLet me compute step by step using long division. This is going to be tedious. Let me do it carefully.\n\nFirst, find integer quotient of N/D.\nN = 7123300610546064805250874779335240214545763879\nD = 4105819600631594958281901685663286783661693\n\nN has 46 digits, D has 43 digits, so quotient has 3 or 4 digits.\n\nD*1000 = 4105819600631594958281901685663286783661693000 (46 digits)\nCompare to N: \nN = 7123300610546064805250874779335240214545763879\nD*1000=4105819600631594958281901685663286783661693000\n\nN > D*1000. \nD*2000 = 8211639201263189916563803371326573567323386000 > N? \n8211... vs 7123..., yes D*2000 > N. So quotient integer part between 1000 and 2000.\n\nD*1700 = ?\nD*17 = 4105819600631594958281901685663286783661693 * 17\n= 4105819600631594958281901685663286783661693 * 10 + *7\n*10 = 41058196006315949582819016856632867836616930\n*7: 4105819600631594958281901685663286783661693 * 7\n  = 28740737204421164707973311799643007485631851\nSum: 41058196006315949582819016856632867836616930 + 28740737204421164707973311799643007485631851\n= 69798933210737114290792328656275875322248781\nSo D*1700 = 69798933210737114290792328656275875322248781 * 100... wait no.\n\nLet me redo. D*17 = 69798933210737114290792328656275875322248781 (44 digits)\nD*1700 = 6979893321073711429079232865627587532224878100 (46 digits)\nN      = 7123300610546064805250874779335240214545763879\n\nN - D*1700 = 7123300610546064805250874779335240214545763879 - 6979893321073711429079232865627587532224878100\n= 143407289472353376171641913707652682320885779\n\nNow D*30 = 123174588018947848748457050569898603509850790 (45 digits)\nWait, D*3 = 12317458801894784874845705056989860350985079\nD*30 = 123174588018947",
+      "extracted_answer": null,
+      "input_tokens": 261,
+      "output_tokens": 1024,
+      "elapsed_s": 15.321
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0020",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "550778116923589.540521181628228847944951521251144714743450539766150267059042087635166476923583762177999988",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 946715248075547945254921480954558887626347981223554575089957641130423 / 1718868667774045732363910747825688111107595129608359486 to 100 significant digits.\n\nLet me count digits.\nDividend: 946715248075547945254921480954558887626347981223554575089957641130423\nLet me count: 9467 1524 8075 5479 4525 4921 4809 5455 8887 6263 4798 1223 5545 7508 9957 6411 30423\nActually let me count carefully:\n\"946715248075547945254921480954558887626347981223554575089957641130423\"\nGroups of 10:\n9467152480 (10)\n7554794525 (20)\n4921480954 (30)\n5588876263 (40)\n4798122355 (50)\n4575089957 (60)\n641130423 (69)\nSo 69 digits.\n\nDivisor: \"1718868667774045732363910747825688111107595129608359486\"\nGroups of 10:\n1718868667 (10)\n7740457323 (20)\n6391074782 (30)\n5688111107 (40)\n5951296083 (50)\n59486 (55)\nSo 55 digits.\n\nQuotient has about 69-55+1 = 15 digits before decimal. Let me compute roughly: dividend \u2248 9.46715e68, divisor \u2248 1.71887e54, quotient \u2248 5.50777e14.\n\nTo get 100 significant digits, I need quotient computed to 100 sig digits. That's 14 digits before decimal and 86 after, approximately.\n\nLet me do long division. Actually, let me multiply dividend by 10^86 (to get 100 sig digit result) and divide.\n\nNeed: Q = floor(N * 10^(100-15) / D) with appropriate rounding. Actually, quotient has 15 digits before decimal if result \u2248 5.5e14. So to get 100 sig digits, I need 85 digits after decimal point.\n\nCompute Q_int = N * 10^85 / D, take first 100 digits, round last.\n\nActually easier: compute N/D with enough precision. Let me do long division manually... this is painful but doable.\n\nLet me denote D = 1718868667774045732363910747825688111107595129608359486.\n\nEstimate quotient: let's find it step by step.\n\nN = 946715248075547945254921480954558887626347981223554575089957641130423\n\nFirst, how many times does D go into leading portion? D has 55 digits. Take first 55 digits of N:\nN first 55: 9467152480755479452549214809545588876263479812235545750\nCompare to D: 1718868667774045732363910747825688111107595129608359486\n\n9467152480755479452549214809545588876263479812235545750 / 1718868667774045732363910747825688111107595129608359486 \u2248 5.5...\n\nLet me compute 5 * D = 8594343338870228661819553739128440555537975648041797430\nSubtract: 9467152480755479452549214809545588876263479812235545750 - 8594343338870228661819553739128440555537975648041797430\n= 872809141885250790729661070417148320725504164193748320\n\n6 * D = 10313212006644274394183464486954128666645",
+      "extracted_answer": null,
+      "input_tokens": 272,
+      "output_tokens": 1024,
+      "elapsed_s": 15.777
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0021",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.0000000000000277933199601420671342722322847802794758929224848010899824926875245381936436568838912409729359292633783853",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 84429189544725492242720367367312723771924467761447 / 3037751145448041956152631323349509420627811672256999977269855613 to 100 significant digits.\n\nLet me denote N = 84429189544725492242720367367312723771924467761447\nD = 3037751145448041956152631323349509420627811672256999977269855613\n\nN has 50 digits, D has 61 digits. So the quotient is about 10^(-11), meaning first significant digit appears at position 11 after decimal.\n\nLet me compute N/D. First, let's get an estimate.\n\nN \u2248 8.4429189544725492242720367367312723771924467761447 \u00d7 10^49\nD \u2248 3.037751145448041956152631323349509420627811672256999977269855613 \u00d7 10^60\n\nN/D \u2248 2.77935... \u00d7 10^-11\n\nTo get 100 significant digits, I need to compute N * 10^k / D for appropriate k.\n\nLet me compute N/D to 100 sig digits. That means I need the first 100 significant digits of the result.\n\nThe result starts at 10^-11 position. So I need digits from 10^-11 down to 10^-110.\n\nEquivalently, compute floor(N * 10^110 / D) and then round based on the next digit.\n\nActually, let's compute N * 10^110 / D, get integer part, then handle rounding.\n\nLet me set up: I need Q such that Q = N * 10^110 / D, rounded.\n\nN * 10^110 has 50 + 110 = 160 digits (well, 10^159 to 10^160).\nD has 61 digits.\nQuotient has about 160 - 61 = 99 or 100 digits.\n\nLet's estimate more precisely: N/D \u2248 2.779 \u00d7 10^-11, so N*10^110/D \u2248 2.779 \u00d7 10^99, which is a 100-digit number.\n\nSo the answer formatted: 0.000000000027793... with 100 significant digits starting at position 11 after decimal.\n\nThis is a long division. Let me try to do this carefully.\n\nLet me compute step by step. I'll use high precision arithmetic mentally.\n\nFirst, let me get initial estimate better:\nN = 8.4429189544725492242720367367312723771924467761447 \u00d7 10^49\nD = 3.037751145448041956152631323349509420627811672256999977269855613 \u00d7 10^60\n\nq \u2248 N/D\n\nLet me compute 8.4429189544725492242720367367312723771924467761447 / 3.037751145448041956152631323349509420627811672256999977269855613\n\nLet me use the fact: q = N/D, and let D' = 3.0377511454480419561526313233495094206278116722569...\n\n8.4429.../3.0377... \u2248 ?\n\n3.0377511454480419561526313233495094206278116722569... \u00d7 2 = 6.0755022908960839123052626466990188412556233445139...\n3.0377... \u00d7 2.7 = 8.2019280892...\n3.0377... \u00d7 2.8 = 8.5057031832...\n\n8.4429... - 8.2019... = 0.2409908652...\n0.2409908652.../3.0377... \u2248 0.0793...\n\nSo 2.77... Let me refine",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 13.012
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0022",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.00000160524894438833543911423931092586880051875617067626142240220049696289765946134794628156347144386813895205",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 7491604052473979779728893835403590100328166385729260 / 4666942207726280695918483761092794739271225532083775138379 to 100 significant digits.\n\nLet me denote N = 7491604052473979779728893835403590100328166385729260\nD = 4666942207726280695918483761092794739271225532083775138379\n\nN has 52 digits, D has 58 digits. So N/D \u2248 1.6... \u00d7 10^(-6).\n\nMore precisely, let's compute. N/D \u2248 7.491604... \u00d7 10^51 / 4.666942... \u00d7 10^57 = 1.6052... \u00d7 10^(-6).\n\nWe need 100 significant digits. So we need N/D to about 10^(-106) precision. That means we need N * 10^105 / D computed as integer division, essentially.\n\nLet me compute N * 10^105 / D. The result should be a 100-digit integer (since the quotient is ~1.6 \u00d7 10^(-6), multiplying by 10^105 gives ~1.6 \u00d7 10^99, a 100-digit integer).\n\nActually, let me think: quotient q \u2248 1.6052e-6. First significant digit at position 10^(-6). For 100 sig digits, we need digits at positions 10^(-6) through 10^(-105). So compute floor(N * 10^105 / D) and then we get the 100 digits, then round based on the next digit (need 101 to round).\n\nLet me compute N * 10^106 / D to get 101 digits, then round.\n\nActually to do banker's rounding properly on the 100th digit, I need to know if the remainder is exactly half or not. Let me compute more digits.\n\nThis requires big integer arithmetic. Let me try to do this carefully.\n\nN = 7491604052473979779728893835403590100328166385729260\nD = 4666942207726280695918483761092794739271225532083775138379\n\nLet me compute N * 10^106. First I need N * 10^106.\n\nN = 7.491604052473979779728893835403590100328166385729260 \u00d7 10^51\nN * 10^106 = 7491604052473979779728893835403590100328166385729260 \u00d7 10^106\n\nSo N * 10^106 is this 52-digit number followed by 106 zeros, total 158 digits.\n\nDivide by D (58 digits) gives approximately 100-101 digit result.\n\nLet me think numerically. q = N/D. \nq \u00d7 10^6 \u2248 1.605...\nLet me compute 10^6 \u00d7 N / D first to estimate leading digits.\n\n10^6 \u00d7 N = 7491604052473979779728893835403590100328166385729260000000\n\nDivide by D = 4666942207726280695918483761092794739271225532083775138379:\n\n7491604052473979779728893835403590100328166385729260000000 / 4666942207726280695918483761092794739271225532083775138379\n\nBoth have 58 digits now. Ratio \u2248 7.4916.../4.6669... \u2248 1.6053...\n\n7491604052473979779728893835403590100328166385729260000000\n- 1 \u00d7 D = 4666942207726280695918483761092794739271225532083775138379\n= 2824661844747699083810410074310795361056940853645484861621\n\nSo integ",
+      "extracted_answer": null,
+      "input_tokens": 268,
+      "output_tokens": 1024,
+      "elapsed_s": 13.15
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0023",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.102396811135372753324522681393678815245405767648637808426781689385557931977333939900063129007859464263703",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 221055170366673514836704284901378569143700340572978569650738396679471845 / 2158809126139969139556796089210693262133210302749884280145082074620616345 to 100 significant digits.\n\nThe result is less than 1 (dividend < divisor). First significant digit is the first non-zero digit after decimal point.\n\nLet me compute N/D where N \u2248 2.21055e73, D \u2248 2.15881e75.\n\nSo N/D \u2248 0.10239...\n\nLet me do long division. Actually, let me compute this carefully.\n\nN = 221055170366673514836704284901378569143700340572978569650738396679471845\nD = 2158809126139969139556796089210693262133210302749884280145082074620616345\n\nN has 72 digits, D has 73 digits. So N/D < 1, and since N*10 > D (N*10 = 2.21e74, D = 2.16e75, so N*10 < D still). Let me check: N*10 vs D.\n\nN*10 = 2210551703666735148367042849013785691437003405729785696507383966794718450\nD     = 2158809126139969139556796089210693262133210302749884280145082074620616345\n\nN*10 has 73 digits, D has 73 digits. N*10 > D, so first digit after decimal is 1? Wait: N/D, we want digits. Since N < D, we multiply N by 10: N*10/D gives first decimal digit.\n\nN*10 / D: N*10 > D, so first digit is 1. N*10 - D = ?\n\nActually, let me compute more carefully. We want 100 significant digits, so we need 100 digits after the leading zero(s). Since N/D \u2248 0.102..., the first significant digit is 1, and we need 100 digits starting from that 1.\n\nThis is a huge computation. Let me think about how to approach this systematically.\n\nI need to perform long division. Let me set up: compute \u230aN * 10^100 / D\u230b and then figure out rounding.\n\nActually, we want 100 significant digits of N/D. N/D \u2248 0.1023..., so we want digits d1 d2 ... d100 where N/D = 0.d1 d2 d3 ... with d1 \u2260 0.\n\nCompute N * 10^100 / D, get integer quotient Q which has 100 digits, then N/D \u2248 0.Q (with leading zero already stripped since d1=1 means Q starts with 1).\n\nWait: N/D \u2248 0.10239... So N * 10^100 \u2248 0.10239... * 10^100 = 1.0239... * 10^99, which is 100 digits starting with 1. Good.\n\nSo Q = \u230aN * 10^100 / D\u230b gives us the 100 significant digits, but we need to handle rounding at the 100th digit.\n\nFor banker's rounding: compute N * 10^100 / D exactly. The 100th digit plus a remainder. Need to check if remainder is exactly half.\n\nLet me compute Q = \u230aN * 10^101 / D\u230b, this gives 101 digits. Then we round the last digit using the 101st digit.\n\nActually, the cleanest: compute 2",
+      "extracted_answer": null,
+      "input_tokens": 279,
+      "output_tokens": 1024,
+      "elapsed_s": 14.006
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0024",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.00000000000751614505978396783182326501610979864105634695919809858689444763879401509145851947245204182362489302757386",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 323188869497964766054966865002863449308469644860361635724051111701 / 42999285794419459354498725067284768015064940836511198633694940305367969175102 to 100 significant digits.\n\nLet me denote N = 323188869497964766054966865002863449308469644860361635724051111701\nD = 42999285794419459354498725067284768015064940836511198633694940305367969175102\n\nN has 66 digits, D has 77 digits. So N/D \u2248 10^(66-77) * (N_lead/D_lead) = 10^-11 * something.\n\nMore precisely: N/D. Let me compute the leading digits.\n\nN \u2248 3.23188869497964766054966865002863449308469644860361635724051111701 \u00d7 10^65\nD \u2248 4.2999285794419459354498725067284768015064940836511198633694940305367969175102 \u00d7 10^76\n\nSo N/D \u2248 0.7516... \u00d7 10^-11 = 7.516... \u00d7 10^-12\n\nThe first significant digit starts at 10^-12 position. We need 100 significant digits.\n\nSo I need to compute N/D to 100 sig figs. This means I need ~100 digits of precision in the quotient mantissa.\n\nLet me do long division. Actually, let me think computationally. I need N * 10^k / D for some k, then place the decimal.\n\nN/D with 100 sig figs means I need to find floor(N * 10^(100+11-1) / D) approximately, or rather N * 10^m / D for appropriate m, then round.\n\nThe first sig digit is at position 10^-12. The 100th sig digit is at position 10^-(12+99) = 10^-111.\n\nSo I want N/D rounded to 111 decimal places.\n\nCompute Q = round(N * 10^111 / D), then answer = Q * 10^-111 written out.\n\nN * 10^111 / D: let me compute N * 10^111 and divide by D.\n\nThis requires big number arithmetic. Let me set it up.\n\nN = 323188869497964766054966865002863449308469644860361635724051111701\n\nN * 10^111 is N followed by 111 zeros.\n\nD = 42999285794419459354498725067284768015064940836511198633694940305367969175102\n\nLet me compute Q = N * 10^111 / D.\n\nThe quotient will have about 66+111-77 = 100 digits (plus maybe 1). Let's see: N*10^111 has 66+111 = 177 digits. D has 77 digits. So quotient has 177-77 = 100 or 101 digits.\n\nSince N/D \u2248 7.5 \u00d7 10^-12, Q \u2248 7.5 \u00d7 10^-12 \u00d7 10^111 = 7.5 \u00d7 10^99, so 100 digits.\n\nThen the answer is 0.000000000007516... with 99 more digits after the 7, totaling 100 sig digits after 11 leading zeros.\n\nActually, answer = Q \u00d7 10^-111. Q has 100 digits, so answer = 0.(11 zeros)(100 digits of Q).\n\nNow I need to actually compute this division. This is tedious but let me try.\n\nLet me use a different approach: compute 1/D to high precision, then multiply by N",
+      "extracted_answer": null,
+      "input_tokens": 278,
+      "output_tokens": 1024,
+      "elapsed_s": 12.453
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0025",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.00000000000000000286553667258521365266229178356134870248928388315892428113456724907392232334417276877831265261588354942175",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 71394502250161937418252019804295898982555754122841 / 24914879971070706822466781824958426341551294324704703243151281809167 to 100 significant digits.\n\nLet me denote N = 71394502250161937418252019804295898982555754122841\nD = 24914879971070706822466781824958426341551294324704703243151281809167\n\nN has 50 digits, D has 68 digits. So N/D \u2248 10^(-18) roughly.\n\nLet me count: N = 7.1394502250161937418252019804295898982555754122841 \u00d7 10^49\nD = 2.4914879971070706822466781824958426341551294324704703243151281809167 \u00d7 10^67\n\nRatio \u2248 2.8656... \u00d7 10^(-18)\n\nFirst significant digit at position 10^(-18). For 100 significant digits, I need result to about 10^(-117).\n\nSo I need to compute N * 10^117 / D roughly, with high precision.\n\nLet me think. N/D in decimal form: 0.000000000000000000 followed by the digits.\n\nLet me compute N * 10^100 / D to get 100 sig digits... actually let me be careful.\n\nLet q = N/D. The first significant digit is at 10^(-18) position. To get 100 sig digits, I need digits from position 10^(-18) to 10^(-117).\n\nSo compute floor(N * 10^117 / D) and round.\n\nActually, let me compute N * 10^118 / D, round, then format.\n\nThis is going to be painful by hand. Let me try long division more systematically.\n\nLet me set up: compute q = N/D with enough precision.\n\nApproach: Compute R = N * 10^k for some k, then divide by D.\n\nLet k = 118. Then N * 10^118 is a number with 50+118 = 168 digits. D has 68 digits. Quotient has ~168-68 = 100 or 101 digits.\n\nActually, let me estimate: N*10^118 / D \u2248 2.865... \u00d7 10^(168-68-1) = 2.865 \u00d7 10^99. So 100-digit integer.\n\nThen q = that integer \u00d7 10^(-118), meaning 0.000...(18 zeros)...2865...\n\nLet me compute this. I'll use a different approach - compute 1/D first to high precision, then multiply by N.\n\nActually let me just try to compute carefully using Newton's method mentally for 1/D... this is too complex without tools.\n\nLet me try a direct approach. Compute the quotient via long division.\n\nActually, I'll use the fact that 1/D can be computed via the series 1/D = 10^(-68) / (D \u00d7 10^(-68)) where D \u00d7 10^(-68) \u2248 0.24914...\n\nLet d = D / 10^68 = 0.24914879971070706822466781824958426341551294324704703243151281809167\n\nThen 1/D = 10^(-68) / d.\n\nAnd N/D = N \u00d7 10^(-68) / d = n / d where n = N \u00d7 10^(-68) = 0.0000000000000000007139450225... (N has 50 digits, so n has 18 leading zeros after decimal).\n\nHmm, this doesn't simplify easily.\n\nLet me try yet another approach. Let me comp",
+      "extracted_answer": null,
+      "input_tokens": 270,
+      "output_tokens": 1024,
+      "elapsed_s": 13.672
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0026",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.0991832947219861633721444257225552641691670253318577982543812968700095712797596092589047893693553373726011",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 494078407764892715593981713336722353881657912577021012777 / 4981467989642910567081462616037638594469986998525198868935 to 100 significant digits.\n\nLet me denote N = 494078407764892715593981713336722353881657912577021012777\nD = 4981467989642910567081462616037638594469986998525198868935\n\nN has 57 digits, D has 58 digits. So result is < 1, starts with 0.0...\n\nActually N/D \u2248 0.0992... Let me compute.\n\nN/D: first digit after decimal. 10*N = 4940784077648927155939817133367223538816579125770210127770\nDivide by D \u2248 4981467989642910567081462616037638594469986998525198868935\n10N < D? 4940... vs 4981..., yes 10N < D. So first digit 0.\n100N = 49407840776489271559398171333672235388165791257702101277700\n100N / D: 49407.../4981... \u2248 9. 9*D = 44833211906786195103733163544338747350229882986726789820415\n100N - 9D = 49407840776489271559398171333672235388165791257702101277700 - 44833211906786195103733163544338747350229882986726789820415\n\nLet me compute:\n  49407840776489271559398171333672235388165791257702101277700\n- 44833211906786195103733163544338747350229882986726789820415\n= 4574628869703076455665007789333488037935908270975311457285\n\nSo after 2 digits (0.09), remainder R1 = 4574628869703076455665007789333488037935908270975311457285\nNext digit: 10*R1/D. 10*R1 = 45746288697030764556650077893334880379359082709753114572850\n/D \u2248 9. 9*D = 44833211906786195103733163544338747350229882986726789820415\n10*R1 - 9*D = 45746288697030764556650077893334880379359082709753114572850 - 44833211906786195103733163544338747350229882986726789820415\n= 913076790244569452916914349996133029129199723026324752435\n\nSo 0.099, R2 = 913076790244569452916914349996133029129199723026324752435\n10*R2 = 9130767902445694529169143499961330291291997230263247524350\n/D \u2248 1. 10*R2 - D = 9130767902445694529169143499961330291291997230263247524350 - 4981467989642910567081462616037638594469986998525198868935\n= 4149299912802783962087680883923691696822010231738048655415\n\nSo 0.0991, R3 = 4149299912802783962087680883923691696822010231738048655415\n10*R3 = 41492999128027839620876808839236916968220102317380486554150\n/D \u2248 8. 8*D = 39851743917143284536651700928301108755759895988201590951480\n10*R3 - 8*D = 41492999128027839620876808839236916968220102317380486554150 - 39851743917143284536651700928301108755759895988201590951480\n= 1641255210884555084225107910935808212460206329178895602670\n\nSo 0.09918, R4 = 1641255210884555084225107910935808212460206329178895602670\n\nThis is",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 16.292
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0027",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "510895947442969.596806222934107615979867241203465835657037918714856312902123576042208366758985927795675313",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N = 156538073255894465419317740516827292260039094940734800560 by D = 306399128901621462320953884757481218376939.\n\nLet me count digits.\nN: 156538073255894465419317740516827292260039094940734800560\nLet me count: \n156,538,073,255,894,465,419,317,740,516,827,292,260,039,094,940,734,800,560\n3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3+3 = 57 digits\n\nD: 306399128901621462320953884757481218376939\n306,399,128,901,621,462,320,953,884,757,481,218,376,939\n3*14 = 42 digits\n\nSo quotient is about 57-42 = 15 digits before decimal point.\n\nWe need 100 significant digits, so we need about 85 digits after the decimal point (since integer part has ~15 digits).\n\nLet me compute N/D.\n\nFirst, estimate: N \u2248 1.56538 \u00d7 10^56, D \u2248 3.06399 \u00d7 10^41, so N/D \u2248 5.109 \u00d7 10^14.\n\nLet me do this more carefully. I'll compute N * 10^85 / D to get 100-digit result, then figure out decimal placement.\n\nActually, let me compute N/D step by step via long division, getting enough digits.\n\nLet me try: compute Q such that Q = floor(N * 10^k / D) for k large enough to give 100 sig figs plus some guard digits.\n\nInteger part has 15 digits, so we need 85 decimal digits plus guards. Let's compute N * 10^86 / D, which gives 101 digits of quotient (15 int + 86 frac), allowing us to round the 100th.\n\nActually, let me think. 100 sig digits means if integer part is 15 digits, fractional part needs 85 digits. To round the 85th fractional digit correctly, we need to know the 86th digit (or more for tie cases).\n\nLet me just compute many digits via long division.\n\nThis is hard to do by hand. Let me set up systematically.\n\nN = 156538073255894465419317740516827292260039094940734800560\nD = 306399128901621462320953884757481218376939\n\nLet me compute integer quotient first.\n\nN has 57 digits, D has 42 digits. So N/D has 15 or 16 digits.\n\nLet me estimate more precisely:\nN \u2248 1.56538073 \u00d7 10^56\nD \u2248 3.06399129 \u00d7 10^41\nN/D \u2248 0.510895... \u00d7 10^15 = 5.10895... \u00d7 10^14\n\nSo 15 digits integer part.\n\nLet me compute 5 \u00d7 10^14 \u00d7 D = 5 \u00d7 306399128901621462320953884757481218376939 \u00d7 10^14\n= 1531995644508107311604769423787406091884695 \u00d7 10^14\n= 153199564450810731160476942378740609188469500000000000000\n\nHmm compare with N = 156538073255894465419317740516827292260039094940734800560\n\nN - 5\u00d710^14 \u00d7 D:\n  156538073255894465419317740516827292260039094940734800560\n- 153199564450810731160476942378740609188469500000000000000\n= 3338508",
+      "extracted_answer": null,
+      "input_tokens": 263,
+      "output_tokens": 1024,
+      "elapsed_s": 13.13
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0028",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "4752034764253549621.35977092325029104910755734542758913533031439357577375503391249270841361868345260108899",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide a big number by another and produce 100 significant digits.\n\nLet me denote:\nN = 4363654186789191009864000060886701004717285263581618480067617685809\nD = 918270678407933428798436409514687139613576537594\n\nCount digits:\nN: let me count: \"4363654186789191009864000060886701004717285263581618480067617685809\"\nLet me count in groups of 10:\n4363654186 7891910098 6400006088 6701004717 2852635816 1848006761 7685809\nThat's 6*10 + 7 = 67 digits.\n\nD: \"918270678407933428798436409514687139613576537594\"\n9182706784 0793342879 8436409514 6871396135 7653759 4\nLet me recount: \n918270678 4 -> 10\n079334287 9 -> 20\n843640951 4 -> 30\n687139613 5 -> 40\n76537594 -> 48\nSo D has 48 digits.\n\nN/D \u2248 10^(67-48) = 10^19 range. Actually leading digit of N is 4, D is 9, so N/D starts with ~4.75... \u00d7 10^18.\n\nWe need 100 significant digits. That means we need quotient with 100 digits, so we need integer part (~19 digits) plus ~81 decimal digits.\n\nLet me compute. I'll need to do this by long division essentially, or use a clever approach.\n\nLet me compute N/D. \n\nFirst, let's estimate:\nN \u2248 4.363654186789191 \u00d7 10^66\nD \u2248 9.18270678407933 \u00d7 10^47\nN/D \u2248 0.475073... \u00d7 10^19 = 4.75073... \u00d7 10^18\n\nLet me compute more precisely. \n\nActually, to get 100 sig figs we need to compute N * 10^k / D where k is chosen so we get 100 digits. The quotient N/D has about 19 integer digits. So we want floor((N * 10^81) / D) to get 100 digits, then round.\n\nActually let's compute quotient Q = floor(N * 10^82 / D), take first 100 digits, round based on 101st.\n\nThis is a big computation. Let me try to be systematic.\n\nLet me first get an approximation using high-precision reciprocal.\n\nLet me compute 1/D with enough precision.\n\nD = 918270678407933428798436409514687139613576537594\n\nI'll compute 10^96 / D approximately, or use Newton's method mentally... this is really difficult without tools.\n\nLet me try a different approach: compute the quotient digit by digit via long division but leveraging approximation.\n\nActually, let me think about this more carefully. I need to compute this by hand essentially.\n\nLet me set up: We want to find N/D to 100 sig figs.\n\nLet q = N/D. \nq \u00d7 D = N (approximately).\n\nLet me do long division. Actually with numbers this size, let me try to use the approximation q \u2248 N \u00d7 (1/D) and compute 1/D via series.\n\nD = 9.18270678407933428798436409514687139613576537594 \u00d7 10^47\n\n1/D = (1/9.18270678407933428798436409514687139613576537594) \u00d7 10^-47\n\nLet me compute 1/9.18270678407933428798436409514687139613",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 14.845
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0029",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.0000000000000608011922656395212444769787712490374362137723799581703606974547516861627369714334473221583133248389808872",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 373814935345428155612939915312325262607578746756575119595418797017 / 6148151399930385595020429422215809121342850436305422976954542689643519407676170 to 100 significant digits.\n\nDividend N \u2248 3.73814935... \u00d7 10^65\nDivisor D \u2248 6.148151399... \u00d7 10^78\n\nQuotient \u2248 6.08 \u00d7 10^-14\n\nSo result starts with 0.0000000000000... let me compute.\n\nN/D \u2248 3.73814935345428155612939915312325262607578746756575119595418797017e65 / 6.148151399930385595020429422215809121342850436305422976954542689643519407676170e78\n\n\u2248 (3.73814935.../6.148151399...) \u00d7 10^-13\n\nFirst compute 3.73814935345428155612939915312325262607578746756575119595418797017 / 6.148151399930385595020429422215809121342850436305422976954542689643519407676170\n\nLet me call A = 3.73814935345428155612939915312325262607578746756575119595418797017\nB = 6.148151399930385595020429422215809121342850436305422976954542689643519407676170\n\nA/B \u2248 0.608...\n\nLet me do long division. Actually, I need 100 significant digits. I should be careful.\n\nLet me do this as integer division. I want Q = floor(N \u00d7 10^k / D) for some large k, then format.\n\nSince N/D \u2248 6.08 \u00d7 10^-14, the first significant digit is at position 10^-14. To get 100 sig digits, I need digits from 10^-14 down to 10^-113.\n\nSo compute floor(N \u00d7 10^113 / D) and that gives a 100-digit integer. Actually, N \u00d7 10^113 / D \u2248 6.08... \u00d7 10^99, a 100-digit number. Then I format with leading zeros and place decimal point.\n\nWait, I also need the 101st digit for rounding. So compute floor(N \u00d7 10^114 / D), giving 101 digits, then round.\n\nLet me set up:\nN = 373814935345428155612939915312325262607578746756575119595418797017\nD = 6148151399930385595020429422215809121342850436305422976954542689643519407676170\n\nN has 66 digits. D has 79 digits.\n\nN \u00d7 10^114 has 66+114 = 180 digits.\nDivide by D (79 digits) gives ~101-102 digit quotient.\n\nN/D ~ 10^65.57 / 10^78.79 ~ 10^-13.22. So N/D ~ 6 \u00d7 10^-14. \n\nN \u00d7 10^114 / D ~ 6 \u00d7 10^100, so 101 digits. Good.\n\nLet me compute this step by step. This is tedious but doable.\n\nActually, let me try a different approach. Compute A/B where A and B are rationals.\n\nLet me compute 1/B first, or use Newton's method conceptually. Actually, let me just do the long division.\n\nLet me denote:\nN = 373814935345428155612939915312325262607578746756575119595418797017\nD = 6148151399930385595020429422215809121342850436305422976954542689643519407676170\n\nI want N/D to high precision. Let me scale: compute N",
+      "extracted_answer": null,
+      "input_tokens": 279,
+      "output_tokens": 1024,
+      "elapsed_s": 12.094
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0030",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "58246.6869716840999944903893314285278037524532315744006123663957749050519788163153333944095340745749147855",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 37168940610161920949425747240578057995640143587292809888919 / 638129695311788936466389543561315220574831821187333129 to 100 significant digits.\n\nLet me count digits:\nDividend: 37168940610161920949425747240578057995640143587292809888919\nLet me count: 3-7-1-6-8-9-4-0-6-1-0-1-6-1-9-2-0-9-4-9-4-2-5-7-4-7-2-4-0-5-7-8-0-5-7-9-9-5-6-4-0-1-4-3-5-8-7-2-9-2-8-0-9-8-8-8-9-1-9\nThat's 59 digits.\n\nDivisor: 638129695311788936466389543561315220574831821187333129\n6-3-8-1-2-9-6-9-5-3-1-1-7-8-8-9-3-6-4-6-6-3-8-9-5-4-3-5-6-1-3-1-5-2-2-0-5-7-4-8-3-1-8-2-1-1-8-7-3-3-3-1-2-9\nThat's 54 digits.\n\nSo quotient is about 10^(59-54) = 10^5 in magnitude, approximately.\n\nLet me estimate: 3.7168... \u00d7 10^58 / 6.3813... \u00d7 10^53 \u2248 0.5824 \u00d7 10^5 \u2248 58240.\n\nSo the integer part has 5 digits, and we need 95 more decimal digits.\n\nTo get 100 sig digits, I'll need to do long division. Let me compute N / D where:\nN = 37168940610161920949425747240578057995640143587292809888919\nD = 638129695311788936466389543561315220574831821187333129\n\nThe quotient will be approximately 58240.something.\n\nI need to compute N * 10^95 / D and then place decimal point.\n\nActually, let me think. Quotient \u2248 5.8... \u00d7 10^4. For 100 sig digits, I want digits d1.d2d3...d100 \u00d7 10^4.\n\nSo I need floor(N * 10^95 / D) as a 100-digit number, then round.\n\nLet me compute this step by step. This is a huge computation. Let me try a different approach.\n\nFirst, let me compute Q0 = floor(N/D) to get the integer part.\n\nN \u2248 3.7168940610161920949425747240578057995640143587292809888919 \u00d7 10^58\nD \u2248 6.38129695311788936466389543561315220574831821187333129 \u00d7 10^53\n\nN/D \u2248 3.7168940610161920949425747240578 / 6.38129695311788936466389543561 \u00d7 10^5\n\nLet me compute 3.7168940610161920949... / 6.38129695311788936466...\n\n3.7168940610161920949 / 6.38129695311788936466 \u2248 ?\n\n6.38129695311788936466 \u00d7 0.5 = 3.19064847655894468233\n3.71689406101619209 - 3.19064847655894468 = 0.52624558445724741\n0.52624558445724741 / 6.38129695311788936 \u2248 0.0824...\n\nSo \u2248 0.5824...\n\n6.38129695311788936466 \u00d7",
+      "extracted_answer": null,
+      "input_tokens": 268,
+      "output_tokens": 1024,
+      "elapsed_s": 10.269
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0031",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "3502933.04153566197598921852388919228026057580336670813289363151921670677481179357316937058314021177348330",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide A by B to 100 significant digits.\n\nA = 303790980966029657346342722771007510003097970513745616762895932826379821\nB = 86724746766169918383664461008271493454318083379047677287730616965\n\nLet me count digits.\nA: let me count. \"303790980966029657346342722771007510003097970513745616762895932826379821\"\nBreak into groups of 10:\n3037909809 6602965734 6342722771 0075100030 9797051374 5616762895 9329268379821? Let me recount carefully.\n\nActually let me just count character by character.\n3-0-3-7-9-0-9-8-0-9 (10)\n6-6-0-2-9-6-5-7-3-4 (20)\n6-3-4-2-7-2-2-7-7-1 (30)\n0-0-7-5-1-0-0-0-3-0 (40)\n9-7-9-7-0-5-1-3-7-4 (50)\n5-6-1-6-7-6-2-8-9-5 (60)\n9-3-2-8-2-6-3-7-9-8-2-1 (72)\n\nSo A has 72 digits.\n\nB: \"86724746766169918383664461008271493454318083379047677287730616965\"\n8-6-7-2-4-7-4-6-7-6 (10)\n6-1-6-9-9-1-8-3-8-3 (20)\n6-6-4-4-6-1-0-0-8-2 (30)\n7-1-4-9-3-4-5-4-3-1 (40)\n8-0-8-3-3-7-9-0-4-7 (50)\n6-7-7-2-8-7-7-3-0-6 (60)\n1-6-9-6-5 (65)\n\nB has 65 digits.\n\nQuotient integer part has about 72-65+1 = 8 digits or so. A/B, leading... A starts with 3.03e71, B starts with 8.67e64, so A/B \u2248 3.03/8.67 \u00d7 10^7 \u2248 0.3502 \u00d7 10^7 \u2248 3.502 \u00d7 10^6.\n\nSo integer part has 7 digits. We need 100 sig figs, so 93 digits after decimal.\n\nLet me set up the computation. We want A/B to 100 sig digits with proper rounding.\n\nCompute Q = floor(A * 10^93 / B), then we need the 100-digit result with possible rounding. Actually to round to 100 sig figs: let me compute A * 10^94 / B, get a number, round the last digit.\n\nLet me compute A/B \u2248 3.502... \u00d7 10^6. So integer has 7 digits. 100 sig digits = 7 before decimal + 93 after. To round, compute A * 10^93 / B and look at remainder for rounding.\n\nActually to do banker's rounding, compute N = A * 10^93, then Q = N / B, R = N mod B. The quotient Q has 100 digits. Then 2R vs B determines rounding: if 2R < B round down, if 2R > B round up, if 2R = B round to even.\n\nWait, but we want to round to 100 sig figs meaning the 100th digit should be rounded based on the remaining digits. So comp",
+      "extracted_answer": null,
+      "input_tokens": 276,
+      "output_tokens": 1024,
+      "elapsed_s": 13.911
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0032",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.0000000935829186895645636405353002049054923393893498637707937330711048767113804992144816963838231811096267419628",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 934865147112575864566538228303319830902521601258722159034541 / 9989698549729275840939067589582571678856319053648577832472325616086 to 100 significant digits.\n\nLet me denote N = 934865147112575864566538228303319830902521601258722159034541\nD = 9989698549729275840939067589582571678856319053648577832472325616086\n\nN has 60 digits, D has 67 digits. So N/D \u2248 10^(-7) something.\n\nLet me compute N/D. First rough estimate:\nN \u2248 9.34865147112575864566538228303319830902521601258722159034541 \u00d7 10^59\nD \u2248 9.989698549729275840939067589582571678856319053648577832472325616086 \u00d7 10^66\n\nN/D \u2248 (9.34865.../9.98969...) \u00d7 10^(-7)\n\u2248 0.935944... \u00d7 10^(-7)\n\u2248 9.35944... \u00d7 10^(-8)\n\nSo the result starts with 0.0000000935944... Actually wait, first significant digit is at position 10^-8.\n\nI need 100 significant digits. So I need N/D computed to about 100 sig figs.\n\nTo get 100 sig digits, I should compute N \u00d7 10^100 / D approximately, giving an integer with about 100 digits, then place decimal.\n\nActually, the result is approximately 9.35... \u00d7 10^-8. For 100 significant digits, I need the value to about 10^(-8-99) = 10^-107 precision.\n\nLet me compute N * 10^107 / D as an integer (approximately). This gives me about 100-108 digits.\n\nActually let me just do long division carefully.\n\nLet me set up: we want N/D where N/D \u2248 9.36 \u00d7 10^-8.\n\nLet's compute Q = floor(N * 10^K / D) for some suitable K to get 100 sig digits.\n\nFirst sig digit is at 10^-8 position. To get digits at positions 10^-8 down to 10^-107, I need K = 107.\n\nCompute N * 10^107 / D. Let me call this the quotient integer with possibly trailing rounding.\n\nActually this is very tedious by hand. Let me think of a smarter approach.\n\nLet me try to do this systematically. I'll compute step by step.\n\nLet r = N/D. We want 100 sig digits.\n\nUse Newton-Raphson or just long division.\n\nLong division approach: compute digit by digit.\n\nLet me scale: Compute N/D digit by digit starting from first nonzero digit.\n\nN = 934865147112575864566538228303319830902521601258722159034541\nD = 9989698549729275840939067589582571678856319053648577832472325616086\n\nSince D > N, and D has 67 digits while N has 60 digits, N/D < 1. First we compute the decimal.\n\nActually let me pad N with zeros: N has 60 digits, D has 67. Ratio ~ 10^-7.\n\nN/D: 10*N = 9.348...\u00d710^60, still less than D (~10^67). Need more zeros.\n\nLet's find first nonzero digit. N * 10^7 = 9.348... \u00d7 10^66, still less than D (9.989... \u00d7 10^66). So first non",
+      "extracted_answer": null,
+      "input_tokens": 273,
+      "output_tokens": 1024,
+      "elapsed_s": 13.115
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0033",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "2117141.81613310809873039877091909116667038612920927555066349197474459906715655827310997534421065858744364",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 808450670065931334505420577670721808566462391334329844853270361654 / 381859478616572157547233147963340770311398710062516870369441 to 100 significant digits.\n\nLet me denote N = 808450670065931334505420577670721808566462391334329844853270361654\nD = 381859478616572157547233147963340770311398710062516870369441\n\nFirst, let's figure out the magnitude. N has 66 digits, D has 60 digits. So the quotient has about 66-60 = 6 or 7 digits before decimal.\n\nLet me compute N/D. Approximately N \u2248 8.0845e65, D \u2248 3.8186e59, so quotient \u2248 2.117e6.\n\nLet me do long division more carefully.\n\nActually, let me use a different approach. Let me compute the quotient Q = floor(N * 10^k / D) for appropriate k to get 100 significant digits.\n\nSince the quotient is ~2.1e6 (7 digits before decimal), I need 100 significant digits = 7 integer digits + 93 decimal digits. So I want to compute floor(N * 10^93 / D) and then place the decimal.\n\nLet me first estimate the integer part. \nD * 2 = 763718957233144315094466295926681540622797420125033740738882\nD * 2.1 = ?\n\nLet me try computing D * 2117000:\nActually, let's estimate more precisely.\n\nN / D \u2248 8.0845067e65 / 3.81859478e59 = 2.117150e6\n\nLet me try Q_int = 2117150 or so.\n\nD * 2117000 = ?\nD * 2000000 = 763718957233144315094466295926681540622797420125033740738882000000\nD * 100000 = 38185947861657215754723314796334077031139871006251687036944100000\nD * 17000 = 6491611136481726678303063515376793095293777071062786796280497000\n\nSum D*2117000:\n763718957233144315094466295926681540622797420125033740738882000000\n+  38185947861657215754723314796334077031139871006251687036944100000\n= 801904905094801530849189610723015617653937291131285427775826100000\n+   6491611136481726678303063515376793095293777071062786796280497000\n= 808396516231283257527492674238392410749231068202348214572106597000\n\nN                                                              = 808450670065931334505420577670721808566462391334329844853270361654\nD*2117000                                                      = 808396516231283257527492674238392410749231068202348214572106597000\nN - D*2117000 = \n  808450670065931334505420577670721808566462391334329844853270361654\n- 808396516231283257527492674238392410749231068202348214572106597000\n= 54153834648076977927903432482329397817231323131981630281163764654\n\nHmm, that's 65 digits. Let me verify subtraction:\n808450670065931334505420577670721808566462391334329844853270361654\n808396516231283257527492674238392410749231068202348214572106597000\nDifference: start from right.\nActually this is getting complex. Let me be more systematic.\n\nLet me recompute D * 2117000 carefully.\nD = 381859478616",
+      "extracted_answer": null,
+      "input_tokens": 272,
+      "output_tokens": 1024,
+      "elapsed_s": 14.755
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0034",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "999.064378874762852305399758172125403100765306615793980694762325689480873440504456599742927174688131508449",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 7392902399920283089473425285403794693932029051839960429092903077991535027621146 / 7399825833292987588612502697784100509757581713350795360781676035178012048795 to 100 significant digits.\n\nLet me denote N = 7392902399920283089473425285403794693932029051839960429092903077991535027621146\nD = 7399825833292987588612502697784100509757581713350795360781676035178012048795\n\nBoth have 79 digits (N) and 76 digits (D). Wait let me count.\n\nN: 7392902399920283089473425285403794693932029051839960429092903077991535027621146\nLet me count: \n7392902399 9202830894 7342528540 3794693932 0290518399 6042909290 3077991535 0276211 46\nHmm let me count groups of 10:\n7392902399 (10)\n9202830894 (20)\n7342528540 (30)\n3794693932 (40)\n0290518399 (50)\n6042909290 (60)\n3077991535 (70)\n0276211 46 - that's 8 more = 78? \n\nLet me recount carefully:\n7-3-9-2-9-0-2-3-9-9 (10)\n-9-2-0-2-8-3-0-8-9-4 (20)\n-7-3-4-2-5-2-8-5-4-0 (30)\n-3-7-9-4-6-9-3-9-3-2 (40)\n-0-2-9-0-5-1-8-3-9-9 (50)\n-6-0-4-2-9-0-9-2-9-0 (60)\n-3-0-7-7-9-9-1-5-3-5 (70)\n-0-2-7-6-2-1-1-4-6 (79)\nSo N has 79 digits.\n\nD: 7399825833292987588612502697784100509757581713350795360781676035178012048795\n7-3-9-9-8-2-5-8-3-3 (10)\n-2-9-2-9-8-7-5-8-8-6 (20)\n-1-2-5-0-2-6-9-7-7-8 (30)\n-4-1-0-0-5-0-9-7-5-7 (40)\n-5-8-1-7-1-3-3-5-0-7 (50)\n-9-5-3-6-0-7-8-1-6-7 (60)\n-6-0-3-5-1-7-8-0-1-2 (70)\n-0-4-8-7-9-5 (76)\nSo D has 76 digits.\n\nN/D \u2248 10^(79-76) \u00d7 (leading ratio) = 10^3 \u00d7 (7.39290.../7.39982...) \u2248 999.x\n\nActually N/D < 1000 since N < 1000*D? Let me check: 1000*D = 7399825833292987588612502697784100509757581713350795360781676035178012048795000\nN     = 7392902399920283089473425285403794693932029051839960429092903077991535027621146\nSo N < 1000*D. Thus N/D < 1000. It starts with 999.\n\nWe need 100 sig figs. That means 100 digits total starting from the first nonzero. Since it's ~999, we have 3 digits before decimal and 97 after.\n\nLet me comp",
+      "extracted_answer": null,
+      "input_tokens": 283,
+      "output_tokens": 1024,
+      "elapsed_s": 11.887
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0035",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.000000000000000000124125329170512964703420791456181890202352832951016147628322468154557562854333186236114236048187390975919",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 80490848861597879639145579401262766265705878037641922 / 648464333585180697608530628062634497239022568310688223809856808569202139 to 100 significant digits.\n\nLet N = 80490848861597879639145579401262766265705878037641922 (53 digits)\nLet D = 648464333585180697608530628062634497239022568310688223809856808569202139 (72 digits)\n\nResult \u2248 N/D. Since N < D, result starts with 0.000... Let's find the magnitude.\n\nN \u2248 8.0490848861597879639145579401262766265705878037641922 \u00d7 10^52\nD \u2248 6.48464333585180697608530628062634497239022568310688223809856808569202139 \u00d7 10^71\n\nN/D \u2248 (8.049.../6.4846...) \u00d7 10^(52-71) = 1.2411... \u00d7 10^-19\n\nSo result \u2248 1.24... \u00d7 10^-19, meaning 0.000000000000000000012411...\n\n100 significant digits means we need 100 digits starting from the first non-zero digit.\n\nLet me compute N/D more precisely. I need to do this carefully.\n\nLet me write this as computing N * 10^k / D where k is chosen large enough, then extract 100 digits.\n\nFirst sig digit starts at position 10^-19. To get 100 sig digits, I need precision to 10^-118. So compute floor(N * 10^118 / D) and that gives me the digits.\n\nActually, let me compute q = N * 10^118 / D, which should be about 1.24... \u00d7 10^99, a 100-digit integer. Then those are my 100 sig digits.\n\nN * 10^118 = 80490848861597879639145579401262766265705878037641922 followed by 118 zeros.\n\nThis is a huge division. Let me think about how to do this by hand... I'll need to be very careful.\n\nLet me use a different approach. Let me compute 1/D to high precision first, then multiply by N.\n\nActually, let me just do long division carefully, or use Newton's method conceptually.\n\nLet me try Newton's iteration for 1/D. Starting with an approximation.\n\nActually, let me just compute this step by step. Let me define:\nA = N * 10^118\nB = D\n\nI want floor(A/B) rounded properly.\n\nA has 53 + 118 = 171 digits.\nB has 72 digits.\nA/B has about 171 - 72 = 99 or 100 digits.\n\nLet me estimate: N/D \u2248 1.241 \u00d7 10^-19\nN * 10^118 / D \u2248 1.241 \u00d7 10^99, so 100 digits.\n\nThis is really a computational problem. Let me try to do it.\n\nLet me compute 1/D first to ~120 digits.\n\nD = 648464333585180697608530628062634497239022568310688223809856808569202139\n\nD \u2248 6.48464333585180697608530628062634497239022568310688223809856808569202139 \u00d7 10^71\n\n1/D \u2248 (1/6.48464...) \u00d7 10^-71\n\n1/6.48464333585180697608530628062634497239022568310688223809856808569202139\n\nLet me compute 1/6.48464333585180697608530628062634497239022568310688223809856808",
+      "extracted_answer": null,
+      "input_tokens": 272,
+      "output_tokens": 1024,
+      "elapsed_s": 12.342
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0036",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "138.893079497305668620444689582639666694429694006412457552834304409257370277305741840442240691093120449782",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 828144937768557723496721443720530486789353484781681995 / 5962463650211042922472915252893932971315104292041591 to 100 significant digits.\n\nLet me denote N = 828144937768557723496721443720530486789353484781681995\nD = 5962463650211042922472915252893932971315104292041591\n\nN has 54 digits, D has 52 digits. So N/D is about 10^2 range... let me check: N/D \u2248 8.28e53 / 5.96e51 \u2248 138.\n\nSo the integer part is around 138. Let me compute more precisely.\n\nD * 138 = ?\nD = 5962463650211042922472915252893932971315104292041591\nD * 100 = 596246365021104292247291525289393297131510429204159100\nD * 138 = D * 100 + D * 38\n\nD * 38 = D * 40 - D * 2\nD * 2 = 11924927300422085844945830505787865942630208584083182\nD * 40 = 238498546008441716898916610115757318852604171681663640\nD * 38 = 238498546008441716898916610115757318852604171681663640 - 11924927300422085844945830505787865942630208584083182\n    = 226573618708019631053970779609969452909973963097580458\n\nD * 138 = 596246365021104292247291525289393297131510429204159100 + 226573618708019631053970779609969452909973963097580458 wait, dimensions mismatch.\n\nLet me recount digits of D: 5962463650211042922472915252893932971315104292041591\n5-9-6-2-4-6-3-6-5-0-2-1-1-0-4-2-9-2-2-4-7-2-9-1-5-2-5-2-8-9-3-9-3-2-9-7-1-3-1-5-1-0-4-2-9-2-0-4-1-5-9-1\nThat's 52 digits.\n\nD * 100 has 54 digits: 596246365021104292247291525289393297131510429204159100\nD * 38 should have 53 or 54 digits. D * 38 \u2248 2.27e53, so 54 digits.\n\nLet me recompute D*2:\n5962463650211042922472915252893932971315104292041591 * 2\n= 11924927300422085844945830505787865942630208584083182\nThat's 53 digits.\n\nD * 40 = D*2 * 20... actually let me just do D*4:\nD*4 = 23849854600844171689891661011575731885260417168166364 (53 digits)\nD*40 = 238498546008441716898916610115757318852604171681663640 (54 digits)\n\nD*38 = D*40 - D*2 = 238498546008441716898916610115757318852604171681663640 - 11924927300422085844945830505787865942630208584083182\n\nAlign:\n238498546008441716898916610115757318852604171681663640\n 11924927300422085844945830505787865942630208584083182\n= ?\n\n238498546008441716898916610115757318852604171681663640\n-011924927300422085844945830505787865942630208584083182\n= 226573618708019631053970779609969452909973963097580458\n\nD * 138 = D*100 + D*38:\n596246365021104292247291525289393",
+      "extracted_answer": null,
+      "input_tokens": 266,
+      "output_tokens": 1024,
+      "elapsed_s": 12.864
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0037",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "34495.6159064430872628383863152523996330957285458057098742937175035922393979156904413142606780513760927988",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N/D to 100 significant digits.\n\nN = 87713579472147273872444659558479500846885398106566177621623556288522637539705324\nD = 2542745713253496116146868128433929742724635961593589485319396724214654830028\n\nLet me estimate. N has 80 digits, D has 76 digits. So N/D \u2248 10^(80-76) = 10^4, roughly 3.4 \u00d7 10^4.\n\nLet me compute more precisely. N/D \u2248 ?\n\nFirst, let me get leading digits.\nN \u2248 8.7713579472147273872... \u00d7 10^79\nD \u2248 2.542745713253496116... \u00d7 10^75\nN/D \u2248 8.7713579472.../2.542745713253... \u00d7 10^4\n\n8.7713579472147273872444659558479500846885398106566177621623556288522637539705324 / 2.542745713253496116146868128433929742724635961593589485319396724214654830028\n\nLet me compute this ratio \u2248 3.449... \n\nActually, let me do the division carefully. I'll need to do long division or use multiplication to verify.\n\nQ \u2248 N/D. Let me estimate Q.\n\n8.7713579472 / 2.5427457132 \u2248 ?\n2.5427457132 \u00d7 3 = 7.6282371396\n8.7713579472 - 7.6282371396 = 1.1431208076\n1.1431208076 / 2.5427457132 \u2248 0.4495...\nSo Q \u2248 3.4495 \u00d7 10^4 = 34495...\n\nLet me refine:\n2.5427457132 \u00d7 3.4 = 8.64533542488\n2.5427457132 \u00d7 3.45 = 8.772472210...\nClose to 8.7713579472\n\n8.772472210 - 8.7713579472 = 0.001114263\nSo we need slightly less than 3.45.\n0.001114263 / 2.5427457132 \u2248 0.000438...\n3.45 - 0.000438 = 3.449562\n\nSo Q \u2248 34495.62...\n\nLet me try to compute to high precision. This requires big integer division. Let me do it.\n\nActually, I need 100 significant digits. Q \u2248 3.449... \u00d7 10^4, so 100 sig digits means 100 digits of Q where the first is in the 10^4 place.\n\nSo Q = XXXXX.YYYY... with 5 digits before the decimal and 95 after.\n\nTo compute N/D to 100 sig digits, I need to compute floor(N * 10^95 / D) or similar, then format.\n\nLet me compute N * 10^95 and divide by D. That's a huge number.\n\nActually, let me think. Q has the form with 80-76+1 = 5 digits in integer part (since N/D is around 3.4\u00d710^4, integer part has 5 digits). \n\nTo get 100 sig digits, I compute floor(N * 10^(95) / D) and this gives me a 100-digit integer which represents Q \u00d7 10^95, and I place the decimal point after 5 digits.\n\nWait, but I need to round, not floor.\n\nLet me compute Q to 101 sig digits (floor), then round to 100.\n\nComputing N \u00d7 10^96 / D g",
+      "extracted_answer": null,
+      "input_tokens": 283,
+      "output_tokens": 1024,
+      "elapsed_s": 13.305
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0038",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "2097424585328.12273554999317952580715897329922509561659998032807975209009654756847659423441383140937151745",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide A/B where\nA = 1676942452038999980359317803925348807505527439320108206428223105231\nB = 799524552048033611278535725531635321534657014071960953\n\nLet me count digits.\nA: let me count. \"1676942452038999980359317803925348807505527439320108206428223105231\"\nGroup: 1676942452 038999980 359317803 925348807 505527439 320108206 428223105 231\nLet me just count carefully:\n1-6-7-6-9-4-2-4-5-2 (10)\n-0-3-8-9-9-9-9-8-0-3 (20)\n-5-9-3-1-7-8-0-3-9-2 (30)\n-5-3-4-8-8-0-7-5-0-5 (40)\n-5-2-7-4-3-9-3-2-0-1 (50)\n-0-8-2-0-6-4-2-8-2-2 (60)\n-3-1-0-5-2-3-1 (67)\nSo A has 67 digits.\n\nB: \"799524552048033611278535725531635321534657014071960953\"\n7-9-9-5-2-4-5-5-2-0 (10)\n-4-8-0-3-3-6-1-1-2-7 (20)\n-8-5-3-5-7-2-5-5-3-1 (30)\n-6-3-5-3-2-1-5-3-4-6 (40)\n-5-7-0-1-4-0-7-1-9-6 (50)\n-0-9-5-3 (54)\nSo B has 54 digits.\n\nA/B has approximately 67-54 = 13 or 14 digits before decimal. Specifically, A \u2248 1.677e66, B \u2248 7.995e53, so A/B \u2248 2.097e12, so 13 digits before decimal.\n\nWe need 100 significant digits total, so 100 - 13 = 87 digits after decimal. We need to round the 100th significant digit.\n\nTo compute A/B to 100 sig digits, I'll do long division. Let me compute Q = floor(A * 10^87 / B) and then handle rounding.\n\nActually, let me compute A * 10^k / B for appropriate k, then round.\n\nLet me think. We need the first 101 digits to round properly to 100. Compute N = A * 10^(101-13) / B = A * 10^88 / B, then round the last digit using banker's rounding.\n\nWait, integer part has 13 digits. So total = 13 integer + 87 fractional = 100 sig digits. For rounding, I need the 101st digit to decide. So compute with 101 digits: integer part (13) + 88 fractional. Shift A by 10^88, divide by B, floor it. Then round last digit.\n\nLet me compute A * 10^88 / B.\n\nA * 10^88 is A followed by 88 zeros. This is a 67+88 = 155 digit number.\n\nLet me do this division by hand carefully... this is going to be painful. Let me try a different approach.\n\nLet me compute B * 2 * 10^12 first to estimate.\nB = 799524552048033611278535725531635321534657014071960953\n2B = 1599049104096067222557071451063270643069314028143921906",
+      "extracted_answer": null,
+      "input_tokens": 271,
+      "output_tokens": 1024,
+      "elapsed_s": 12.724
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0039",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.00000000000000000000184927663062667046568504712533971917923635893411822212566269390371181959858562746710271371103902140490502",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 970254536832074677612194281383167137067424964545 / 524667062116759311161510312765365955617806824243382558822653723841160 to 100 significant digits.\n\nLet me denote N = 970254536832074677612194281383167137067424964545\nD = 524667062116759311161510312765365955617806824243382558822653723841160\n\nN has 48 digits, D has 69 digits. So N/D \u2248 10^(48-69) = 10^-21 range... let me check leading digits.\n\nN \u2248 9.70254... \u00d7 10^47\nD \u2248 5.24667... \u00d7 10^68\nN/D \u2248 1.8492... \u00d7 10^-21\n\nSo result is 0.000...0001849... with 20 zeros after the decimal point, then the significant digits start.\n\nTo get 100 significant digits, I need to compute N * 10^120 / D roughly, then format.\n\nLet me compute N/D with high precision. I need to do long division.\n\nLet me set up: I want to find the quotient Q such that N * 10^k = Q * D + remainder, where Q has 100 significant digits.\n\nSince N/D \u2248 1.85 \u00d7 10^-21, to get 100 sig digits, I need precision to about 10^-120. So compute floor(N * 10^120 / D), giving ~100 digit integer, then round.\n\nActually, let me compute N * 10^121 / D to get 101 digits, then round the last one.\n\nLet me compute step by step. Let A = N * 10^121. Then Q = A / D.\n\nN = 970254536832074677612194281383167137067424964545\nA = N followed by 121 zeros.\n\nQ has approximately 48 + 121 - 69 = 100 digits. So Q is a ~100-101 digit integer.\n\nActually since N/D \u2248 1.85 \u00d7 10^-21, N*10^121/D \u2248 1.85 \u00d7 10^100. So Q has 101 digits.\n\nLet me do this more carefully. I'll perform long division.\n\nActually, this is extremely tedious to do by hand. Let me try a different approach - compute using Newton's method or just careful long division.\n\nLet me try: compute 1/D with enough precision, then multiply by N.\n\nHmm, let me just grind through long division.\n\nLet me write N/D. I'll use the algorithm: repeatedly multiply N by 10 and find quotient digit.\n\nSince N << D, first many digits are 0. We need N*10^k \u2265 D for first nonzero digit.\n\nlog10(D/N) = log10(D) - log10(N). \nD starts with 524667... (69 digits), so log10(D) \u2248 68 + log10(5.24667) \u2248 68.7199\nN starts with 970254... (48 digits), so log10(N) \u2248 47 + log10(9.70254) \u2248 47.9869\nDifference \u2248 20.7330. So D/N \u2248 5.408 \u00d7 10^20.\n\nSo N*10^20 < D < N*10^21. The first nonzero digit of quotient appears at position 21 after decimal (i.e., 10^-21 place).\n\nLet me just compute this with extreme care. I'll use the approach of computing N * ",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 14.14
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0040",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "31906455627564130925620.6967423618847627637400478272822399832654532235783450997101799683669018243791804099",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide a 80-digit number by a 57-digit number to get ~23 digits before decimal, then continue to 100 sig digits total, so ~77 digits after decimal.\n\nLet me denote:\nN = 19198508816880994351622360428443294402385015002779638176370322844252615322918289\nD = 601712363196346885766704293026486919140551799898439868507\n\nLet me count digits:\nN: 19198508816880994351622360428443294402385015002779638176370322844252615322918289\nLet me count: 19198 50881 68809 94351 62236 04284 43294 40238 50150 02779 63817 63703 22844 25261 53229 18289\nThat's 16 groups of 5 = 80 digits.\n\nD: 60171 23631 96346 88576 67042 93026 48691 91405 51799 89843 98685 07\nThat's 11 groups of 5 + 2 = 57 digits.\n\nSo N/D has about 80-57 = 23 or 24 digits before decimal.\n\nI need to compute this to 100 sig digits. This is a huge computation. Let me try to do it systematically.\n\nActually let me think: we need 100 sig digits of the quotient. The quotient has ~23-24 integer digits, so we need ~76-77 fractional digits.\n\nTo get 100 sig digits of quotient, I need to do division with enough precision. Let me compute N * 10^k / D for appropriate k, where k = 100 - (number of integer digits in quotient).\n\nFirst, estimate quotient:\nN \u2248 1.92 \u00d7 10^79\nD \u2248 6.02 \u00d7 10^56\nQ \u2248 3.19 \u00d7 10^22, so 23 integer digits.\n\nSo I need k = 100 - 23 = 77 fractional digits. Compute floor(N * 10^77 / D) which gives 100 digits, then I need to determine rounding.\n\nActually let me compute this more carefully. Let me compute M = N * 10^77, then Q_full = M / D, and the first 100 digits of Q_full give me the answer, with rounding based on digit 101.\n\nThis is an enormous computation by hand. Let me try a different approach - I'll do long division carefully.\n\nActually, I'll try to be smart about this. Let me do long division step by step.\n\nN = 19198508816880994351622360428443294402385015002779638176370322844252615322918289\nD = 601712363196346885766704293026486919140551799898439868507\n\nStep 1: Find how many digits of N to take to exceed D.\nD has 57 digits. First 57 digits of N:\n191985088168809943516223604284432944023850150027796381763\n\nIs this > D = 601712363196346885766704293026486919140551799898439868507?\n191985... vs 601712... \u2014 191 < 601, so 57 digits of N < D.\nTake 58 digits: 1919850881688099435162236042844329440238501500277963817637\nD =          601712363196346885766704293026486919140551799898439868507 (57 digits)\nSo we compare 1919850881688099435162236042844329440238501500277963817637 (58 digits)\nvs D * 10 or just divide.\n\nActually let me just start computing.\n\nQ = N /",
+      "extracted_answer": null,
+      "input_tokens": 276,
+      "output_tokens": 1024,
+      "elapsed_s": 14.752
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0041",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "39103190615388890661573076547.8527560597124119232929187991759541842929546353360862331581024466399797624951",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide N = 34193416865030073192789232008855195222886999817872740236263174807128669063 by D = 874440584691659474071848566038529638638112081 to 100 significant digits.\n\nLet me count digits.\nN: let me count: \"34193416865030073192789232008855195222886999817872740236263174807128669063\"\nCount: 3-4-1-9-3-4-1-6-8-6 (10) 5-0-3-0-0-7-3-1-9-2 (20) 7-8-9-2-3-2-0-0-8-8 (30) 5-5-1-9-5-2-2-2-8-8 (40) 6-9-9-9-8-1-7-8-7-2 (50) 7-4-0-2-3-6-2-6-3-1 (60) 7-4-8-0-7-1-2-8-6-6 (70) 9-0-6-3 (74). So N has 74 digits.\n\nD: \"874440584691659474071848566038529638638112081\"\n8-7-4-4-4-0-5-8-4-6 (10) 9-1-6-5-9-4-7-4-0-7 (20) 1-8-4-8-5-6-6-0-3-8 (30) 5-2-9-6-3-8-6-3-8-1 (40) 1-2-0-8-1 (45). So D has 45 digits.\n\nQuotient integer part will have approximately 74-45+1 = 30 digits or 29. Let's check: N/D, leading digits 3.42.../8.74... \u2248 0.39, so quotient has 29 digits integer part.\n\nActually 34193.../874440... = 3.42.../8.74... * 10^(74-45) = 0.391... * 10^29 = 3.91...*10^28, so 29-digit integer part.\n\nWe need 100 significant digits, so 100 - 29 = 71 decimal places.\n\nThis requires doing long division. Let me think about how to approach this carefully.\n\nLet me compute Q = N/D to 100 significant digits. I'll need to compute N * 10^71 / D roughly (to get integer part with 100 digits).\n\nActually, since integer part of Q has 29 digits, Q to 100 sig digits means we want Q rounded/truncated at the 10^(29-100) = 10^-71 place. So we want floor(N * 10^71 / D) essentially, then round.\n\nLet me compute N * 10^71 and divide by D.\n\nThis is extremely tedious. Let me try to set up long division systematically.\n\nActually, let me compute this differently. Let me find Q such that Q*D \u2248 N*10^71, where Q is a 100-digit integer.\n\nLet me denote D = 874440584691659474071848566038529638638112081.\n\nStep 1: Get approximate reciprocal of D.\n1/D \u2248 1/(8.74440584691659474071848566038529638638112081 \u00d7 10^44)\n\u2248 0.11435834... \u00d7 10^-44\n\nLet me compute 1/8.74440584691659474071848566038529638638112081 more precisely.\n\n1/8.7444... Let's use Newton's method or just divide.\n\nLet x = 8.74440584691659474",
+      "extracted_answer": null,
+      "input_tokens": 270,
+      "output_tokens": 1024,
+      "elapsed_s": 12.808
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0042",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "1007.17594877654895904825118641565355375278555466110375427537860625616895794916008371976813683376214681681",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 762559301181398351610350874258050706990612145512964352713868589473559 / 757126202336051801068361337039441450479783244717264073334466500614 to 100 significant digits.\n\nLet me denote N = 762559301181398351610350874258050706990612145512964352713868589473559\nD = 757126202336051801068361337039441450479783244717264073334466500614\n\nN has 69 digits, D has 66 digits. So N/D \u2248 10^(69-66) = 10^3 order, about 1007.\n\nLet me compute N/D. First integer part:\nN/D \u2248 1007.17...\n\nLet me compute more precisely. 1000*D = 757126202336051801068361337039441450479783244717264073334466500614000\nN - 1000*D = 762559301181398351610350874258050706990612145512964352713868589473559 - 757126202336051801068361337039441450479783244717264073334466500614000\n\nLet me align. N has 69 digits, 1000*D has 69 digits.\n\nN = 762559301181398351610350874258050706990612145512964352713868589473559\n1000D = 757126202336051801068361337039441450479783244717264073334466500614000\n\nSubtract:\n  762559301181398351610350874258050706990612145512964352713868589473559\n- 757126202336051801068361337039441450479783244717264073334466500614000\n\nLet me do digit by digit from right. Actually, let me just subtract:\n762559301181398351610350874258050706990612145512964352713868589473559\n757126202336051801068361337039441450479783244717264073334466500614000\n\nDifference:\n762559301181398351610350874258050706990612145512964352713868589473559\n-757126202336051801068361337039441450479783244717264073334466500614000\n= 5433098845346550541989537218609256510828900795700279379402088859559\n\nLet me verify by aligning (both 69 digits):\n7 6 2 5 5 9 3 0 1 1 8 1 3 9 8 3 5 1 6 1 0 3 5 0 8 7 4 2 5 8 0 5 0 7 0 6 9 9 0 6 1 2 1 4 5 5 1 2 9 6 4 3 5 2 7 1 3 8 6 8 5 8 9 4 7 3 5 5 9\n7 5 7 1 2 6 2 0 2 3 3 6 0 5 1 8 0 1 0 6 8 3 6 1 3 3 7 0 3 9 4 4 1 4 5 0 4 7 9 7 8 3 2 4 4 7 1 7 2 6 4 0 7 3 3 3 4 4 6 6 5 0 0 6 1 4 0 0 0\n\nSubtract:\npos 1: 7-7=0\npos 2: 6-5=1... wait this won't directly work because of borrows. Let me use a different approach.\n\nActually this is too tedious to do by hand with 100 digits. Let me think of a smarter approach.\n\nLet me compute q = N/D using long division approach, extracting digits one at a time, but I need 100 digits of precision.\n\nThis is really tedious. Let me",
+      "extracted_answer": null,
+      "input_tokens": 275,
+      "output_tokens": 1024,
+      "elapsed_s": 11.376
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0043",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.00000000982331853940683333251583987445947903901063755720621179087516796864386087433852171988917094052751671333004",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 471606964319645763583949145171736554380285487411105880390131068895 / 48008925133371787994040537989886964722051888021091798395950853382140107641 to 100 significant digits.\n\nLet me denote N = 471606964319645763583949145171736554380285487411105880390131068895 (66 digits)\nD = 48008925133371787994040537989886964722051888021091798395950853382140107641 (74 digits)\n\nSo N/D \u2248 10^(-8) something. Let's see: N ~ 4.716 \u00d7 10^65, D ~ 4.80 \u00d7 10^73. Ratio ~ 0.982 \u00d7 10^-8 \u2248 9.82 \u00d7 10^-9.\n\nWe need 100 significant digits. So we need to compute N * 10^108 / D (roughly) to get integer with 100 digits, then place decimal.\n\nActually, first significant digit is at position 10^-9. So 100 sig digits means we need digits from 10^-9 to 10^-108.\n\nLet me compute N/D with high precision. I'll need to do long division essentially.\n\nLet me compute N * 10^k / D where k is chosen so result has 100+ digits.\n\nN has 66 digits, D has 74 digits. N/D < 1, specifically ~ 10^-8.\n\nTo get 100 sig digits, compute floor(N * 10^(8+100) / D) with rounding, then it's a 100-digit integer representing the digits.\n\nActually N/D \u2248 9.82\u00d710^-9. First sig digit at 10^-9 position. So N * 10^108 / D gives us integer with 100 digits (leading 9).\n\nLet me compute M = N * 10^108, then M / D.\n\nThis is a huge computation. Let me think of a smarter approach.\n\nLet me try to do this with careful arithmetic. I'll compute the quotient digit by digit, but that's 100 iterations.\n\nAlternative: use Newton's method or just estimate carefully.\n\nLet me try. First compute N/D to high precision.\n\nLet me represent: N/D = q where q \u2248 9.82... \u00d7 10^-9.\n\nLet me estimate more precisely. \nN = 4.71606964319645763583949145171736554380285487411105880390131068895 \u00d7 10^65\nD = 4.8008925133371787994040537989886964722051888021091798395950853382140107641 \u00d7 10^73\n\nq = N/D \u00d7 10^(65-73) = (N_mantissa / D_mantissa) \u00d7 10^-8\n\nN_m / D_m \u2248 4.71607 / 4.80089 \u2248 0.98233...\n\nLet me compute more carefully.\n4.71606964319645763583949145171736554380285487411105880390131068895 / 4.8008925133371787994040537989886964722051888021091798395950853382140107641\n\nI need to do this division to ~100 digits. This is tough by hand.\n\nLet me try a different approach: compute 1/D first (reciprocal) then multiply.\n\nActually, let me just do careful long division. I'll need to be systematic.\n\nLet me scale: let a = N, b = D. I want a/b to 100 sig digits.\n\nCompute a * 10^108, then divide",
+      "extracted_answer": null,
+      "input_tokens": 277,
+      "output_tokens": 1024,
+      "elapsed_s": 12.376
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0044",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "917486285972670.810649945365202719778297387916390538735214787321591644452773526782354221101257905094407007",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 66249784206655995277263609915310742363238778496503544473191145736 / 72207928575653259878679929086176771166433431733753 to 100 significant digits.\n\nLet me count digits of dividend: 66249784206655995277263609915310742363238778496503544473191145736\nLet me count: 66249 78420 66559 95277 26360 99153 10742 36323 87784 96503 54447 31911 45736\nThat's 13 groups of 5 = 65 digits.\n\nDivisor: 72207928575653259878679929086176771166433431733753\n72207 92857 56532 59878 67992 90861 76771 16643 34317 33753\n10 groups of 5 = 50 digits.\n\nQuotient will have approximately 65-50 = 15 digits before decimal point, or 16. Let me estimate: 6.62e64 / 7.22e49 \u2248 0.917e15 \u2248 9.17e14, so 15 digits before decimal.\n\nTo get 100 significant digits, we need 100-15 = 85 digits after decimal, or really we need to compute quotient * 10^85 roughly as integer.\n\nActually, let's compute N / D where N is dividend, D is divisor. We want 100 sig digits.\n\nLet me compute N * 10^k / D for some k, where the result has 100 or 101 digits.\n\nIf quotient has 15 digits before decimal, then we need 85 digits after. So multiply N by 10^85 and divide by D, that gives a 100-digit integer (the quotient's 100 sig digits).\n\nActually to round properly, let's compute 101 digits and round.\n\nLet me set up: compute floor(N * 10^86 / D) which should give 101 digits, then round to 100.\n\nThis is tedious but let me try. Actually, let me just do long division carefully.\n\nN = 66249784206655995277263609915310742363238778496503544473191145736\nD = 72207928575653259878679929086176771166433431733753\n\nStep 1: N < D*10^15? Let's check magnitude.\nD \u2248 7.2208e49\nD * 10^15 \u2248 7.2208e64\nN \u2248 6.625e64\nSo N/D \u2248 0.9174e15 = 9.174e14. Quotient has 15 digits before decimal.\n\nLet me compute the first digit. N / (D * 10^14) \u2248 6.625e64 / 7.2208e63 \u2248 9.17. So first digit is 9.\n\nLet me just do this algorithmically by computing successive digits.\n\nLet R = N. For each digit position, we want the largest digit d such that d * D * 10^p \u2264 R.\n\nActually, let me use a different approach. Let me compute Q = floor(N * 10^86 / D).\n\nLet me define M = N * 10^86. This is a huge number. Then Q = M / D.\n\nThis is quite tedious but doable. Let me try a different approach: use Newton's method or just extended precision long division.\n\nLet me do long division. I'll track the remainder.\n\nActually, the cleanest approach: N has 65 digits, D has 50 digits. I'll compute N/D with enough precision.\n\nLet me try to work this",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 13.449
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0045",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.000159731125284216884520263018144161226720762908359748000921579687556123523166846123305616524717148086753138",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 90601612823469903415303218108231561461182 / 567213263302680156173969418762820495750843169 to 100 significant digits.\n\nLet me denote N = 90601612823469903415303218108231561461182 (41 digits)\nD = 567213263302680156173969418762820495750843169 (45 digits)\n\nSo N/D \u2248 9.06.../5.67... \u00d7 10^(-4) roughly. Let me check: N has 41 digits, D has 45 digits. So N/D \u2248 10^(-4) range.\n\nActually N/D \u2248 90601.../567213... \u00d7 10^(-4) but need careful. N = 9.0601... \u00d7 10^40, D = 5.672... \u00d7 10^44. So N/D \u2248 1.597... \u00d7 10^(-4).\n\nLet me compute more precisely. I need 100 significant digits starting from the first nonzero digit.\n\nLet me compute N/D = q where q \u2248 1.597... \u00d7 10^(-4).\n\nI'll compute N * 10^103 / D to get 100 significant digits (first nonzero at position 10^-4, so to get 100 sig digits I need digits down to 10^(-103)).\n\nActually, let me think. q = 0.0001597... The first significant digit is at 10^-4. To get 100 sig digits, I need precision to 10^-103. So compute floor(N * 10^103 / D) and that gives an integer with first digit at position 10^-4 meaning... hmm let me just compute N * 10^103 / D.\n\nThis is a big computation. Let me do long division.\n\nActually, let me compute 10^103 * N / D.\n\nN * 10^103 is a huge number. Then divide by D.\n\nLet me try a different approach: compute q = N/D by long division, getting digits one at a time.\n\nStep 1: N < D (since N has 41 digits, D has 45 digits), so q < 1.\n\nWe want digits of q. Let R = N initially.\n\nTo get digit at position 10^-k, multiply R by 10, divide by D, get quotient digit, remainder.\n\nSince N < D and 10*N < D (N ~ 9\u00d710^40, D ~ 5.67\u00d710^44, so 10N ~ 9\u00d710^41 < D), first 3 digits after decimal are 0.\n\nDigits: 0.000...\n\nLet me compute 10^4 * N = 906016128234699034153032181082315614611820000 (45 digits)\nCompare to D = 567213263302680156173969418762820495750843169.\n\n10^4 * N / D: 10^4 * N \u2248 9.06 \u00d7 10^44, D \u2248 5.67 \u00d7 10^44, so quotient is 1.\n\nActually let me just set up: I want q such that q*D \u2248 N*10^k for various k.\n\nLet me compute N/D using Newton's method for reciprocal, or just do straight long division carrying enough precision.\n\nThis will take significant work. Let me try to be systematic.\n\nLet me compute 1/D first to high precision, then multiply by N.\n\nActually, let me just do long division to get digits.\n\nLet me scale: compute N * 10^103 and divide by D.\n\nN = 90601612823469903415303218108231561461182",
+      "extracted_answer": null,
+      "input_tokens": 259,
+      "output_tokens": 1023,
+      "elapsed_s": 13.73
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0046",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "0.0000000000000000402313626994690153150358359387383526359822762042816438354655181739197470086830547794643983830073926357335",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 36651036450312447276742843897518270321336558377773753 / 911006587673854204861400915931600070718672156617571533622642072598330 to 100 significant digits.\n\nLet me denote A = 36651036450312447276742843897518270321336558377773753\nB = 911006587673854204861400915931600070718672156617571533622642072598330\n\nA has 53 digits, B has 69 digits. So A/B \u2248 10^(-16) range.\n\nA/B \u2248 4.023... \u00d7 10^-17\n\nTo get 100 significant digits, I need to compute A * 10^116 / B (approximately) and extract digits.\n\nLet me think: quotient ~ 4e-17, first significant digit at position 10^-17. To get 100 sig digits, I need digits from 10^-17 down to 10^-116.\n\nSo compute floor(A * 10^116 / B) and that gives me 100 digits (possibly). Then round.\n\nActually, let me compute A * 10^117 / B and take 101 digits, then round.\n\nLet me do long division. A/B.\n\nLet me compute N = A * 10^120, then divide by B. The result will have about 120-16 = 104 integer digits. Take first 101 and round.\n\nThis is tedious but let me try. Actually let me use a different approach: compute A/B via successive approximation.\n\nLet me estimate first: \nA \u2248 3.6651036450312447276742843897518270321336558377773753 \u00d7 10^52\nB \u2248 9.11006587673854204861400915931600070718672156617571533622642072598330 \u00d7 10^68\n\nA/B \u2248 3.6651036450312447... / 9.11006587673854204861... \u00d7 10^(52-68)\n     = 0.40231439... \u00d7 10^-16\n     = 4.0231439... \u00d7 10^-17\n\nLet me compute 3.6651036450312447276742843897518270321336558377773753 / 9.11006587673854204861400915931600070718672156617571533622642072598330 more precisely.\n\nLet a = 3.6651036450312447276742843897518270321336558377773753\nLet b = 9.11006587673854204861400915931600070718672156617571533622642072598330\n\nI need a/b to 100 sig figs.\n\nHmm, this is really tedious by hand. Let me try a systematic approach using Newton's iteration or long division.\n\nActually, let me just do long division carefully. I'll compute digits one at a time.\n\nLet me set up: I want q = A/B to 100 sig digits, where q \u2248 4.02...e-17.\n\nAlternative: compute A * 10^116 / B. This gives an integer of ~100 digits. Actually A * 10^116 has 53+116 = 169 digits, B has 69 digits, so quotient has ~100-101 digits.\n\nLet me check: A = 3.665...e52, B = 9.11...e68, so A*10^116/B \u2248 4.02e(52+116-68) = 4.02e100. That's 101 digits. So floor gives 101 digits; I want 100 sig digits rounded.\n\nSo I need to compute floor(A * 10^117 / B) which has ~102 digits, giving 101 sig digits, round last to",
+      "extracted_answer": null,
+      "input_tokens": 271,
+      "output_tokens": 1024,
+      "elapsed_s": 12.742
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0047",
+    "category": "decimal_division",
+    "difficulty": "hard",
+    "ground_truth": "0.00000000000000000000000000000000362068910449931050669340709589273469364905089111546032640220828036203613681608451303034417368717797074674",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 48911275162821186843339253160511263832929 / 13508830432870020279727282937421345021021723751613393000359361709050157047 to 100 significant digits.\n\nLet me denote N = 48911275162821186843339253160511263832929\nD = 13508830432870020279727282937421345021021723751613393000359361709050157047\n\nN has 41 digits, D has 74 digits. So N/D \u2248 10^(41-74) = 10^-33 range... let me check leading digits.\n\nN \u2248 4.8911275... \u00d7 10^40\nD \u2248 1.3508830... \u00d7 10^73\n\nN/D \u2248 3.6207... \u00d7 10^-33\n\nSo first significant digit is around position 33 after decimal. We need 100 significant digits, meaning we need about 132 decimal places.\n\nThis requires high-precision arithmetic. Let me try to compute N/D carefully.\n\nLet me compute N * 10^132 / D to get integer, then place decimal.\n\nActually, let me compute N/D with enough precision. I'll compute step by step using long division essentially. But this is huge.\n\nLet me think of another approach: compute 1/D first to high precision, or use Newton's method mentally... too hard.\n\nLet me just do the division. I'll compute N * 10^k / D for large k.\n\nLet k = 140. Then N * 10^140 / D gives integer with ~107 digits. We want 100 sig digits after the leading ones.\n\nActually let's set it up: quotient Q = N/D. Leading digit at position 10^-33 (since 4.89/1.35 \u2248 3.6, which is 10^-33 * 3.6). We need 100 sig digits so we need quotient to precision 10^-(33+99) = 10^-132.\n\nCompute M = floor(N * 10^132 / D). Then M is 100 digits, and Q \u2248 M * 10^-132.\n\nWait, first sig digit of Q is at 10^-33. So Q = d_1 \u00d7 10^-33 + d_2 \u00d7 10^-34 + ... Getting 100 sig digits means getting Q accurate to 10^-(33+99) = 10^-132. So compute M = round(N * 10^132 / D).\n\nN * 10^132 has 41 + 132 = 173 digits. D has 74 digits. Quotient has 173-74 = 99 or 100 digits.\n\nLet me compute N * 10^132 = 48911275162821186843339253160511263832929 followed by 132 zeros.\n\nLet me do long division. This is extremely tedious but let's try.\n\nActually, let me try a different approach. Compute reciprocal approximately and multiply.\n\n1/D \u2248 ? D \u2248 1.3508830432870020279727282937421345021021723751613393000359361709050157047 \u00d7 10^73\n\n1/D \u2248 0.74025... \u00d7 10^-73\n\nLet me compute 1/1.3508830432870020279727282937421345021021723751613393000359361709050157047 first.\n\nLet x = 1.3508830432870020279727282937421345021021723751613393000359361709050157047\n1/x = ?\n\nUsing Newton: y_{n+1} = y_n(2 ",
+      "extracted_answer": null,
+      "input_tokens": 269,
+      "output_tokens": 1024,
+      "elapsed_s": 13.286
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0048",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "705.636497582002332295692749853471650542495979518012945952662141510182365157815056534503098408661524414543",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to compute 2547464589269254471680666935037510641035192863603274680 / 3610165571081748751067616070514248694964952902618162 to 100 significant digits.\n\nLet me denote N = 2547464589269254471680666935037510641035192863603274680\nD = 3610165571081748751067616070514248694964952902618162\n\nN has 55 digits, D has 52 digits. So N/D is about 10^3, roughly.\n\nLet me estimate: N/D \u2248 2.547.../3.610... \u00d7 10^3 \u2248 0.7056... \u00d7 10^3 \u2248 705.6...\n\nSo the result is roughly 705.something with 100 sig digits meaning 97 digits after decimal point.\n\nI need to do long division carefully. Let me think about this more systematically.\n\nLet me compute N/D. I'll need 100 significant digits. Since result is ~705.xxx (3 digits before decimal), I need 97 digits after decimal point.\n\nLet me set up: compute floor(N * 10^97 / D), then place decimal.\n\nActually, let's compute Q = N * 10^k / D for appropriate k so we get 101 digits (to round).\n\nThe integer part of N/D: N/D \u2248 705.6. Let me verify.\n\n705 * D = 705 * 3610165571081748751067616070514248694964952902618162\n= ?\n\nLet me compute D * 700 = 2527115899757224125747331249359974086475467031832713400\nD * 705 = D*700 + D*5\nD*5 = 18050827855408743755338080352571243474824764513090810\nD*705 = 2527115899757224125747331249359974086475467031832713400 + 18050827855408743755338080352571243474824764513090810\n= 2545166727612632869502669329712545329950291796345804210\n\nN - D*705 = 2547464589269254471680666935037510641035192863603274680 - 2545166727612632869502669329712545329950291796345804210\n= 2297861656621602177997605324965311084901067257470470\n\nSo N = 705*D + 2297861656621602177997605324965311084901067257470470\n\nLet R0 = 2297861656621602177997605324965311084901067257470470 (52 digits)\n\nNow N/D = 705 + R0/D.\n\nR0/D: R0 has 52 digits, D has 52 digits. R0/D \u2248 0.636...\n\nWe need 97 more digits after decimal. So compute floor(R0 * 10^98 / D) and we'll have 98 digits, then round.\n\nWait, let me reconsider. We need 100 sig digits. The number is 705.xxx... which starts with digit '7'. Sig digits: 7, 0, 5, then 97 more. Total 100 sig digits means 97 digits after the decimal point. To round, we want 98 digits after decimal point (compute 98, round based on 98th).\n\nHmm actually we need the 100th sig digit rounded. Let me compute 101 sig digits worth (to see the 101st for rounding).\n\nCompute floor(N * 10^98 / D). That gives us an integer with 101 digits (since N/D \u2248 705.xxx, N*10^98/D ",
+      "extracted_answer": null,
+      "input_tokens": 267,
+      "output_tokens": 1024,
+      "elapsed_s": 15.569
+    },
+    "control_correct": false
+  },
+  {
+    "id": "div-0049",
+    "category": "decimal_division",
+    "difficulty": "ultra-hard",
+    "ground_truth": "11353597080204.2377539434269892773568173178481710860678960459449334195906058247824676442635183157303371662",
+    "answer_type": "decimal",
+    "precision": 100,
+    "control": {
+      "raw_response": "<think>\nWe need to divide A by B to 100 significant digits.\n\nA = 772871008570425767645706749586441316515150859574432220817877158255715\nB = 68072788131435322548285783018626708191015074339001935139\n\nLet me count digits.\nA: let me count: \"772871008570425767645706749586441316515150859574432220817877158255715\"\nGroup: 772871008570425767645706749586441316515150859574432220817877158255715\nLet me count in chunks of 10:\n7728710085 7042576764 5706749586 4413165151 5085957443 2220817877 158255715\nThat's 10+10+10+10+10+10+9 = 69 digits.\n\nB: \"68072788131435322548285783018626708191015074339001935139\"\n6807278813 1435322548 2857830186 2670819101 5074339001 935139\n= 10+10+10+10+10+6 = 56 digits.\n\nSo A/B \u2248 10^(69-56) = 10^13 range, roughly.\n\nFirst digit count: A ~ 7.7287e68, B ~ 6.8073e55, ratio ~ 1.1354e13.\n\nWe need 100 sig digits. So we need the quotient to 100 digits, meaning we need about 100 + (digits after decimal) precision. The integer part has 14 digits (since ~1.13e13, so 14 digits). We need 100 sig digits total = 14 integer digits + 86 fractional digits, then round.\n\nLet me compute this carefully. I'll do long division.\n\nQ = A/B. Let me compute Q * 10^86, that's the integer part we need (then round to integer based on 87th digit).\n\nActually, let me compute floor(A * 10^86 / B) and round appropriately.\n\nN = A * 10^86\nWe need N/B to high precision, specifically we need floor or round of N/B truncated at position.\n\nActually to get 100 sig digits with proper rounding, compute A * 10^86 / B, giving integer part with 100 digits, then check remainder for rounding the last digit.\n\nLet me set up: compute Q_int = floor(A * 10^87 / B), this gives 101 digits, then round to 100 using the last digit (banker's rounding).\n\nHmm, let me think. A/B has 14 digits before decimal. To get 100 sig digits, I need 86 digits after decimal. So I compute floor(A * 10^87 / B) which gives 101-digit number, the last digit tells me how to round.\n\nActually for ties-to-even: if 101st digit is < 5, round down. If > 5, round up. If = 5 and nothing after, ties to even. But since A and B are integers, A*10^87/B generally has a remainder, so \"= 5\" with remainder 0 would be exact tie \u2014 exceedingly unlikely. For banker's rounding we care about exact tie.\n\nLet me just compute A * 10^86 / B to get 100-digit integer, then compute the next digit (101st digit of quotient) by looking at remainder.\n\nMethod: Let me compute step by step.\n\nActually let me just do the division directly. A has 69 digits, B has 56 digits. First partial: take first 56 or 57 digits of A.\n\nThis will be ted",
+      "extracted_answer": null,
+      "input_tokens": 272,
+      "output_tokens": 1024,
+      "elapsed_s": 15.163
+    },
+    "control_correct": false
+  }
+]

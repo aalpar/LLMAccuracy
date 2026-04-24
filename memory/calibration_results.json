@@ -1,0 +1,162 @@
+{
+  "model": "claude-opus-4-7",
+  "problems_file": "algebra-accuracy/arithmetic_problems.json",
+  "samples_per_tier": 5,
+  "seed": 42,
+  "tiers": {
+    "hard": {
+      "n": 5,
+      "n_correct": 5,
+      "output_tokens": {
+        "min": 1341,
+        "median": 1574,
+        "p95": 2491,
+        "max": 2491
+      },
+      "output_tokens_correct_only": {
+        "min": 1341,
+        "median": 1574,
+        "p95": 2491,
+        "max": 2491
+      },
+      "rounds": {
+        "min": 6,
+        "median": 7,
+        "max": 10
+      },
+      "elapsed_s": {
+        "median": 26.51,
+        "max": 41.12
+      },
+      "samples": [
+        {
+          "id": "div-0003",
+          "output_tokens": 1341,
+          "input_tokens": 20985,
+          "rounds": 7,
+          "tool_calls": 6,
+          "elapsed_s": 24.278,
+          "extracted_answer": "1402669058175106.808072875789096405917774368529399989174724850530929071137914606637639338167750528193",
+          "correct": true
+        },
+        {
+          "id": "div-0000",
+          "output_tokens": 1574,
+          "input_tokens": 25361,
+          "rounds": 8,
+          "tool_calls": 7,
+          "elapsed_s": 26.506,
+          "extracted_answer": "1409806224851904685396868351032493.498250271407584513411473165705852601548930907189861959956299497783",
+          "correct": true
+        },
+        {
+          "id": "div-0013",
+          "output_tokens": 1501,
+          "input_tokens": 18466,
+          "rounds": 6,
+          "tool_calls": 5,
+          "elapsed_s": 23.757,
+          "extracted_answer": "63062343348915840107152844.41841931863744410585762419130832549692624663177780410014780904639131561661",
+          "correct": true
+        },
+        {
+          "id": "div-0011",
+          "output_tokens": 2113,
+          "input_tokens": 21277,
+          "rounds": 6,
+          "tool_calls": 6,
+          "elapsed_s": 29.371,
+          "extracted_answer": "0.0001914435680678471986596135055317946449253810528792575640707384320963932371787683054822207311848732004",
+          "correct": true
+        },
+        {
+          "id": "div-0039",
+          "output_tokens": 2491,
+          "input_tokens": 40189,
+          "rounds": 10,
+          "tool_calls": 10,
+          "elapsed_s": 41.117,
+          "extracted_answer": "0.000000000000000000001849276630626670465685047125339719179236358934118222125662693903711819598585627467102713711039021405",
+          "correct": true
+        }
+      ]
+    },
+    "ultra-hard": {
+      "n": 5,
+      "n_correct": 5,
+      "output_tokens": {
+        "min": 1343,
+        "median": 1569,
+        "p95": 1858,
+        "max": 1858
+      },
+      "output_tokens_correct_only": {
+        "min": 1343,
+        "median": 1569,
+        "p95": 1858,
+        "max": 1858
+      },
+      "rounds": {
+        "min": 6,
+        "median": 8,
+        "max": 9
+      },
+      "elapsed_s": {
+        "median": 28.19,
+        "max": 31.36
+      },
+      "samples": [
+        {
+          "id": "div-0012",
+          "output_tokens": 1343,
+          "input_tokens": 19289,
+          "rounds": 6,
+          "tool_calls": 6,
+          "elapsed_s": 22.287,
+          "extracted_answer": "1816659025.008727320382570278802576109068501435531008020564901713509824461157225447337259452100317475",
+          "correct": true
+        },
+        {
+          "id": "div-0040",
+          "output_tokens": 1704,
+          "input_tokens": 31304,
+          "rounds": 9,
+          "tool_calls": 9,
+          "elapsed_s": 28.813,
+          "extracted_answer": "31906455627564130925620.69674236188476276374004782728223998326545322357834509971017996836690182437918",
+          "correct": true
+        },
+        {
+          "id": "div-0010",
+          "output_tokens": 1569,
+          "input_tokens": 30871,
+          "rounds": 9,
+          "tool_calls": 9,
+          "elapsed_s": 28.192,
+          "extracted_answer": "1839696779885777446.702152084629221976885728965684901124528202911053343895691426248365213444603271585",
+          "correct": true
+        },
+        {
+          "id": "div-0037",
+          "output_tokens": 1858,
+          "input_tokens": 27711,
+          "rounds": 8,
+          "tool_calls": 7,
+          "elapsed_s": 31.365,
+          "extracted_answer": "34495.61590644308726283838631525239963309572854580570987429371750359223939791569044131426067805137609",
+          "correct": true
+        },
+        {
+          "id": "div-0048",
+          "output_tokens": 1437,
+          "input_tokens": 18938,
+          "rounds": 6,
+          "tool_calls": 5,
+          "elapsed_s": 22.118,
+          "extracted_answer": "705.6364975820023322956927498534716505424959795180129459526621415101823651578150565345030984086615244",
+          "correct": true
+        }
+      ]
+    }
+  }
+}
