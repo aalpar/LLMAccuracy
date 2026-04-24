@@ -1,0 +1,20 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtualenv
+base_env/
+venv/
+.venv/
+
+# macOS metadata
+.DS_Store
+
+# Benchmark run artifacts (regenerable from problem sets + harness)
+*.log
+it.out
+
+# Editor scratch
+*~
+.#*
