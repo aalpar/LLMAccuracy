@@ -82,3 +82,26 @@ def test_regex_matching_supports_three_difficulties():
     for diff in ("easy", "medium", "hard"):
         problems = gen_regex_matching(diff, n=1)
         assert problems[0].difficulty == diff
+
+
+from generate_capability_problems import gen_linear_recurrence
+
+
+def test_linear_recurrence_produces_requested_count():
+    random.seed(0)
+    problems = gen_linear_recurrence("easy", n=3)
+    assert len(problems) == 3
+
+
+def test_linear_recurrence_problem_has_required_fields():
+    random.seed(0)
+    p = gen_linear_recurrence("medium", n=1)[0]
+    assert p.category == "linear_recurrence"
+    assert p.id.startswith("linrec-medium-")
+    assert p.answer_type == "integer"
+
+
+def test_linear_recurrence_supports_three_difficulties():
+    random.seed(0)
+    for diff in ("easy", "medium", "hard"):
+        assert gen_linear_recurrence(diff, n=1)[0].difficulty == diff

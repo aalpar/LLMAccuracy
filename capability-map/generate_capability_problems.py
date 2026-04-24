@@ -526,6 +526,82 @@ def gen_regex_matching(difficulty: str, n: int):
     return problems
 
 
+# ---- linear_recurrence ----
+#
+# a_n = c_1 a_{n-1} + c_2 a_{n-2} + ... + c_k a_{n-k} with initial
+# conditions a_0..a_{k-1}. Compute a_N for a given N.
+#
+# Wile oracle: O(N) naive iteration in Scheme. When Wile lands matrix
+# exponentiation, this generator's scheme expression can stay as-is
+# or be updated for speed; N ≤ 120 is fine naive.
+
+LINEAR_RECURRENCE_PRESETS = {
+    # (order, N_range)
+    "easy":   (2, (10, 20)),
+    "medium": (2, (30, 50)),
+    "hard":   (3, (80, 120)),
+}
+
+
+def gen_linear_recurrence(difficulty: str, n: int):
+    order, N_range = LINEAR_RECURRENCE_PRESETS[difficulty]
+    problems = []
+    for i in range(n):
+        # Coefficients: small positive integers so the sequence grows
+        # monotonically without oscillation or collapse.
+        coefs = [random.randint(1, 3) for _ in range(order)]
+        inits = [random.randint(1, 5) for _ in range(order)]
+        N = random.randint(*N_range)
+
+        inits_sch = "(list " + " ".join(str(v) for v in inits) + ")"
+        coefs_sch = "(list " + " ".join(str(c) for c in coefs) + ")"
+        # Pre-computed index list `(0 1 2 ... order-1)` — used to pair
+        # each coefficient with its offset from the current index.
+        # Avoids needing a recursive `enumerate` helper inside Scheme.
+        indices_sch = "'(" + " ".join(str(k) for k in range(order)) + ")"
+
+        scheme = (
+            f"(let ((coefs {coefs_sch})\n"
+            f"      (indices {indices_sch})\n"
+            f"      (N {N}))\n"
+            f"  (let loop ((seq {inits_sch}) (idx {order}))\n"
+            f"    (if (> idx N)\n"
+            f"        (list-ref seq N)\n"
+            f"        (let ((next (apply +\n"
+            f"                      (map (lambda (c k)\n"
+            f"                             (* c (list-ref seq (- idx 1 k))))\n"
+            f"                           coefs\n"
+            f"                           indices))))\n"
+            f"          (loop (append seq (list next)) (+ idx 1))))))"
+        )
+
+        # Natural-language recurrence string.
+        coef_terms = []
+        for k, c in enumerate(coefs):
+            if c == 1:
+                coef_terms.append(f"a_{{n-{k+1}}}")
+            else:
+                coef_terms.append(f"{c} a_{{n-{k+1}}}")
+        recurrence_str = "a_n = " + " + ".join(coef_terms)
+        initials_str = ", ".join(
+            f"a_{k} = {v}" for k, v in enumerate(inits)
+        )
+        nl = (
+            f"Let the sequence `a_0, a_1, a_2, ...` be defined by the "
+            f"linear recurrence `{recurrence_str}` with initial conditions "
+            f"`{initials_str}`. Compute `a_{N}`. Give a non-negative integer."
+        )
+        problems.append(Problem(
+            id=f"linrec-{difficulty}-{i:03d}",
+            category="linear_recurrence",
+            difficulty=difficulty,
+            natural_language=nl,
+            scheme_expression=scheme,
+            answer_type="integer",
+        ))
+    return problems
+
+
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
 # Each entry: (difficulties, generator_fn). The capability map samples
@@ -557,9 +633,9 @@ CATEGORIES = {
     "combinatorial_counting": (DIFFICULTIES, gen_combinatorial_counting),
 
     "regex_matching":         (DIFFICULTIES, gen_regex_matching),
+    "linear_recurrence":      (DIFFICULTIES, gen_linear_recurrence),
 
     # Stubbed — Wile primitive incoming:
-    # "linear_recurrence":      (DIFFICULTIES, gen_linear_recurrence),
     # "boolean_satisfiability": (DIFFICULTIES, gen_boolean_satisfiability),
     # "group_theory":           (DIFFICULTIES, gen_group_theory),
 }
