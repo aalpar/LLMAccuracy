@@ -19,6 +19,7 @@ Usage:
 import argparse
 import json
 import random
+import re
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -442,6 +443,89 @@ def gen_set_closure(difficulty: str, n: int):
     return problems
 
 
+# ---- regex_matching ----
+#
+# Given a regex pattern and a string, determine whether the pattern
+# matches the string. Answer is 'yes or 'no (Scheme symbols, which
+# write without quotes).
+#
+# Ground truth is computed in Python at generation time (via the re
+# module); the scheme_expression is the literal Scheme symbol. Wile
+# just echoes it back through (write ...). This hybrid avoids a
+# dependency on Wile's regex support, which is unverified as of this
+# writing.
+
+REGEX_PATTERNS_EASY = [
+    (r"abc", "xabcy", True),
+    (r"abc", "xaby", False),
+    (r"a(b|c)d", "abd", True),
+    (r"a(b|c)d", "aed", False),
+    (r"ab*c", "ac", True),
+    (r"ab+c", "ac", False),
+    (r"ab*c", "abbbc", True),
+    (r"(ab)+", "ababab", True),
+    (r"(ab)+", "aba", True),
+    (r"x|y", "z", False),
+]
+
+REGEX_PATTERNS_MEDIUM = [
+    (r"^a[bc]+d$", "abbcd", True),
+    (r"^a[bc]+d$", "aXd", False),
+    (r"^\d{3,5}$", "12345", True),
+    (r"^\d{3,5}$", "12", False),
+    (r"^[A-Z][a-z]+$", "Hello", True),
+    (r"^[A-Z][a-z]+$", "hello", False),
+    (r"\b\w{4}\b", "this is cool", True),
+    (r"\b\w{4}\b", "hi me", False),
+    (r"^(ab|cd)*$", "abcdab", True),
+    (r"^(ab|cd)*$", "abx", False),
+]
+
+REGEX_PATTERNS_HARD = [
+    (r"^(a+)b\1$", "aabaa", True),
+    (r"^(a+)b\1$", "aabaaa", False),
+    (r"^(\w+) \1$", "hello hello", True),
+    (r"^(\w+) \1$", "hello world", False),
+    (r"^(?=.*a)(?=.*b)\w+$", "abcdef", True),
+    (r"^(?=.*a)(?=.*b)\w+$", "acdef", False),
+    (r"(.)(.)\2\1", "abba", True),
+    (r"(.)(.)\2\1", "abab", False),
+    (r"^(\d)(?!\1)", "12", True),
+    (r"^(\d)(?!\1)", "11", False),
+]
+
+
+def gen_regex_matching(difficulty: str, n: int):
+    patterns_by_diff = {
+        "easy":   REGEX_PATTERNS_EASY,
+        "medium": REGEX_PATTERNS_MEDIUM,
+        "hard":   REGEX_PATTERNS_HARD,
+    }
+    pool = patterns_by_diff[difficulty]
+    problems = []
+    for i in range(n):
+        pattern, string, _expected = random.choice(pool)
+        # Recompute truth at generation time (defensive — don't trust
+        # the embedded flag).
+        matches = bool(re.search(pattern, string))
+        answer_sym = "'yes" if matches else "'no"
+        scheme = answer_sym
+        nl = (
+            f"Does the regex pattern `{pattern}` match the string "
+            f"`{string}` (using Python regex semantics — `re.search`)? "
+            f"Answer `yes` or `no`."
+        )
+        problems.append(Problem(
+            id=f"regex-{difficulty}-{i:03d}",
+            category="regex_matching",
+            difficulty=difficulty,
+            natural_language=nl,
+            scheme_expression=scheme,
+            answer_type="string",
+        ))
+    return problems
+
+
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
 # Each entry: (difficulties, generator_fn). The capability map samples
@@ -472,8 +556,7 @@ CATEGORIES = {
     "prime_factorization":    (DIFFICULTIES, gen_prime_factorization),
     "combinatorial_counting": (DIFFICULTIES, gen_combinatorial_counting),
 
-    # Pending Session 4 — regex_matching blocked on Wile regex-match primitive:
-    # "regex_matching":         (DIFFICULTIES, gen_regex_matching),
+    "regex_matching":         (DIFFICULTIES, gen_regex_matching),
 
     # Stubbed — Wile primitive incoming:
     # "linear_recurrence":      (DIFFICULTIES, gen_linear_recurrence),

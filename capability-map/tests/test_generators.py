@@ -56,3 +56,29 @@ def test_set_closure_supports_three_difficulties():
     for diff in ("easy", "medium", "hard"):
         problems = gen_set_closure(diff, n=1)
         assert problems[0].difficulty == diff
+
+
+from generate_capability_problems import gen_regex_matching
+
+
+def test_regex_matching_produces_requested_count():
+    random.seed(0)
+    problems = gen_regex_matching("easy", n=3)
+    assert len(problems) == 3
+
+
+def test_regex_matching_problem_has_required_fields():
+    random.seed(0)
+    p = gen_regex_matching("medium", n=1)[0]
+    assert p.category == "regex_matching"
+    assert p.id.startswith("regex-medium-")
+    assert p.answer_type == "string"
+    # Scheme expression should be either 'yes or 'no symbol literal.
+    assert p.scheme_expression.strip() in ("'yes", "'no")
+
+
+def test_regex_matching_supports_three_difficulties():
+    random.seed(0)
+    for diff in ("easy", "medium", "hard"):
+        problems = gen_regex_matching(diff, n=1)
+        assert problems[0].difficulty == diff
