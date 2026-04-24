@@ -712,6 +712,151 @@ def gen_boolean_satisfiability(difficulty: str, n: int):
     return problems
 
 
+# ---- group_theory ----
+#
+# Permutation-group problems on S_n. Permutations are represented as
+# 1-indexed lists: perm[i-1] is the image of i under the permutation.
+# Three tiers test increasingly composed operations:
+#   easy:   order of a single permutation in S_4
+#   medium: order of a composition α∘β in S_5
+#   hard:   commutator [α, β] = α β α^{-1} β^{-1} in S_6
+#
+# Ground truth is computed in Python at generation time and embedded
+# in the scheme_expression as an appropriate Scheme literal (integer
+# for order tasks, quoted list for the permutation answer).
+
+GROUP_PRESETS = {
+    # (n, task) where task is one of "order-elem", "order-comp", "commutator"
+    "easy":   (4, "order-elem"),
+    "medium": (5, "order-comp"),
+    "hard":   (6, "commutator"),
+}
+
+
+def _random_permutation(n: int):
+    values = list(range(1, n + 1))
+    random.shuffle(values)
+    return values
+
+
+def _perm_compose(a, b):
+    """Return a ∘ b (apply b first, then a). 1-indexed lists."""
+    return [a[b[i] - 1] for i in range(len(b))]
+
+
+def _perm_order(p):
+    n = len(p)
+    cur = list(p)
+    identity = list(range(1, n + 1))
+    k = 1
+    while cur != identity:
+        cur = _perm_compose(p, cur)
+        k += 1
+        if k > 5000:
+            raise RuntimeError("order exceeded safety cap")
+    return k
+
+
+def _perm_inverse(p):
+    """Return p^{-1}. For a 1-indexed list p, the inverse q satisfies
+    p[q[i]-1] = i+1."""
+    n = len(p)
+    inv = [0] * n
+    for i in range(n):
+        inv[p[i] - 1] = i + 1
+    return inv
+
+
+def _cycle_str(perm):
+    """Pretty-print a permutation as disjoint cycles, e.g. '(1 3 2)(4 5)'."""
+    n = len(perm)
+    seen = [False] * (n + 1)
+    out = []
+    for start in range(1, n + 1):
+        if seen[start]:
+            continue
+        cur = start
+        cyc = []
+        while not seen[cur]:
+            seen[cur] = True
+            cyc.append(cur)
+            cur = perm[cur - 1]
+        if len(cyc) > 1:
+            out.append("(" + " ".join(str(x) for x in cyc) + ")")
+    return "".join(out) if out else "(identity)"
+
+
+def gen_group_theory(difficulty: str, n: int):
+    n_symm, task = GROUP_PRESETS[difficulty]
+    problems = []
+    for i in range(n):
+        if task == "order-elem":
+            perm = _random_permutation(n_symm)
+            order = _perm_order(perm)
+            scheme = str(order)
+            answer_type = "integer"
+            cycles = _cycle_str(perm)
+            nl = (
+                f"In the symmetric group S_{n_symm}, consider the "
+                f"permutation σ given by σ = {cycles} (expressed as "
+                f"disjoint cycles on `{{1, 2, ..., {n_symm}}}`). "
+                f"Compute the order of σ — the smallest positive integer "
+                f"`k` such that σ^k is the identity. Give a positive integer."
+            )
+
+        elif task == "order-comp":
+            a = _random_permutation(n_symm)
+            b = _random_permutation(n_symm)
+            ab = _perm_compose(a, b)
+            order = _perm_order(ab)
+            scheme = str(order)
+            answer_type = "integer"
+            a_cycles = _cycle_str(a)
+            b_cycles = _cycle_str(b)
+            nl = (
+                f"In S_{n_symm}, let α = {a_cycles} and β = {b_cycles}. "
+                f"Compute the order of the composition α∘β (i.e., apply "
+                f"β first, then α). Give a positive integer."
+            )
+
+        elif task == "commutator":
+            a = _random_permutation(n_symm)
+            b = _random_permutation(n_symm)
+            a_inv = _perm_inverse(a)
+            b_inv = _perm_inverse(b)
+            # [a, b] = a ∘ b ∘ a^{-1} ∘ b^{-1}
+            step1 = _perm_compose(a, b)
+            step2 = _perm_compose(step1, a_inv)
+            commutator = _perm_compose(step2, b_inv)
+            # Scheme literal: quoted list of integers.
+            scheme = "'(" + " ".join(str(x) for x in commutator) + ")"
+            answer_type = "permutation"
+            a_cycles = _cycle_str(a)
+            b_cycles = _cycle_str(b)
+            nl = (
+                f"In S_{n_symm}, let α = {a_cycles} and β = {b_cycles}. "
+                f"Compute the commutator [α, β] = α ∘ β ∘ α⁻¹ ∘ β⁻¹ "
+                f"(applying right to left: apply β⁻¹ first, then α⁻¹, "
+                f"then β, then α). Give the result as a permutation in "
+                f"one-line notation: `(σ(1) σ(2) ... σ({n_symm}))` — the "
+                f"image of each input position listed in order. Example "
+                f"format: `(1 2 3 4 5 6)`."
+            )
+
+        else:
+            raise ValueError(f"unknown task {task}")
+
+        problems.append(Problem(
+            id=f"group-{difficulty}-{i:03d}",
+            category="group_theory",
+            difficulty=difficulty,
+            natural_language=nl,
+            scheme_expression=scheme,
+            answer_type=answer_type,
+        ))
+    return problems
+
+
 # ── Taxonomy ─────────────────────────────────────────────────────
 #
 # Each entry: (difficulties, generator_fn). The capability map samples
@@ -747,8 +892,7 @@ CATEGORIES = {
 
     "boolean_satisfiability": (DIFFICULTIES, gen_boolean_satisfiability),
 
-    # Stubbed — Wile primitive incoming:
-    # "group_theory":           (DIFFICULTIES, gen_group_theory),
+    "group_theory":           (DIFFICULTIES, gen_group_theory),
 }
 
 

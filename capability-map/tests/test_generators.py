@@ -128,3 +128,26 @@ def test_sat_supports_three_difficulties():
     random.seed(0)
     for diff in ("easy", "medium", "hard"):
         assert gen_boolean_satisfiability(diff, n=1)[0].difficulty == diff
+
+
+from generate_capability_problems import gen_group_theory
+
+
+def test_group_theory_produces_requested_count():
+    random.seed(0)
+    problems = gen_group_theory("easy", n=3)
+    assert len(problems) == 3
+
+
+def test_group_theory_problem_has_required_fields():
+    random.seed(0)
+    p = gen_group_theory("medium", n=1)[0]
+    assert p.category == "group_theory"
+    assert p.id.startswith("group-medium-")
+    assert p.answer_type in ("integer", "permutation")
+
+
+def test_group_theory_supports_three_difficulties():
+    random.seed(0)
+    for diff in ("easy", "medium", "hard"):
+        assert gen_group_theory(diff, n=1)[0].difficulty == diff
