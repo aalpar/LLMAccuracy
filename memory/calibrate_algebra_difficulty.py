@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Algebra Difficulty Calibration — probe the 4 structural categories.
 
-Baseline benchmark (gradient_results_v2.json) showed all 6 tiers of the
+Baseline benchmark (memory/gradient_results_v2.json) showed all 6 tiers of the
 four structural categories (fixpoint, monoid_fold, powerset_lattice,
 tropical_semiring) land at 100% control success. Claude Opus 4.7 handles
 these tasks at every "difficulty" the existing generator defines.

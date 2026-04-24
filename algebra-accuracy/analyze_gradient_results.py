@@ -24,7 +24,7 @@ when ambiguous (truncated with stop_reason == tool_use).
 
 Usage:
     python algebra-accuracy/analyze_gradient_results.py \\
-        --results algebra-accuracy/gradient_results_v2.json
+        --results algebra-accuracy/gradient_results_beta.json
 """
 
 import argparse

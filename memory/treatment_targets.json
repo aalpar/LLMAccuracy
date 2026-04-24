@@ -1,0 +1,1127 @@
+[
+  {
+    "id": "mod-easy-000",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((214 \u00d7 125 + 859) \u00d7 381) \u2212 350) \u00d7 328) + 242) + 854) mod 1031?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1031) (ring-plus (modular-ring 1031) (ring-times (modular-ring 1031) (ring-minus (modular-ring 1031) (ring-times (modular-ring 1031) (ring-plus (modular-ring 1031) (ring-times (modular-ring 1031) 214 125) 859) 381) 350) 328) 242) 854)",
+    "answer": "749",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-001",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((858 \u00d7 658 + 189) \u00d7 704) \u2212 532) \u00d7 132) + 130) + 195) mod 1031?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1031) (ring-plus (modular-ring 1031) (ring-times (modular-ring 1031) (ring-minus (modular-ring 1031) (ring-times (modular-ring 1031) (ring-plus (modular-ring 1031) (ring-times (modular-ring 1031) 858 658) 189) 704) 532) 132) 130) 195)",
+    "answer": "771",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-002",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is (617 \u00d7 716 + 127 \u00d7 674) \u00d7 (303 \u00d7 833 + 765 \u00d7 818) mod 1009?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 1009) (ring-plus (modular-ring 1009) (ring-times (modular-ring 1009) 617 716) (ring-times (modular-ring 1009) 127 674)) (ring-plus (modular-ring 1009) (ring-times (modular-ring 1009) 303 833) (ring-times (modular-ring 1009) 765 818)))",
+    "answer": "783",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-003",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((559 \u00d7 703 + 384) \u00d7 928) \u2212 990) \u00d7 106) + 877) + 925) mod 1009?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1009) (ring-plus (modular-ring 1009) (ring-times (modular-ring 1009) (ring-minus (modular-ring 1009) (ring-times (modular-ring 1009) (ring-plus (modular-ring 1009) (ring-times (modular-ring 1009) 559 703) 384) 928) 990) 106) 877) 925)",
+    "answer": "691",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-004",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((532 \u00d7 448 + 384) \u00d7 259) \u2212 320) \u00d7 881) + 444) + 204) mod 1031?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1031) (ring-plus (modular-ring 1031) (ring-times (modular-ring 1031) (ring-minus (modular-ring 1031) (ring-times (modular-ring 1031) (ring-plus (modular-ring 1031) (ring-times (modular-ring 1031) 532 448) 384) 259) 320) 881) 444) 204)",
+    "answer": "25",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-005",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is (199 \u00d7 467 + 967 \u00d7 452) \u00d7 (718 \u00d7 370 + 926 \u00d7 144) mod 1019?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 1019) (ring-plus (modular-ring 1019) (ring-times (modular-ring 1019) 199 467) (ring-times (modular-ring 1019) 967 452)) (ring-plus (modular-ring 1019) (ring-times (modular-ring 1019) 718 370) (ring-times (modular-ring 1019) 926 144)))",
+    "answer": "312",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-006",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is (227 \u00d7 487 + 180 \u00d7 665) \u00d7 (400 \u00d7 949 + 743 \u00d7 733) mod 1021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 1021) (ring-plus (modular-ring 1021) (ring-times (modular-ring 1021) 227 487) (ring-times (modular-ring 1021) 180 665)) (ring-plus (modular-ring 1021) (ring-times (modular-ring 1021) 400 949) (ring-times (modular-ring 1021) 743 733)))",
+    "answer": "847",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-007",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((296 \u00d7 821 + 171) \u00d7 146) \u2212 777) \u00d7 333) + 891) + 396) mod 1021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1021) (ring-plus (modular-ring 1021) (ring-times (modular-ring 1021) (ring-minus (modular-ring 1021) (ring-times (modular-ring 1021) (ring-plus (modular-ring 1021) (ring-times (modular-ring 1021) 296 821) 171) 146) 777) 333) 891) 396)",
+    "answer": "661",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-008",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((987 \u00d7 203 + 489) \u00d7 384) \u2212 564) \u00d7 750) + 954) + 473) mod 1009?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1009) (ring-plus (modular-ring 1009) (ring-times (modular-ring 1009) (ring-minus (modular-ring 1009) (ring-times (modular-ring 1009) (ring-plus (modular-ring 1009) (ring-times (modular-ring 1009) 987 203) 489) 384) 564) 750) 954) 473)",
+    "answer": "629",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-easy-009",
+    "category": "modular_arithmetic",
+    "difficulty": "easy",
+    "natural_language": "What is ((((((463 \u00d7 314 + 786) \u00d7 373) \u2212 818) \u00d7 799) + 763) + 173) mod 1013?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 1013) (ring-plus (modular-ring 1013) (ring-times (modular-ring 1013) (ring-minus (modular-ring 1013) (ring-times (modular-ring 1013) (ring-plus (modular-ring 1013) (ring-times (modular-ring 1013) 463 314) 786) 373) 818) 799) 763) 173)",
+    "answer": "639",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-000",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is (2505 \u00d7 1838 + 4286 \u00d7 3608) \u00d7 (2711 \u00d7 2299 + 3156 \u00d7 958) \u00d7 2376 \u00d7 762 mod 5021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 5021) (ring-times (modular-ring 5021) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 2505 1838) (ring-times (modular-ring 5021) 4286 3608)) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 2711 2299) (ring-times (modular-ring 5021) 3156 958))) (ring-times (modular-ring 5021) 2376 762))",
+    "answer": "1154",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-001",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((2693 \u00d7 1042 + 2228) \u00d7 3077) \u2212 2241) \u00d7 4589) + 3741) + 4258) \u00d7 1670) \u2212 2669) mod 5011?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-minus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-times (modular-ring 5011) 2693 1042) 2228) 3077) 2241) 4589) 3741) 4258) 1670) 2669)",
+    "answer": "3192",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-002",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((4915 \u00d7 2652 + 4009) \u00d7 3771) \u2212 3465) \u00d7 2296) + 1633) + 4674) \u00d7 4542) \u2212 1244) mod 5003?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 5003) (ring-times (modular-ring 5003) (ring-plus (modular-ring 5003) (ring-plus (modular-ring 5003) (ring-times (modular-ring 5003) (ring-minus (modular-ring 5003) (ring-times (modular-ring 5003) (ring-plus (modular-ring 5003) (ring-times (modular-ring 5003) 4915 2652) 4009) 3771) 3465) 2296) 1633) 4674) 4542) 1244)",
+    "answer": "4533",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-003",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((1752 \u00d7 1810 + 3958) \u00d7 1020) \u2212 3652) \u00d7 3626) + 4334) + 4834) \u00d7 2559) \u2212 594) mod 4999?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 4999) (ring-times (modular-ring 4999) (ring-plus (modular-ring 4999) (ring-plus (modular-ring 4999) (ring-times (modular-ring 4999) (ring-minus (modular-ring 4999) (ring-times (modular-ring 4999) (ring-plus (modular-ring 4999) (ring-times (modular-ring 4999) 1752 1810) 3958) 1020) 3652) 3626) 4334) 4834) 2559) 594)",
+    "answer": "4683",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-004",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((4898 \u00d7 2685 + 3286) \u00d7 1413) \u2212 2904) \u00d7 4061) + 1795) + 4216) \u00d7 526) \u2212 2657) mod 5023?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 5023) (ring-times (modular-ring 5023) (ring-plus (modular-ring 5023) (ring-plus (modular-ring 5023) (ring-times (modular-ring 5023) (ring-minus (modular-ring 5023) (ring-times (modular-ring 5023) (ring-plus (modular-ring 5023) (ring-times (modular-ring 5023) 4898 2685) 3286) 1413) 2904) 4061) 1795) 4216) 526) 2657)",
+    "answer": "3166",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-005",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is (1371 \u00d7 2944 + 4658 \u00d7 2129) \u00d7 (1752 \u00d7 3563 + 1823 \u00d7 4918) \u00d7 4844 \u00d7 504 mod 5021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 5021) (ring-times (modular-ring 5021) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 1371 2944) (ring-times (modular-ring 5021) 4658 2129)) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 1752 3563) (ring-times (modular-ring 5021) 1823 4918))) (ring-times (modular-ring 5021) 4844 504))",
+    "answer": "1042",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-006",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((659 \u00d7 1416 + 3473) \u00d7 3019) \u2212 2461) \u00d7 974) + 2473) + 1145) \u00d7 1201) \u2212 4481) mod 5011?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-minus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-times (modular-ring 5011) 659 1416) 3473) 3019) 2461) 974) 2473) 1145) 1201) 4481)",
+    "answer": "147",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-007",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is (1530 \u00d7 1551 + 4393 \u00d7 1852) \u00d7 (2671 \u00d7 4822 + 3966 \u00d7 2235) \u00d7 4917 \u00d7 2147 mod 5021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 5021) (ring-times (modular-ring 5021) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 1530 1551) (ring-times (modular-ring 5021) 4393 1852)) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 2671 4822) (ring-times (modular-ring 5021) 3966 2235))) (ring-times (modular-ring 5021) 4917 2147))",
+    "answer": "2236",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-008",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((3559 \u00d7 4088 + 4739) \u00d7 4198) \u2212 1491) \u00d7 2530) + 2340) + 1024) \u00d7 3269) \u2212 672) mod 5011?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-minus (modular-ring 5011) (ring-times (modular-ring 5011) (ring-plus (modular-ring 5011) (ring-times (modular-ring 5011) 3559 4088) 4739) 4198) 1491) 2530) 2340) 1024) 3269) 672)",
+    "answer": "462",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-medium-009",
+    "category": "modular_arithmetic",
+    "difficulty": "medium",
+    "natural_language": "What is ((((((((2304 \u00d7 558 + 1081) \u00d7 982) \u2212 2375) \u00d7 1052) + 757) + 3206) \u00d7 1080) \u2212 4711) mod 5021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-minus (modular-ring 5021) (ring-times (modular-ring 5021) (ring-plus (modular-ring 5021) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) (ring-minus (modular-ring 5021) (ring-times (modular-ring 5021) (ring-plus (modular-ring 5021) (ring-times (modular-ring 5021) 2304 558) 1081) 982) 2375) 1052) 757) 3206) 1080) 4711)",
+    "answer": "2288",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-000",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (8953 \u00d7 4510 + 9834 \u00d7 3167) \u00d7 (8744 \u00d7 4981 + 8749 \u00d7 7669) \u00d7 (4119 \u00d7 2545 + 2588 \u00d7 8062) mod 10009?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 10009) (ring-times (modular-ring 10009) (ring-plus (modular-ring 10009) (ring-times (modular-ring 10009) 8953 4510) (ring-times (modular-ring 10009) 9834 3167)) (ring-plus (modular-ring 10009) (ring-times (modular-ring 10009) 8744 4981) (ring-times (modular-ring 10009) 8749 7669))) (ring-plus (modular-ring 10009) (ring-times (modular-ring 10009) 4119 2545) (ring-times (modular-ring 10009) 2588 8062)))",
+    "answer": "6045",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-001",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (7735 \u00d7 8651 + 1887 \u00d7 2612) \u00d7 (1993 \u00d7 7596 + 6559 \u00d7 2790) \u00d7 (5073 \u00d7 4139 + 4116 \u00d7 9786) mod 10037?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 10037) (ring-times (modular-ring 10037) (ring-plus (modular-ring 10037) (ring-times (modular-ring 10037) 7735 8651) (ring-times (modular-ring 10037) 1887 2612)) (ring-plus (modular-ring 10037) (ring-times (modular-ring 10037) 1993 7596) (ring-times (modular-ring 10037) 6559 2790))) (ring-plus (modular-ring 10037) (ring-times (modular-ring 10037) 5073 4139) (ring-times (modular-ring 10037) 4116 9786)))",
+    "answer": "2069",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-002",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is ((((((((((7912 \u00d7 4006 + 5563) \u00d7 8579) \u2212 5092) \u00d7 2235) + 8260) + 2604) \u00d7 1828) \u2212 9856) \u00d7 1241) + 2528) mod 10007?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) (ring-minus (modular-ring 10007) (ring-times (modular-ring 10007) (ring-plus (modular-ring 10007) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) (ring-minus (modular-ring 10007) (ring-times (modular-ring 10007) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 7912 4006) 5563) 8579) 5092) 2235) 8260) 2604) 1828) 9856) 1241) 2528)",
+    "answer": "3981",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-003",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (7658 \u00d7 8956 + 8886 \u00d7 4502) \u00d7 (7570 \u00d7 1960 + 3697 \u00d7 7209) \u00d7 (1035 \u00d7 7396 + 5345 \u00d7 8454) mod 10007?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 10007) (ring-times (modular-ring 10007) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 7658 8956) (ring-times (modular-ring 10007) 8886 4502)) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 7570 1960) (ring-times (modular-ring 10007) 3697 7209))) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 1035 7396) (ring-times (modular-ring 10007) 5345 8454)))",
+    "answer": "4803",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-004",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is ((((((((((8973 \u00d7 3536 + 4111) \u00d7 5861) \u2212 4566) \u00d7 1958) + 9883) + 1998) \u00d7 6138) \u2212 1936) \u00d7 1821) + 8811) mod 10037?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 10037) (ring-times (modular-ring 10037) (ring-minus (modular-ring 10037) (ring-times (modular-ring 10037) (ring-plus (modular-ring 10037) (ring-plus (modular-ring 10037) (ring-times (modular-ring 10037) (ring-minus (modular-ring 10037) (ring-times (modular-ring 10037) (ring-plus (modular-ring 10037) (ring-times (modular-ring 10037) 8973 3536) 4111) 5861) 4566) 1958) 9883) 1998) 6138) 1936) 1821) 8811)",
+    "answer": "2337",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-005",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (9320 \u00d7 2312 + 4044 \u00d7 2122) \u00d7 (2113 \u00d7 4853 + 7615 \u00d7 2964) \u00d7 (5033 \u00d7 1651 + 2343 \u00d7 7868) mod 9973?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 9973) (ring-times (modular-ring 9973) (ring-plus (modular-ring 9973) (ring-times (modular-ring 9973) 9320 2312) (ring-times (modular-ring 9973) 4044 2122)) (ring-plus (modular-ring 9973) (ring-times (modular-ring 9973) 2113 4853) (ring-times (modular-ring 9973) 7615 2964))) (ring-plus (modular-ring 9973) (ring-times (modular-ring 9973) 5033 1651) (ring-times (modular-ring 9973) 2343 7868)))",
+    "answer": "4830",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-006",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is ((((((((((4346 \u00d7 6147 + 4910) \u00d7 5351) \u2212 7484) \u00d7 3144) + 5915) + 8491) \u00d7 6180) \u2212 2188) \u00d7 1152) + 8508) mod 10009?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-plus (modular-ring 10009) (ring-times (modular-ring 10009) (ring-minus (modular-ring 10009) (ring-times (modular-ring 10009) (ring-plus (modular-ring 10009) (ring-plus (modular-ring 10009) (ring-times (modular-ring 10009) (ring-minus (modular-ring 10009) (ring-times (modular-ring 10009) (ring-plus (modular-ring 10009) (ring-times (modular-ring 10009) 4346 6147) 4910) 5351) 7484) 3144) 5915) 8491) 6180) 2188) 1152) 8508)",
+    "answer": "8735",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-007",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (9808 \u00d7 4492 + 9288 \u00d7 5345) \u00d7 (3170 \u00d7 6718 + 2127 \u00d7 5002) \u00d7 (7054 \u00d7 5669 + 3584 \u00d7 8179) mod 9973?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 9973) (ring-times (modular-ring 9973) (ring-plus (modular-ring 9973) (ring-times (modular-ring 9973) 9808 4492) (ring-times (modular-ring 9973) 9288 5345)) (ring-plus (modular-ring 9973) (ring-times (modular-ring 9973) 3170 6718) (ring-times (modular-ring 9973) 2127 5002))) (ring-plus (modular-ring 9973) (ring-times (modular-ring 9973) 7054 5669) (ring-times (modular-ring 9973) 3584 8179)))",
+    "answer": "2762",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-008",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (9666 \u00d7 1128 + 5905 \u00d7 2697) \u00d7 (3200 \u00d7 5333 + 2891 \u00d7 2753) \u00d7 (3546 \u00d7 5462 + 5616 \u00d7 4450) mod 10039?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 10039) (ring-times (modular-ring 10039) (ring-plus (modular-ring 10039) (ring-times (modular-ring 10039) 9666 1128) (ring-times (modular-ring 10039) 5905 2697)) (ring-plus (modular-ring 10039) (ring-times (modular-ring 10039) 3200 5333) (ring-times (modular-ring 10039) 2891 2753))) (ring-plus (modular-ring 10039) (ring-times (modular-ring 10039) 3546 5462) (ring-times (modular-ring 10039) 5616 4450)))",
+    "answer": "6697",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-hard-009",
+    "category": "modular_arithmetic",
+    "difficulty": "hard",
+    "natural_language": "What is (5325 \u00d7 9280 + 9004 \u00d7 5114) \u00d7 (1832 \u00d7 2512 + 7939 \u00d7 5533) \u00d7 (1722 \u00d7 1058 + 6464 \u00d7 3143) mod 10007?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 10007) (ring-times (modular-ring 10007) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 5325 9280) (ring-times (modular-ring 10007) 9004 5114)) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 1832 2512) (ring-times (modular-ring 10007) 7939 5533))) (ring-plus (modular-ring 10007) (ring-times (modular-ring 10007) 1722 1058) (ring-times (modular-ring 10007) 6464 3143)))",
+    "answer": "7612",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-extra-hard-000",
+    "category": "modular_arithmetic",
+    "difficulty": "extra-hard",
+    "natural_language": "What is (33956 \u00d7 41154 + 33028 \u00d7 41759) \u00d7 (5633 \u00d7 12331 + 9931 \u00d7 14768) \u00d7 (40755 \u00d7 7361 + 29196 \u00d7 43175) \u00d7 41210 \u00d7 14705 mod 50021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 50021) (ring-times (modular-ring 50021) (ring-times (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 33956 41154) (ring-times (modular-ring 50021) 33028 41759)) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 5633 12331) (ring-times (modular-ring 50021) 9931 14768))) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 40755 7361) (ring-times (modular-ring 50021) 29196 43175))) (ring-times (modular-ring 50021) 41210 14705))",
+    "answer": "22171",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-extra-hard-001",
+    "category": "modular_arithmetic",
+    "difficulty": "extra-hard",
+    "natural_language": "What is ((((((((((((7741 \u00d7 25202 + 28897) \u00d7 7614) \u2212 28449) \u00d7 18767) + 49699) + 21353) \u00d7 48708) \u2212 11736) \u00d7 28178) + 41692) + 31632) \u00d7 45675) mod 50021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) (ring-minus (modular-ring 50021) (ring-times (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) (ring-minus (modular-ring 50021) (ring-times (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 7741 25202) 28897) 7614) 28449) 18767) 49699) 21353) 48708) 11736) 28178) 41692) 31632) 45675)",
+    "answer": "12088",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-extra-hard-002",
+    "category": "modular_arithmetic",
+    "difficulty": "extra-hard",
+    "natural_language": "What is (15649 \u00d7 16603 + 32020 \u00d7 6624) \u00d7 (16754 \u00d7 26770 + 31982 \u00d7 48903) \u00d7 (21263 \u00d7 22485 + 15433 \u00d7 12084) \u00d7 30070 \u00d7 7537 mod 50021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 50021) (ring-times (modular-ring 50021) (ring-times (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 15649 16603) (ring-times (modular-ring 50021) 32020 6624)) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 16754 26770) (ring-times (modular-ring 50021) 31982 48903))) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 21263 22485) (ring-times (modular-ring 50021) 15433 12084))) (ring-times (modular-ring 50021) 30070 7537))",
+    "answer": "12733",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-extra-hard-003",
+    "category": "modular_arithmetic",
+    "difficulty": "extra-hard",
+    "natural_language": "What is (18079 \u00d7 35166 + 27915 \u00d7 25000) \u00d7 (19915 \u00d7 19609 + 6550 \u00d7 48255) \u00d7 (17656 \u00d7 31113 + 26512 \u00d7 23258) \u00d7 9549 \u00d7 23292 mod 50021?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 50021) (ring-times (modular-ring 50021) (ring-times (modular-ring 50021) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 18079 35166) (ring-times (modular-ring 50021) 27915 25000)) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 19915 19609) (ring-times (modular-ring 50021) 6550 48255))) (ring-plus (modular-ring 50021) (ring-times (modular-ring 50021) 17656 31113) (ring-times (modular-ring 50021) 26512 23258))) (ring-times (modular-ring 50021) 9549 23292))",
+    "answer": "11870",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mod-extra-hard-004",
+    "category": "modular_arithmetic",
+    "difficulty": "extra-hard",
+    "natural_language": "What is (31193 \u00d7 49532 + 40141 \u00d7 26702) \u00d7 (6808 \u00d7 12559 + 22118 \u00d7 16702) \u00d7 (43049 \u00d7 22397 + 7507 \u00d7 12104) \u00d7 44096 \u00d7 33479 mod 50047?\nGive only the non-negative numeric answer (0 \u2264 answer < modulus).",
+    "scheme_expression": "(ring-times (modular-ring 50047) (ring-times (modular-ring 50047) (ring-times (modular-ring 50047) (ring-plus (modular-ring 50047) (ring-times (modular-ring 50047) 31193 49532) (ring-times (modular-ring 50047) 40141 26702)) (ring-plus (modular-ring 50047) (ring-times (modular-ring 50047) 6808 12559) (ring-times (modular-ring 50047) 22118 16702))) (ring-plus (modular-ring 50047) (ring-times (modular-ring 50047) 43049 22397) (ring-times (modular-ring 50047) 7507 12104))) (ring-times (modular-ring 50047) 44096 33479))",
+    "answer": "31026",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-extra-hard-000",
+    "category": "tropical_semiring",
+    "difficulty": "extra-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((72 \u2295 47) \u2295 (12 \u2297 (51 \u2295 2))) \u2297 ((34 \u2295 69) \u2295 (16 \u2297 (59 \u2295 48)))) \u2295 (((87 \u2295 96) \u2295 (87 \u2297 (34 \u2295 75))) \u2297 ((49 \u2295 82) \u2295 (48 \u2297 (14 \u2295 87))))) \u2297 ((((30 \u2295 61) \u2295 (4 \u2297 (80 \u2295 72))) \u2297 ((42 \u2295 79) \u2295 (29 \u2297 (83 \u2295 9)))) \u2295 (((82 \u2295 60) \u2295 (90 \u2297 (39 \u2295 84))) \u2297 ((53 \u2295 15) \u2295 (18 \u2297 (6 \u2295 5))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 72 47) (semiring-times ts 12 (semiring-plus ts 51 2))) (semiring-plus ts (semiring-plus ts 34 69) (semiring-times ts 16 (semiring-plus ts 59 48)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 87 96) (semiring-times ts 87 (semiring-plus ts 34 75))) (semiring-plus ts (semiring-plus ts 49 82) (semiring-times ts 48 (semiring-plus ts 14 87))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 30 61) (semiring-times ts 4 (semiring-plus ts 80 72))) (semiring-plus ts (semiring-plus ts 42 79) (semiring-times ts 29 (semiring-plus ts 83 9)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 82 60) (semiring-times ts 90 (semiring-plus ts 39 84))) (semiring-plus ts (semiring-plus ts 53 15) (semiring-times ts 18 (semiring-plus ts 6 5)))))))",
+    "answer": "116",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-extra-hard-001",
+    "category": "tropical_semiring",
+    "difficulty": "extra-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((39 \u2295 64) \u2295 (15 \u2297 (13 \u2295 31))) \u2297 ((69 \u2295 18) \u2295 (50 \u2297 (59 \u2295 48)))) \u2295 (((86 \u2295 96) \u2295 (90 \u2297 (70 \u2295 54))) \u2297 ((76 \u2295 96) \u2295 (94 \u2297 (20 \u2295 54))))) \u2297 ((((84 \u2295 13) \u2295 (63 \u2297 (79 \u2295 53))) \u2297 ((36 \u2295 5) \u2295 (89 \u2297 (48 \u2295 28)))) \u2295 (((57 \u2295 57) \u2295 (31 \u2297 (47 \u2295 13))) \u2297 ((88 \u2295 48) \u2295 (70 \u2297 (83 \u2295 46))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 39 64) (semiring-times ts 15 (semiring-plus ts 13 31))) (semiring-plus ts (semiring-plus ts 69 18) (semiring-times ts 50 (semiring-plus ts 59 48)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 86 96) (semiring-times ts 90 (semiring-plus ts 70 54))) (semiring-plus ts (semiring-plus ts 76 96) (semiring-times ts 94 (semiring-plus ts 20 54))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 84 13) (semiring-times ts 63 (semiring-plus ts 79 53))) (semiring-plus ts (semiring-plus ts 36 5) (semiring-times ts 89 (semiring-plus ts 48 28)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 57 57) (semiring-times ts 31 (semiring-plus ts 47 13))) (semiring-plus ts (semiring-plus ts 88 48) (semiring-times ts 70 (semiring-plus ts 83 46)))))))",
+    "answer": "64",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-extra-hard-002",
+    "category": "tropical_semiring",
+    "difficulty": "extra-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((8 \u2295 51) \u2295 (36 \u2297 (25 \u2295 16))) \u2297 ((59 \u2295 12) \u2295 (85 \u2297 (28 \u2295 83)))) \u2295 (((82 \u2295 77) \u2295 (3 \u2297 (7 \u2295 43))) \u2297 ((32 \u2295 17) \u2295 (73 \u2297 (27 \u2295 9))))) \u2297 ((((98 \u2295 71) \u2295 (27 \u2297 (76 \u2295 28))) \u2297 ((30 \u2295 43) \u2295 (100 \u2297 (19 \u2295 77)))) \u2295 (((1 \u2295 36) \u2295 (19 \u2297 (17 \u2295 70))) \u2297 ((33 \u2295 23) \u2295 (15 \u2297 (85 \u2295 4))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 8 51) (semiring-times ts 36 (semiring-plus ts 25 16))) (semiring-plus ts (semiring-plus ts 59 12) (semiring-times ts 85 (semiring-plus ts 28 83)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 82 77) (semiring-times ts 3 (semiring-plus ts 7 43))) (semiring-plus ts (semiring-plus ts 32 17) (semiring-times ts 73 (semiring-plus ts 27 9))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 98 71) (semiring-times ts 27 (semiring-plus ts 76 28))) (semiring-plus ts (semiring-plus ts 30 43) (semiring-times ts 100 (semiring-plus ts 19 77)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 1 36) (semiring-times ts 19 (semiring-plus ts 17 70))) (semiring-plus ts (semiring-plus ts 33 23) (semiring-times ts 15 (semiring-plus ts 85 4)))))))",
+    "answer": "40",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-extra-hard-003",
+    "category": "tropical_semiring",
+    "difficulty": "extra-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((17 \u2295 2) \u2295 (46 \u2297 (31 \u2295 76))) \u2297 ((42 \u2295 3) \u2295 (23 \u2297 (34 \u2295 7)))) \u2295 (((17 \u2295 95) \u2295 (54 \u2297 (68 \u2295 15))) \u2297 ((96 \u2295 9) \u2295 (61 \u2297 (58 \u2295 100))))) \u2297 ((((47 \u2295 66) \u2295 (76 \u2297 (14 \u2295 58))) \u2297 ((65 \u2295 29) \u2295 (79 \u2297 (6 \u2295 94)))) \u2295 (((85 \u2295 67) \u2295 (39 \u2297 (59 \u2295 83))) \u2297 ((4 \u2295 8) \u2295 (62 \u2297 (52 \u2295 55))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 17 2) (semiring-times ts 46 (semiring-plus ts 31 76))) (semiring-plus ts (semiring-plus ts 42 3) (semiring-times ts 23 (semiring-plus ts 34 7)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 17 95) (semiring-times ts 54 (semiring-plus ts 68 15))) (semiring-plus ts (semiring-plus ts 96 9) (semiring-times ts 61 (semiring-plus ts 58 100))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 47 66) (semiring-times ts 76 (semiring-plus ts 14 58))) (semiring-plus ts (semiring-plus ts 65 29) (semiring-times ts 79 (semiring-plus ts 6 94)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 85 67) (semiring-times ts 39 (semiring-plus ts 59 83))) (semiring-plus ts (semiring-plus ts 4 8) (semiring-times ts 62 (semiring-plus ts 52 55)))))))",
+    "answer": "76",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-extra-hard-004",
+    "category": "tropical_semiring",
+    "difficulty": "extra-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((88 \u2295 14) \u2295 (63 \u2297 (92 \u2295 57))) \u2297 ((10 \u2295 11) \u2295 (42 \u2297 (78 \u2295 19)))) \u2295 (((9 \u2295 17) \u2295 (36 \u2297 (80 \u2295 82))) \u2297 ((75 \u2295 71) \u2295 (92 \u2297 (42 \u2295 49))))) \u2297 ((((77 \u2295 68) \u2295 (38 \u2297 (59 \u2295 65))) \u2297 ((78 \u2295 56) \u2295 (13 \u2297 (90 \u2295 15)))) \u2295 (((84 \u2295 84) \u2295 (99 \u2297 (71 \u2295 93))) \u2297 ((28 \u2295 56) \u2295 (58 \u2297 (30 \u2295 53))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 88 14) (semiring-times ts 63 (semiring-plus ts 92 57))) (semiring-plus ts (semiring-plus ts 10 11) (semiring-times ts 42 (semiring-plus ts 78 19)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 9 17) (semiring-times ts 36 (semiring-plus ts 80 82))) (semiring-plus ts (semiring-plus ts 75 71) (semiring-times ts 92 (semiring-plus ts 42 49))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-plus ts 77 68) (semiring-times ts 38 (semiring-plus ts 59 65))) (semiring-plus ts (semiring-plus ts 78 56) (semiring-times ts 13 (semiring-plus ts 90 15)))) (semiring-times ts (semiring-plus ts (semiring-plus ts 84 84) (semiring-times ts 99 (semiring-plus ts 71 93))) (semiring-plus ts (semiring-plus ts 28 56) (semiring-times ts 58 (semiring-plus ts 30 53)))))))",
+    "answer": "120",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-super-hard-000",
+    "category": "tropical_semiring",
+    "difficulty": "super-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((44 \u2297 (59 \u2295 52)) \u2295 (54 \u2297 (94 \u2295 13))) \u2297 ((41 \u2297 (55 \u2295 41)) \u2295 (86 \u2297 (33 \u2295 48)))) \u2295 (((20 \u2297 (88 \u2295 61)) \u2295 (9 \u2297 (12 \u2295 11))) \u2297 ((12 \u2297 (56 \u2295 13)) \u2295 (96 \u2297 (95 \u2295 48))))) \u2297 ((((17 \u2297 (72 \u2295 8)) \u2295 (76 \u2297 (72 \u2295 72))) \u2297 ((43 \u2297 (86 \u2295 16)) \u2295 (53 \u2297 (46 \u2295 86)))) \u2295 (((97 \u2297 (55 \u2295 93)) \u2295 (7 \u2297 (37 \u2295 77))) \u2297 ((40 \u2297 (46 \u2295 14)) \u2295 (74 \u2297 (65 \u2295 28))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 44 (semiring-plus ts 59 52)) (semiring-times ts 54 (semiring-plus ts 94 13))) (semiring-plus ts (semiring-times ts 41 (semiring-plus ts 55 41)) (semiring-times ts 86 (semiring-plus ts 33 48)))) (semiring-times ts (semiring-plus ts (semiring-times ts 20 (semiring-plus ts 88 61)) (semiring-times ts 9 (semiring-plus ts 12 11))) (semiring-plus ts (semiring-times ts 12 (semiring-plus ts 56 13)) (semiring-times ts 96 (semiring-plus ts 95 48))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 17 (semiring-plus ts 72 8)) (semiring-times ts 76 (semiring-plus ts 72 72))) (semiring-plus ts (semiring-times ts 43 (semiring-plus ts 86 16)) (semiring-times ts 53 (semiring-plus ts 46 86)))) (semiring-times ts (semiring-plus ts (semiring-times ts 97 (semiring-plus ts 55 93)) (semiring-times ts 7 (semiring-plus ts 37 77))) (semiring-plus ts (semiring-times ts 40 (semiring-plus ts 46 14)) (semiring-times ts 74 (semiring-plus ts 65 28)))))))",
+    "answer": "129",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-super-hard-001",
+    "category": "tropical_semiring",
+    "difficulty": "super-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((20 \u2297 (85 \u2295 62)) \u2295 (29 \u2297 (14 \u2295 45))) \u2297 ((72 \u2297 (48 \u2295 15)) \u2295 (98 \u2297 (36 \u2295 74)))) \u2295 (((29 \u2297 (55 \u2295 72)) \u2295 (99 \u2297 (80 \u2295 79))) \u2297 ((87 \u2297 (83 \u2295 72)) \u2295 (4 \u2297 (78 \u2295 85))))) \u2297 ((((89 \u2297 (35 \u2295 4)) \u2295 (24 \u2297 (35 \u2295 90))) \u2297 ((98 \u2297 (40 \u2295 44)) \u2295 (45 \u2297 (1 \u2295 24)))) \u2295 (((19 \u2297 (73 \u2295 85)) \u2295 (52 \u2297 (9 \u2295 19))) \u2297 ((95 \u2297 (82 \u2295 4)) \u2295 (12 \u2297 (96 \u2295 68))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 20 (semiring-plus ts 85 62)) (semiring-times ts 29 (semiring-plus ts 14 45))) (semiring-plus ts (semiring-times ts 72 (semiring-plus ts 48 15)) (semiring-times ts 98 (semiring-plus ts 36 74)))) (semiring-times ts (semiring-plus ts (semiring-times ts 29 (semiring-plus ts 55 72)) (semiring-times ts 99 (semiring-plus ts 80 79))) (semiring-plus ts (semiring-times ts 87 (semiring-plus ts 83 72)) (semiring-times ts 4 (semiring-plus ts 78 85))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 89 (semiring-plus ts 35 4)) (semiring-times ts 24 (semiring-plus ts 35 90))) (semiring-plus ts (semiring-times ts 98 (semiring-plus ts 40 44)) (semiring-times ts 45 (semiring-plus ts 1 24)))) (semiring-times ts (semiring-plus ts (semiring-times ts 19 (semiring-plus ts 73 85)) (semiring-times ts 52 (semiring-plus ts 9 19))) (semiring-plus ts (semiring-times ts 95 (semiring-plus ts 82 4)) (semiring-times ts 12 (semiring-plus ts 96 68)))))))",
+    "answer": "235",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-super-hard-002",
+    "category": "tropical_semiring",
+    "difficulty": "super-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((28 \u2297 (49 \u2295 54)) \u2295 (59 \u2297 (44 \u2295 21))) \u2297 ((48 \u2297 (40 \u2295 93)) \u2295 (42 \u2297 (100 \u2295 73)))) \u2295 (((77 \u2297 (11 \u2295 7)) \u2295 (20 \u2297 (21 \u2295 97))) \u2297 ((80 \u2297 (7 \u2295 87)) \u2295 (11 \u2297 (35 \u2295 57))))) \u2297 ((((85 \u2297 (55 \u2295 63)) \u2295 (78 \u2297 (57 \u2295 54))) \u2297 ((35 \u2297 (28 \u2295 97)) \u2295 (66 \u2297 (15 \u2295 45)))) \u2295 (((56 \u2297 (15 \u2295 37)) \u2295 (87 \u2297 (87 \u2295 76))) \u2297 ((63 \u2297 (68 \u2295 86)) \u2295 (40 \u2297 (6 \u2295 29))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 28 (semiring-plus ts 49 54)) (semiring-times ts 59 (semiring-plus ts 44 21))) (semiring-plus ts (semiring-times ts 48 (semiring-plus ts 40 93)) (semiring-times ts 42 (semiring-plus ts 100 73)))) (semiring-times ts (semiring-plus ts (semiring-times ts 77 (semiring-plus ts 11 7)) (semiring-times ts 20 (semiring-plus ts 21 97))) (semiring-plus ts (semiring-times ts 80 (semiring-plus ts 7 87)) (semiring-times ts 11 (semiring-plus ts 35 57))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 85 (semiring-plus ts 55 63)) (semiring-times ts 78 (semiring-plus ts 57 54))) (semiring-plus ts (semiring-times ts 35 (semiring-plus ts 28 97)) (semiring-times ts 66 (semiring-plus ts 15 45)))) (semiring-times ts (semiring-plus ts (semiring-times ts 56 (semiring-plus ts 15 37)) (semiring-times ts 87 (semiring-plus ts 87 76))) (semiring-plus ts (semiring-times ts 63 (semiring-plus ts 68 86)) (semiring-times ts 40 (semiring-plus ts 6 29)))))))",
+    "answer": "204",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-super-hard-003",
+    "category": "tropical_semiring",
+    "difficulty": "super-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((51 \u2297 (77 \u2295 8)) \u2295 (1 \u2297 (27 \u2295 39))) \u2297 ((28 \u2297 (99 \u2295 18)) \u2295 (98 \u2297 (33 \u2295 38)))) \u2295 (((42 \u2297 (16 \u2295 1)) \u2295 (64 \u2297 (96 \u2295 56))) \u2297 ((23 \u2297 (17 \u2295 49)) \u2295 (69 \u2297 (91 \u2295 30))))) \u2297 ((((65 \u2297 (72 \u2295 86)) \u2295 (46 \u2297 (10 \u2295 51))) \u2297 ((95 \u2297 (6 \u2295 56)) \u2295 (3 \u2297 (59 \u2295 10)))) \u2295 (((41 \u2297 (74 \u2295 55)) \u2295 (74 \u2297 (52 \u2295 91))) \u2297 ((82 \u2297 (54 \u2295 38)) \u2295 (15 \u2297 (52 \u2295 3))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 51 (semiring-plus ts 77 8)) (semiring-times ts 1 (semiring-plus ts 27 39))) (semiring-plus ts (semiring-times ts 28 (semiring-plus ts 99 18)) (semiring-times ts 98 (semiring-plus ts 33 38)))) (semiring-times ts (semiring-plus ts (semiring-times ts 42 (semiring-plus ts 16 1)) (semiring-times ts 64 (semiring-plus ts 96 56))) (semiring-plus ts (semiring-times ts 23 (semiring-plus ts 17 49)) (semiring-times ts 69 (semiring-plus ts 91 30))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 65 (semiring-plus ts 72 86)) (semiring-times ts 46 (semiring-plus ts 10 51))) (semiring-plus ts (semiring-times ts 95 (semiring-plus ts 6 56)) (semiring-times ts 3 (semiring-plus ts 59 10)))) (semiring-times ts (semiring-plus ts (semiring-times ts 41 (semiring-plus ts 74 55)) (semiring-times ts 74 (semiring-plus ts 52 91))) (semiring-plus ts (semiring-times ts 82 (semiring-plus ts 54 38)) (semiring-times ts 15 (semiring-plus ts 52 3)))))))",
+    "answer": "143",
+    "answer_type": "integer"
+  },
+  {
+    "id": "trop-super-hard-004",
+    "category": "tropical_semiring",
+    "difficulty": "super-hard",
+    "natural_language": "In the tropical semiring, the \u2295 operation is min (not addition) and the \u2297 operation is ordinary addition (not multiplication). The identity for \u2295 is +\u221e and the identity for \u2297 is 0.\n\nCompute: (((((42 \u2297 (22 \u2295 80)) \u2295 (59 \u2297 (89 \u2295 47))) \u2297 ((12 \u2297 (56 \u2295 14)) \u2295 (32 \u2297 (56 \u2295 76)))) \u2295 (((52 \u2297 (68 \u2295 11)) \u2295 (51 \u2297 (40 \u2295 96))) \u2297 ((44 \u2297 (29 \u2295 43)) \u2295 (100 \u2297 (22 \u2295 10))))) \u2297 ((((66 \u2297 (82 \u2295 15)) \u2295 (68 \u2297 (66 \u2295 25))) \u2297 ((100 \u2297 (45 \u2295 45)) \u2295 (94 \u2297 (83 \u2295 19)))) \u2295 (((31 \u2297 (14 \u2295 19)) \u2295 (33 \u2297 (26 \u2295 23))) \u2297 ((78 \u2297 (20 \u2295 98)) \u2295 (98 \u2297 (84 \u2295 10))))))\nGive only the numeric answer.",
+    "scheme_expression": "(let ((ts (tropical-semiring))) (semiring-times ts (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 42 (semiring-plus ts 22 80)) (semiring-times ts 59 (semiring-plus ts 89 47))) (semiring-plus ts (semiring-times ts 12 (semiring-plus ts 56 14)) (semiring-times ts 32 (semiring-plus ts 56 76)))) (semiring-times ts (semiring-plus ts (semiring-times ts 52 (semiring-plus ts 68 11)) (semiring-times ts 51 (semiring-plus ts 40 96))) (semiring-plus ts (semiring-times ts 44 (semiring-plus ts 29 43)) (semiring-times ts 100 (semiring-plus ts 22 10))))) (semiring-plus ts (semiring-times ts (semiring-plus ts (semiring-times ts 66 (semiring-plus ts 82 15)) (semiring-times ts 68 (semiring-plus ts 66 25))) (semiring-plus ts (semiring-times ts 100 (semiring-plus ts 45 45)) (semiring-times ts 94 (semiring-plus ts 83 19)))) (semiring-times ts (semiring-plus ts (semiring-times ts 31 (semiring-plus ts 14 19)) (semiring-times ts 33 (semiring-plus ts 26 23))) (semiring-plus ts (semiring-times ts 78 (semiring-plus ts 20 98)) (semiring-times ts 98 (semiring-plus ts 84 10)))))))",
+    "answer": "233",
+    "answer_type": "integer"
+  },
+  {
+    "id": "rat-easy-000",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: (((\u221211/7) \u00d7 ((\u22129/7) \u00f7 (\u22124/3))) + ((8/7 \u00f7 (\u22127/2)) \u00f7 (1/10 \u00d7 (\u22121/4))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-times (rational-field) -11/7 (field-divide (rational-field) -9/7 -4/3)) (field-divide (rational-field) (field-divide (rational-field) 8/7 -7/2) (field-times (rational-field) 1/10 -1/4)))",
+    "answer": "2263/196",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-001",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: (((\u22127/3) \u00d7 (2 \u00d7 (\u22122/5))) \u00d7 ((-2 + (\u221210/7)) + ((\u22121/5) \u00f7 1/5)))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-times (rational-field) -7/3 (field-times (rational-field) 2 -2/5)) (field-plus (rational-field) (field-plus (rational-field) -2 -10/7) (field-divide (rational-field) -1/5 1/5)))",
+    "answer": "-124/15",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-002",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: ((1/2 \u00d7 (10/7 \u00f7 -1)) + ((1/8 \u00d7 2/9) \u00d7 (2/7 \u00f7 (\u22122/3))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-times (rational-field) 1/2 (field-divide (rational-field) 10/7 -1)) (field-times (rational-field) (field-times (rational-field) 1/8 2/9) (field-divide (rational-field) 2/7 -2/3)))",
+    "answer": "-61/84",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-003",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: ((1 \u00f7 (3/11 \u00f7 (\u22123/5))) \u00d7 (((\u22122/7) \u00d7 (\u22128/3)) \u00f7 ((\u22121/6) + (\u22122/9))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) 1 (field-divide (rational-field) 3/11 -3/5)) (field-divide (rational-field) (field-times (rational-field) -2/7 -8/3) (field-plus (rational-field) -1/6 -2/9)))",
+    "answer": "1056/245",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-004",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: ((1/9 + ((\u221210/7) + 9/8)) + (((\u22123/2) \u00f7 (\u22129/8)) \u00d7 (1/10 \u00f7 11/4)))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-plus (rational-field) 1/9 (field-plus (rational-field) -10/7 9/8)) (field-times (rational-field) (field-divide (rational-field) -3/2 -9/8) (field-divide (rational-field) 1/10 11/4)))",
+    "answer": "-3991/27720",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-005",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: (((\u22127/3) + ((\u22124/7) \u00d7 1/8)) \u00d7 ((4 \u00f7 9/4) \u00f7 (11/9 + 1/7)))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-plus (rational-field) -7/3 (field-times (rational-field) -4/7 1/8)) (field-divide (rational-field) (field-divide (rational-field) 4 9/4) (field-plus (rational-field) 11/9 1/7)))",
+    "answer": "-404/129",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-006",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: ((2/7 \u00f7 (5/3 \u00d7 (\u22124/3))) \u00d7 (((\u221211/4) \u00d7 1/2) \u00f7 (1/5 + (\u22124/3))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) 2/7 (field-times (rational-field) 5/3 -4/3)) (field-divide (rational-field) (field-times (rational-field) -11/4 1/2) (field-plus (rational-field) 1/5 -4/3)))",
+    "answer": "-297/1904",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-007",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: ((1 \u00d7 (-2 \u00f7 -1)) \u00f7 (((\u22122/3) \u00d7 (\u22129/7)) \u00f7 (11/7 + (\u22129/10))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-times (rational-field) 1 (field-divide (rational-field) -2 -1)) (field-divide (rational-field) (field-times (rational-field) -2/3 -9/7) (field-plus (rational-field) 11/7 -9/10)))",
+    "answer": "47/30",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-008",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: ((5/2 \u00d7 (1/10 \u00d7 (\u22124/3))) + (((\u22125/4) \u00f7 (\u22124/9)) \u00f7 ((\u221211/7) + 7/11)))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-times (rational-field) 5/2 (field-times (rational-field) 1/10 -4/3)) (field-divide (rational-field) (field-divide (rational-field) -5/4 -4/9) (field-plus (rational-field) -11/7 7/11)))",
+    "answer": "-1283/384",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-easy-009",
+    "category": "rational_field",
+    "difficulty": "easy",
+    "natural_language": "Compute exactly: (((\u22123/2) \u00f7 (2/9 \u00f7 3/4)) \u00f7 ((3/11 \u00d7 (\u22129/4)) \u00f7 ((\u22121/3) + 4/9)))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-divide (rational-field) -3/2 (field-divide (rational-field) 2/9 3/4)) (field-divide (rational-field) (field-times (rational-field) 3/11 -9/4) (field-plus (rational-field) -1/3 4/9)))",
+    "answer": "11/12",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-000",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((15/7 \u00d7 -1) \u00f7 (10/3 + (\u22128/9))) \u00d7 (((\u221214/11) \u00f7 (\u221213/7)) \u00f7 ((\u22121/3) + ((\u22121/18) \u00d7 (\u22125/4)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) (field-times (rational-field) 15/7 -1) (field-plus (rational-field) 10/3 -8/9)) (field-divide (rational-field) (field-divide (rational-field) -14/11 -13/7) (field-plus (rational-field) -1/3 (field-times (rational-field) -1/18 -5/4))))",
+    "answer": "68040/29887",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-001",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((17/19 + -1) \u00f7 (19/7 \u00f7 3/4)) \u00d7 ((-2 \u00d7 20/21) \u00f7 (4/3 + (14/3 \u00f7 (\u221211/2)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) (field-plus (rational-field) 17/19 -1) (field-divide (rational-field) 19/7 3/4)) (field-divide (rational-field) (field-times (rational-field) -2 20/21) (field-plus (rational-field) 4/3 (field-divide (rational-field) 14/3 -11/2))))",
+    "answer": "165/1444",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-002",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((17/22 + (\u221222/17)) \u00d7 (18/19 \u00d7 (\u22125/22))) \u00f7 (((\u22124/17) \u00d7 (\u22128/23)) \u00d7 (3/11 + (7/4 \u00d7 22/3))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-times (rational-field) (field-plus (rational-field) 17/22 -22/17) (field-times (rational-field) 18/19 -5/22)) (field-times (rational-field) (field-times (rational-field) -4/17 -8/23) (field-plus (rational-field) 3/11 (field-times (rational-field) 7/4 22/3))))",
+    "answer": "121095/1157024",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-003",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: ((((\u22127/6) + 23/12) + ((\u22121/14) + (\u221215/13))) + ((10/19 \u00d7 (\u221217/12)) \u00d7 ((\u22121/2) \u00f7 ((\u22128/5) \u00d7 2/3))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-plus (rational-field) (field-plus (rational-field) -7/6 23/12) (field-plus (rational-field) -1/14 -15/13)) (field-times (rational-field) (field-times (rational-field) 10/19 -17/12) (field-divide (rational-field) -1/2 (field-times (rational-field) -8/5 2/3))))",
+    "answer": "-91267/110656",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-004",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: ((((\u221213/12) + 7/6) \u00d7 ((\u221211/7) \u00f7 1/2)) \u00f7 ((7/17 + (\u22124/17)) \u00d7 ((\u221211/2) \u00d7 (1/6 + 7/9))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-times (rational-field) (field-plus (rational-field) -13/12 7/6) (field-divide (rational-field) -11/7 1/2)) (field-times (rational-field) (field-plus (rational-field) 7/17 -4/17) (field-times (rational-field) -11/2 (field-plus (rational-field) 1/6 7/9))))",
+    "answer": "2/7",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-005",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((19/23 + 8/11) \u00f7 (6 \u00d7 (\u221217/15))) \u00d7 (((\u22123/2) \u00d7 1/14) \u00f7 (1/3 \u00d7 (1 + 14/19))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) (field-plus (rational-field) 19/23 8/11) (field-times (rational-field) 6 -17/15)) (field-divide (rational-field) (field-times (rational-field) -3/2 1/14) (field-times (rational-field) 1/3 (field-plus (rational-field) 1 14/19))))",
+    "answer": "112005/2649416",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-006",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((13/10 \u00f7 17/23) + (17/5 + -3)) \u00d7 ((3/13 + (\u22122/19)) \u00d7 (1/6 \u00f7 ((\u221211/21) + 5/7))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-plus (rational-field) (field-divide (rational-field) 13/10 17/23) (field-plus (rational-field) 17/5 -3)) (field-times (rational-field) (field-plus (rational-field) 3/13 -2/19) (field-divide (rational-field) 1/6 (field-plus (rational-field) -11/21 5/7))))",
+    "answer": "79639/335920",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-007",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((11/16 \u00d7 (\u22122/3)) \u00f7 (5/3 \u00f7 (\u22121/7))) \u00d7 (((\u22123/7) \u00d7 1/7) \u00d7 ((\u22121/5) + ((\u22121/9) \u00d7 10/19))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) (field-times (rational-field) 11/16 -2/3) (field-divide (rational-field) 5/3 -1/7)) (field-times (rational-field) (field-times (rational-field) -3/7 1/7) (field-plus (rational-field) -1/5 (field-times (rational-field) -1/9 10/19))))",
+    "answer": "2431/3910200",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-008",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: (((21/5 \u00f7 1/5) \u00f7 ((\u22122/11) \u00f7 (\u221222/21))) + ((4/5 \u00f7 19/20) \u00f7 (14/9 + (-1 \u00d7 8/7))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-divide (rational-field) (field-divide (rational-field) 21/5 1/5) (field-divide (rational-field) -2/11 -22/21)) (field-divide (rational-field) (field-divide (rational-field) 4/5 19/20) (field-plus (rational-field) 14/9 (field-times (rational-field) -1 8/7))))",
+    "answer": "30391/247",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-medium-009",
+    "category": "rational_field",
+    "difficulty": "medium",
+    "natural_language": "Compute exactly: ((((\u221221/20) \u00f7 22/5) \u00f7 ((\u221211/2) + 1/2)) \u00d7 ((2/3 \u00d7 1/2) \u00f7 (2/9 \u00d7 (1 \u00f7 (\u221210/3)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-divide (rational-field) (field-divide (rational-field) -21/20 22/5) (field-plus (rational-field) -11/2 1/2)) (field-divide (rational-field) (field-times (rational-field) 2/3 1/2) (field-times (rational-field) 2/9 (field-divide (rational-field) 1 -10/3))))",
+    "answer": "-21/88",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-000",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u22127/13) \u00d7 1/3) \u00f7 ((\u22121/9) + ((\u22122/45) \u00f7 46/45))) \u00f7 ((18/23 \u00d7 ((\u221214/41) \u00f7 15/14)) \u00d7 ((\u221216/19) \u00d7 (25/21 \u00d7 (\u221219/21)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-divide (rational-field) (field-times (rational-field) -7/13 1/3) (field-plus (rational-field) -1/9 (field-divide (rational-field) -2/45 46/45))) (field-times (rational-field) (field-times (rational-field) 18/23 (field-divide (rational-field) -14/41 15/14)) (field-times (rational-field) -16/19 (field-times (rational-field) 25/21 -19/21))))",
+    "answer": "-1366407/266240",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-001",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: (((46/19 + (\u221211/9)) \u00f7 (3/5 \u00d7 (23/26 \u00f7 1/6))) \u00f7 (((\u221229/20) \u00d7 ((\u221221/10) \u00f7 45/7)) \u00f7 ((\u22121/10) + (37/18 + 1))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-divide (rational-field) (field-plus (rational-field) 46/19 -11/9) (field-times (rational-field) 3/5 (field-divide (rational-field) 23/26 1/6))) (field-divide (rational-field) (field-times (rational-field) -29/20 (field-divide (rational-field) -21/10 45/7)) (field-plus (rational-field) -1/10 (field-plus (rational-field) 37/18 1))))",
+    "answer": "2665000/1134567",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-002",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: (((29/17 \u00f7 (\u221216/5)) \u00f7 (39/35 \u00d7 ((\u221219/42) \u00d7 (\u221218/5)))) + (((\u22125/4) \u00d7 ((\u22125/47) + 7/4)) \u00f7 (41/10 \u00d7 ((\u221247/37) \u00d7 (\u221227/28)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-divide (rational-field) (field-divide (rational-field) 29/17 -16/5) (field-times (rational-field) 39/35 (field-times (rational-field) -19/42 -18/5))) (field-divide (rational-field) (field-times (rational-field) -5/4 (field-plus (rational-field) -5/47 7/4)) (field-times (rational-field) 41/10 (field-times (rational-field) -47/37 -27/28))))",
+    "answer": "-12830221075/18254363088",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-003",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u221236/43) \u00d7 27/16) \u00f7 (11/2 \u00f7 ((\u221225/28) \u00f7 (\u221225/4)))) + ((4/33 + ((\u22126/5) \u00d7 (\u221243/2))) \u00d7 ((\u22129/38) \u00d7 (31/8 \u00f7 (\u22121/4)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-divide (rational-field) (field-times (rational-field) -36/43 27/16) (field-divide (rational-field) 11/2 (field-divide (rational-field) -25/28 -25/4))) (field-times (rational-field) (field-plus (rational-field) 4/33 (field-times (rational-field) -6/5 -43/2)) (field-times (rational-field) -9/38 (field-divide (rational-field) 31/8 -1/4))))",
+    "answer": "119679891/1258180",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-004",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u221233/23) \u00d7 (\u221227/31)) + (2 + (45/13 \u00f7 -2))) \u00d7 (((\u22125/19) \u00d7 (20/7 + (\u221225/41))) + (35/27 + (4/17 \u00d7 (\u22126/7)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-times (rational-field) (field-plus (rational-field) (field-times (rational-field) -33/23 -27/31) (field-plus (rational-field) 2 (field-divide (rational-field) 45/13 -2))) (field-plus (rational-field) (field-times (rational-field) -5/19 (field-plus (rational-field) 20/7 -25/41)) (field-plus (rational-field) 35/27 (field-times (rational-field) 4/17 -6/7))))",
+    "answer": "81711614/106910739",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-005",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: (((3/17 \u00f7 11/19) \u00f7 ((\u22125/21) \u00d7 (14/19 \u00f7 (\u221223/9)))) + ((37/25 \u00f7 (42/17 + (\u221210/11))) \u00f7 ((\u221232/31) \u00d7 ((\u22122/3) \u00d7 1/9))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-divide (rational-field) (field-divide (rational-field) 3/17 11/19) (field-times (rational-field) -5/21 (field-divide (rational-field) 14/19 -23/9))) (field-divide (rational-field) (field-divide (rational-field) 37/25 (field-plus (rational-field) 42/17 -10/11)) (field-times (rational-field) -32/31 (field-times (rational-field) -2/3 1/9))))",
+    "answer": "1470871121/87366400",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-006",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u221219/10) \u00d7 15/11) + (3/10 \u00f7 (1/28 + 43/37))) \u00f7 ((7/18 \u00f7 (13/5 + (\u221216/45))) \u00f7 (30/7 + (7/10 \u00f7 21/47))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-plus (rational-field) (field-times (rational-field) -19/10 15/11) (field-divide (rational-field) 3/10 (field-plus (rational-field) 1/28 43/37))) (field-divide (rational-field) (field-divide (rational-field) 7/18 (field-plus (rational-field) 13/5 -16/45)) (field-plus (rational-field) 30/7 (field-divide (rational-field) 7/10 21/47))))",
+    "answer": "-13219614371/167224750",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-007",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u22127/3) \u00f7 (\u22126/35)) \u00d7 (10/9 \u00f7 (41/15 \u00d7 15/13))) \u00f7 ((16/7 + (19/30 \u00f7 (\u221240/31))) + ((\u221231/34) \u00d7 (7/31 \u00d7 26/5))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-times (rational-field) (field-divide (rational-field) -7/3 -6/35) (field-divide (rational-field) 10/9 (field-times (rational-field) 41/15 15/13))) (field-plus (rational-field) (field-plus (rational-field) 16/7 (field-divide (rational-field) 19/30 -40/31)) (field-times (rational-field) -31/34 (field-times (rational-field) 7/31 26/5))))",
+    "answer": "758030000/114495903",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-008",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u221220/39) \u00d7 (\u221219/2)) \u00d7 (1/3 \u00d7 (43/6 \u00d7 23/5))) \u00f7 (((\u221239/32) \u00f7 ((\u221243/20) + 6/13)) + ((\u221230/43) \u00f7 (47/43 \u00f7 7/25))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-divide (rational-field) (field-times (rational-field) (field-times (rational-field) -20/39 -19/2) (field-times (rational-field) 1/3 (field-times (rational-field) 43/6 23/5))) (field-plus (rational-field) (field-divide (rational-field) -39/32 (field-plus (rational-field) -43/20 6/13)) (field-divide (rational-field) -30/43 (field-divide (rational-field) 47/43 7/25))))",
+    "answer": "15508588120/157325571",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "rat-hard-009",
+    "category": "rational_field",
+    "difficulty": "hard",
+    "natural_language": "Compute exactly: ((((\u22121/3) \u00d7 (\u221225/36)) + (4/35 \u00f7 ((\u221231/16) + (\u221247/3)))) + (((\u22129/31) \u00f7 (10/9 + 2/9)) + (1/8 \u00f7 ((\u221216/31) \u00d7 (\u22123/11)))))\nGive the answer as a fraction in lowest terms, or as an integer if whole.",
+    "scheme_expression": "(field-plus (rational-field) (field-plus (rational-field) (field-times (rational-field) -1/3 -25/36) (field-divide (rational-field) 4/35 (field-plus (rational-field) -31/16 -47/3))) (field-plus (rational-field) (field-divide (rational-field) -9/31 (field-plus (rational-field) 10/9 2/9)) (field-divide (rational-field) 1/8 (field-times (rational-field) -16/31 -3/11))))",
+    "answer": "2836700213/3168547200",
+    "answer_type": "fraction"
+  },
+  {
+    "id": "mpow-easy-000",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 329^96 mod 1009.\nHint: reduce modulo 1009 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1009).",
+    "scheme_expression": "(let ((R (modular-ring 1009)))\n  (let loop ((result 1) (count 96))\n    (if (= count 0) result\n        (loop (ring-times R result 329) (- count 1)))))",
+    "answer": "42",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-001",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 851^82 mod 1021.\nHint: reduce modulo 1021 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1021).",
+    "scheme_expression": "(let ((R (modular-ring 1021)))\n  (let loop ((result 1) (count 82))\n    (if (= count 0) result\n        (loop (ring-times R result 851) (- count 1)))))",
+    "answer": "896",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-002",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 616^101 mod 997.\nHint: reduce modulo 997 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 997).",
+    "scheme_expression": "(let ((R (modular-ring 997)))\n  (let loop ((result 1) (count 101))\n    (if (= count 0) result\n        (loop (ring-times R result 616) (- count 1)))))",
+    "answer": "746",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-003",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 475^84 mod 1019.\nHint: reduce modulo 1019 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1019).",
+    "scheme_expression": "(let ((R (modular-ring 1019)))\n  (let loop ((result 1) (count 84))\n    (if (= count 0) result\n        (loop (ring-times R result 475) (- count 1)))))",
+    "answer": "404",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-004",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 997^112 mod 1021.\nHint: reduce modulo 1021 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1021).",
+    "scheme_expression": "(let ((R (modular-ring 1021)))\n  (let loop ((result 1) (count 112))\n    (if (= count 0) result\n        (loop (ring-times R result 997) (- count 1)))))",
+    "answer": "819",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-005",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 738^86 mod 1021.\nHint: reduce modulo 1021 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1021).",
+    "scheme_expression": "(let ((R (modular-ring 1021)))\n  (let loop ((result 1) (count 86))\n    (if (= count 0) result\n        (loop (ring-times R result 738) (- count 1)))))",
+    "answer": "406",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-006",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 149^93 mod 1031.\nHint: reduce modulo 1031 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1031).",
+    "scheme_expression": "(let ((R (modular-ring 1031)))\n  (let loop ((result 1) (count 93))\n    (if (= count 0) result\n        (loop (ring-times R result 149) (- count 1)))))",
+    "answer": "456",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-007",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 956^82 mod 997.\nHint: reduce modulo 997 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 997).",
+    "scheme_expression": "(let ((R (modular-ring 997)))\n  (let loop ((result 1) (count 82))\n    (if (= count 0) result\n        (loop (ring-times R result 956) (- count 1)))))",
+    "answer": "168",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-008",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 806^94 mod 1019.\nHint: reduce modulo 1019 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 1019).",
+    "scheme_expression": "(let ((R (modular-ring 1019)))\n  (let loop ((result 1) (count 94))\n    (if (= count 0) result\n        (loop (ring-times R result 806) (- count 1)))))",
+    "answer": "660",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-easy-009",
+    "category": "monoid_power",
+    "difficulty": "easy",
+    "natural_language": "Compute 554^128 mod 997.\nHint: reduce modulo 997 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 997).",
+    "scheme_expression": "(let ((R (modular-ring 997)))\n  (let loop ((result 1) (count 128))\n    (if (= count 0) result\n        (loop (ring-times R result 554) (- count 1)))))",
+    "answer": "966",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-000",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 9466^329 mod 5011.\nHint: reduce modulo 5011 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5011).",
+    "scheme_expression": "(let ((R (modular-ring 5011)))\n  (let loop ((result 1) (count 329))\n    (if (= count 0) result\n        (loop (ring-times R result 9466) (- count 1)))))",
+    "answer": "1351",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-001",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 3008^305 mod 4999.\nHint: reduce modulo 4999 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 4999).",
+    "scheme_expression": "(let ((R (modular-ring 4999)))\n  (let loop ((result 1) (count 305))\n    (if (= count 0) result\n        (loop (ring-times R result 3008) (- count 1)))))",
+    "answer": "2915",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-002",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 5433^415 mod 4999.\nHint: reduce modulo 4999 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 4999).",
+    "scheme_expression": "(let ((R (modular-ring 4999)))\n  (let loop ((result 1) (count 415))\n    (if (= count 0) result\n        (loop (ring-times R result 5433) (- count 1)))))",
+    "answer": "743",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-003",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 9024^338 mod 5021.\nHint: reduce modulo 5021 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5021).",
+    "scheme_expression": "(let ((R (modular-ring 5021)))\n  (let loop ((result 1) (count 338))\n    (if (= count 0) result\n        (loop (ring-times R result 9024) (- count 1)))))",
+    "answer": "4743",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-004",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 2747^414 mod 4999.\nHint: reduce modulo 4999 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 4999).",
+    "scheme_expression": "(let ((R (modular-ring 4999)))\n  (let loop ((result 1) (count 414))\n    (if (= count 0) result\n        (loop (ring-times R result 2747) (- count 1)))))",
+    "answer": "1440",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-005",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 8881^260 mod 5009.\nHint: reduce modulo 5009 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5009).",
+    "scheme_expression": "(let ((R (modular-ring 5009)))\n  (let loop ((result 1) (count 260))\n    (if (= count 0) result\n        (loop (ring-times R result 8881) (- count 1)))))",
+    "answer": "3388",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-006",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 2367^254 mod 5011.\nHint: reduce modulo 5011 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5011).",
+    "scheme_expression": "(let ((R (modular-ring 5011)))\n  (let loop ((result 1) (count 254))\n    (if (= count 0) result\n        (loop (ring-times R result 2367) (- count 1)))))",
+    "answer": "4009",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-007",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 3754^302 mod 5009.\nHint: reduce modulo 5009 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5009).",
+    "scheme_expression": "(let ((R (modular-ring 5009)))\n  (let loop ((result 1) (count 302))\n    (if (= count 0) result\n        (loop (ring-times R result 3754) (- count 1)))))",
+    "answer": "3357",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-008",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 9071^303 mod 5009.\nHint: reduce modulo 5009 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5009).",
+    "scheme_expression": "(let ((R (modular-ring 5009)))\n  (let loop ((result 1) (count 303))\n    (if (= count 0) result\n        (loop (ring-times R result 9071) (- count 1)))))",
+    "answer": "3934",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mpow-medium-009",
+    "category": "monoid_power",
+    "difficulty": "medium",
+    "natural_language": "Compute 7213^351 mod 5003.\nHint: reduce modulo 5003 after each multiplication step rather than computing the full power first.\nGive only the non-negative numeric answer (0 \u2264 answer < 5003).",
+    "scheme_expression": "(let ((R (modular-ring 5003)))\n  (let loop ((result 1) (count 351))\n    (if (= count 0) result\n        (loop (ring-times R result 7213) (- count 1)))))",
+    "answer": "966",
+    "answer_type": "integer"
+  },
+  {
+    "id": "pset-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, e, f, g, h, i} \u2229 {l}) \u2229 ((({d, g, i, j} \u222a {a, c, d, e, f, g, i, j, k}) \u222a (({g, i, l} \u222a {c, f, h, i, k, l}) \u2229 {b, e, f, g, h, i, j, k, l})) \u222a (((({e} \u2229 {a, b, c, e, f, g, h, i, j, l}) \u2229 {b, c, i, k, l}) \u2229 ({b, c, d, e, f, l} \u222a {b, d, e, g, j})) \u2229 {f, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L '(a e f g h i) '(l)) (lattice-join L (lattice-join L (lattice-join L '(d g i j) '(a c d e f g i j k)) (lattice-meet L (lattice-join L '(g i l) '(c f h i k l)) '(b e f g h i j k l))) (lattice-meet L (lattice-meet L (lattice-meet L (lattice-meet L '(e) '(a b c e f g h i j l)) '(b c i k l)) (lattice-join L '(b c d e f l) '(b d e g j))) '(f l)))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, d, e, f, g, h, i, j, l} \u2229 (({a, c, f, i, l} \u2229 ({a, g, k} \u2229 {b, c, d, g, h, i, j, l})) \u222a {b, c, f})) \u222a ({b, e, f, g, h, i, j, k, l} \u2229 ({a, b, c, d, g, i, j, k} \u2229 {b, d, f, i, j, k, l}))) \u222a (({a, c, e, f, h, j} \u2229 {a, b, c, f, g, h, i, j, k, l}) \u2229 ({d} \u222a {a, b, c, d, e, f, h, i, j, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-join L (lattice-join L (lattice-meet L '(a b d e f g h i j l) (lattice-join L (lattice-meet L '(a c f i l) (lattice-meet L '(a g k) '(b c d g h i j l))) '(b c f))) (lattice-meet L '(b e f g h i j k l) (lattice-meet L '(a b c d g i j k) '(b d f i j k l)))) (lattice-meet L (lattice-meet L '(a c e f h j) '(a b c f g h i j k l)) (lattice-join L '(d) '(a b c d e f h i j l)))))",
+    "answer": "(b i k a c f h j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, e, f, g, h, i, j, k, l} \u2229 ({a, b, c, d, e, f, g, h, j, k, l} \u222a {b, f, g, i})) \u2229 {b, c, d, e, g, h, i, j}) \u222a ({e, f, h, i} \u222a (({a, b, c, d, e, f, g, i, j, k, l} \u222a {c, f, g, l}) \u2229 (({c, d, e, g, h, j, k} \u2229 ({c, i, j, k} \u2229 {a, b, c, d, e, f, g, i, j, k, l})) \u222a {a, b, c, d, f, h, i, j, l}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-join L (lattice-meet L (lattice-meet L '(a b c e f g h i j k l) (lattice-join L '(a b c d e f g h j k l) '(b f g i))) '(b c d e g h i j)) (lattice-join L '(e f h i) (lattice-meet L (lattice-join L '(a b c d e f g i j k l) '(c f g l)) (lattice-join L (lattice-meet L '(c d e g h j k) (lattice-meet L '(c i j k) '(a b c d e f g i j k l))) '(a b c d f h i j l))))))",
+    "answer": "(g e h a b d i j k c f l)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, c, j} \u222a {a, b, c, d, e, f, i, j, k, l}) \u2229 (({g, h, k} \u2229 {c, d, k}) \u2229 (({b, d, h, i, j, k, l} \u222a {a, c, d, e, f, g, h, i, j, l}) \u222a ({a, d, e, f, g, h, i, j, k, l} \u2229 {a, g, i, l})))) \u2229 (({e, g, h, j, l} \u222a ({a, c, h, i, j} \u222a {b, c, d, e, f, g, h, i, j, k, l})) \u2229 {a, c, d, h, i, l}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L (lattice-join L '(a c j) '(a b c d e f i j k l)) (lattice-meet L (lattice-meet L '(g h k) '(c d k)) (lattice-join L (lattice-join L '(b d h i j k l) '(a c d e f g h i j l)) (lattice-meet L '(a d e f g h i j k l) '(a g i l))))) (lattice-meet L (lattice-join L '(e g h j l) (lattice-join L '(a c h i j) '(b c d e f g h i j k l))) '(a c d h i l))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({b, h} \u222a ({a, b, c, d, e, g, i, k, l} \u2229 (({a, c, g} \u222a ({a, b, c, e, i, j, k, l} \u2229 {a, h, j, k, l})) \u2229 {a, d, e, f, g, h, i, j, k, l}))) \u2229 (({a, f, k} \u222a {c}) \u2229 (({b} \u2229 {c, d, e, f, i, k, l}) \u222a {a, b, c, d, e, f, g, h, k, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-join L '(b h) (lattice-meet L '(a b c d e g i k l) (lattice-meet L (lattice-join L '(a c g) (lattice-meet L '(a b c e i j k l) '(a h j k l))) '(a d e f g h i j k l)))) (lattice-meet L (lattice-join L '(a f k) '(c)) (lattice-join L (lattice-meet L '(b) '(c d e f i k l)) '(a b c d e f g h k l)))))",
+    "answer": "(a k)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-005",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({d, f, g, i, k} \u222a (({b, c, e, f, g, h, i, j, k, l} \u222a (({b, c, e, f, g, h, i, j, k, l} \u2229 {a, b, d, h, k}) \u2229 ({a, b, c, e, f, g, h, i, j, l} \u222a {b, e, k, l}))) \u222a ({a, b, c, d, e, f, i, j, k} \u2229 {d, f, k}))) \u2229 (({a, c, d, f, g, h, i, k} \u222a {a, b, c, e, f, i, j, k, l}) \u2229 {c, e}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-join L '(d f g i k) (lattice-join L (lattice-join L '(b c e f g h i j k l) (lattice-meet L (lattice-meet L '(b c e f g h i j k l) '(a b d h k)) (lattice-join L '(a b c e f g h i j l) '(b e k l)))) (lattice-meet L '(a b c d e f i j k) '(d f k)))) (lattice-meet L (lattice-join L '(a c d f g h i k) '(a b c e f i j k l)) '(c e))))",
+    "answer": "(c e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-006",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, d, e, g, l} \u222a {d, e, f, h}) \u2229 ({a, f} \u2229 ({a, b, c, d, h, i, j, l} \u222a {a, b, c, d, e, f, i, j, k}))) \u222a ({e} \u2229 {k})) \u2229 (({i, k} \u2229 {a, d, e, f, j}) \u222a ({b, e, f, h, i} \u222a {a, b, c, e, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-join L (lattice-meet L (lattice-join L '(a b d e g l) '(d e f h)) (lattice-meet L '(a f) (lattice-join L '(a b c d h i j l) '(a b c d e f i j k)))) (lattice-meet L '(e) '(k))) (lattice-join L (lattice-meet L '(i k) '(a d e f j)) (lattice-join L '(b e f h i) '(a b c e l)))))",
+    "answer": "(a f)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-007",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, c, d, e, f, g, i, j, l} \u222a {a, b, d, f, g, h, k, l}) \u2229 {j, k, l}) \u2229 {a, b, c, d, e, f, h, i, j, k, l}) \u222a ((((({e, f, j} \u222a {a, c, d, f, h, j, k}) \u2229 {b, h}) \u2229 {c, e, f, h, i, l}) \u222a ((({b, d, e, g, h, i, j, k, l} \u222a {a, b, c, d, e, g, h, i, j, l}) \u222a {a, b, c, d, e, f, g, i, j, l}) \u222a {b, c, d, e, f, g, h, i, j, k})) \u222a {b, j}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L '(a b c d e f g i j l) '(a b d f g h k l)) '(j k l)) '(a b c d e f h i j k l)) (lattice-join L (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L '(e f j) '(a c d f h j k)) '(b h)) '(c e f h i l)) (lattice-join L (lattice-join L (lattice-join L '(b d e g h i j k l) '(a b c d e g h i j l)) '(a b c d e f g i j l)) '(b c d e f g h i j k))) '(b j))))",
+    "answer": "(a l c d e f g h i k b j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-008",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({c, d} \u2229 (({b, c, d, e, f, g, h, j, l} \u222a {a, b, d, e, f, g, i, j, k, l}) \u222a ({a, f, i, j, k, l} \u2229 ({f, g, j, l} \u2229 {b, d, f, g, i, k, l})))) \u2229 (({a, c, e, g, i, k} \u222a {a, k}) \u2229 (({c, k} \u2229 (({b, c, f, g, h, i, k, l} \u2229 {a, d, e, f, h, j, l}) \u2229 {a, f, g, i, j})) \u222a {j})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L '(c d) (lattice-join L (lattice-join L '(b c d e f g h j l) '(a b d e f g i j k l)) (lattice-meet L '(a f i j k l) (lattice-meet L '(f g j l) '(b d f g i k l))))) (lattice-meet L (lattice-join L '(a c e g i k) '(a k)) (lattice-join L (lattice-meet L '(c k) (lattice-meet L (lattice-meet L '(b c f g h i k l) '(a d e f h j l)) '(a f g i j))) '(j)))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-009",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({e, i, l} \u2229 {a, b, d, f, h, i, k, l}) \u2229 ({a, e, h, i, j, l} \u2229 ((({l} \u2229 ({k} \u2229 {a, c, e, f, g, h, j, l})) \u2229 (({b, e, i} \u2229 {c, e, i, j, k}) \u222a ({b, c, d, f, g, h, i, j, k, l} \u222a {a, f, i}))) \u2229 ({b, c, d, e, f, g, h, j, k, l} \u222a {a, b, e, i, k, l}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L '(e i l) '(a b d f h i k l)) (lattice-meet L '(a e h i j l) (lattice-meet L (lattice-meet L (lattice-meet L '(l) (lattice-meet L '(k) '(a c e f g h j l))) (lattice-join L (lattice-meet L '(b e i) '(c e i j k)) (lattice-join L '(b c d f g h i j k l) '(a f i)))) (lattice-join L '(b c d e f g h j k l) '(a b e i k l))))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, c, e, g, i} \u2229 {a, b, c, d, e, f, g, h, i, k, l, m, n}) \u222a ({b, e, j, k, m} \u2229 {d, f, h, j, k, l, m})) \u2229 (({a, g} \u222a {b, i}) \u222a ({d, e, l, m} \u2229 {a}))) \u2229 ({b, d, e, g, h, i, j, k, l, n} \u222a (({a, b, c, d, e, g, h, i, k, l, m, n} \u222a (({a, b, c, e, f, h, l} \u222a {b, c, d, e, g, h, j, k}) \u222a ({a, b, c, e, h, i, j, k, m, n} \u2229 {a, b, c, d, e, g, h, i, j, k, l, m, n}))) \u2229 {b, e, g, h, j, k, l, m, n})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-meet L (lattice-join L (lattice-meet L '(a c e g i) '(a b c d e f g h i k l m n)) (lattice-meet L '(b e j k m) '(d f h j k l m))) (lattice-join L (lattice-join L '(a g) '(b i)) (lattice-meet L '(d e l m) '(a)))) (lattice-join L '(b d e g h i j k l n) (lattice-meet L (lattice-join L '(a b c d e g h i k l m n) (lattice-join L (lattice-join L '(a b c e f h l) '(b c d e g h j k)) (lattice-meet L '(a b c e h i j k m n) '(a b c d e g h i j k l m n)))) '(b e g h j k l m n)))))",
+    "answer": "(g i)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, d, e, f, g, i, j, k, l} \u2229 {a, g, i}) \u2229 (({a, b, c, d, f, g, h, k, l, m, n} \u2229 (({a, c, f, h, i, j, k, m} \u222a {a, b, c, d, e, f, g, h, i, k, l, m, n}) \u2229 ({a, b, c, d, f, h, i, j, k, m, n} \u222a {a, b, c, d, e, g, h, i, j, k, l, m, n}))) \u222a ((({a, c, d, j, m, n} \u222a {b, c, e, g, k, n}) \u2229 {a, c, d, e, f, g, h, i, j, l, m, n}) \u2229 ({a, n} \u222a {b, k, l})))) \u2229 ({a, b, c, d, e, f, h, j, k, l, m, n} \u2229 {a, b, c, d, e, h, j, k, l, m}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-meet L (lattice-meet L '(a b c d e f g i j k l) '(a g i)) (lattice-join L (lattice-meet L '(a b c d f g h k l m n) (lattice-meet L (lattice-join L '(a c f h i j k m) '(a b c d e f g h i k l m n)) (lattice-join L '(a b c d f h i j k m n) '(a b c d e g h i j k l m n)))) (lattice-meet L (lattice-meet L (lattice-join L '(a c d j m n) '(b c e g k n)) '(a c d e f g h i j l m n)) (lattice-join L '(a n) '(b k l))))) (lattice-meet L '(a b c d e f h j k l m n) '(a b c d e h j k l m))))",
+    "answer": "(a)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, c, d, e, g, h, i, j, k, l, m, n} \u222a {a, c, d, e, f, g, h, i, j, k, n}) \u222a {b}) \u222a {a, b, c, d, f, h, i, j, k, l, m, n}) \u222a (((({d, g, l, m} \u222a {b, h, j, m}) \u222a ({d, h, j} \u222a {c, f, g})) \u2229 ((({a, c, e, j, l, m} \u2229 ({c, d, e, f, g, h, l, m} \u222a {b, c, d, e, f, g, h, i, j, k, l, m, n})) \u222a (({a, c, d, e, f, g, i, j, k, l, m, n} \u222a {a, d, g, i, j, l, m, n}) \u2229 {a, b, d, e, f, g, h, i, j, k, l, m, n})) \u2229 {a, b, d, h, k})) \u222a {a, b, c, d, e, f, g, h, j, k, l}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-join L (lattice-join L (lattice-join L (lattice-join L '(a b c d e g h i j k l m n) '(a c d e f g h i j k n)) '(b)) '(a b c d f h i j k l m n)) (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(d g l m) '(b h j m)) (lattice-join L '(d h j) '(c f g))) (lattice-meet L (lattice-join L (lattice-meet L '(a c e j l m) (lattice-join L '(c d e f g h l m) '(b c d e f g h i j k l m n))) (lattice-meet L (lattice-join L '(a c d e f g i j k l m n) '(a d g i j l m n)) '(a b d e f g h i j k l m n))) '(a b d h k))) '(a b c d e f g h j k l))))",
+    "answer": "(i m n a b c d e f g h j k l)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((((((({a, b, c, d, f, g, i, l, m, n} \u222a {a, b, c, d, f, g, i, j, k, m}) \u2229 {b, c, d, f, g, h, j, k, m}) \u222a ({b} \u2229 {b, f, h, i, k, m})) \u2229 ({a, b, d, f, h, j, k, l} \u2229 {b, c, e, k, l, m, n})) \u222a (({a, c, d, e, g, h, i, j, k} \u222a {a, b, d, e, g, k, l, n}) \u222a ({f, h, i, j, k, l, m} \u222a {c, d, e, h, j, k, l, n}))) \u222a {a, c, e, f, m, n}) \u2229 ({a, b, c, e, g, i, j, l, m, n} \u2229 ({a, c, d, e, f, g, h, j, k, n} \u222a {f, h, i})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-join L (lattice-join L (lattice-meet L (lattice-join L (lattice-meet L (lattice-join L '(a b c d f g i l m n) '(a b c d f g i j k m)) '(b c d f g h j k m)) (lattice-meet L '(b) '(b f h i k m))) (lattice-meet L '(a b d f h j k l) '(b c e k l m n))) (lattice-join L (lattice-join L '(a c d e g h i j k) '(a b d e g k l n)) (lattice-join L '(f h i j k l m) '(c d e h j k l n)))) '(a c e f m n)) (lattice-meet L '(a b c e g i j l m n) (lattice-join L '(a c d e f g h j k n) '(f h i)))))",
+    "answer": "(g i j a c e n)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, c, f, h, k, l, m, n} \u222a {a, c, d, e, f, g, h, i, j, l, m, n}) \u2229 (((({a, d, i, j, k, m} \u2229 {d, e, m, n}) \u222a ({b, d, g, h, i, j, k, l, n} \u222a {a, f, g, i, j, n})) \u222a {f, g, l}) \u222a ((({b, d, h, i, n} \u2229 {a, b, c, d, e, f, g, h, i, k, m, n}) \u222a {e, f, h, i}) \u2229 (({g} \u2229 ({h, i, l} \u2229 {a, c, d, e, g, h, i, k, m, n})) \u222a {d, h, i, l, n}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-join L '(a c f h k l m n) '(a c d e f g h i j l m n)) (lattice-join L (lattice-join L (lattice-join L (lattice-meet L '(a d i j k m) '(d e m n)) (lattice-join L '(b d g h i j k l n) '(a f g i j n))) '(f g l)) (lattice-meet L (lattice-join L (lattice-meet L '(b d h i n) '(a b c d e f g h i k m n)) '(e f h i)) (lattice-join L (lattice-meet L '(g) (lattice-meet L '(h i l) '(a c d e g h i k m n))) '(d h i l n))))))",
+    "answer": "(k a d f g h i j l m n)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, d, g, h, j, k, l, n, o} \u2229 ({b, e, f, g, h, j, k, l, n, o} \u2229 {a, b, c, e, f, h, i, j, l, m, n, p})) \u2229 ({a, f, g, k, l} \u222a {b, i, j, k, o})) \u222a ((({a, b, c, e, f, g, h, i, j, k, l, n, o, p} \u222a {f, g, h, l, m}) \u222a (({b, d, h, i, j, k, l, m, n} \u222a {a, b, c, h, n, o, p}) \u222a (({a, b, c, d, e, f, g, h, i, j, l, n, o, p} \u2229 ({c, g, l} \u222a {a, b, d, e, f, g, h, j, k, m, n, o, p})) \u2229 ({a, b, c, d, e, f, h, i, j, k, l, m, n, o, p} \u2229 (({h, i, j} \u2229 {d, n}) \u222a {a, c, d, e, f, i, l, n, o, p}))))) \u222a {g, o}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-meet L '(a b c d g h j k l n o) (lattice-meet L '(b e f g h j k l n o) '(a b c e f h i j l m n p))) (lattice-join L '(a f g k l) '(b i j k o))) (lattice-join L (lattice-join L (lattice-join L '(a b c e f g h i j k l n o p) '(f g h l m)) (lattice-join L (lattice-join L '(b d h i j k l m n) '(a b c h n o p)) (lattice-meet L (lattice-meet L '(a b c d e f g h i j l n o p) (lattice-join L '(c g l) '(a b d e f g h j k m n o p))) (lattice-meet L '(a b c d e f h i j k l m n o p) (lattice-join L (lattice-meet L '(h i j) '(d n)) '(a c d e f i l n o p)))))) '(g o))))",
+    "answer": "(i j k m b h a c d e f l n p g o)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({b, d, f, g, i, l, p} \u2229 {a, c, d, e, f, h, i, o}) \u222a (({e, h, j, k, l, o, p} \u2229 ({b, d, h, n, p} \u222a {a, b, c, e, f, g, h, k, l, m, p})) \u222a ({g, l, m} \u222a ({d, l} \u222a {b, d, g, j, n, p})))) \u222a ((({g, h, i, j, k, p} \u2229 {b, e, h, m, o}) \u2229 {c, d, h, k, p}) \u2229 {d})) \u2229 ({a, c, e, f, g, j, k, o} \u222a ({c, d, e, h, i, j, k, l, m, n, p} \u222a ({d, f, g, h, k, n, o} \u222a ({j, l, o} \u222a (({b, h, j, m, p} \u2229 {a, c, e, h, i, j, k, m, n, o, p}) \u222a {f, g, h, i, j, k, n}))))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-join L (lattice-join L (lattice-meet L '(b d f g i l p) '(a c d e f h i o)) (lattice-join L (lattice-meet L '(e h j k l o p) (lattice-join L '(b d h n p) '(a b c e f g h k l m p))) (lattice-join L '(g l m) (lattice-join L '(d l) '(b d g j n p))))) (lattice-meet L (lattice-meet L (lattice-meet L '(g h i j k p) '(b e h m o)) '(c d h k p)) '(d))) (lattice-join L '(a c e f g j k o) (lattice-join L '(c d e h i j k l m n p) (lattice-join L '(d f g h k n o) (lattice-join L '(j l o) (lattice-join L (lattice-meet L '(b h j m p) '(a c e h i j k m n o p)) '(f g h i j k n))))))))",
+    "answer": "(f i e h k m l d g j n p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({f, l, m} \u222a {a, b, c, d, f, g, i, k, l, m, o, p}) \u2229 ((({a, b, c, d, e, f, g, h, i, j, l, m, n, o, p} \u2229 ({b, f, g, j, m, o} \u2229 {b, c, d, e, f, h, i, j, k, l, m, o, p})) \u222a {b, d, g, h, i, k, m}) \u222a ((({b, c, e, f, i, j, l, m, n, o} \u2229 ({b, k, l, m} \u2229 {c, d, e, f, g, h, i, j, k, l, m, n, o, p})) \u222a ({d, e, f, g, h, i, j, k, n, o, p} \u222a {b, c, d, e, f, g, h, i, j, k, n})) \u2229 (({a, b, c, d, e, f, g, h, j, k, m, n, o, p} \u222a ({a, c, d, g, i, k, n, p} \u222a {a, e, m, n, p})) \u2229 ((({a, b, c, e, f, g, h, i, j, k, l, m, n, o} \u222a {b, d, e, h, i, j, k, n, o, p}) \u222a {f, k}) \u222a {b, c, d, f, g, h, i, j, k, l, m, n, o, p})))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-join L '(f l m) '(a b c d f g i k l m o p)) (lattice-join L (lattice-join L (lattice-meet L '(a b c d e f g h i j l m n o p) (lattice-meet L '(b f g j m o) '(b c d e f h i j k l m o p))) '(b d g h i k m)) (lattice-meet L (lattice-join L (lattice-meet L '(b c e f i j l m n o) (lattice-meet L '(b k l m) '(c d e f g h i j k l m n o p))) (lattice-join L '(d e f g h i j k n o p) '(b c d e f g h i j k n))) (lattice-meet L (lattice-join L '(a b c d e f g h j k m n o p) (lattice-join L '(a c d g i k n p) '(a e m n p))) (lattice-join L (lattice-join L (lattice-join L '(a b c e f g h i j k l m n o) '(b d e h i j k n o p)) '(f k)) '(b c d f g h i j k l m n o p)))))))",
+    "answer": "(b c d f g i k m o p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((((({a, e, j, k, l, m, n, p} \u222a {b, d, e, f, g, h, i, j, k, m, o, p}) \u222a ({a, b, c, d, e, f, h, i, j, k, l, m, n, o, p} \u222a {a, b, c, d, e, f, g, h, i, k, l, m, o, p})) \u2229 ({a, b, c, d, h, i, k, l, m, n, o, p} \u2229 {b, c, d, i, k, p})) \u222a (((({e, k, m} \u222a {c, f, g, p}) \u2229 {a, d, i, j, l, m, n}) \u2229 ({a, c, e, g, j, k, l, p} \u222a {a, b, c, f, g, h, i, j, n, o})) \u222a {a, b, c, d, e, f, h, i, j, k, l, m, n, o, p})) \u2229 ((({c, m, n} \u222a {j}) \u222a {d, f, h, j, p}) \u222a {a, b, c, d, f, g, h, j, k, o})) \u222a ({d, i} \u2229 {b}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(a e j k l m n p) '(b d e f g h i j k m o p)) (lattice-join L '(a b c d e f h i j k l m n o p) '(a b c d e f g h i k l m o p))) (lattice-meet L '(a b c d h i k l m n o p) '(b c d i k p))) (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L '(e k m) '(c f g p)) '(a d i j l m n)) (lattice-join L '(a c e g j k l p) '(a b c f g h i j n o))) '(a b c d e f h i j k l m n o p))) (lattice-join L (lattice-join L (lattice-join L '(c m n) '(j)) '(d f h j p)) '(a b c d f g h j k o))) (lattice-meet L '(d i) '(b))))",
+    "answer": "(a b c d f h j k m n o p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({e, f, g, k, m} \u222a ({b, c, e, f, h, i, l, m, n, p} \u222a (({b, c, e, f, h, l} \u2229 {b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}) \u2229 (({a, e, f, h} \u222a {b, g, o}) \u222a ({b, c, h, i, l, m, o, p} \u2229 (({a, b, c, d, e, g, h, i, j, k, l, n, o, p} \u222a {b, f, k, p}) \u222a {j})))))) \u2229 (((({n, o} \u222a {a, d, e, f, h, i, j, k, l, m, n, p}) \u222a {a, d, e, k, n, p}) \u2229 {b, g, i, j, l, p}) \u222a ({b, d, f, g, m} \u222a {g}))) \u222a ({b, c, d, e, g, h, j, k, l, m, n, o, p} \u222a {d, f, h, i, n, p}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-join L '(e f g k m) (lattice-join L '(b c e f h i l m n p) (lattice-meet L (lattice-meet L '(b c e f h l) '(b c d e f g h i j k l m n o p)) (lattice-join L (lattice-join L '(a e f h) '(b g o)) (lattice-meet L '(b c h i l m o p) (lattice-join L (lattice-join L '(a b c d e g h i j k l n o p) '(b f k p)) '(j))))))) (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(n o) '(a d e f h i j k l m n p)) '(a d e k n p)) '(b g i j l p)) (lattice-join L '(b d f g m) '(g)))) (lattice-join L '(b c d e g h j k l m n o p) '(d f h i n p))))",
+    "answer": "(b c e g j k l m o d f h i n p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "mfold-super-hard-000",
+    "category": "monoid_fold",
+    "difficulty": "super-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 50023 of the tropical-additive folds (min) of these 12 sequences:\n\n  [58, 17, 44, 38, 47, 80, 56, 6, 92, 100, 88, 50, 31, 27, 79]\n  [78, 10, 20, 73, 81, 64, 13, 2, 19, 99, 40, 71, 12, 64, 13]\n  [59, 41, 22, 38, 21, 9, 36, 74, 47, 46, 12, 10, 23, 91, 99]\n  [59, 34, 61, 33, 98, 57, 84, 18, 16, 73, 63, 6, 47, 37, 52]\n  [53, 80, 88, 17, 57, 47, 66, 80, 41, 48, 11, 88, 53, 65, 58]\n  [34, 88, 6, 80, 83, 8, 95, 32, 90, 72, 2, 20, 14, 38, 49]\n  [21, 73, 52, 10, 29, 50, 60, 86, 12, 45, 60, 60, 83, 69, 60]\n  [14, 11, 24, 94, 14, 51, 99, 56, 26, 52, 43, 9, 41, 44, 78]\n  [63, 28, 90, 95, 61, 15, 36, 59, 5, 70, 20, 61, 19, 82, 28]\n  [41, 73, 5, 77, 100, 49, 8, 47, 56, 61, 28, 7, 28, 3, 98]\n  [88, 55, 35, 33, 82, 23, 11, 19, 9, 36, 52, 11, 39, 92, 58]\n  [54, 68, 28, 86, 34, 24, 7, 12, 55, 44, 97, 39, 22, 26, 45]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12)) mod 50023.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 50023).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 50023)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(58 17 44 38 47 80 56 6 92 100 88 50 31 27 79))\n                        (monoid-fold A '(78 10 20 73 81 64 13 2 19 99 40 71 12 64 13))\n                        (monoid-fold A '(59 41 22 38 21 9 36 74 47 46 12 10 23 91 99))\n                        (monoid-fold A '(59 34 61 33 98 57 84 18 16 73 63 6 47 37 52))\n                        (monoid-fold A '(53 80 88 17 57 47 66 80 41 48 11 88 53 65 58))\n                        (monoid-fold A '(34 88 6 80 83 8 95 32 90 72 2 20 14 38 49))\n                        (monoid-fold A '(21 73 52 10 29 50 60 86 12 45 60 60 83 69 60))\n                        (monoid-fold A '(14 11 24 94 14 51 99 56 26 52 43 9 41 44 78))\n                        (monoid-fold A '(63 28 90 95 61 15 36 59 5 70 20 61 19 82 28))\n                        (monoid-fold A '(41 73 5 77 100 49 8 47 56 61 28 7 28 3 98))\n                        (monoid-fold A '(88 55 35 33 82 23 11 19 9 36 52 11 39 92 58))\n                        (monoid-fold A '(54 68 28 86 34 24 7 12 55 44 97 39 22 26 45)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "15326",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-super-hard-001",
+    "category": "monoid_fold",
+    "difficulty": "super-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 50033 of the tropical-additive folds (min) of these 12 sequences:\n\n  [62, 61, 69, 89, 21, 90, 56, 46, 89, 74, 50, 2, 72, 77, 26]\n  [10, 93, 86, 75, 79, 19, 42, 86, 94, 96, 95, 94, 41, 2, 20]\n  [59, 19, 64, 41, 15, 87, 53, 34, 67, 93, 1, 58, 17, 82, 58]\n  [82, 75, 13, 5, 28, 96, 25, 54, 90, 70, 100, 22, 77, 49, 28]\n  [45, 27, 25, 87, 74, 2, 48, 47, 3, 39, 40, 65, 16, 90, 64]\n  [84, 59, 53, 53, 46, 46, 70, 55, 67, 98, 43, 15, 23, 59, 55]\n  [48, 23, 71, 77, 21, 70, 56, 49, 37, 85, 89, 88, 56, 82, 37]\n  [90, 80, 13, 12, 14, 12, 84, 3, 79, 53, 14, 64, 96, 97, 80]\n  [70, 13, 82, 57, 65, 75, 5, 86, 38, 54, 28, 29, 100, 59, 71]\n  [49, 15, 26, 61, 16, 45, 60, 53, 83, 91, 95, 51, 1, 48, 29]\n  [65, 37, 35, 85, 34, 40, 54, 87, 31, 1, 54, 5, 2, 4, 20]\n  [48, 67, 95, 77, 41, 43, 22, 74, 56, 31, 72, 51, 25, 79, 83]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12)) mod 50033.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 50033).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 50033)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(62 61 69 89 21 90 56 46 89 74 50 2 72 77 26))\n                        (monoid-fold A '(10 93 86 75 79 19 42 86 94 96 95 94 41 2 20))\n                        (monoid-fold A '(59 19 64 41 15 87 53 34 67 93 1 58 17 82 58))\n                        (monoid-fold A '(82 75 13 5 28 96 25 54 90 70 100 22 77 49 28))\n                        (monoid-fold A '(45 27 25 87 74 2 48 47 3 39 40 65 16 90 64))\n                        (monoid-fold A '(84 59 53 53 46 46 70 55 67 98 43 15 23 59 55))\n                        (monoid-fold A '(48 23 71 77 21 70 56 49 37 85 89 88 56 82 37))\n                        (monoid-fold A '(90 80 13 12 14 12 84 3 79 53 14 64 96 97 80))\n                        (monoid-fold A '(70 13 82 57 65 75 5 86 38 54 28 29 100 59 71))\n                        (monoid-fold A '(49 15 26 61 16 45 60 53 83 91 95 51 1 48 29))\n                        (monoid-fold A '(65 37 35 85 34 40 54 87 31 1 54 5 2 4 20))\n                        (monoid-fold A '(48 67 95 77 41 43 22 74 56 31 72 51 25 79 83)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "5261",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-super-hard-002",
+    "category": "monoid_fold",
+    "difficulty": "super-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 50033 of the tropical-additive folds (min) of these 12 sequences:\n\n  [7, 74, 55, 17, 82, 50, 94, 23, 52, 41, 67, 21, 56, 30, 13]\n  [91, 17, 65, 16, 81, 74, 51, 98, 81, 34, 71, 21, 42, 27, 12]\n  [12, 4, 56, 2, 81, 99, 76, 20, 4, 80, 91, 70, 11, 74, 49]\n  [4, 96, 94, 17, 59, 82, 81, 100, 46, 24, 31, 84, 29, 39, 25]\n  [69, 32, 93, 100, 49, 99, 34, 85, 7, 36, 11, 19, 81, 3, 82]\n  [75, 14, 15, 59, 77, 16, 14, 19, 37, 34, 24, 12, 10, 64, 47]\n  [27, 51, 13, 63, 3, 53, 10, 63, 81, 10, 27, 88, 54, 49, 41]\n  [82, 58, 21, 24, 39, 2, 23, 85, 73, 81, 78, 5, 16, 44, 45]\n  [62, 79, 77, 70, 1, 21, 67, 95, 33, 16, 25, 78, 4, 69, 3]\n  [67, 66, 98, 20, 28, 47, 15, 28, 4, 42, 18, 29, 11, 94, 89]\n  [17, 35, 36, 62, 26, 12, 45, 91, 71, 84, 38, 60, 96, 64, 56]\n  [66, 52, 25, 33, 23, 26, 88, 92, 36, 51, 14, 75, 99, 76, 40]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12)) mod 50033.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 50033).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 50033)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(7 74 55 17 82 50 94 23 52 41 67 21 56 30 13))\n                        (monoid-fold A '(91 17 65 16 81 74 51 98 81 34 71 21 42 27 12))\n                        (monoid-fold A '(12 4 56 2 81 99 76 20 4 80 91 70 11 74 49))\n                        (monoid-fold A '(4 96 94 17 59 82 81 100 46 24 31 84 29 39 25))\n                        (monoid-fold A '(69 32 93 100 49 99 34 85 7 36 11 19 81 3 82))\n                        (monoid-fold A '(75 14 15 59 77 16 14 19 37 34 24 12 10 64 47))\n                        (monoid-fold A '(27 51 13 63 3 53 10 63 81 10 27 88 54 49 41))\n                        (monoid-fold A '(82 58 21 24 39 2 23 85 73 81 78 5 16 44 45))\n                        (monoid-fold A '(62 79 77 70 1 21 67 95 33 16 25 78 4 69 3))\n                        (monoid-fold A '(67 66 98 20 28 47 15 28 4 42 18 29 11 94 89))\n                        (monoid-fold A '(17 35 36 62 26 12 45 91 71 84 38 60 96 64 56))\n                        (monoid-fold A '(66 52 25 33 23 26 88 92 36 51 14 75 99 76 40)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "31528",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-super-hard-003",
+    "category": "monoid_fold",
+    "difficulty": "super-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 50021 of the tropical-additive folds (min) of these 12 sequences:\n\n  [27, 93, 63, 56, 58, 55, 77, 96, 35, 41, 80, 14, 78, 50, 55]\n  [26, 73, 46, 48, 81, 9, 58, 22, 5, 66, 33, 76, 53, 38, 78]\n  [83, 68, 46, 51, 4, 15, 24, 42, 55, 24, 46, 32, 10, 28, 85]\n  [48, 48, 19, 100, 41, 16, 2, 41, 89, 2, 92, 43, 28, 60, 73]\n  [42, 30, 72, 9, 50, 37, 78, 28, 68, 28, 14, 72, 36, 92, 78]\n  [86, 10, 74, 83, 54, 88, 97, 56, 41, 41, 26, 26, 7, 64, 64]\n  [6, 36, 54, 16, 16, 58, 22, 77, 42, 76, 50, 31, 74, 3, 37]\n  [3, 83, 74, 1, 60, 37, 17, 52, 5, 69, 68, 6, 44, 83, 3]\n  [9, 61, 13, 54, 93, 39, 36, 41, 97, 45, 52, 11, 72, 100, 41]\n  [64, 79, 7, 51, 39, 90, 59, 64, 83, 16, 48, 80, 14, 4, 29]\n  [7, 2, 18, 14, 42, 89, 93, 56, 29, 22, 12, 25, 93, 48, 69]\n  [1, 89, 7, 34, 6, 15, 7, 39, 10, 34, 43, 89, 79, 49, 35]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12)) mod 50021.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 50021).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 50021)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(27 93 63 56 58 55 77 96 35 41 80 14 78 50 55))\n                        (monoid-fold A '(26 73 46 48 81 9 58 22 5 66 33 76 53 38 78))\n                        (monoid-fold A '(83 68 46 51 4 15 24 42 55 24 46 32 10 28 85))\n                        (monoid-fold A '(48 48 19 100 41 16 2 41 89 2 92 43 28 60 73))\n                        (monoid-fold A '(42 30 72 9 50 37 78 28 68 28 14 72 36 92 78))\n                        (monoid-fold A '(86 10 74 83 54 88 97 56 41 41 26 26 7 64 64))\n                        (monoid-fold A '(6 36 54 16 16 58 22 77 42 76 50 31 74 3 37))\n                        (monoid-fold A '(3 83 74 1 60 37 17 52 5 69 68 6 44 83 3))\n                        (monoid-fold A '(9 61 13 54 93 39 36 41 97 45 52 11 72 100 41))\n                        (monoid-fold A '(64 79 7 51 39 90 59 64 83 16 48 80 14 4 29))\n                        (monoid-fold A '(7 2 18 14 42 89 93 56 29 22 12 25 93 48 69))\n                        (monoid-fold A '(1 89 7 34 6 15 7 39 10 34 43 89 79 49 35)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "17288",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-super-hard-004",
+    "category": "monoid_fold",
+    "difficulty": "super-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 50021 of the tropical-additive folds (min) of these 12 sequences:\n\n  [18, 75, 59, 16, 17, 41, 19, 97, 75, 53, 82, 58, 86, 16, 67]\n  [68, 31, 74, 62, 85, 63, 36, 42, 99, 94, 62, 29, 12, 34, 99]\n  [38, 92, 11, 46, 72, 32, 85, 83, 95, 27, 89, 10, 10, 64, 8]\n  [28, 2, 86, 28, 60, 50, 25, 63, 14, 44, 27, 76, 98, 68, 66]\n  [41, 98, 40, 91, 59, 84, 20, 65, 14, 17, 29, 47, 50, 58, 80]\n  [66, 26, 100, 52, 25, 9, 36, 55, 22, 88, 40, 74, 83, 14, 19]\n  [60, 14, 96, 15, 31, 3, 59, 24, 35, 4, 61, 85, 68, 58, 46]\n  [34, 16, 71, 11, 46, 56, 28, 20, 51, 65, 56, 66, 43, 7, 57]\n  [35, 48, 13, 7, 84, 49, 94, 55, 25, 38, 25, 52, 23, 77, 36]\n  [68, 78, 64, 67, 56, 14, 88, 7, 83, 32, 15, 29, 15, 7, 5]\n  [74, 35, 31, 9, 69, 13, 36, 29, 80, 90, 92, 52, 51, 51, 13]\n  [29, 94, 89, 35, 64, 27, 22, 27, 45, 82, 37, 91, 77, 37, 94]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12)) mod 50021.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 50021).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 50021)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(18 75 59 16 17 41 19 97 75 53 82 58 86 16 67))\n                        (monoid-fold A '(68 31 74 62 85 63 36 42 99 94 62 29 12 34 99))\n                        (monoid-fold A '(38 92 11 46 72 32 85 83 95 27 89 10 10 64 8))\n                        (monoid-fold A '(28 2 86 28 60 50 25 63 14 44 27 76 98 68 66))\n                        (monoid-fold A '(41 98 40 91 59 84 20 65 14 17 29 47 50 58 80))\n                        (monoid-fold A '(66 26 100 52 25 9 36 55 22 88 40 74 83 14 19))\n                        (monoid-fold A '(60 14 96 15 31 3 59 24 35 4 61 85 68 58 46))\n                        (monoid-fold A '(34 16 71 11 46 56 28 20 51 65 56 66 43 7 57))\n                        (monoid-fold A '(35 48 13 7 84 49 94 55 25 38 25 52 23 77 36))\n                        (monoid-fold A '(68 78 64 67 56 14 88 7 83 32 15 29 15 7 5))\n                        (monoid-fold A '(74 35 31 9 69 13 36 29 80 90 92 52 51 51 13))\n                        (monoid-fold A '(29 94 89 35 64 27 22 27 45 82 37 91 77 37 94)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "39262",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-ultra-hard-000",
+    "category": "monoid_fold",
+    "difficulty": "ultra-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 99991 of the tropical-additive folds (min) of these 16 sequences:\n\n  [13, 24, 65, 90, 80, 62, 95, 40, 89, 31, 22, 41, 88, 9, 22, 24, 43, 59, 19, 2]\n  [86, 61, 55, 43, 3, 23, 34, 10, 22, 87, 98, 2, 77, 46, 61, 75, 1, 63, 32, 61]\n  [15, 6, 3, 73, 88, 38, 30, 68, 65, 22, 97, 19, 100, 13, 13, 39, 95, 43, 58, 63]\n  [95, 45, 70, 33, 85, 63, 33, 47, 59, 2, 46, 39, 91, 43, 67, 100, 85, 77, 62, 15]\n  [35, 88, 67, 94, 82, 3, 19, 53, 29, 85, 19, 46, 64, 4, 32, 74, 95, 90, 56, 47]\n  [27, 96, 12, 25, 49, 82, 14, 36, 81, 87, 70, 58, 68, 23, 34, 87, 45, 43, 51, 76]\n  [54, 36, 40, 25, 6, 75, 67, 90, 44, 79, 16, 56, 59, 73, 45, 37, 15, 2, 64, 88]\n  [19, 60, 88, 20, 67, 38, 80, 72, 86, 21, 39, 63, 37, 9, 38, 2, 59, 6, 28, 37]\n  [76, 16, 7, 63, 40, 1, 56, 46, 85, 1, 7, 33, 18, 45, 37, 65, 86, 99, 72, 20]\n  [12, 92, 35, 19, 94, 26, 56, 75, 11, 38, 29, 5, 61, 46, 32, 87, 82, 50, 55, 52]\n  [13, 34, 39, 77, 40, 23, 73, 56, 87, 42, 75, 18, 88, 99, 26, 33, 18, 54, 71, 26]\n  [39, 40, 11, 39, 73, 81, 60, 70, 24, 49, 56, 13, 18, 68, 57, 89, 41, 65, 88, 92]\n  [46, 60, 46, 55, 60, 54, 53, 60, 4, 72, 4, 99, 54, 12, 97, 18, 79, 39, 32, 75]\n  [66, 48, 17, 80, 70, 73, 38, 7, 97, 51, 17, 52, 86, 1, 60, 98, 67, 59, 7, 11]\n  [8, 35, 84, 14, 43, 77, 13, 38, 73, 62, 89, 43, 8, 16, 95, 75, 87, 66, 95, 92]\n  [7, 90, 27, 67, 19, 72, 95, 64, 18, 29, 87, 82, 20, 39, 81, 40, 93, 1, 63, 80]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12) \u00d7 min(seq13) \u00d7 min(seq14) \u00d7 min(seq15) \u00d7 min(seq16)) mod 99991.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 99991).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 99991)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(13 24 65 90 80 62 95 40 89 31 22 41 88 9 22 24 43 59 19 2))\n                        (monoid-fold A '(86 61 55 43 3 23 34 10 22 87 98 2 77 46 61 75 1 63 32 61))\n                        (monoid-fold A '(15 6 3 73 88 38 30 68 65 22 97 19 100 13 13 39 95 43 58 63))\n                        (monoid-fold A '(95 45 70 33 85 63 33 47 59 2 46 39 91 43 67 100 85 77 62 15))\n                        (monoid-fold A '(35 88 67 94 82 3 19 53 29 85 19 46 64 4 32 74 95 90 56 47))\n                        (monoid-fold A '(27 96 12 25 49 82 14 36 81 87 70 58 68 23 34 87 45 43 51 76))\n                        (monoid-fold A '(54 36 40 25 6 75 67 90 44 79 16 56 59 73 45 37 15 2 64 88))\n                        (monoid-fold A '(19 60 88 20 67 38 80 72 86 21 39 63 37 9 38 2 59 6 28 37))\n                        (monoid-fold A '(76 16 7 63 40 1 56 46 85 1 7 33 18 45 37 65 86 99 72 20))\n                        (monoid-fold A '(12 92 35 19 94 26 56 75 11 38 29 5 61 46 32 87 82 50 55 52))\n                        (monoid-fold A '(13 34 39 77 40 23 73 56 87 42 75 18 88 99 26 33 18 54 71 26))\n                        (monoid-fold A '(39 40 11 39 73 81 60 70 24 49 56 13 18 68 57 89 41 65 88 92))\n                        (monoid-fold A '(46 60 46 55 60 54 53 60 4 72 4 99 54 12 97 18 79 39 32 75))\n                        (monoid-fold A '(66 48 17 80 70 73 38 7 97 51 17 52 86 1 60 98 67 59 7 11))\n                        (monoid-fold A '(8 35 84 14 43 77 13 38 73 62 89 43 8 16 95 75 87 66 95 92))\n                        (monoid-fold A '(7 90 27 67 19 72 95 64 18 29 87 82 20 39 81 40 93 1 63 80)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "40195",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-ultra-hard-001",
+    "category": "monoid_fold",
+    "difficulty": "ultra-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 100003 of the tropical-additive folds (min) of these 16 sequences:\n\n  [15, 9, 1, 20, 78, 16, 67, 13, 32, 27, 14, 61, 4, 65, 57, 51, 8, 16, 39, 52]\n  [62, 24, 31, 70, 34, 79, 88, 57, 85, 79, 16, 56, 19, 82, 3, 24, 19, 96, 85, 31]\n  [22, 66, 95, 90, 70, 26, 61, 62, 38, 38, 86, 13, 76, 64, 48, 86, 36, 51, 50, 90]\n  [14, 60, 54, 55, 19, 4, 37, 59, 16, 73, 50, 2, 75, 39, 5, 83, 84, 85, 80, 57]\n  [6, 46, 18, 60, 93, 59, 36, 2, 21, 46, 65, 65, 27, 45, 91, 68, 50, 66, 9, 23]\n  [84, 20, 46, 84, 93, 73, 44, 59, 92, 18, 36, 98, 85, 39, 51, 9, 83, 62, 49, 61]\n  [78, 85, 24, 74, 91, 65, 100, 85, 68, 34, 17, 90, 42, 76, 75, 45, 75, 80, 52, 9]\n  [6, 4, 94, 21, 30, 13, 86, 14, 64, 87, 61, 42, 98, 30, 99, 94, 31, 14, 23, 94]\n  [50, 97, 54, 9, 8, 79, 33, 15, 5, 96, 10, 57, 98, 48, 78, 81, 4, 23, 42, 14]\n  [90, 58, 49, 18, 82, 74, 72, 26, 26, 33, 63, 57, 87, 37, 29, 26, 95, 21, 56, 68]\n  [25, 12, 75, 4, 81, 86, 13, 27, 5, 18, 1, 47, 100, 53, 73, 70, 10, 44, 24, 88]\n  [94, 94, 83, 68, 64, 25, 27, 74, 61, 65, 46, 46, 80, 72, 18, 9, 57, 55, 81, 49]\n  [10, 73, 11, 17, 67, 39, 13, 16, 64, 30, 7, 77, 70, 43, 3, 29, 38, 33, 50, 91]\n  [46, 9, 21, 37, 10, 69, 74, 31, 67, 79, 65, 40, 52, 80, 8, 70, 90, 15, 75, 61]\n  [34, 84, 4, 5, 44, 54, 34, 26, 43, 98, 8, 18, 27, 71, 94, 43, 97, 85, 8, 31]\n  [64, 10, 73, 79, 90, 98, 5, 45, 10, 54, 77, 95, 79, 11, 71, 62, 17, 35, 93, 6]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12) \u00d7 min(seq13) \u00d7 min(seq14) \u00d7 min(seq15) \u00d7 min(seq16)) mod 100003.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 100003).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 100003)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(15 9 1 20 78 16 67 13 32 27 14 61 4 65 57 51 8 16 39 52))\n                        (monoid-fold A '(62 24 31 70 34 79 88 57 85 79 16 56 19 82 3 24 19 96 85 31))\n                        (monoid-fold A '(22 66 95 90 70 26 61 62 38 38 86 13 76 64 48 86 36 51 50 90))\n                        (monoid-fold A '(14 60 54 55 19 4 37 59 16 73 50 2 75 39 5 83 84 85 80 57))\n                        (monoid-fold A '(6 46 18 60 93 59 36 2 21 46 65 65 27 45 91 68 50 66 9 23))\n                        (monoid-fold A '(84 20 46 84 93 73 44 59 92 18 36 98 85 39 51 9 83 62 49 61))\n                        (monoid-fold A '(78 85 24 74 91 65 100 85 68 34 17 90 42 76 75 45 75 80 52 9))\n                        (monoid-fold A '(6 4 94 21 30 13 86 14 64 87 61 42 98 30 99 94 31 14 23 94))\n                        (monoid-fold A '(50 97 54 9 8 79 33 15 5 96 10 57 98 48 78 81 4 23 42 14))\n                        (monoid-fold A '(90 58 49 18 82 74 72 26 26 33 63 57 87 37 29 26 95 21 56 68))\n                        (monoid-fold A '(25 12 75 4 81 86 13 27 5 18 1 47 100 53 73 70 10 44 24 88))\n                        (monoid-fold A '(94 94 83 68 64 25 27 74 61 65 46 46 80 72 18 9 57 55 81 49))\n                        (monoid-fold A '(10 73 11 17 67 39 13 16 64 30 7 77 70 43 3 29 38 33 50 91))\n                        (monoid-fold A '(46 9 21 37 10 69 74 31 67 79 65 40 52 80 8 70 90 15 75 61))\n                        (monoid-fold A '(34 84 4 5 44 54 34 26 43 98 8 18 27 71 94 43 97 85 8 31))\n                        (monoid-fold A '(64 10 73 79 90 98 5 45 10 54 77 95 79 11 71 62 17 35 93 6)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "34139",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-ultra-hard-002",
+    "category": "monoid_fold",
+    "difficulty": "ultra-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 99991 of the tropical-additive folds (min) of these 16 sequences:\n\n  [5, 64, 65, 29, 84, 45, 56, 62, 39, 30, 3, 8, 4, 100, 26, 69, 78, 49, 88, 88]\n  [95, 3, 71, 62, 7, 50, 99, 49, 90, 17, 56, 90, 55, 71, 18, 15, 57, 16, 79, 48]\n  [46, 25, 44, 56, 8, 31, 30, 12, 76, 2, 30, 53, 96, 97, 69, 73, 6, 2, 93, 32]\n  [8, 10, 8, 17, 57, 24, 37, 6, 41, 45, 78, 84, 32, 38, 17, 78, 51, 62, 85, 16]\n  [85, 10, 10, 33, 70, 27, 64, 91, 95, 46, 29, 57, 92, 39, 47, 100, 71, 38, 84, 32]\n  [68, 35, 41, 90, 70, 65, 14, 7, 45, 53, 91, 80, 63, 36, 11, 27, 18, 67, 30, 40]\n  [95, 71, 27, 16, 48, 93, 19, 5, 31, 90, 57, 84, 98, 59, 15, 3, 64, 5, 35, 36]\n  [76, 50, 39, 11, 8, 36, 79, 50, 64, 3, 49, 50, 57, 6, 29, 27, 49, 24, 85, 56]\n  [69, 7, 85, 40, 5, 70, 98, 45, 4, 78, 97, 44, 34, 97, 76, 28, 97, 4, 44, 93]\n  [80, 56, 55, 94, 95, 97, 8, 14, 71, 50, 93, 87, 37, 69, 60, 55, 74, 93, 73, 99]\n  [67, 34, 21, 49, 60, 96, 31, 17, 2, 36, 88, 36, 11, 32, 99, 70, 38, 44, 74, 51]\n  [5, 79, 36, 47, 35, 85, 33, 84, 99, 78, 2, 16, 40, 73, 85, 42, 34, 23, 57, 60]\n  [3, 57, 2, 60, 5, 46, 62, 82, 72, 28, 53, 8, 75, 11, 36, 79, 71, 41, 9, 57]\n  [24, 34, 99, 36, 34, 64, 17, 30, 81, 23, 19, 80, 84, 7, 30, 15, 84, 5, 24, 88]\n  [65, 57, 75, 41, 6, 71, 92, 30, 8, 92, 34, 33, 3, 87, 46, 70, 92, 6, 77, 31]\n  [45, 14, 10, 65, 57, 15, 66, 10, 31, 27, 42, 74, 48, 88, 54, 10, 83, 55, 37, 19]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12) \u00d7 min(seq13) \u00d7 min(seq14) \u00d7 min(seq15) \u00d7 min(seq16)) mod 99991.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 99991).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 99991)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(5 64 65 29 84 45 56 62 39 30 3 8 4 100 26 69 78 49 88 88))\n                        (monoid-fold A '(95 3 71 62 7 50 99 49 90 17 56 90 55 71 18 15 57 16 79 48))\n                        (monoid-fold A '(46 25 44 56 8 31 30 12 76 2 30 53 96 97 69 73 6 2 93 32))\n                        (monoid-fold A '(8 10 8 17 57 24 37 6 41 45 78 84 32 38 17 78 51 62 85 16))\n                        (monoid-fold A '(85 10 10 33 70 27 64 91 95 46 29 57 92 39 47 100 71 38 84 32))\n                        (monoid-fold A '(68 35 41 90 70 65 14 7 45 53 91 80 63 36 11 27 18 67 30 40))\n                        (monoid-fold A '(95 71 27 16 48 93 19 5 31 90 57 84 98 59 15 3 64 5 35 36))\n                        (monoid-fold A '(76 50 39 11 8 36 79 50 64 3 49 50 57 6 29 27 49 24 85 56))\n                        (monoid-fold A '(69 7 85 40 5 70 98 45 4 78 97 44 34 97 76 28 97 4 44 93))\n                        (monoid-fold A '(80 56 55 94 95 97 8 14 71 50 93 87 37 69 60 55 74 93 73 99))\n                        (monoid-fold A '(67 34 21 49 60 96 31 17 2 36 88 36 11 32 99 70 38 44 74 51))\n                        (monoid-fold A '(5 79 36 47 35 85 33 84 99 78 2 16 40 73 85 42 34 23 57 60))\n                        (monoid-fold A '(3 57 2 60 5 46 62 82 72 28 53 8 75 11 36 79 71 41 9 57))\n                        (monoid-fold A '(24 34 99 36 34 64 17 30 81 23 19 80 84 7 30 15 84 5 24 88))\n                        (monoid-fold A '(65 57 75 41 6 71 92 30 8 92 34 33 3 87 46 70 92 6 77 31))\n                        (monoid-fold A '(45 14 10 65 57 15 66 10 31 27 42 74 48 88 54 10 83 55 37 19)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "71161",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-ultra-hard-003",
+    "category": "monoid_fold",
+    "difficulty": "ultra-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 99991 of the tropical-additive folds (min) of these 16 sequences:\n\n  [42, 78, 47, 43, 53, 84, 48, 61, 38, 80, 4, 21, 48, 6, 38, 20, 76, 4, 14, 78]\n  [28, 41, 66, 92, 100, 95, 66, 75, 92, 45, 28, 49, 75, 5, 85, 93, 20, 49, 98, 84]\n  [11, 10, 29, 73, 65, 74, 81, 71, 94, 54, 69, 94, 16, 68, 7, 78, 61, 85, 68, 67]\n  [57, 41, 35, 25, 74, 38, 32, 43, 32, 99, 47, 30, 59, 41, 96, 15, 89, 31, 57, 94]\n  [53, 47, 11, 46, 72, 65, 10, 47, 84, 62, 78, 30, 58, 54, 30, 73, 17, 69, 32, 100]\n  [53, 87, 75, 86, 18, 78, 34, 37, 44, 41, 16, 11, 53, 54, 65, 19, 74, 64, 81, 99]\n  [26, 24, 59, 2, 22, 16, 54, 34, 98, 71, 92, 61, 96, 13, 17, 5, 56, 4, 89, 22]\n  [10, 17, 66, 68, 50, 55, 46, 17, 52, 90, 72, 31, 92, 38, 16, 44, 44, 76, 78, 79]\n  [14, 93, 6, 10, 95, 46, 58, 53, 81, 58, 95, 56, 38, 97, 62, 90, 18, 94, 24, 93]\n  [99, 76, 66, 11, 20, 1, 76, 76, 48, 87, 84, 59, 49, 42, 57, 23, 66, 93, 76, 36]\n  [99, 13, 30, 39, 64, 44, 7, 73, 67, 68, 75, 66, 55, 37, 42, 50, 41, 97, 23, 19]\n  [6, 95, 94, 27, 56, 67, 36, 74, 79, 41, 13, 45, 37, 22, 16, 37, 36, 63, 57, 29]\n  [22, 37, 34, 78, 97, 14, 30, 86, 36, 19, 13, 27, 71, 66, 97, 22, 4, 77, 6, 70]\n  [69, 25, 1, 63, 4, 48, 27, 37, 74, 55, 94, 57, 67, 17, 59, 38, 15, 92, 91, 16]\n  [57, 56, 64, 34, 12, 18, 36, 94, 86, 15, 46, 11, 96, 29, 94, 10, 42, 21, 65, 43]\n  [36, 59, 81, 95, 66, 87, 100, 10, 91, 89, 41, 5, 56, 13, 91, 67, 41, 25, 72, 85]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12) \u00d7 min(seq13) \u00d7 min(seq14) \u00d7 min(seq15) \u00d7 min(seq16)) mod 99991.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 99991).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 99991)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(42 78 47 43 53 84 48 61 38 80 4 21 48 6 38 20 76 4 14 78))\n                        (monoid-fold A '(28 41 66 92 100 95 66 75 92 45 28 49 75 5 85 93 20 49 98 84))\n                        (monoid-fold A '(11 10 29 73 65 74 81 71 94 54 69 94 16 68 7 78 61 85 68 67))\n                        (monoid-fold A '(57 41 35 25 74 38 32 43 32 99 47 30 59 41 96 15 89 31 57 94))\n                        (monoid-fold A '(53 47 11 46 72 65 10 47 84 62 78 30 58 54 30 73 17 69 32 100))\n                        (monoid-fold A '(53 87 75 86 18 78 34 37 44 41 16 11 53 54 65 19 74 64 81 99))\n                        (monoid-fold A '(26 24 59 2 22 16 54 34 98 71 92 61 96 13 17 5 56 4 89 22))\n                        (monoid-fold A '(10 17 66 68 50 55 46 17 52 90 72 31 92 38 16 44 44 76 78 79))\n                        (monoid-fold A '(14 93 6 10 95 46 58 53 81 58 95 56 38 97 62 90 18 94 24 93))\n                        (monoid-fold A '(99 76 66 11 20 1 76 76 48 87 84 59 49 42 57 23 66 93 76 36))\n                        (monoid-fold A '(99 13 30 39 64 44 7 73 67 68 75 66 55 37 42 50 41 97 23 19))\n                        (monoid-fold A '(6 95 94 27 56 67 36 74 79 41 13 45 37 22 16 37 36 63 57 29))\n                        (monoid-fold A '(22 37 34 78 97 14 30 86 36 19 13 27 71 66 97 22 4 77 6 70))\n                        (monoid-fold A '(69 25 1 63 4 48 27 37 74 55 94 57 67 17 59 38 15 92 91 16))\n                        (monoid-fold A '(57 56 64 34 12 18 36 94 86 15 46 11 96 29 94 10 42 21 65 43))\n                        (monoid-fold A '(36 59 81 95 66 87 100 10 91 89 41 5 56 13 91 67 41 25 72 85)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "58201",
+    "answer_type": "integer"
+  },
+  {
+    "id": "mfold-ultra-hard-004",
+    "category": "monoid_fold",
+    "difficulty": "ultra-hard",
+    "natural_language": "In algebraic structures, a monoid fold applies the monoid's binary operation across a sequence. Different monoids have different operations:\n- Tropical semiring additive monoid: operation is min\n- Tropical semiring multiplicative monoid: operation is +\n- Modular ring additive monoid: operation is + (mod n)\n- Modular ring multiplicative monoid: operation is \u00d7 (mod n)\n\nCompute the product modulo 99991 of the tropical-additive folds (min) of these 16 sequences:\n\n  [82, 81, 2, 32, 18, 76, 49, 29, 87, 26, 34, 61, 20, 63, 24, 94, 64, 37, 17, 26]\n  [82, 12, 67, 93, 96, 28, 1, 56, 9, 63, 72, 79, 27, 91, 23, 5, 54, 89, 34, 79]\n  [49, 81, 75, 31, 82, 45, 62, 68, 85, 24, 39, 30, 38, 86, 63, 63, 81, 51, 77, 46]\n  [70, 62, 38, 13, 29, 15, 97, 98, 37, 54, 58, 42, 32, 85, 55, 15, 23, 60, 41, 85]\n  [15, 45, 90, 51, 91, 17, 100, 62, 63, 77, 53, 88, 31, 4, 38, 35, 65, 28, 53, 8]\n  [72, 99, 42, 34, 87, 41, 53, 51, 57, 55, 52, 34, 7, 35, 63, 94, 29, 44, 82, 6]\n  [40, 58, 53, 29, 74, 22, 69, 27, 100, 81, 15, 79, 79, 43, 17, 78, 70, 3, 93, 3]\n  [49, 12, 100, 91, 43, 46, 99, 99, 71, 9, 84, 7, 67, 27, 47, 69, 26, 21, 69, 51]\n  [92, 30, 38, 21, 48, 43, 53, 28, 71, 94, 32, 2, 5, 3, 97, 68, 14, 65, 51, 63]\n  [6, 21, 37, 39, 4, 30, 81, 99, 89, 32, 5, 35, 96, 16, 49, 84, 52, 17, 95, 35]\n  [11, 10, 10, 65, 93, 91, 98, 94, 54, 3, 2, 96, 70, 78, 20, 13, 95, 76, 51, 25]\n  [78, 40, 42, 55, 66, 96, 3, 39, 36, 59, 26, 13, 34, 84, 74, 61, 49, 38, 55, 12]\n  [29, 53, 72, 36, 62, 37, 90, 69, 65, 32, 49, 3, 64, 94, 51, 48, 98, 70, 92, 14]\n  [58, 29, 74, 4, 51, 99, 30, 58, 48, 62, 73, 14, 83, 40, 43, 19, 81, 11, 13, 72]\n  [22, 27, 63, 76, 32, 11, 19, 52, 79, 61, 67, 93, 73, 98, 30, 8, 99, 64, 33, 53]\n  [40, 95, 44, 20, 5, 42, 89, 73, 77, 53, 1, 35, 89, 27, 97, 72, 63, 70, 64, 41]\n\nThat is: (min(seq1) \u00d7 min(seq2) \u00d7 min(seq3) \u00d7 min(seq4) \u00d7 min(seq5) \u00d7 min(seq6) \u00d7 min(seq7) \u00d7 min(seq8) \u00d7 min(seq9) \u00d7 min(seq10) \u00d7 min(seq11) \u00d7 min(seq12) \u00d7 min(seq13) \u00d7 min(seq14) \u00d7 min(seq15) \u00d7 min(seq16)) mod 99991.\n\nGive only the non-negative numeric answer (0 \u2264 answer < 99991).",
+    "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 99991)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(82 81 2 32 18 76 49 29 87 26 34 61 20 63 24 94 64 37 17 26))\n                        (monoid-fold A '(82 12 67 93 96 28 1 56 9 63 72 79 27 91 23 5 54 89 34 79))\n                        (monoid-fold A '(49 81 75 31 82 45 62 68 85 24 39 30 38 86 63 63 81 51 77 46))\n                        (monoid-fold A '(70 62 38 13 29 15 97 98 37 54 58 42 32 85 55 15 23 60 41 85))\n                        (monoid-fold A '(15 45 90 51 91 17 100 62 63 77 53 88 31 4 38 35 65 28 53 8))\n                        (monoid-fold A '(72 99 42 34 87 41 53 51 57 55 52 34 7 35 63 94 29 44 82 6))\n                        (monoid-fold A '(40 58 53 29 74 22 69 27 100 81 15 79 79 43 17 78 70 3 93 3))\n                        (monoid-fold A '(49 12 100 91 43 46 99 99 71 9 84 7 67 27 47 69 26 21 69 51))\n                        (monoid-fold A '(92 30 38 21 48 43 53 28 71 94 32 2 5 3 97 68 14 65 51 63))\n                        (monoid-fold A '(6 21 37 39 4 30 81 99 89 32 5 35 96 16 49 84 52 17 95 35))\n                        (monoid-fold A '(11 10 10 65 93 91 98 94 54 3 2 96 70 78 20 13 95 76 51 25))\n                        (monoid-fold A '(78 40 42 55 66 96 3 39 36 59 26 13 34 84 74 61 49 38 55 12))\n                        (monoid-fold A '(29 53 72 36 62 37 90 69 65 32 49 3 64 94 51 48 98 70 92 14))\n                        (monoid-fold A '(58 29 74 4 51 99 30 58 48 62 73 14 83 40 43 19 81 11 13 72))\n                        (monoid-fold A '(22 27 63 76 32 11 19 52 79 61 67 93 73 98 30 8 99 64 33 53))\n                        (monoid-fold A '(40 95 44 20 5 42 89 73 77 53 1 35 89 27 97 72 63 70 64 41)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
+    "answer": "28005",
+    "answer_type": "integer"
+  }
+]

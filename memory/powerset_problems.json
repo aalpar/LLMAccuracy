@@ -1,0 +1,407 @@
+[
+  {
+    "id": "pset-easy-000",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, d, f, h} \u222a ({a, f, h} \u222a {a, b, c, d, e, f, h})) \u2229 ({a, b, d, e, f, g} \u2229 {a, b, c, d, e, f})) \u222a (({a, b, e} \u222a {a, b, d, g, h}) \u2229 {a, d, f, h}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-join L (lattice-meet L (lattice-join L '(a d f h) (lattice-join L '(a f h) '(a b c d e f h))) (lattice-meet L '(a b d e f g) '(a b c d e f))) (lattice-meet L (lattice-join L '(a b e) '(a b d g h)) '(a d f h))))",
+    "answer": "(b e f a d h)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-001",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, e, f, g} \u222a ({b, c, d, e, f, g, h} \u222a ({b, c, d, e, f, g, h} \u222a {a, b, e, f, g, h}))) \u222a ((({b, h} \u222a {a, b, c, e, f, g, h}) \u2229 {a, b, c, d, e, g, h}) \u2229 {b}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-join L (lattice-join L '(a e f g) (lattice-join L '(b c d e f g h) (lattice-join L '(b c d e f g h) '(a b e f g h)))) (lattice-meet L (lattice-meet L (lattice-join L '(b h) '(a b c e f g h)) '(a b c d e g h)) '(b))))",
+    "answer": "(c d a e f g h b)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-002",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((((({a, b, c, d, f, h} \u2229 {b, d, e, f, h}) \u222a {c, g, h}) \u222a {b, c, d, e}) \u222a ({b, c, d, e, g, h} \u2229 {c, f, g})) \u2229 ({b, c, d, e, f, g} \u222a {c, e, f, g, h}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-meet L (lattice-join L (lattice-join L (lattice-join L (lattice-meet L '(a b c d f h) '(b d e f h)) '(c g h)) '(b c d e)) (lattice-meet L '(b c d e g h) '(c f g))) (lattice-join L '(b c d e f g) '(c e f g h))))",
+    "answer": "(f h b d e c g)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-003",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, c, f, g} \u222a (({a, b, c, e, g, h} \u222a {f}) \u222a ({d, e, f, g, h} \u2229 {e, f}))) \u222a (({a, b, c, e, f, g, h} \u2229 {a, b, c, d, e, f, g}) \u222a {b, f, h}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-join L (lattice-join L '(a c f g) (lattice-join L (lattice-join L '(a b c e g h) '(f)) (lattice-meet L '(d e f g h) '(e f)))) (lattice-join L (lattice-meet L '(a b c e f g h) '(a b c d e f g)) '(b f h))))",
+    "answer": "(a c e g b f h)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-004",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({g} \u222a {b, e, g}) \u222a ({b, f, h} \u2229 ({a, f, g} \u222a (({a, b, c, d, e, f, h} \u2229 {a, b, c, g}) \u2229 {c, f}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-join L (lattice-join L '(g) '(b e g)) (lattice-meet L '(b f h) (lattice-join L '(a f g) (lattice-meet L (lattice-meet L '(a b c d e f h) '(a b c g)) '(c f))))))",
+    "answer": "(b e g f)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-005",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({f} \u2229 {d, e, f, g}) \u2229 ({a, c, d, e, f, g} \u222a ({d, e, f, g, h} \u2229 (({a, b, e, g, h} \u222a {a, b, d, f, g, h}) \u222a ({a, b, e, f, g, h} \u222a {a, d, e, f, g, h})))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-meet L (lattice-meet L '(f) '(d e f g)) (lattice-join L '(a c d e f g) (lattice-meet L '(d e f g h) (lattice-join L (lattice-join L '(a b e g h) '(a b d f g h)) (lattice-join L '(a b e f g h) '(a d e f g h)))))))",
+    "answer": "(f)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-006",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, d, f, g} \u2229 {a, e, f, g, h}) \u2229 {a, b, c, e, f, g, h}) \u222a ({a, c, d, e, f, g, h} \u222a {g, h})) \u222a ({a, e, f} \u2229 ({a} \u222a {a, c, e, g, h})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-join L (lattice-join L (lattice-meet L (lattice-meet L '(a d f g) '(a e f g h)) '(a b c e f g h)) (lattice-join L '(a c d e f g h) '(g h))) (lattice-meet L '(a e f) (lattice-join L '(a) '(a c e g h)))))",
+    "answer": "(c d f g h a e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-007",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({b, c} \u2229 {a, b, e, f, g}) \u2229 ({a, b, c} \u2229 ((({a, c, d, e, g, h} \u2229 {c, d, h}) \u2229 {b, c, e, f, h}) \u222a {a, b, c, d, e, f, g})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-meet L (lattice-meet L '(b c) '(a b e f g)) (lattice-meet L '(a b c) (lattice-join L (lattice-meet L (lattice-meet L '(a c d e g h) '(c d h)) '(b c e f h)) '(a b c d e f g)))))",
+    "answer": "(b)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-008",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({c, d, g, h} \u2229 {a, b, e, f, h}) \u2229 (({a, b, c, e, f, g} \u222a {a, b, e, g, h}) \u2229 (({c, d, e, g} \u222a {e, h}) \u2229 {a, b, c, d, e}))) \u2229 {b, d, e, f, g, h})\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-meet L (lattice-meet L (lattice-meet L '(c d g h) '(a b e f h)) (lattice-meet L (lattice-join L '(a b c e f g) '(a b e g h)) (lattice-meet L (lattice-join L '(c d e g) '(e h)) '(a b c d e)))) '(b d e f g h)))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-easy-009",
+    "category": "powerset_lattice",
+    "difficulty": "easy",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({b, h} \u2229 (({d} \u2229 {a, d, f, g, h}) \u222a {f})) \u222a {e}) \u222a ({a, c, e, g} \u2229 {b, d, e, g, h}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h)))) (lattice-join L (lattice-join L (lattice-meet L '(b h) (lattice-join L (lattice-meet L '(d) '(a d f g h)) '(f))) '(e)) (lattice-meet L '(a c e g) '(b d e g h))))",
+    "answer": "(e g)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-000",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({b, e, i, j} \u2229 {c, f, j}) \u222a ({b, d, f, g, h, i, j} \u222a ({d} \u222a {c}))) \u2229 ({a, b, c, d, f, g, h, i, j} \u222a ({b, h, i, j} \u2229 {c, e, g, i}))) \u2229 ({b, d, g, h, i, j} \u2229 {a, d}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-meet L (lattice-meet L (lattice-join L (lattice-meet L '(b e i j) '(c f j)) (lattice-join L '(b d f g h i j) (lattice-join L '(d) '(c)))) (lattice-join L '(a b c d f g h i j) (lattice-meet L '(b h i j) '(c e g i)))) (lattice-meet L '(b d g h i j) '(a d))))",
+    "answer": "(d)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-001",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({i} \u222a {a, b, c, e, f, g, h, i, j}) \u222a ((({b, c, d, f, g, h, i} \u222a {e, i}) \u222a {a, d, e, f, g, h, j}) \u2229 (((({e, g, i} \u2229 {b, c, d, e, f, g, h, i, j}) \u2229 {f, h, i}) \u222a {b, e, f, g, i}) \u222a {d, h})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-join L (lattice-join L '(i) '(a b c e f g h i j)) (lattice-meet L (lattice-join L (lattice-join L '(b c d f g h i) '(e i)) '(a d e f g h j)) (lattice-join L (lattice-join L (lattice-meet L (lattice-meet L '(e g i) '(b c d e f g h i j)) '(f h i)) '(b e f g i)) '(d h)))))",
+    "answer": "(a c j b i d e f g h)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-002",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, d, e, g, j} \u222a {d, e}) \u2229 ({g} \u2229 {a, b, e, f, h, i, j})) \u222a (({a, b, c, d, e, f, g, h, j} \u222a (({b, e, g} \u222a {a, d, e, f, g, j}) \u222a {e, i})) \u2229 {b, c, d, e, f, g, h, i, j}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-join L (lattice-meet L (lattice-join L '(a b c d e g j) '(d e)) (lattice-meet L '(g) '(a b e f h i j))) (lattice-meet L (lattice-join L '(a b c d e f g h j) (lattice-join L (lattice-join L '(b e g) '(a d e f g j)) '(e i))) '(b c d e f g h i j))))",
+    "answer": "(c h b d f g j e i)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-003",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, b, c, d, e, g, h, i, j} \u2229 ({a, b, d, e, f, h, i, j} \u2229 {b, e})) \u2229 (({a, b, c, f, g, i, j} \u222a {f, g}) \u2229 ((({c, e, f, j} \u2229 {d, f, h, i}) \u222a {b, d, e, i}) \u222a {c, f, g, j})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-meet L (lattice-meet L '(a b c d e g h i j) (lattice-meet L '(a b d e f h i j) '(b e))) (lattice-meet L (lattice-join L '(a b c f g i j) '(f g)) (lattice-join L (lattice-join L (lattice-meet L '(c e f j) '(d f h i)) '(b d e i)) '(c f g j)))))",
+    "answer": "(b)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-004",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, b, c, d, e, f, h, i, j} \u2229 {a, b, c, d, e, f, g, i, j}) \u222a ((({a, b, c, e, f, g, h, i} \u2229 ({f, j} \u222a {b, c, e, i, j})) \u222a ({b, c, d, g, h, j} \u2229 {b, e, g, h, i, j})) \u2229 ({d, g, h, i, j} \u222a {c, g, h, j})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-join L (lattice-meet L '(a b c d e f h i j) '(a b c d e f g i j)) (lattice-meet L (lattice-join L (lattice-meet L '(a b c e f g h i) (lattice-join L '(f j) '(b c e i j))) (lattice-meet L '(b c d g h j) '(b e g h i j))) (lattice-join L '(d g h i j) '(c g h j)))))",
+    "answer": "(a b d e f c i g h j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-005",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, d, e, h, i} \u2229 {a, d, e}) \u2229 ({b, c, e, f, g, h, i, j} \u2229 (({c, g, i, j} \u222a {f, g, h, i, j}) \u222a ({b, c, e, f, g, h, j} \u2229 {a, b, c, f, g, h, j})))) \u222a ({c, d, e, g, j} \u2229 {a, b, c, d, e, g, h, i, j}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-join L (lattice-meet L (lattice-meet L '(a d e h i) '(a d e)) (lattice-meet L '(b c e f g h i j) (lattice-join L (lattice-join L '(c g i j) '(f g h i j)) (lattice-meet L '(b c e f g h j) '(a b c f g h j))))) (lattice-meet L '(c d e g j) '(a b c d e g h i j))))",
+    "answer": "(c d e g j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-006",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({b, h} \u2229 ({a, b, c, e, h, i, j} \u222a {b, c, d, e, f, h, i})) \u222a (({f} \u222a (({b, c, d, e, f, g, h, i, j} \u2229 {a, d, g, h, i, j}) \u2229 ({a, b, c, e, g, h, j} \u2229 {a, d, e, f, g, h}))) \u222a {a, b, e, g, h}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-join L (lattice-meet L '(b h) (lattice-join L '(a b c e h i j) '(b c d e f h i))) (lattice-join L (lattice-join L '(f) (lattice-meet L (lattice-meet L '(b c d e f g h i j) '(a d g h i j)) (lattice-meet L '(a b c e g h j) '(a d e f g h)))) '(a b e g h))))",
+    "answer": "(f a b e g h)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-007",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, c, d, e, g, i} \u222a {a, b, e, g, i}) \u2229 {b, c, e}) \u2229 {b, d, e, f, g, h, i, j}) \u2229 (({b, e, i} \u222a {a, d, h}) \u222a ({h} \u222a ({a, c, d, e, f, h, i} \u222a {a, c}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-meet L (lattice-meet L (lattice-meet L (lattice-join L '(a b c d e g i) '(a b e g i)) '(b c e)) '(b d e f g h i j)) (lattice-join L (lattice-join L '(b e i) '(a d h)) (lattice-join L '(h) (lattice-join L '(a c d e f h i) '(a c))))))",
+    "answer": "(b e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-008",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, e, g, h} \u2229 {d, f, g, h}) \u2229 (({a, b, c, d, e, f, g, h, i} \u2229 {a, b, c, d, e, f, g, i, j}) \u222a ({a, b, f, g} \u222a ({a, b, d, e, f, i, j} \u2229 ({b, c, f, h} \u2229 ({f} \u2229 ({d, f, h} \u222a {a, c, d, e, f, g, h, i, j})))))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-meet L (lattice-meet L '(a e g h) '(d f g h)) (lattice-join L (lattice-meet L '(a b c d e f g h i) '(a b c d e f g i j)) (lattice-join L '(a b f g) (lattice-meet L '(a b d e f i j) (lattice-meet L '(b c f h) (lattice-meet L '(f) (lattice-join L '(d f h) '(a c d e f g h i j)))))))))",
+    "answer": "(g)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-medium-009",
+    "category": "powerset_lattice",
+    "difficulty": "medium",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((((({a, c, e, i, j} \u2229 {e, h, i}) \u222a {a, c, d, e, f, g, h, i, j}) \u222a {j}) \u2229 {a, d, e, f, h, j}) \u2229 ({b, c, d, e, f, g, h, i, j} \u2229 ({a, b, c, d, e, f, g, i, j} \u222a {a, g}))) \u222a ({f} \u2229 {a, b, i, j}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j)))) (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L (lattice-join L (lattice-meet L '(a c e i j) '(e h i)) '(a c d e f g h i j)) '(j)) '(a d e f h j)) (lattice-meet L '(b c d e f g h i j) (lattice-join L '(a b c d e f g i j) '(a g)))) (lattice-meet L '(f) '(a b i j))))",
+    "answer": "(d e f j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, e, f, g, h, i} \u2229 {l}) \u2229 ((({d, g, i, j} \u222a {a, c, d, e, f, g, i, j, k}) \u222a (({g, i, l} \u222a {c, f, h, i, k, l}) \u2229 {b, e, f, g, h, i, j, k, l})) \u222a (((({e} \u2229 {a, b, c, e, f, g, h, i, j, l}) \u2229 {b, c, i, k, l}) \u2229 ({b, c, d, e, f, l} \u222a {b, d, e, g, j})) \u2229 {f, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L '(a e f g h i) '(l)) (lattice-join L (lattice-join L (lattice-join L '(d g i j) '(a c d e f g i j k)) (lattice-meet L (lattice-join L '(g i l) '(c f h i k l)) '(b e f g h i j k l))) (lattice-meet L (lattice-meet L (lattice-meet L (lattice-meet L '(e) '(a b c e f g h i j l)) '(b c i k l)) (lattice-join L '(b c d e f l) '(b d e g j))) '(f l)))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, d, e, f, g, h, i, j, l} \u2229 (({a, c, f, i, l} \u2229 ({a, g, k} \u2229 {b, c, d, g, h, i, j, l})) \u222a {b, c, f})) \u222a ({b, e, f, g, h, i, j, k, l} \u2229 ({a, b, c, d, g, i, j, k} \u2229 {b, d, f, i, j, k, l}))) \u222a (({a, c, e, f, h, j} \u2229 {a, b, c, f, g, h, i, j, k, l}) \u2229 ({d} \u222a {a, b, c, d, e, f, h, i, j, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-join L (lattice-join L (lattice-meet L '(a b d e f g h i j l) (lattice-join L (lattice-meet L '(a c f i l) (lattice-meet L '(a g k) '(b c d g h i j l))) '(b c f))) (lattice-meet L '(b e f g h i j k l) (lattice-meet L '(a b c d g i j k) '(b d f i j k l)))) (lattice-meet L (lattice-meet L '(a c e f h j) '(a b c f g h i j k l)) (lattice-join L '(d) '(a b c d e f h i j l)))))",
+    "answer": "(b i k a c f h j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, e, f, g, h, i, j, k, l} \u2229 ({a, b, c, d, e, f, g, h, j, k, l} \u222a {b, f, g, i})) \u2229 {b, c, d, e, g, h, i, j}) \u222a ({e, f, h, i} \u222a (({a, b, c, d, e, f, g, i, j, k, l} \u222a {c, f, g, l}) \u2229 (({c, d, e, g, h, j, k} \u2229 ({c, i, j, k} \u2229 {a, b, c, d, e, f, g, i, j, k, l})) \u222a {a, b, c, d, f, h, i, j, l}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-join L (lattice-meet L (lattice-meet L '(a b c e f g h i j k l) (lattice-join L '(a b c d e f g h j k l) '(b f g i))) '(b c d e g h i j)) (lattice-join L '(e f h i) (lattice-meet L (lattice-join L '(a b c d e f g i j k l) '(c f g l)) (lattice-join L (lattice-meet L '(c d e g h j k) (lattice-meet L '(c i j k) '(a b c d e f g i j k l))) '(a b c d f h i j l))))))",
+    "answer": "(g e h a b d i j k c f l)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, c, j} \u222a {a, b, c, d, e, f, i, j, k, l}) \u2229 (({g, h, k} \u2229 {c, d, k}) \u2229 (({b, d, h, i, j, k, l} \u222a {a, c, d, e, f, g, h, i, j, l}) \u222a ({a, d, e, f, g, h, i, j, k, l} \u2229 {a, g, i, l})))) \u2229 (({e, g, h, j, l} \u222a ({a, c, h, i, j} \u222a {b, c, d, e, f, g, h, i, j, k, l})) \u2229 {a, c, d, h, i, l}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L (lattice-join L '(a c j) '(a b c d e f i j k l)) (lattice-meet L (lattice-meet L '(g h k) '(c d k)) (lattice-join L (lattice-join L '(b d h i j k l) '(a c d e f g h i j l)) (lattice-meet L '(a d e f g h i j k l) '(a g i l))))) (lattice-meet L (lattice-join L '(e g h j l) (lattice-join L '(a c h i j) '(b c d e f g h i j k l))) '(a c d h i l))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({b, h} \u222a ({a, b, c, d, e, g, i, k, l} \u2229 (({a, c, g} \u222a ({a, b, c, e, i, j, k, l} \u2229 {a, h, j, k, l})) \u2229 {a, d, e, f, g, h, i, j, k, l}))) \u2229 (({a, f, k} \u222a {c}) \u2229 (({b} \u2229 {c, d, e, f, i, k, l}) \u222a {a, b, c, d, e, f, g, h, k, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-join L '(b h) (lattice-meet L '(a b c d e g i k l) (lattice-meet L (lattice-join L '(a c g) (lattice-meet L '(a b c e i j k l) '(a h j k l))) '(a d e f g h i j k l)))) (lattice-meet L (lattice-join L '(a f k) '(c)) (lattice-join L (lattice-meet L '(b) '(c d e f i k l)) '(a b c d e f g h k l)))))",
+    "answer": "(a k)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-005",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({d, f, g, i, k} \u222a (({b, c, e, f, g, h, i, j, k, l} \u222a (({b, c, e, f, g, h, i, j, k, l} \u2229 {a, b, d, h, k}) \u2229 ({a, b, c, e, f, g, h, i, j, l} \u222a {b, e, k, l}))) \u222a ({a, b, c, d, e, f, i, j, k} \u2229 {d, f, k}))) \u2229 (({a, c, d, f, g, h, i, k} \u222a {a, b, c, e, f, i, j, k, l}) \u2229 {c, e}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-join L '(d f g i k) (lattice-join L (lattice-join L '(b c e f g h i j k l) (lattice-meet L (lattice-meet L '(b c e f g h i j k l) '(a b d h k)) (lattice-join L '(a b c e f g h i j l) '(b e k l)))) (lattice-meet L '(a b c d e f i j k) '(d f k)))) (lattice-meet L (lattice-join L '(a c d f g h i k) '(a b c e f i j k l)) '(c e))))",
+    "answer": "(c e)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-006",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, d, e, g, l} \u222a {d, e, f, h}) \u2229 ({a, f} \u2229 ({a, b, c, d, h, i, j, l} \u222a {a, b, c, d, e, f, i, j, k}))) \u222a ({e} \u2229 {k})) \u2229 (({i, k} \u2229 {a, d, e, f, j}) \u222a ({b, e, f, h, i} \u222a {a, b, c, e, l})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-join L (lattice-meet L (lattice-join L '(a b d e g l) '(d e f h)) (lattice-meet L '(a f) (lattice-join L '(a b c d h i j l) '(a b c d e f i j k)))) (lattice-meet L '(e) '(k))) (lattice-join L (lattice-meet L '(i k) '(a d e f j)) (lattice-join L '(b e f h i) '(a b c e l)))))",
+    "answer": "(a f)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-007",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, c, d, e, f, g, i, j, l} \u222a {a, b, d, f, g, h, k, l}) \u2229 {j, k, l}) \u2229 {a, b, c, d, e, f, h, i, j, k, l}) \u222a ((((({e, f, j} \u222a {a, c, d, f, h, j, k}) \u2229 {b, h}) \u2229 {c, e, f, h, i, l}) \u222a ((({b, d, e, g, h, i, j, k, l} \u222a {a, b, c, d, e, g, h, i, j, l}) \u222a {a, b, c, d, e, f, g, i, j, l}) \u222a {b, c, d, e, f, g, h, i, j, k})) \u222a {b, j}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L '(a b c d e f g i j l) '(a b d f g h k l)) '(j k l)) '(a b c d e f h i j k l)) (lattice-join L (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L '(e f j) '(a c d f h j k)) '(b h)) '(c e f h i l)) (lattice-join L (lattice-join L (lattice-join L '(b d e g h i j k l) '(a b c d e g h i j l)) '(a b c d e f g i j l)) '(b c d e f g h i j k))) '(b j))))",
+    "answer": "(a l c d e f g h i k b j)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-008",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({c, d} \u2229 (({b, c, d, e, f, g, h, j, l} \u222a {a, b, d, e, f, g, i, j, k, l}) \u222a ({a, f, i, j, k, l} \u2229 ({f, g, j, l} \u2229 {b, d, f, g, i, k, l})))) \u2229 (({a, c, e, g, i, k} \u222a {a, k}) \u2229 (({c, k} \u2229 (({b, c, f, g, h, i, k, l} \u2229 {a, d, e, f, h, j, l}) \u2229 {a, f, g, i, j})) \u222a {j})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L '(c d) (lattice-join L (lattice-join L '(b c d e f g h j l) '(a b d e f g i j k l)) (lattice-meet L '(a f i j k l) (lattice-meet L '(f g j l) '(b d f g i k l))))) (lattice-meet L (lattice-join L '(a c e g i k) '(a k)) (lattice-join L (lattice-meet L '(c k) (lattice-meet L (lattice-meet L '(b c f g h i k l) '(a d e f h j l)) '(a f g i j))) '(j)))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-hard-009",
+    "category": "powerset_lattice",
+    "difficulty": "hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({e, i, l} \u2229 {a, b, d, f, h, i, k, l}) \u2229 ({a, e, h, i, j, l} \u2229 ((({l} \u2229 ({k} \u2229 {a, c, e, f, g, h, j, l})) \u2229 (({b, e, i} \u2229 {c, e, i, j, k}) \u222a ({b, c, d, f, g, h, i, j, k, l} \u222a {a, f, i}))) \u2229 ({b, c, d, e, f, g, h, j, k, l} \u222a {a, b, e, i, k, l}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l)))) (lattice-meet L (lattice-meet L '(e i l) '(a b d f h i k l)) (lattice-meet L '(a e h i j l) (lattice-meet L (lattice-meet L (lattice-meet L '(l) (lattice-meet L '(k) '(a c e f g h j l))) (lattice-join L (lattice-meet L '(b e i) '(c e i j k)) (lattice-join L '(b c d f g h i j k l) '(a f i)))) (lattice-join L '(b c d e f g h j k l) '(a b e i k l))))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, c, e, g, i} \u2229 {a, b, c, d, e, f, g, h, i, k, l, m, n}) \u222a ({b, e, j, k, m} \u2229 {d, f, h, j, k, l, m})) \u2229 (({a, g} \u222a {b, i}) \u222a ({d, e, l, m} \u2229 {a}))) \u2229 ({b, d, e, g, h, i, j, k, l, n} \u222a (({a, b, c, d, e, g, h, i, k, l, m, n} \u222a (({a, b, c, e, f, h, l} \u222a {b, c, d, e, g, h, j, k}) \u222a ({a, b, c, e, h, i, j, k, m, n} \u2229 {a, b, c, d, e, g, h, i, j, k, l, m, n}))) \u2229 {b, e, g, h, j, k, l, m, n})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-meet L (lattice-join L (lattice-meet L '(a c e g i) '(a b c d e f g h i k l m n)) (lattice-meet L '(b e j k m) '(d f h j k l m))) (lattice-join L (lattice-join L '(a g) '(b i)) (lattice-meet L '(d e l m) '(a)))) (lattice-join L '(b d e g h i j k l n) (lattice-meet L (lattice-join L '(a b c d e g h i k l m n) (lattice-join L (lattice-join L '(a b c e f h l) '(b c d e g h j k)) (lattice-meet L '(a b c e h i j k m n) '(a b c d e g h i j k l m n)))) '(b e g h j k l m n)))))",
+    "answer": "(g i)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, d, e, f, g, i, j, k, l} \u2229 {a, g, i}) \u2229 (({a, b, c, d, f, g, h, k, l, m, n} \u2229 (({a, c, f, h, i, j, k, m} \u222a {a, b, c, d, e, f, g, h, i, k, l, m, n}) \u2229 ({a, b, c, d, f, h, i, j, k, m, n} \u222a {a, b, c, d, e, g, h, i, j, k, l, m, n}))) \u222a ((({a, c, d, j, m, n} \u222a {b, c, e, g, k, n}) \u2229 {a, c, d, e, f, g, h, i, j, l, m, n}) \u2229 ({a, n} \u222a {b, k, l})))) \u2229 ({a, b, c, d, e, f, h, j, k, l, m, n} \u2229 {a, b, c, d, e, h, j, k, l, m}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-meet L (lattice-meet L '(a b c d e f g i j k l) '(a g i)) (lattice-join L (lattice-meet L '(a b c d f g h k l m n) (lattice-meet L (lattice-join L '(a c f h i j k m) '(a b c d e f g h i k l m n)) (lattice-join L '(a b c d f h i j k m n) '(a b c d e g h i j k l m n)))) (lattice-meet L (lattice-meet L (lattice-join L '(a c d j m n) '(b c e g k n)) '(a c d e f g h i j l m n)) (lattice-join L '(a n) '(b k l))))) (lattice-meet L '(a b c d e f h j k l m n) '(a b c d e h j k l m))))",
+    "answer": "(a)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, c, d, e, g, h, i, j, k, l, m, n} \u222a {a, c, d, e, f, g, h, i, j, k, n}) \u222a {b}) \u222a {a, b, c, d, f, h, i, j, k, l, m, n}) \u222a (((({d, g, l, m} \u222a {b, h, j, m}) \u222a ({d, h, j} \u222a {c, f, g})) \u2229 ((({a, c, e, j, l, m} \u2229 ({c, d, e, f, g, h, l, m} \u222a {b, c, d, e, f, g, h, i, j, k, l, m, n})) \u222a (({a, c, d, e, f, g, i, j, k, l, m, n} \u222a {a, d, g, i, j, l, m, n}) \u2229 {a, b, d, e, f, g, h, i, j, k, l, m, n})) \u2229 {a, b, d, h, k})) \u222a {a, b, c, d, e, f, g, h, j, k, l}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-join L (lattice-join L (lattice-join L (lattice-join L '(a b c d e g h i j k l m n) '(a c d e f g h i j k n)) '(b)) '(a b c d f h i j k l m n)) (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(d g l m) '(b h j m)) (lattice-join L '(d h j) '(c f g))) (lattice-meet L (lattice-join L (lattice-meet L '(a c e j l m) (lattice-join L '(c d e f g h l m) '(b c d e f g h i j k l m n))) (lattice-meet L (lattice-join L '(a c d e f g i j k l m n) '(a d g i j l m n)) '(a b d e f g h i j k l m n))) '(a b d h k))) '(a b c d e f g h j k l))))",
+    "answer": "(i m n a b c d e f g h j k l)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((((((({a, b, c, d, f, g, i, l, m, n} \u222a {a, b, c, d, f, g, i, j, k, m}) \u2229 {b, c, d, f, g, h, j, k, m}) \u222a ({b} \u2229 {b, f, h, i, k, m})) \u2229 ({a, b, d, f, h, j, k, l} \u2229 {b, c, e, k, l, m, n})) \u222a (({a, c, d, e, g, h, i, j, k} \u222a {a, b, d, e, g, k, l, n}) \u222a ({f, h, i, j, k, l, m} \u222a {c, d, e, h, j, k, l, n}))) \u222a {a, c, e, f, m, n}) \u2229 ({a, b, c, e, g, i, j, l, m, n} \u2229 ({a, c, d, e, f, g, h, j, k, n} \u222a {f, h, i})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-join L (lattice-join L (lattice-meet L (lattice-join L (lattice-meet L (lattice-join L '(a b c d f g i l m n) '(a b c d f g i j k m)) '(b c d f g h j k m)) (lattice-meet L '(b) '(b f h i k m))) (lattice-meet L '(a b d f h j k l) '(b c e k l m n))) (lattice-join L (lattice-join L '(a c d e g h i j k) '(a b d e g k l n)) (lattice-join L '(f h i j k l m) '(c d e h j k l n)))) '(a c e f m n)) (lattice-meet L '(a b c e g i j l m n) (lattice-join L '(a c d e f g h j k n) '(f h i)))))",
+    "answer": "(g i j a c e n)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-extra-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "extra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({a, c, f, h, k, l, m, n} \u222a {a, c, d, e, f, g, h, i, j, l, m, n}) \u2229 (((({a, d, i, j, k, m} \u2229 {d, e, m, n}) \u222a ({b, d, g, h, i, j, k, l, n} \u222a {a, f, g, i, j, n})) \u222a {f, g, l}) \u222a ((({b, d, h, i, n} \u2229 {a, b, c, d, e, f, g, h, i, k, m, n}) \u222a {e, f, h, i}) \u2229 (({g} \u2229 ({h, i, l} \u2229 {a, c, d, e, g, h, i, k, m, n})) \u222a {d, h, i, l, n}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n)))) (lattice-meet L (lattice-join L '(a c f h k l m n) '(a c d e f g h i j l m n)) (lattice-join L (lattice-join L (lattice-join L (lattice-meet L '(a d i j k m) '(d e m n)) (lattice-join L '(b d g h i j k l n) '(a f g i j n))) '(f g l)) (lattice-meet L (lattice-join L (lattice-meet L '(b d h i n) '(a b c d e f g h i k m n)) '(e f h i)) (lattice-join L (lattice-meet L '(g) (lattice-meet L '(h i l) '(a c d e g h i k m n))) '(d h i l n))))))",
+    "answer": "(k a d f g h i j l m n)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, d, g, h, j, k, l, n, o} \u2229 ({b, e, f, g, h, j, k, l, n, o} \u2229 {a, b, c, e, f, h, i, j, l, m, n, p})) \u2229 ({a, f, g, k, l} \u222a {b, i, j, k, o})) \u222a ((({a, b, c, e, f, g, h, i, j, k, l, n, o, p} \u222a {f, g, h, l, m}) \u222a (({b, d, h, i, j, k, l, m, n} \u222a {a, b, c, h, n, o, p}) \u222a (({a, b, c, d, e, f, g, h, i, j, l, n, o, p} \u2229 ({c, g, l} \u222a {a, b, d, e, f, g, h, j, k, m, n, o, p})) \u2229 ({a, b, c, d, e, f, h, i, j, k, l, m, n, o, p} \u2229 (({h, i, j} \u2229 {d, n}) \u222a {a, c, d, e, f, i, l, n, o, p}))))) \u222a {g, o}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-meet L '(a b c d g h j k l n o) (lattice-meet L '(b e f g h j k l n o) '(a b c e f h i j l m n p))) (lattice-join L '(a f g k l) '(b i j k o))) (lattice-join L (lattice-join L (lattice-join L '(a b c e f g h i j k l n o p) '(f g h l m)) (lattice-join L (lattice-join L '(b d h i j k l m n) '(a b c h n o p)) (lattice-meet L (lattice-meet L '(a b c d e f g h i j l n o p) (lattice-join L '(c g l) '(a b d e f g h j k m n o p))) (lattice-meet L '(a b c d e f h i j k l m n o p) (lattice-join L (lattice-meet L '(h i j) '(d n)) '(a c d e f i l n o p)))))) '(g o))))",
+    "answer": "(i j k m b h a c d e f l n p g o)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({b, d, f, g, i, l, p} \u2229 {a, c, d, e, f, h, i, o}) \u222a (({e, h, j, k, l, o, p} \u2229 ({b, d, h, n, p} \u222a {a, b, c, e, f, g, h, k, l, m, p})) \u222a ({g, l, m} \u222a ({d, l} \u222a {b, d, g, j, n, p})))) \u222a ((({g, h, i, j, k, p} \u2229 {b, e, h, m, o}) \u2229 {c, d, h, k, p}) \u2229 {d})) \u2229 ({a, c, e, f, g, j, k, o} \u222a ({c, d, e, h, i, j, k, l, m, n, p} \u222a ({d, f, g, h, k, n, o} \u222a ({j, l, o} \u222a (({b, h, j, m, p} \u2229 {a, c, e, h, i, j, k, m, n, o, p}) \u222a {f, g, h, i, j, k, n}))))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-join L (lattice-join L (lattice-meet L '(b d f g i l p) '(a c d e f h i o)) (lattice-join L (lattice-meet L '(e h j k l o p) (lattice-join L '(b d h n p) '(a b c e f g h k l m p))) (lattice-join L '(g l m) (lattice-join L '(d l) '(b d g j n p))))) (lattice-meet L (lattice-meet L (lattice-meet L '(g h i j k p) '(b e h m o)) '(c d h k p)) '(d))) (lattice-join L '(a c e f g j k o) (lattice-join L '(c d e h i j k l m n p) (lattice-join L '(d f g h k n o) (lattice-join L '(j l o) (lattice-join L (lattice-meet L '(b h j m p) '(a c e h i j k m n o p)) '(f g h i j k n))))))))",
+    "answer": "(f i e h k m l d g j n p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (({f, l, m} \u222a {a, b, c, d, f, g, i, k, l, m, o, p}) \u2229 ((({a, b, c, d, e, f, g, h, i, j, l, m, n, o, p} \u2229 ({b, f, g, j, m, o} \u2229 {b, c, d, e, f, h, i, j, k, l, m, o, p})) \u222a {b, d, g, h, i, k, m}) \u222a ((({b, c, e, f, i, j, l, m, n, o} \u2229 ({b, k, l, m} \u2229 {c, d, e, f, g, h, i, j, k, l, m, n, o, p})) \u222a ({d, e, f, g, h, i, j, k, n, o, p} \u222a {b, c, d, e, f, g, h, i, j, k, n})) \u2229 (({a, b, c, d, e, f, g, h, j, k, m, n, o, p} \u222a ({a, c, d, g, i, k, n, p} \u222a {a, e, m, n, p})) \u2229 ((({a, b, c, e, f, g, h, i, j, k, l, m, n, o} \u222a {b, d, e, h, i, j, k, n, o, p}) \u222a {f, k}) \u222a {b, c, d, f, g, h, i, j, k, l, m, n, o, p})))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-join L '(f l m) '(a b c d f g i k l m o p)) (lattice-join L (lattice-join L (lattice-meet L '(a b c d e f g h i j l m n o p) (lattice-meet L '(b f g j m o) '(b c d e f h i j k l m o p))) '(b d g h i k m)) (lattice-meet L (lattice-join L (lattice-meet L '(b c e f i j l m n o) (lattice-meet L '(b k l m) '(c d e f g h i j k l m n o p))) (lattice-join L '(d e f g h i j k n o p) '(b c d e f g h i j k n))) (lattice-meet L (lattice-join L '(a b c d e f g h j k m n o p) (lattice-join L '(a c d g i k n p) '(a e m n p))) (lattice-join L (lattice-join L (lattice-join L '(a b c e f g h i j k l m n o) '(b d e h i j k n o p)) '(f k)) '(b c d f g h i j k l m n o p)))))))",
+    "answer": "(b c d f g i k m o p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((((({a, e, j, k, l, m, n, p} \u222a {b, d, e, f, g, h, i, j, k, m, o, p}) \u222a ({a, b, c, d, e, f, h, i, j, k, l, m, n, o, p} \u222a {a, b, c, d, e, f, g, h, i, k, l, m, o, p})) \u2229 ({a, b, c, d, h, i, k, l, m, n, o, p} \u2229 {b, c, d, i, k, p})) \u222a (((({e, k, m} \u222a {c, f, g, p}) \u2229 {a, d, i, j, l, m, n}) \u2229 ({a, c, e, g, j, k, l, p} \u222a {a, b, c, f, g, h, i, j, n, o})) \u222a {a, b, c, d, e, f, h, i, j, k, l, m, n, o, p})) \u2229 ((({c, m, n} \u222a {j}) \u222a {d, f, h, j, p}) \u222a {a, b, c, d, f, g, h, j, k, o})) \u222a ({d, i} \u2229 {b}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(a e j k l m n p) '(b d e f g h i j k m o p)) (lattice-join L '(a b c d e f h i j k l m n o p) '(a b c d e f g h i k l m o p))) (lattice-meet L '(a b c d h i k l m n o p) '(b c d i k p))) (lattice-join L (lattice-meet L (lattice-meet L (lattice-join L '(e k m) '(c f g p)) '(a d i j l m n)) (lattice-join L '(a c e g j k l p) '(a b c f g h i j n o))) '(a b c d e f h i j k l m n o p))) (lattice-join L (lattice-join L (lattice-join L '(c m n) '(j)) '(d f h j p)) '(a b c d f g h j k o))) (lattice-meet L '(d i) '(b))))",
+    "answer": "(a b c d f h j k m n o p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-super-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "super-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({e, f, g, k, m} \u222a ({b, c, e, f, h, i, l, m, n, p} \u222a (({b, c, e, f, h, l} \u2229 {b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}) \u2229 (({a, e, f, h} \u222a {b, g, o}) \u222a ({b, c, h, i, l, m, o, p} \u2229 (({a, b, c, d, e, g, h, i, j, k, l, n, o, p} \u222a {b, f, k, p}) \u222a {j})))))) \u2229 (((({n, o} \u222a {a, d, e, f, h, i, j, k, l, m, n, p}) \u222a {a, d, e, k, n, p}) \u2229 {b, g, i, j, l, p}) \u222a ({b, d, f, g, m} \u222a {g}))) \u222a ({b, c, d, e, g, h, j, k, l, m, n, o, p} \u222a {d, f, h, i, n, p}))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-join L '(e f g k m) (lattice-join L '(b c e f h i l m n p) (lattice-meet L (lattice-meet L '(b c e f h l) '(b c d e f g h i j k l m n o p)) (lattice-join L (lattice-join L '(a e f h) '(b g o)) (lattice-meet L '(b c h i l m o p) (lattice-join L (lattice-join L '(a b c d e g h i j k l n o p) '(b f k p)) '(j))))))) (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(n o) '(a d e f h i j k l m n p)) '(a d e k n p)) '(b g i j l p)) (lattice-join L '(b d f g m) '(g)))) (lattice-join L '(b c d e g h j k l m n o p) '(d f h i n p))))",
+    "answer": "(b c e g j k l m o d f h i n p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-ultra-hard-000",
+    "category": "powerset_lattice",
+    "difficulty": "ultra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, b, f, g, h, i, j, k, o, p} \u2229 {e, h, i, o}) \u2229 ((({c, d, e, k, p} \u222a {a, b, e, i, j, k, l, m, n}) \u2229 {b, e, f, g, h, j, k, l, n}) \u222a ({c, o} \u222a (({f, h, j, k, l, m, p} \u222a {b, c, d, e, f, g, i, l, m, n}) \u222a ({a, b, c, g, h, j, n, o, p} \u222a {a, b, e, f, g, h, i, j, k, l, m, n, o, p}))))) \u2229 (({b, d, e, g, i, k, n, o} \u222a {a, c, g, h, o}) \u222a ({a, b, c, d, e, g, h, i, j, k, l, m, n, o, p} \u222a ({a, d, e, g, h, i, j, k, l, n, p} \u222a ({a, b, d, f, g, i, l, m, p} \u2229 {b, h, n, o, p}))))) \u2229 (({d, j, l} \u2229 (({c, e, f, h, j, k, n, o, p} \u2229 {a, c, d, f, g, h, i, k, l, m, n, p}) \u2229 {b, c, d, g, h, j, l, m, n, o, p})) \u2229 ({a, b, c, e, f, j, k, n, o} \u222a (({a, b, d, e, f, g, h, i, j, p} \u2229 {a, b, c, d, e, f, g, h, i, j, l, m, n, o, p}) \u222a {b, c, d, e, f, g, h, i, j, k, m, n, o, p}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-meet L (lattice-meet L (lattice-meet L '(a b f g h i j k o p) '(e h i o)) (lattice-join L (lattice-meet L (lattice-join L '(c d e k p) '(a b e i j k l m n)) '(b e f g h j k l n)) (lattice-join L '(c o) (lattice-join L (lattice-join L '(f h j k l m p) '(b c d e f g i l m n)) (lattice-join L '(a b c g h j n o p) '(a b e f g h i j k l m n o p)))))) (lattice-join L (lattice-join L '(b d e g i k n o) '(a c g h o)) (lattice-join L '(a b c d e g h i j k l m n o p) (lattice-join L '(a d e g h i j k l n p) (lattice-meet L '(a b d f g i l m p) '(b h n o p)))))) (lattice-meet L (lattice-meet L '(d j l) (lattice-meet L (lattice-meet L '(c e f h j k n o p) '(a c d f g h i k l m n p)) '(b c d g h j l m n o p))) (lattice-join L '(a b c e f j k n o) (lattice-join L (lattice-meet L '(a b d e f g h i j p) '(a b c d e f g h i j l m n o p)) '(b c d e f g h i j k m n o p))))))",
+    "answer": "()",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-ultra-hard-001",
+    "category": "powerset_lattice",
+    "difficulty": "ultra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, d, e, f, h, m, n, o} \u222a ({f, g, l, m, p} \u222a {c, d, g, h, i, j, k, m, n, o, p})) \u2229 ((({a, b, c, f, g, h, i, j, l, n, o, p} \u222a (({a, b, c, d, e, f, g, h, i, j, l, m, n, o, p} \u2229 {a, b, c, d, e, g, i, k, l, m, n, o}) \u222a {b, d, e, i, n, o, p})) \u222a ({a, d, e, f, h, i, j, k, l, m, n, o, p} \u2229 {a, b, e, f, g, h, i, j, k, n, o, p})) \u2229 (({h, j, k, l, m, o} \u222a {a, c, d, e, f, g, h, j, k, l, n}) \u2229 {b, c, f, g, h, i, m, n, p}))) \u222a (({b, c, d, e, f, g, h, i, j, k, l, m, n, o, p} \u222a {c, g, h, i, l, m, o, p}) \u222a (({a, b, c, f, g, i, l, p} \u222a {d, f}) \u2229 ({a, b, e, f, h, k, m, n, p} \u2229 ({a, b, c, d, e, g, h, i, k, m, n, o, p} \u222a (({b, c, d, e, f, g, h, i, j, k, l, m, n, o, p} \u2229 {g, n}) \u2229 {a, f, i, m}))))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-join L (lattice-meet L (lattice-join L '(a d e f h m n o) (lattice-join L '(f g l m p) '(c d g h i j k m n o p))) (lattice-meet L (lattice-join L (lattice-join L '(a b c f g h i j l n o p) (lattice-join L (lattice-meet L '(a b c d e f g h i j l m n o p) '(a b c d e g i k l m n o)) '(b d e i n o p))) (lattice-meet L '(a d e f h i j k l m n o p) '(a b e f g h i j k n o p))) (lattice-meet L (lattice-join L '(h j k l m o) '(a c d e f g h j k l n)) '(b c f g h i m n p)))) (lattice-join L (lattice-join L '(b c d e f g h i j k l m n o p) '(c g h i l m o p)) (lattice-meet L (lattice-join L '(a b c f g i l p) '(d f)) (lattice-meet L '(a b e f h k m n p) (lattice-join L '(a b c d e g h i k m n o p) (lattice-meet L (lattice-meet L '(b c d e f g h i j k l m n o p) '(g n)) '(a f i m))))))))",
+    "answer": "(d e f j k n c g h i l m o a b p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-ultra-hard-002",
+    "category": "powerset_lattice",
+    "difficulty": "ultra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: (((({a, c, d, g, h, i, j, l, m, n, o} \u2229 ({a, b, d, e, f, g, h, j, l, m, n} \u222a (({a, c, e, f, g, h, i, j, k, l, m, n, o, p} \u222a {c, j, o}) \u2229 {c, e, g, k, p}))) \u222a {b, f, j}) \u222a ({a, b, c, d, e, f, g, i, l, n, o, p} \u222a ((({b, f, g, h, i} \u2229 {a, p}) \u222a ({a, b, c, d, e, f, g, h, i, j, k, m, n, o, p} \u2229 {a, c, d, e, f, g, h, i, j, k, l, m, n})) \u222a ({p} \u222a (((({b, c, d, e, g, h, i, k, l, n, o, p} \u222a {d, e, f, h, k, l, n, o, p}) \u222a {a, c, d, e, f, h, j, k, l, n, o}) \u2229 ({b, f, g, h, i, j, l, m, n, o, p} \u222a {a, b, c, e, f, g, h, i, k, l, m})) \u2229 (({f, o} \u222a {a, b, c, d, e, f, g, h, j, k, l, m, n, o, p}) \u2229 ({j, l, n, o, p} \u2229 {a, d, k, n}))))))) \u2229 ({a, b, c, d, e, f, h, i, j, l, m, n, o, p} \u2229 ({a, i, k, l} \u222a {a, f, g, h, i, k, l, m, o, p})))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-join L (lattice-join L (lattice-meet L '(a c d g h i j l m n o) (lattice-join L '(a b d e f g h j l m n) (lattice-meet L (lattice-join L '(a c e f g h i j k l m n o p) '(c j o)) '(c e g k p)))) '(b f j)) (lattice-join L '(a b c d e f g i l n o p) (lattice-join L (lattice-join L (lattice-meet L '(b f g h i) '(a p)) (lattice-meet L '(a b c d e f g h i j k m n o p) '(a c d e f g h i j k l m n))) (lattice-join L '(p) (lattice-meet L (lattice-meet L (lattice-join L (lattice-join L '(b c d e g h i k l n o p) '(d e f h k l n o p)) '(a c d e f h j k l n o)) (lattice-join L '(b f g h i j l m n o p) '(a b c e f g h i k l m))) (lattice-meet L (lattice-join L '(f o) '(a b c d e f g h j k l m n o p)) (lattice-meet L '(j l n o p) '(a d k n)))))))) (lattice-meet L '(a b c d e f h i j l m n o p) (lattice-join L '(a i k l) '(a f g h i k l m o p)))))",
+    "answer": "(l o a f h i m p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-ultra-hard-003",
+    "category": "powerset_lattice",
+    "difficulty": "ultra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({a, b, c, d, e, f, g, h, i, j, l, m, n, o, p} \u2229 {a, b, c, d, e, f, i, k, m, n, o, p}) \u2229 ({a, b, d, e, f, g, h, i, j, k, l, m, o, p} \u222a {a, b, f, g, h, j, l, m, n, o, p})) \u2229 ((({b, i} \u2229 (({d, n} \u2229 {a, b, c, d, f, g, h, j, k, l, m, n, o, p}) \u222a ({a, d} \u2229 {c, d, e, f, i, j, m, n, o, p}))) \u222a ((({e} \u222a {f, i, k, m, n}) \u222a ((({a, c, d, e, f, i, j, k, m, o} \u2229 {b, c, d, e, f, g, h, i, j, k, l, m, n, p}) \u222a (({a, b, f, h, m, n} \u2229 {a, d, k, l}) \u2229 {d, j, n, o})) \u2229 {a, c, d, g, k, l, m, o})) \u2229 ({a, l} \u2229 {a, c, d, e, f, h, j, k, p}))) \u222a (({e, h, o} \u222a {a, c, d, f, g, h, i, k, l, m, n, p}) \u222a ({d, e, f, h, n, o, p} \u222a ({b, c, d, i, k, l, m, n, o} \u2229 {a, d, f, g, j, l, m, n, o})))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-meet L (lattice-meet L '(a b c d e f g h i j l m n o p) '(a b c d e f i k m n o p)) (lattice-join L '(a b d e f g h i j k l m o p) '(a b f g h j l m n o p))) (lattice-join L (lattice-join L (lattice-meet L '(b i) (lattice-join L (lattice-meet L '(d n) '(a b c d f g h j k l m n o p)) (lattice-meet L '(a d) '(c d e f i j m n o p)))) (lattice-meet L (lattice-join L (lattice-join L '(e) '(f i k m n)) (lattice-meet L (lattice-join L (lattice-meet L '(a c d e f i j k m o) '(b c d e f g h i j k l m n p)) (lattice-meet L (lattice-meet L '(a b f h m n) '(a d k l)) '(d j n o))) '(a c d g k l m o))) (lattice-meet L '(a l) '(a c d e f h j k p)))) (lattice-join L (lattice-join L '(e h o) '(a c d f g h i k l m n p)) (lattice-join L '(d e f h n o p) (lattice-meet L '(b c d i k l m n o) '(a d f g j l m n o)))))))",
+    "answer": "(a d e f i m n o p)",
+    "answer_type": "set"
+  },
+  {
+    "id": "pset-ultra-hard-004",
+    "category": "powerset_lattice",
+    "difficulty": "ultra-hard",
+    "natural_language": "In the power set lattice on {a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p}, where join = union (\u222a) and meet = intersection (\u2229):\n\nCompute: ((({b, c, d, e, g, h, i, j, k, l, m, n, o, p} \u222a {c, f, h, i, j, k, l, n, o}) \u2229 (({d, g, h, n} \u222a {c, e, f, g, j, n, p}) \u2229 {b, c, e, m, p})) \u2229 ((((({e, f, g, h, m, n, o} \u2229 {f}) \u2229 ({b, c, e, f, i} \u2229 {a, b, c, d, e, f, k, l, m})) \u222a (({j, k, l, m, n} \u222a {a, c, d, e, f, g, h, i, j, l, m, n, o, p}) \u222a ({d, e, f, g, h, i, j, k, l, m, n} \u222a {c, d, f, g, l, n}))) \u2229 (((({a, f, h, k, m} \u222a ({e, g, i, k, l, m, n} \u2229 {a, c, j, l, m, p})) \u222a ((({d, m} \u222a {b, c, d, e, f, h, j, k}) \u2229 {a, f}) \u2229 {a, b, c, d, e, f, g, i, j, l, m, n, o, p})) \u2229 {l}) \u222a {a, b, c, f, g, k, l, m, o})) \u2229 ({c, d, e, g, h, n, p} \u2229 ({a, c, d, e, g, h, i, j, k, l} \u222a {j, m}))))\n\nGive the answer as a set in {a, b, ...} notation, elements in alphabetical order. If empty, write {}.",
+    "scheme_expression": "(let ((L (powerset-lattice '(a b c d e f g h i j k l m n o p)))) (lattice-meet L (lattice-meet L (lattice-join L '(b c d e g h i j k l m n o p) '(c f h i j k l n o)) (lattice-meet L (lattice-join L '(d g h n) '(c e f g j n p)) '(b c e m p))) (lattice-meet L (lattice-meet L (lattice-join L (lattice-meet L (lattice-meet L '(e f g h m n o) '(f)) (lattice-meet L '(b c e f i) '(a b c d e f k l m))) (lattice-join L (lattice-join L '(j k l m n) '(a c d e f g h i j l m n o p)) (lattice-join L '(d e f g h i j k l m n) '(c d f g l n)))) (lattice-join L (lattice-meet L (lattice-join L (lattice-join L '(a f h k m) (lattice-meet L '(e g i k l m n) '(a c j l m p))) (lattice-meet L (lattice-meet L (lattice-join L '(d m) '(b c d e f h j k)) '(a f)) '(a b c d e f g i j l m n o p))) '(l)) '(a b c f g k l m o))) (lattice-meet L '(c d e g h n p) (lattice-join L '(a c d e g h i j k l) '(j m))))))",
+    "answer": "(c)",
+    "answer_type": "set"
+  }
+]

@@ -6,9 +6,9 @@ run, replace treatment results with a re-run at higher budget. Produces a
 single combined file that analyze_gradient_results.py can consume.
 
 Usage:
-    python algebra-accuracy/merge_results.py \\
-        --base algebra-accuracy/gradient_results_v2_fixed.json \\
-        --overlay algebra-accuracy/treatment_only_10k.json \\
+    python memory/merge_results.py \\
+        --base memory/gradient_results_v2_fixed.json \\
+        --overlay memory/treatment_only_10k.json \\
         --condition treatment \\
         --output algebra-accuracy/gradient_results_alpha.json
 

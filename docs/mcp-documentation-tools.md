@@ -114,8 +114,7 @@ Pre-load `(wile algebra)` and `(srfi 1)` in the MCP eval session so common build
 
 ## Files
 
-- `algebra-accuracy/sonnet_control_gradient.json` — 300-problem control results across all difficulties
-- `algebra-accuracy/sonnet_treatment_gradient.json` — 125-problem treatment results at break zones
+- `memory/sonnet_treatment_gradient.json` — 125-problem Sonnet-4.6 treatment results at break zones (archived; non-regenerable since model is fixed at that version)
 - `algebra-accuracy/gradient_problems.json` — generated problem set (seed 42)
 - `algebra-accuracy/generate.py` — problem generator
 - `algebra-accuracy/evaluate.py` — A/B evaluation harness
