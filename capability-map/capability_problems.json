@@ -538,5 +538,275 @@
     "scheme_expression": "(let* ((T (tropical-semiring))\n       (A (semiring->additive-monoid T))\n       (R (modular-ring 99991)))\n  (let loop ((result 1)\n             (vals (list (monoid-fold A '(16 58 84 32 35 21 9 13 11 5 15 92 71 42 56 8 56 84 14 35 25 50 20 1 94 61 19 51 21 93 68 48 47 38 14 60 4 2 77 100 28 86 58 69 68 76 44 58 45 1 92 21 81 88 39 51 38 16 27 70 60 100 98 5 82 98 67 34 85 47 77 5 85 85 87 4 97 95 22 11))\n                        (monoid-fold A '(74 84 61 19 52 22 95 42 25 24 16 59 34 79 94 49 50 74 28 54 38 48 55 61 20 83 22 65 46 96 4 20 31 26 41 24 49 24 3 97 23 11 50 76 16 95 36 2 84 45 78 47 85 25 6 66 59 41 98 89 68 75 63 41 6 32 23 47 52 43 72 16 54 66 22 98 38 63 83 34))\n                        (monoid-fold A '(63 17 68 40 9 6 28 75 90 33 86 40 87 52 78 17 18 60 98 34 43 42 25 50 38 42 38 97 89 42 77 73 98 12 94 91 23 9 82 10 73 47 62 45 75 40 100 57 80 14 29 17 65 59 89 39 68 38 28 96 49 78 45 95 89 98 98 93 81 65 42 11 11 29 56 8 73 100 26 74))\n                        (monoid-fold A '(74 96 78 11 86 10 42 43 30 37 91 29 55 29 28 13 48 85 83 11 41 26 70 39 30 22 20 61 86 83 70 73 29 2 67 71 18 86 84 79 32 56 33 100 20 83 47 55 70 61 30 30 13 6 25 6 46 2 79 11 90 4 64 27 56 43 85 59 16 31 88 74 53 15 53 43 30 21 12 36))\n                        (monoid-fold A '(31 93 56 12 76 51 84 32 19 44 25 46 16 52 67 50 19 81 82 89 67 46 59 19 63 80 23 83 45 21 1 29 11 96 11 7 66 81 2 68 97 26 24 62 75 53 37 91 93 9 41 66 6 95 17 76 95 73 70 75 83 61 42 82 9 38 82 92 97 7 60 42 9 25 10 47 6 1 1 57))\n                        (monoid-fold A '(35 42 20 87 76 11 71 15 50 82 38 91 9 80 50 12 86 87 5 64 99 69 18 85 3 87 96 33 47 57 10 19 64 84 14 46 5 32 21 31 66 23 89 35 46 55 19 77 67 47 51 74 58 28 78 97 86 5 74 3 86 87 14 30 87 17 60 78 36 97 84 48 64 30 77 78 76 8 81 99))\n                        (monoid-fold A '(2 2 68 38 49 34 21 75 76 31 20 73 25 93 13 100 92 8 68 2 28 80 7 71 54 30 74 75 48 54 65 88 71 83 67 45 80 45 1 35 84 74 18 99 60 88 49 18 73 42 70 80 25 91 5 78 88 47 57 18 19 94 86 34 52 93 55 23 70 94 98 28 72 56 19 63 75 39 26 99))\n                        (monoid-fold A '(74 23 28 75 74 33 32 88 72 34 21 33 7 11 12 4 76 72 58 6 39 42 11 76 81 42 56 26 23 30 93 32 77 52 40 84 69 62 73 4 36 71 15 38 15 97 100 64 96 26 87 40 18 94 43 78 19 39 82 40 21 49 87 39 27 81 20 25 24 66 95 82 92 21 84 85 39 30 43 72))\n                        (monoid-fold A '(99 60 10 4 19 72 42 91 70 99 75 66 31 25 83 93 8 97 42 7 56 88 5 87 9 7 26 38 74 34 73 7 90 12 14 23 46 49 34 91 86 8 35 44 7 62 12 40 8 63 29 35 24 22 36 52 50 98 10 38 37 25 45 98 97 22 65 11 28 43 54 85 52 3 18 71 52 94 4 13))\n                        (monoid-fold A '(75 86 1 29 53 66 78 86 36 78 19 49 67 49 97 49 66 31 38 57 47 61 79 41 83 24 26 62 8 2 11 90 31 59 100 50 30 16 31 81 77 56 100 68 38 36 54 39 67 38 11 99 76 16 80 30 34 66 79 4 35 71 89 88 42 91 47 24 27 48 78 50 13 38 57 45 39 53 65 27))\n                        (monoid-fold A '(78 12 97 92 83 83 69 68 94 45 57 62 94 85 95 54 20 78 88 90 31 80 5 74 22 36 37 22 51 88 42 6 59 11 76 51 32 60 80 75 64 90 97 92 84 4 84 36 65 36 76 27 30 92 82 17 2 90 92 12 50 25 51 60 3 83 32 61 4 35 48 4 1 91 20 1 63 5 38 46))\n                        (monoid-fold A '(74 38 87 39 36 19 88 17 54 35 56 79 63 34 82 26 73 20 85 38 12 15 95 74 35 2 96 50 77 98 91 6 39 26 99 91 88 76 64 11 37 92 11 92 45 19 97 55 74 34 39 88 77 60 60 21 84 1 52 11 6 81 5 29 91 89 12 87 16 66 97 34 12 49 95 97 66 31 63 28))\n                        (monoid-fold A '(73 30 8 10 71 9 17 62 2 27 90 96 97 26 91 31 6 43 53 23 53 85 78 52 76 63 49 8 76 67 83 84 57 24 30 42 78 21 11 12 85 49 4 54 81 75 6 86 54 58 79 30 2 93 97 40 30 90 20 98 3 22 63 79 56 4 75 37 100 26 89 38 67 10 28 70 4 68 96 78))\n                        (monoid-fold A '(19 96 27 39 16 17 81 85 52 82 67 80 70 98 53 47 51 91 40 5 42 59 43 17 79 66 69 27 29 42 30 16 80 13 17 89 9 58 52 22 43 62 17 9 28 84 43 13 86 14 51 18 76 64 39 88 47 98 79 58 30 91 14 66 45 78 25 8 49 1 90 52 49 96 75 40 40 1 24 85))\n                        (monoid-fold A '(60 17 100 7 68 85 86 98 16 34 30 40 49 41 77 34 6 67 95 28 17 9 98 2 56 76 38 29 41 93 62 29 7 79 70 71 63 41 32 35 49 9 72 38 24 82 6 90 8 88 74 17 71 97 66 1 77 45 88 46 79 75 72 79 72 93 16 51 32 22 44 74 100 84 1 88 24 55 30 39))\n                        (monoid-fold A '(79 51 83 10 48 47 53 79 15 11 79 37 38 75 80 58 87 17 24 58 68 24 12 79 29 99 25 12 42 2 99 52 60 16 5 89 7 61 24 13 23 27 20 78 58 84 13 86 54 82 25 5 90 89 84 94 61 30 3 55 49 94 53 6 54 26 97 31 93 3 48 7 7 79 65 71 51 65 43 64))\n                        (monoid-fold A '(61 65 74 1 14 53 52 44 31 17 46 44 71 87 8 52 87 45 53 100 34 93 92 81 22 13 47 36 41 83 61 32 50 37 7 42 16 60 3 38 41 70 13 46 49 97 77 47 33 37 61 17 80 51 56 19 48 68 30 12 57 40 94 56 76 50 12 55 16 6 84 45 46 45 30 8 91 100 13 87))\n                        (monoid-fold A '(2 24 55 91 10 84 88 39 29 44 92 55 84 98 62 66 85 41 81 84 3 85 50 28 81 25 63 19 7 69 66 100 77 36 38 51 69 24 66 52 58 58 71 25 48 40 64 23 76 42 80 92 88 100 60 77 39 72 26 46 91 57 15 61 53 7 50 57 17 29 36 66 66 9 81 67 59 66 41 56))\n                        (monoid-fold A '(78 58 21 59 51 73 78 24 62 86 5 46 84 47 33 73 88 51 13 57 14 72 67 69 54 61 15 61 75 88 22 6 94 48 49 72 33 71 58 76 16 50 93 44 81 19 95 47 62 78 7 70 17 56 53 87 43 23 71 88 51 76 80 14 49 64 31 54 27 37 36 45 62 14 79 39 40 16 71 18))\n                        (monoid-fold A '(48 51 61 30 24 27 49 50 90 62 84 48 3 50 19 9 30 42 73 38 42 38 69 48 72 79 29 53 51 87 33 29 92 73 25 24 27 78 4 50 6 44 78 83 75 33 77 72 66 37 1 69 69 24 100 12 76 3 70 80 58 56 41 74 43 32 37 90 14 88 94 55 42 55 36 45 10 73 96 1))\n                        (monoid-fold A '(64 37 86 58 66 79 69 36 15 28 22 78 26 85 77 97 35 83 22 80 91 76 4 78 84 81 47 32 88 45 74 43 89 91 14 32 53 28 51 47 3 74 55 62 92 62 80 57 64 100 16 35 32 83 23 60 95 2 21 87 99 88 62 15 25 84 29 4 6 62 9 69 68 93 84 52 43 61 57 53))\n                        (monoid-fold A '(61 18 81 69 2 16 61 4 32 29 17 21 96 38 17 69 69 89 44 6 17 12 82 38 82 15 41 62 48 31 4 89 3 86 1 38 72 45 84 11 13 62 91 2 48 95 97 67 14 52 48 57 80 57 64 33 35 11 59 100 47 30 69 18 95 30 95 67 97 32 74 66 46 48 94 26 8 55 79 37))\n                        (monoid-fold A '(91 17 15 73 43 17 92 61 56 57 32 16 18 35 98 58 13 96 63 14 44 35 68 48 3 74 86 83 94 55 78 55 41 68 47 20 35 61 33 17 73 82 66 97 14 19 27 9 8 81 73 84 58 80 96 64 31 19 36 78 94 85 78 83 70 61 51 96 100 14 54 25 8 69 44 61 21 51 30 30))\n                        (monoid-fold A '(30 63 55 14 57 49 37 26 3 83 42 64 91 48 10 82 63 3 39 47 71 81 98 67 22 50 32 95 98 97 39 95 66 23 95 78 74 49 39 36 72 16 36 96 53 29 1 14 32 50 73 61 24 95 28 6 3 71 14 28 59 57 18 19 92 78 33 41 7 42 17 79 4 17 1 15 52 11 40 56))\n                        (monoid-fold A '(50 56 20 74 52 100 100 1 73 47 85 52 94 40 23 81 27 99 98 5 18 67 65 67 26 35 98 63 62 53 16 89 6 100 62 27 97 92 86 28 76 62 7 9 72 21 27 14 15 63 93 86 25 79 79 58 42 68 40 62 6 54 77 44 52 4 58 34 57 25 46 8 29 3 22 10 74 89 81 18))\n                        (monoid-fold A '(83 74 67 45 30 55 52 72 46 80 70 6 40 23 84 61 77 76 60 6 65 42 98 87 3 70 18 59 87 35 30 12 29 82 94 56 6 77 73 84 98 53 20 46 72 8 45 82 17 83 11 83 79 83 71 33 14 53 100 22 73 60 87 89 88 8 88 31 61 27 16 84 11 25 20 12 55 37 43 18))\n                        (monoid-fold A '(70 10 82 65 27 71 68 27 83 38 10 73 39 25 23 49 27 5 30 32 99 41 1 57 10 50 6 47 76 6 2 28 83 40 55 83 41 83 18 38 48 17 99 6 71 61 28 1 9 52 99 91 58 83 38 84 75 58 92 28 14 48 62 26 44 17 1 20 96 51 25 56 59 24 64 97 3 70 83 95))\n                        (monoid-fold A '(27 94 42 84 98 66 74 57 78 6 40 5 85 11 47 19 29 53 37 37 7 38 22 64 6 12 33 39 56 60 71 91 53 94 66 54 89 74 50 40 64 8 44 22 44 73 40 19 43 33 97 85 56 37 62 82 77 28 46 72 53 10 22 45 70 85 74 93 35 80 16 96 25 70 90 36 72 21 71 3))\n                        (monoid-fold A '(56 91 16 39 38 7 25 9 36 70 70 33 36 7 98 72 44 33 12 38 92 64 3 26 63 39 11 75 2 80 61 79 98 93 53 43 39 28 73 69 75 39 69 62 80 55 69 23 43 17 70 91 56 47 72 21 50 19 10 36 26 23 27 26 92 31 45 36 21 86 83 81 26 80 38 18 78 83 87 38))\n                        (monoid-fold A '(1 11 4 62 64 68 12 57 30 1 37 45 95 73 52 14 54 97 40 28 83 53 6 22 68 79 75 65 75 58 13 7 80 74 49 7 90 83 3 92 95 6 9 49 31 75 100 65 60 69 30 79 69 69 85 74 19 95 49 25 74 62 31 39 71 20 15 2 36 84 78 22 38 30 73 8 54 74 56 75))\n                        (monoid-fold A '(83 44 90 63 73 77 15 67 16 53 45 62 25 95 97 50 70 32 25 24 64 57 65 85 81 33 52 28 27 76 30 42 37 99 22 85 65 96 91 54 60 22 63 56 53 37 11 11 95 66 45 48 99 100 49 43 98 21 47 25 95 12 45 18 6 19 67 55 28 48 37 91 92 25 31 51 67 20 80 49))\n                        (monoid-fold A '(3 98 36 62 20 82 36 75 17 16 79 69 59 23 97 40 42 44 14 89 22 34 45 3 42 25 69 91 19 23 41 89 99 65 53 82 83 79 1 79 20 89 8 73 71 46 50 67 42 22 100 16 75 66 30 71 11 96 77 86 88 37 46 20 8 99 96 58 47 91 11 41 86 84 72 71 27 36 15 13))\n                        (monoid-fold A '(42 59 10 72 76 24 71 2 74 14 60 93 67 65 55 11 22 44 4 73 6 62 52 81 65 35 91 65 73 6 8 77 30 33 81 79 88 27 53 8 97 81 78 62 7 17 98 30 100 67 45 40 17 59 70 81 84 63 27 6 61 57 38 84 64 73 63 79 47 67 100 46 95 21 15 32 91 84 40 48))\n                        (monoid-fold A '(4 21 27 48 89 100 58 97 11 35 25 29 66 17 56 90 55 89 4 23 29 36 73 17 35 86 30 31 49 66 27 47 55 86 68 41 53 9 26 24 53 22 57 29 93 31 29 84 44 82 18 27 41 71 4 19 42 9 43 85 89 91 25 36 1 74 38 72 47 27 55 3 43 90 4 61 45 25 43 89))\n                        (monoid-fold A '(82 66 12 40 83 53 52 72 27 19 44 15 68 84 91 97 73 93 91 42 42 29 45 15 80 13 48 57 27 79 43 25 66 36 93 8 42 47 40 51 84 16 86 75 46 15 49 11 35 68 93 98 35 34 91 64 1 38 12 24 84 68 85 9 68 8 72 23 26 3 35 49 95 76 56 32 46 58 63 99))\n                        (monoid-fold A '(46 40 16 31 92 84 88 14 97 90 84 4 36 35 36 1 45 100 90 29 63 50 64 69 87 73 91 83 93 48 28 73 44 44 37 5 87 6 36 31 3 38 26 79 67 11 100 70 96 64 57 74 63 90 26 38 83 45 11 44 15 94 47 84 81 58 3 82 82 94 99 47 62 2 38 69 52 29 26 23))\n                        (monoid-fold A '(55 16 73 97 57 84 18 86 15 88 33 75 38 37 95 100 4 33 50 50 28 14 100 85 46 51 44 91 55 66 87 81 83 80 81 73 29 76 94 48 83 7 54 58 76 33 5 60 60 100 82 42 68 37 63 44 40 45 73 14 40 31 7 47 75 19 51 72 100 37 49 62 72 37 44 91 3 89 70 97))\n                        (monoid-fold A '(91 2 50 42 4 33 67 11 15 58 36 71 87 71 77 46 91 83 65 30 2 51 66 62 15 66 44 83 22 76 72 12 25 61 62 55 61 83 45 99 27 50 69 52 99 35 45 45 98 34 67 96 10 44 8 82 99 77 41 83 74 92 100 71 97 89 97 72 8 67 56 38 46 46 55 69 73 93 29 100))\n                        (monoid-fold A '(39 18 37 62 59 49 20 9 68 4 6 91 66 45 45 77 23 9 15 94 32 94 100 96 20 16 78 100 22 34 69 68 16 12 29 75 24 10 49 69 69 48 32 24 35 99 29 55 5 84 3 43 28 6 24 74 19 66 42 71 18 96 66 45 69 81 31 92 83 41 18 95 82 56 18 5 63 17 11 39))\n                        (monoid-fold A '(3 62 59 8 8 22 42 13 77 59 4 77 11 51 57 98 81 39 55 40 43 32 24 94 78 7 84 16 97 17 92 52 47 72 74 99 100 64 42 12 36 70 87 86 90 9 32 46 60 31 35 4 64 5 93 12 93 2 13 96 80 22 22 14 79 62 80 66 92 23 64 62 39 42 86 100 67 52 53 44))\n                        (monoid-fold A '(75 1 95 51 48 71 33 88 80 25 18 61 15 47 71 53 88 23 56 8 20 33 98 69 91 62 70 44 22 33 89 18 33 84 45 14 16 97 43 22 52 99 82 43 48 55 6 93 59 51 48 9 36 13 57 15 49 88 21 53 36 28 21 97 26 82 68 40 94 84 58 90 9 33 66 53 64 38 64 97))\n                        (monoid-fold A '(49 20 71 99 12 26 56 62 45 96 21 30 8 8 52 97 38 9 63 84 46 36 5 55 82 3 29 57 30 7 16 18 39 100 100 66 80 92 41 77 22 21 97 39 70 35 78 37 63 35 56 46 8 8 53 14 38 99 21 50 53 42 75 61 86 3 4 52 50 84 76 61 30 67 78 10 25 99 15 8))\n                        (monoid-fold A '(80 64 32 14 31 26 90 57 43 29 80 94 16 39 78 61 80 19 68 78 14 82 32 29 56 63 86 19 38 69 94 50 59 98 8 2 49 87 60 16 73 32 21 92 13 56 96 23 33 43 45 54 18 80 5 42 54 84 81 53 52 73 48 27 73 2 60 54 100 66 47 9 75 91 14 88 72 75 6 87))\n                        (monoid-fold A '(30 61 25 95 25 77 89 48 78 53 52 15 93 38 8 20 34 60 46 72 61 54 31 82 59 71 15 90 39 24 80 58 76 7 48 26 91 1 34 22 51 60 92 58 1 32 6 43 1 28 25 37 68 89 6 86 90 60 14 33 61 66 93 15 7 89 48 84 81 10 32 40 77 48 89 32 22 9 89 15))\n                        (monoid-fold A '(36 36 80 5 67 14 46 40 54 50 56 21 2 90 59 32 79 36 41 62 3 49 23 69 13 12 22 71 1 54 34 50 10 69 37 65 70 33 50 94 45 55 99 38 42 49 53 61 51 97 58 11 3 44 11 44 55 70 73 20 73 23 30 51 89 31 23 77 26 49 23 90 23 64 73 89 20 4 65 34))\n                        (monoid-fold A '(9 50 99 46 19 74 2 28 27 9 67 76 23 78 80 36 67 80 25 48 10 34 16 86 50 89 49 27 82 16 75 82 82 100 66 32 43 85 83 26 21 53 19 49 77 56 18 19 19 51 69 44 90 57 81 18 28 21 97 73 46 57 89 16 46 10 45 71 67 18 86 43 28 85 78 49 28 79 10 96))\n                        (monoid-fold A '(13 95 83 66 53 85 49 60 90 32 91 74 70 11 6 91 68 79 50 76 46 76 62 72 88 82 74 69 69 20 82 37 2 29 87 95 82 84 100 21 1 84 11 54 16 14 27 52 57 26 23 34 57 12 7 56 12 32 2 57 48 96 76 1 72 82 67 70 17 10 53 62 67 74 29 34 15 24 69 99))\n                        (monoid-fold A '(59 6 25 80 76 78 59 53 6 48 19 7 60 21 61 99 10 84 12 12 92 84 4 100 81 100 62 44 41 33 82 65 95 72 29 23 24 46 57 27 60 1 9 47 86 85 57 96 56 3 26 95 29 96 27 30 13 39 80 44 56 72 85 13 7 86 92 43 100 94 98 100 90 22 20 94 78 24 91 11))\n                        (monoid-fold A '(70 8 55 49 44 33 81 3 11 14 45 87 87 56 47 84 77 93 31 68 4 90 37 18 34 56 67 69 46 30 32 98 100 82 33 4 87 66 76 63 15 38 81 45 68 32 24 54 84 96 42 84 32 91 99 12 29 16 73 93 8 48 72 68 3 100 26 56 48 72 66 56 43 26 13 14 29 97 41 27))\n                        (monoid-fold A '(93 66 53 55 42 34 99 66 47 45 17 77 70 59 51 79 98 34 84 1 90 42 70 71 92 35 75 68 87 52 10 2 74 13 31 94 20 78 73 3 45 72 12 1 12 65 29 6 54 13 1 9 96 50 54 54 51 59 95 35 95 9 60 57 22 67 28 88 8 77 12 52 68 28 45 7 43 51 39 21)))))\n    (if (null? vals) result\n        (loop (ring-times R result (car vals)) (cdr vals)))))",
     "answer": "53703",
     "answer_type": "integer"
+  },
+  {
+    "id": "factor-easy-000",
+    "category": "prime_factorization",
+    "difficulty": "easy",
+    "natural_language": "Factor 461 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 461) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(461)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-easy-001",
+    "category": "prime_factorization",
+    "difficulty": "easy",
+    "natural_language": "Factor 784 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 784) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 2 2 7 7)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-easy-002",
+    "category": "prime_factorization",
+    "difficulty": "easy",
+    "natural_language": "Factor 771 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 771) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(3 257)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-easy-003",
+    "category": "prime_factorization",
+    "difficulty": "easy",
+    "natural_language": "Factor 664 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 664) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 2 83)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-easy-004",
+    "category": "prime_factorization",
+    "difficulty": "easy",
+    "natural_language": "Factor 444 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 444) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 3 37)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-medium-000",
+    "category": "prime_factorization",
+    "difficulty": "medium",
+    "natural_language": "Factor 68132 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 68132) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 17033)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-medium-001",
+    "category": "prime_factorization",
+    "difficulty": "medium",
+    "natural_language": "Factor 92053 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 92053) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(13 73 97)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-medium-002",
+    "category": "prime_factorization",
+    "difficulty": "medium",
+    "natural_language": "Factor 33230 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 33230) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 5 3323)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-medium-003",
+    "category": "prime_factorization",
+    "difficulty": "medium",
+    "natural_language": "Factor 73432 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 73432) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 2 2 67 137)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-medium-004",
+    "category": "prime_factorization",
+    "difficulty": "medium",
+    "natural_language": "Factor 27561 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 27561) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(3 9187)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-hard-000",
+    "category": "prime_factorization",
+    "difficulty": "hard",
+    "natural_language": "Factor 9397321 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 9397321) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(47 179 1117)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-hard-001",
+    "category": "prime_factorization",
+    "difficulty": "hard",
+    "natural_language": "Factor 5078703 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 5078703) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(3 7 7 34549)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-hard-002",
+    "category": "prime_factorization",
+    "difficulty": "hard",
+    "natural_language": "Factor 5391850 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 5391850) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 5 5 107837)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-hard-003",
+    "category": "prime_factorization",
+    "difficulty": "hard",
+    "natural_language": "Factor 9931361 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 9931361) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(11 197 4583)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "factor-hard-004",
+    "category": "prime_factorization",
+    "difficulty": "hard",
+    "natural_language": "Factor 1860490 into its prime factors with multiplicities. Give the answer as a sorted list of primes in the form `(p1 p2 p3 ...)` (e.g., `(2 2 2 3 3 5)` for 360). Primes must appear in non-decreasing order; repeated primes are listed separately.",
+    "scheme_expression": "(let loop ((n 1860490) (p 2) (acc '()))\n  (cond\n    ((= n 1) (reverse acc))\n    ((> (* p p) n) (reverse (cons n acc)))\n    ((zero? (modulo n p)) (loop (quotient n p) p (cons p acc)))\n    (else (loop n (+ p 1) acc))))",
+    "answer": "(2 5 186049)",
+    "answer_type": "polynomial"
+  },
+  {
+    "id": "combin-easy-000",
+    "category": "combinatorial_counting",
+    "difficulty": "easy",
+    "natural_language": "How many distinct subsets of size 9 can be chosen from a set of 11 elements? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 11 9))",
+    "answer": "55",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-easy-001",
+    "category": "combinatorial_counting",
+    "difficulty": "easy",
+    "natural_language": "How many distinct subsets of size 5 can be chosen from a set of 7 elements? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 7 5))",
+    "answer": "21",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-easy-002",
+    "category": "combinatorial_counting",
+    "difficulty": "easy",
+    "natural_language": "How many distinct subsets of size 6 can be chosen from a set of 8 elements? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (binom 8 6))",
+    "answer": "28",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-easy-003",
+    "category": "combinatorial_counting",
+    "difficulty": "easy",
+    "natural_language": "How many distinct ways can 6 distinct books be arranged in a row on a shelf? Give a positive integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (fact 6))",
+    "answer": "720",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-easy-004",
+    "category": "combinatorial_counting",
+    "difficulty": "easy",
+    "natural_language": "How many distinct ways can 8 distinct books be arranged in a row on a shelf? Give a positive integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (fact 8))",
+    "answer": "40320",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-medium-000",
+    "category": "combinatorial_counting",
+    "difficulty": "medium",
+    "natural_language": "How many derangements of 7 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 7))",
+    "answer": "1854",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-medium-001",
+    "category": "combinatorial_counting",
+    "difficulty": "medium",
+    "natural_language": "How many distinct arrangements of 8 distinct people in a row are there such that person A sits next to person B? Give a positive integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (* 2 (fact 7)))",
+    "answer": "10080",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-medium-002",
+    "category": "combinatorial_counting",
+    "difficulty": "medium",
+    "natural_language": "How many derangements of 8 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 8))",
+    "answer": "14833",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-medium-003",
+    "category": "combinatorial_counting",
+    "difficulty": "medium",
+    "natural_language": "How many derangements of 8 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 8))",
+    "answer": "14833",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-medium-004",
+    "category": "combinatorial_counting",
+    "difficulty": "medium",
+    "natural_language": "How many derangements of 5 distinct elements are there? (A derangement is a permutation with no fixed points \u2014 no element remains in its original position.) Give a positive integer.",
+    "scheme_expression": "(begin (define (derange n)\n  (if (= n 0) 1\n      (+ (* n (derange (- n 1)))\n         (if (even? n) 1 -1)))) (derange 5))",
+    "answer": "44",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-hard-000",
+    "category": "combinatorial_counting",
+    "difficulty": "hard",
+    "natural_language": "How many distinct arrangements of the multiset `AAABBC` are there such that no two adjacent letters are equal? Give a non-negative integer.",
+    "scheme_expression": "20",
+    "answer": "20",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-hard-001",
+    "category": "combinatorial_counting",
+    "difficulty": "hard",
+    "natural_language": "How many permutations of the 8 items `(1, 2, ..., 8)` are there such that none of the first 3 items `(1, 2, ..., 3)` occupies its original position (position 1, 2, ..., 3 respectively), while the remaining 5 items may be anywhere? Give a non-negative integer.",
+    "scheme_expression": "(begin (define (fact n) (if (<= n 1) 1 (* n (fact (- n 1))))) (define (binom n k)\n  (if (or (< k 0) (> k n)) 0\n      (/ (fact n) (* (fact k) (fact (- n k)))))) (let loop ((k 0) (acc 0))\n  (if (> k 3) acc\n      (loop (+ k 1)\n            (+ acc (* (if (even? k) 1 -1)\n                      (binom 3 k)\n                      (fact (- 8 k))))))))",
+    "answer": "27240",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-hard-002",
+    "category": "combinatorial_counting",
+    "difficulty": "hard",
+    "natural_language": "How many distinct arrangements of the multiset `AABB` are there such that no two adjacent letters are equal? Give a non-negative integer.",
+    "scheme_expression": "6",
+    "answer": "6",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-hard-003",
+    "category": "combinatorial_counting",
+    "difficulty": "hard",
+    "natural_language": "How many distinct arrangements of the multiset `AABBC` are there such that no two adjacent letters are equal? Give a non-negative integer.",
+    "scheme_expression": "24",
+    "answer": "24",
+    "answer_type": "integer"
+  },
+  {
+    "id": "combin-hard-004",
+    "category": "combinatorial_counting",
+    "difficulty": "hard",
+    "natural_language": "How many distinct arrangements of the multiset `AABB` are there such that no two adjacent letters are equal? Give a non-negative integer.",
+    "scheme_expression": "6",
+    "answer": "6",
+    "answer_type": "integer"
   }
 ]
