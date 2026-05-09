@@ -92,11 +92,11 @@ Each problem record carries a Wile-computable `scheme_expression` so ground-trut
 
 ## Setup
 
-Requires Python 3.10+ and a [Wile](https://github.com/aalpar/wile) binary in `/usr/local/bin/wile` (or pass `--wile <path>` on every command).
+Requires Python 3.10, 3.11, or 3.12 and a [Wile](https://github.com/aalpar/wile) binary in `/usr/local/bin/wile` (or pass `--wile <path>` on every command).
 
 ```bash
-# Create and activate a virtualenv (Python 3.10 or 3.11 recommended)
-python3.11 -m venv .venv
+# Create and activate a virtualenv (any of python3.10 / 3.11 / 3.12 work)
+python3.12 -m venv .venv
 source .venv/bin/activate
 
 # Install runtime + test dependencies
