@@ -90,9 +90,30 @@ The project's research framing and design decisions are documented progressively
 
 Each problem record carries a Wile-computable `scheme_expression` so ground-truth answers are deterministic. The grader compares the LLM's extracted answer (last `ANSWER:` line) against ground truth using type-aware equality (`integer`, `set`, `polynomial`, `permutation`, `decimal`-with-precision, `string`).
 
-## Running the harness
+## Setup
 
-Requires Python 3.10+, the [Anthropic SDK](https://pypi.org/project/anthropic/), and a [Wile](https://github.com/aalpar/wile) binary.
+Requires Python 3.10+ and a [Wile](https://github.com/aalpar/wile) binary in `/usr/local/bin/wile` (or pass `--wile <path>` on every command).
+
+```bash
+# Create and activate a virtualenv (Python 3.10 or 3.11 recommended)
+python3.11 -m venv .venv
+source .venv/bin/activate
+
+# Install runtime + test dependencies
+pip install -r requirements.txt
+
+# Confirm tests collect and pass
+cd algebra-accuracy && python3 -m pytest -v
+cd ../capability-map && python3 -m pytest -v
+```
+
+For benchmark runs, set `ANTHROPIC_API_KEY` in the shell:
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+## Running the harness
 
 Generate problems:
 

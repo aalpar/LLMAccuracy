@@ -1,0 +1,6 @@
+# Runtime — needed by the A/B harness (algebra-accuracy/evaluate.py)
+# Async client + tool use; 0.40+ has AsyncAnthropic.
+anthropic>=0.40
+
+# Test harness — capability-map/tests/, algebra-accuracy/tests/
+pytest>=7.0
